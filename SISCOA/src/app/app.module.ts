@@ -27,6 +27,11 @@ import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MenuComponent } from './menu/menu.component';
+import { ControlRegisterComponent } from './control-register/control-register.component';
+import { OfficeControlManagementComponent } from './office-control-management/office-control-management.component';
+import { AddControlsOfficesComponent } from './add-controls-offices/add-controls-offices.component';
+import { ControlListComponent } from './control-list/control-list.component';
 
 const appRoutes: Routes = [
   {
@@ -52,6 +57,22 @@ const appRoutes: Routes = [
     path: 'updateUser',
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
+  },{
+    path: 'officeControl',
+    component: OfficeControlManagementComponent,
+    data: { title: 'Oficina control de oficina' }, 
+  },{
+    path: 'addoffice',
+    component: AddControlsOfficesComponent,
+    data: { title: 'Añadir oficina' }, 
+  },{
+    path: 'registerControl',
+    component: ControlRegisterComponent,
+    data: { title: 'Añadir oficina' }, 
+  },{
+    path: 'listControl',
+    component: ControlListComponent,
+    data: { title: 'Control'}, 
   }
 ];
 
@@ -64,7 +85,12 @@ const appRoutes: Routes = [
     UserRegisterComponent,
     UserDeleteComponent,
     UserUpdateComponent,
-    RoleRegisterComponent
+    RoleRegisterComponent,
+    MenuComponent,
+    ControlRegisterComponent,
+    OfficeControlManagementComponent,
+    AddControlsOfficesComponent,
+    ControlListComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

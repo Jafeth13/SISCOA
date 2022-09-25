@@ -1,0 +1,204 @@
+
+<app-navbar></app-navbar>
+
+<mat-stepper [linear]="false" #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="true">
+
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Seleciona la oficina</ng-template>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="container-info-spots">
+                <div class="table-responsive">
+
+                    <table id="ClientReservation-table" class="table table-bordered table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Descripcion
+                                </th>
+                                <th>
+                                    Periodo
+                                </th>
+                                <th>
+                                    Institucion
+                                </th>
+                                
+                                <th>
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="UserReservation-tbody">
+                            <tr >
+                      <td scope="row">Oficina Central </td>
+                      <td scope="row">OC13 </td>
+                      <td scope="row">Activo</td>
+                      <td scope="row">OIJ </td>
+                   
+                      <td>      
+                        <div class="example-button-row">
+                        <div class="example-button-container">
+                            <button mat-fab color="primary" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
+                               Agregar
+                               </button>     
+                        </div>    
+                         
+                      </div>
+                    </td>
+
+                            </tr>
+                         </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+          <div>
+            <button mat-button matStepperNext >Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+          <ng-template matStepLabel>Agregar de controles</ng-template>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="container-info-spots">
+                <div class="table-responsive">
+
+                    <table id="ClientReservation-table" class="table table-bordered table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Descripcion
+                                </th>
+                                <th>
+                                    Periodo
+                                </th>
+                                <th>
+                                    Institucion
+                                </th>
+                                
+                                <th>
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="UserReservation-tbody">
+                            <tr >
+                      <td scope="row">Oficina Central </td>
+                      <td scope="row">OC13 </td>
+                      <td scope="row">Activo</td>
+                      <td scope="row">OIJ </td>
+                   
+                      <td>      
+                        <div class="example-button-row">
+                        <div class="example-button-container">
+                            <button mat-fab color="primary" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
+                               Agregar
+                               </button>     
+                        </div>    
+                         
+                      </div>
+                    </td>
+
+                            </tr>
+                         </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+          
+          <div  class="text-center" id="spots-reservation">
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button  matStepperNext>Next</button>
+          </div>       
+      </mat-step>
+        <mat-step>
+          <form  #formDir="ngForm">
+        <ng-template matStepLabel>Listar control</ng-template>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="container-info-spots">
+                    <div class="table-responsive">
+    
+                        <table id="ClientReservation-table" class="table table-bordered table-hover">
+    
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Descripcion
+                                    </th>
+                                    <th>
+                                        Periodo
+                                    </th>
+                                    <th>
+                                        Institucion
+                                    </th>
+                                    
+                                    <th>
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="UserReservation-tbody">
+                                <tr >
+                          <td scope="row">Oficina Central </td>
+                          <td scope="row">OC13 </td>
+                          <td scope="row">Activo</td>
+                          <td scope="row">OIJ </td>
+                       
+                          <td>      
+                            <div class="example-button-row">
+                            <div class="example-button-container">
+                                <button mat-fab color="warn" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
+                                    <mat-icon>delete</mat-icon> 
+                                   </button>     
+                            </div>    
+                             
+                          </div>
+                        </td>
+    
+                                </tr>
+                             </tbody>
+    
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Buy</button>
+        </div>
+      
+    </form>
+  
+        
+ 
+      
+      </mat-step>
+    </mat-stepper>
