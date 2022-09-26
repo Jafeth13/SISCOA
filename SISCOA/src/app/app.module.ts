@@ -36,7 +36,8 @@ import { ControlUpdateComponent } from './control-update/control-update.componen
 import { ControlDeleteComponent } from './control-delete/control-delete.component';
 import { MenuControlComponent } from './menu-control/menu-control.component';
 import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
-
+import { CheckStatusComponent } from './check-status/check-status.component';
+import {NgxChartsModule} from'@swimlane/ngx-charts';
 
 const appRoutes: Routes = [
   {
@@ -98,6 +99,10 @@ const appRoutes: Routes = [
     path: 'menuPrincipal',
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
+  },{
+    path: 'check',
+    component: CheckStatusComponent,
+    data: { title: 'check'}, 
   }
 ];
 
@@ -119,8 +124,9 @@ const appRoutes: Routes = [
     ControlUpdateComponent,
     ControlDeleteComponent,
     MenuControlComponent,
-    MenuPrincipalComponent
- 
+    MenuPrincipalComponent,
+    CheckStatusComponent
+    
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -144,7 +150,9 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatDividerModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    NgxChartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

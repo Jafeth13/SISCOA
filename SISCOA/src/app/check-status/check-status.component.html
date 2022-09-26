@@ -1,0 +1,115 @@
+<app-navbar> </app-navbar>
+
+  
+  <div class="grafico4">
+        
+         
+    <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single4"
+      [gradient]="gradient"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+      >
+    </ngx-charts-advanced-pie-chart>
+    <div class="wrapperButton2">
+      <button  routerLink="/addoffice" class="myB">
+        Controles que se le asignaron dias extras
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    </div> 
+
+
+
+    <div class="grafico3">
+  
+   
+      <ngx-charts-advanced-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="single3"
+        [gradient]="gradient"
+        (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
+        >
+      </ngx-charts-advanced-pie-chart>
+
+
+      <div class="wrapperButton">
+        <button  routerLink="/addoffice" class="myB">
+          Controles pendiente por mes
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+
+
+      </div>
+      
+      
+
+
+
+    
+    <div class="grafico1">
+<ngx-charts-advanced-pie-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)"
+  >
+</ngx-charts-advanced-pie-chart>
+<div class="wrapperButton3">
+  <button  routerLink="/addoffice" class="myB">
+    Grafico por estado
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
+</div>
+
+
+<div class="grafico2">
+  
+   
+    <ngx-charts-advanced-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single2"
+      [gradient]="gradient"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+      >
+    </ngx-charts-advanced-pie-chart>
+    <div class="wrapperButton4">
+      <button  routerLink="/addoffice" class="myB">
+        Grafico de Controles sin asignacion
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+
+    </div>
