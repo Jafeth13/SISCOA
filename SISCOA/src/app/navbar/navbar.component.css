@@ -5378,4 +5378,14 @@ section {
 
 
 
+.menuVertical li a{
+position:absolute;
+display: none;
+list-style: none;
+list-style: none;
+width: 200px;
+}
 
+.menuVertical li:hover{
+    background-color: #000;
+}

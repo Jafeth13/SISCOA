@@ -12,6 +12,7 @@
 
 .wrapperButton2{
     position: absolute;
+    
     top: 50%;
     left:60%;
     transform: translate(-50%, -50%);
@@ -19,35 +20,7 @@
     height:auto;
 }
 
-.wrapperButton3{
-    position: absolute;
-    
-    top: 70%;
-    left:60%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
 
-.wrapperButton4{
-    position: absolute;
-    
-    top: 70%;
-    left:40%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-
-.wrapperButton5{
-    position: absolute;
-    
-    top: 90%;
-    left:40%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
 
 .myB{
     width:200px;

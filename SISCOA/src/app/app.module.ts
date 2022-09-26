@@ -32,6 +32,11 @@ import { ControlRegisterComponent } from './control-register/control-register.co
 import { OfficeControlManagementComponent } from './office-control-management/office-control-management.component';
 import { AddControlsOfficesComponent } from './add-controls-offices/add-controls-offices.component';
 import { ControlListComponent } from './control-list/control-list.component';
+import { ControlUpdateComponent } from './control-update/control-update.component';
+import { ControlDeleteComponent } from './control-delete/control-delete.component';
+import { MenuControlComponent } from './menu-control/menu-control.component';
+import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
+
 
 const appRoutes: Routes = [
   {
@@ -73,6 +78,26 @@ const appRoutes: Routes = [
     path: 'listControl',
     component: ControlListComponent,
     data: { title: 'Control'}, 
+  },{
+    path: 'deleteControl',
+    component: ControlDeleteComponent,
+    data: { title: 'Elimianar control'}, 
+  },{
+    path: 'updateControl',
+    component: ControlUpdateComponent,
+    data: { title: 'Actualizar control'}, 
+  },{
+    path: 'menu',
+    component: MenuComponent,
+    data: { title: 'Menu'}, 
+  },{
+    path: 'controlMenu',
+    component: MenuControlComponent,
+    data: { title: 'Menu'}, 
+  },{
+    path: 'menuPrincipal',
+    component: MenuPrincipalComponent,
+    data: { title: 'Menu'}, 
   }
 ];
 
@@ -90,7 +115,12 @@ const appRoutes: Routes = [
     ControlRegisterComponent,
     OfficeControlManagementComponent,
     AddControlsOfficesComponent,
-    ControlListComponent
+    ControlListComponent,
+    ControlUpdateComponent,
+    ControlDeleteComponent,
+    MenuControlComponent,
+    MenuPrincipalComponent
+ 
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
