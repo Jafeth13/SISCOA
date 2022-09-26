@@ -41,6 +41,8 @@ import {NgxChartsModule} from'@swimlane/ngx-charts';
 import { NavbarLoginComponent } from './navbar-login/navbar-login.component';
 import { ExtraDayComponent } from './extra-day/extra-day.component';
 import { ControlOficeComponent } from './control-ofice/control-ofice.component';
+import { CompleteControlComponent } from './complete-control/complete-control.component';
+import { CompleteControlFillComponent } from './complete-control-fill/complete-control-fill.component';
 
 const appRoutes: Routes = [
   {
@@ -114,6 +116,14 @@ const appRoutes: Routes = [
     path: 'controlOfice',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
+  },{
+    path: 'completeControl',
+    component: CompleteControlComponent,
+    data: { title: 'Completar control'}, 
+  },{
+    path: 'completeControlFile',
+    component: CompleteControlFillComponent,
+    data: { title: 'Completar control'}, 
   }
 ];
 
@@ -139,7 +149,9 @@ const appRoutes: Routes = [
     CheckStatusComponent,
     NavbarLoginComponent,
     ExtraDayComponent,
-    ControlOficeComponent
+    ControlOficeComponent,
+    CompleteControlComponent,
+    CompleteControlFillComponent
     
   ],
   imports: [
