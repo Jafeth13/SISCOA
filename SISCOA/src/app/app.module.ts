@@ -39,6 +39,8 @@ import { MenuPrincipalComponent } from './menu-principal/menu-principal.componen
 import { CheckStatusComponent } from './check-status/check-status.component';
 import {NgxChartsModule} from'@swimlane/ngx-charts';
 import { NavbarLoginComponent } from './navbar-login/navbar-login.component';
+import { ExtraDayComponent } from './extra-day/extra-day.component';
+import { ControlOficeComponent } from './control-ofice/control-ofice.component';
 
 const appRoutes: Routes = [
   {
@@ -104,6 +106,14 @@ const appRoutes: Routes = [
     path: 'check',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
+  },{
+    path: 'extraDay',
+    component: ExtraDayComponent,
+    data: { title: 'Extra day'}, 
+  },{
+    path: 'controlOfice',
+    component: ControlOficeComponent,
+    data: { title: 'Control office'}, 
   }
 ];
 
@@ -127,7 +137,9 @@ const appRoutes: Routes = [
     MenuControlComponent,
     MenuPrincipalComponent,
     CheckStatusComponent,
-    NavbarLoginComponent
+    NavbarLoginComponent,
+    ExtraDayComponent,
+    ControlOficeComponent
     
   ],
   imports: [
