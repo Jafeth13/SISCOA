@@ -38,6 +38,7 @@ import { MenuControlComponent } from './menu-control/menu-control.component';
 import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
 import { CheckStatusComponent } from './check-status/check-status.component';
 import {NgxChartsModule} from'@swimlane/ngx-charts';
+import { NavbarLoginComponent } from './navbar-login/navbar-login.component';
 
 const appRoutes: Routes = [
   {
@@ -125,7 +126,8 @@ const appRoutes: Routes = [
     ControlDeleteComponent,
     MenuControlComponent,
     MenuPrincipalComponent,
-    CheckStatusComponent
+    CheckStatusComponent,
+    NavbarLoginComponent
     
   ],
   imports: [
