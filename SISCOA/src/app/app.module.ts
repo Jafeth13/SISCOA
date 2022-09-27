@@ -63,6 +63,9 @@ import { ConditionListComponent } from './condition-list/condition-list.componen
 import { ConditionDeleteComponent } from './condition-delete/condition-delete.component';
 import { ConditionUpdateComponent } from './condition-update/condition-update.component';
 import { ConditionRegisterComponent } from './condition-register/condition-register.component';
+import { MenuConfigurationComponent } from './menu-configuration/menu-configuration.component';
+import { ErrorSystemComponent } from './error-system/error-system.component';
+import { ActionUserComponent } from './action-user/action-user.component';
 
 const appRoutes: Routes = [
   {
@@ -224,6 +227,18 @@ const appRoutes: Routes = [
     path: 'conditionDelete',
     component: ConditionUpdateComponent,
     data: { title: 'Eliminar Estado'}, 
+  },{
+    path: 'menuConfiguration',
+    component: MenuConfigurationComponent,
+    data: { title: 'Menu configuracion'}, 
+  },{
+    path: 'actionUser',
+    component: ActionUserComponent,
+    data: { title: 'Acciones'}, 
+  },{
+    path: 'errorSystem',
+    component: ErrorSystemComponent,
+    data: { title: 'Errores'}, 
   }
 ];
 
@@ -271,7 +286,10 @@ const appRoutes: Routes = [
     ConditionListComponent,
     ConditionDeleteComponent,
     ConditionUpdateComponent,
-    ConditionRegisterComponent
+    ConditionRegisterComponent,
+    MenuConfigurationComponent,
+    ErrorSystemComponent,
+    ActionUserComponent
     
   ],
   imports: [
