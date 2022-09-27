@@ -43,6 +43,26 @@ import { ExtraDayComponent } from './extra-day/extra-day.component';
 import { ControlOficeComponent } from './control-ofice/control-ofice.component';
 import { CompleteControlComponent } from './complete-control/complete-control.component';
 import { CompleteControlFillComponent } from './complete-control-fill/complete-control-fill.component';
+import { RolListComponent } from './rol-list/rol-list.component';
+import { RolRegisterComponent } from './rol-register/rol-register.component';
+import { RolUpdateComponent } from './rol-update/rol-update.component';
+import { RolDeleteComponent } from './rol-delete/rol-delete.component';
+import { PermissionListComponent } from './permission-list/permission-list.component';
+import { PermissionDeleteComponent } from './permission-delete/permission-delete.component';
+import { PermissionUpdateComponent } from './permission-update/permission-update.component';
+import { PermissionRegisterComponent } from './permission-register/permission-register.component';
+import { OfficeListComponent } from './office-list/office-list.component';
+import { OfficeRegisterComponent } from './office-register/office-register.component';
+import { OfficeUpdateComponent } from './office-update/office-update.component';
+import { OfficeDeleteComponent } from './office-delete/office-delete.component';
+import { PeriodListComponent } from './period-list/period-list.component';
+import { PeriodDeleteComponent } from './period-delete/period-delete.component';
+import { PeriodUpdateComponent } from './period-update/period-update.component';
+import { PeriodRegisterComponent } from './period-register/period-register.component';
+import { ConditionListComponent } from './condition-list/condition-list.component';
+import { ConditionDeleteComponent } from './condition-delete/condition-delete.component';
+import { ConditionUpdateComponent } from './condition-update/condition-update.component';
+import { ConditionRegisterComponent } from './condition-register/condition-register.component';
 
 const appRoutes: Routes = [
   {
@@ -124,6 +144,86 @@ const appRoutes: Routes = [
     path: 'completeControlFile',
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
+  },{
+    path: 'rolList',
+    component: RolListComponent,
+    data: { title: 'Listar Roles'}, 
+  },{
+    path: 'rolRegister',
+    component: RolRegisterComponent,
+    data: { title: 'Registrar Roles'}, 
+  },{
+    path: 'rolUpdate',
+    component: RolUpdateComponent,
+    data: { title: 'Actualizar Roles'}, 
+  },{
+    path: 'rolDelete',
+    component: RolDeleteComponent,
+    data: { title: 'Eliminar Roles'}, 
+  },{
+    path: 'permissionList',
+    component: PermissionListComponent,
+    data: { title: 'Listar Permisos'}, 
+  },{
+    path: 'permissionRegister',
+    component: PermissionRegisterComponent,
+    data: { title: 'Registrar Permisos'}, 
+  },{
+    path: 'permissionUpdate',
+    component: PermissionUpdateComponent,
+    data: { title: 'Actualizar Permisos'}, 
+  },{
+    path: 'permissionDelete',
+    component: PermissionDeleteComponent,
+    data: { title: 'Eliminar Permisos'}, 
+  },{
+    path: 'officeList',
+    component: OfficeListComponent,
+    data: { title: 'Listar Oficinas'}, 
+  },{
+    path: 'officeRegister',
+    component: OfficeRegisterComponent,
+    data: { title: 'Registrar Oficinas'}, 
+  },{
+    path: 'officeUpdate',
+    component: OfficeUpdateComponent,
+    data: { title: 'Actualizar Oficinas'}, 
+  },{
+    path: 'officeDelete',
+    component: OfficeDeleteComponent,
+    data: { title: 'Eliminar Oficinas'}, 
+  },{
+    path: 'periodList',
+    component: PeriodListComponent,
+    data: { title: 'Listar Periodos'}, 
+  },{
+    path: 'periodRegister',
+    component: PeriodRegisterComponent,
+    data: { title: 'Registrar Periodos'}, 
+  },{
+    path: 'periodUpdate',
+    component: PeriodUpdateComponent,
+    data: { title: 'Actualizar Periodos'}, 
+  },{
+    path: 'periodDelete',
+    component: PeriodDeleteComponent,
+    data: { title: 'Eliminar Periodos'}, 
+  },{
+    path: 'conditionList',
+    component: ConditionListComponent,
+    data: { title: 'Lista Estado'}, 
+  },{
+    path: 'conditionRegister',
+    component: ConditionRegisterComponent,
+    data: { title: 'Registrar Estado'}, 
+  },{
+    path: 'conditionUpdate',
+    component: ConditionUpdateComponent,
+    data: { title: 'Actualizar Estado'}, 
+  },{
+    path: 'conditionDelete',
+    component: ConditionUpdateComponent,
+    data: { title: 'Eliminar Estado'}, 
   }
 ];
 
@@ -151,7 +251,27 @@ const appRoutes: Routes = [
     ExtraDayComponent,
     ControlOficeComponent,
     CompleteControlComponent,
-    CompleteControlFillComponent
+    CompleteControlFillComponent,
+    RolListComponent,
+    RolRegisterComponent,
+    RolUpdateComponent,
+    RolDeleteComponent,
+    PermissionListComponent,
+    PermissionDeleteComponent,
+    PermissionUpdateComponent,
+    PermissionRegisterComponent,
+    OfficeListComponent,
+    OfficeRegisterComponent,
+    OfficeUpdateComponent,
+    OfficeDeleteComponent,
+    PeriodListComponent,
+    PeriodDeleteComponent,
+    PeriodUpdateComponent,
+    PeriodRegisterComponent,
+    ConditionListComponent,
+    ConditionDeleteComponent,
+    ConditionUpdateComponent,
+    ConditionRegisterComponent
     
   ],
   imports: [
