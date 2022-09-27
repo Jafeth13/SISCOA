@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SISCOAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TSISCOA_Control">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Control" />
+    </Key>
+    <Property Name="PK_SISCOA_Control" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TC_DescriptionDocumentacionEvidencia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FK_TN_Estado" Type="Int32" />
+    <Property Name="FK_TN_Periodo" Type="Int32" />
+    <Property Name="TB_NotificacionCorreoAColaborador" Type="Boolean" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Estado" Relationship="Self.FK__TSISCOA_C__FK_TN__503BEA1C" FromRole="TSISCOA_Control" ToRole="TSISCOA_Estado" />
+    <NavigationProperty Name="TSISCOA_Periodo" Relationship="Self.FK__TSISCOA_C__FK_TN__51300E55" FromRole="TSISCOA_Control" ToRole="TSISCOA_Periodo" />
+    <NavigationProperty Name="TSISCOA_OficinaControl" Relationship="Self.FK__TSISCOA_O__FK_SI__5AB9788F" FromRole="TSISCOA_Control" ToRole="TSISCOA_OficinaControl" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Estado">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Estado" />
+    </Key>
+    <Property Name="PK_SISCOA_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Control" Relationship="Self.FK__TSISCOA_C__FK_TN__503BEA1C" FromRole="TSISCOA_Estado" ToRole="TSISCOA_Control" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Periodo">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Periodo" />
+    </Key>
+    <Property Name="PK_SISCOA_Periodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Control" Relationship="Self.FK__TSISCOA_C__FK_TN__51300E55" FromRole="TSISCOA_Periodo" ToRole="TSISCOA_Control" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Oficina">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Oficina" />
+    </Key>
+    <Property Name="PK_SISCOA_Oficina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_CodigoOficina" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TC_Institucion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TB_EstadoActividad" Type="Boolean" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_OficinaControl" Relationship="Self.FK__TSISCOA_O__FK_SI__5BAD9CC8" FromRole="TSISCOA_Oficina" ToRole="TSISCOA_OficinaControl" />
+    <NavigationProperty Name="TSISCOA_Usuario" Relationship="Self.FK__TSISCOA_U__FK_SI__6DCC4D03" FromRole="TSISCOA_Oficina" ToRole="TSISCOA_Usuario" />
+  </EntityType>
+  <EntityType Name="TSISCOA_OficinaControl">
+    <Key>
+      <PropertyRef Name="PK_TSISCOA_OficinaControl" />
+    </Key>
+    <Property Name="PK_TSISCOA_OficinaControl" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SISCOA_CONTROL_SISCOA_OficinaControl" Type="Int32" Nullable="false" />
+    <Property Name="FK_SISCOA_OFICINA_SISCOA_OficinaControl" Type="Int32" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Control" Relationship="Self.FK__TSISCOA_O__FK_SI__5AB9788F" FromRole="TSISCOA_OficinaControl" ToRole="TSISCOA_Control" />
+    <NavigationProperty Name="TSISCOA_Oficina" Relationship="Self.FK__TSISCOA_O__FK_SI__5BAD9CC8" FromRole="TSISCOA_OficinaControl" ToRole="TSISCOA_Oficina" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Permiso">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Permiso" />
+    </Key>
+    <Property Name="PK_SISCOA_Permiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_RolPermiso" Relationship="Self.FK__TSISCOA_R__FK_SI__690797E6" FromRole="TSISCOA_Permiso" ToRole="TSISCOA_RolPermiso" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Rol">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Rol" />
+    </Key>
+    <Property Name="PK_SISCOA_Rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_RolPermiso" Relationship="Self.FK__TSISCOA_R__FK_SI__681373AD" FromRole="TSISCOA_Rol" ToRole="TSISCOA_RolPermiso" />
+    <NavigationProperty Name="TSISCOA_Usuario" Relationship="Self.FK__TSISCOA_U__FK_SI__6EC0713C" FromRole="TSISCOA_Rol" ToRole="TSISCOA_Usuario" />
+  </EntityType>
+  <EntityType Name="TSISCOA_RolPermiso">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_RolPermiso" />
+    </Key>
+    <Property Name="PK_SISCOA_RolPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_SISCOA_Rol_SISCOA_RolPermiso" Type="Int32" Nullable="false" />
+    <Property Name="FK_SISCOA_Permiso_SISCOA_RolPermiso" Type="Int32" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Permiso" Relationship="Self.FK__TSISCOA_R__FK_SI__690797E6" FromRole="TSISCOA_RolPermiso" ToRole="TSISCOA_Permiso" />
+    <NavigationProperty Name="TSISCOA_Rol" Relationship="Self.FK__TSISCOA_R__FK_SI__681373AD" FromRole="TSISCOA_RolPermiso" ToRole="TSISCOA_Rol" />
+  </EntityType>
+  <EntityType Name="TSISCOA_Usuario">
+    <Key>
+      <PropertyRef Name="PK_SISCOA_Usuario" />
+    </Key>
+    <Property Name="PK_SISCOA_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TC_Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TC_PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TC_SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TV_Contrasenna" Type="Binary" MaxLength="255" FixedLength="false" Nullable="false" />
+    <Property Name="TC_Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FK_SISCOA_Oficina_SISCOA_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="FK_SISCOA_Rol_SISCOA_Usuario" Type="Int32" Nullable="false" />
+    <Property Name="TB_EstaActivo" Type="Boolean" />
+    <Property Name="TB_EstaBorrado" Type="Boolean" />
+    <Property Name="TC_UltimaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TF_UltimaFechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="TSISCOA_Oficina" Relationship="Self.FK__TSISCOA_U__FK_SI__6DCC4D03" FromRole="TSISCOA_Usuario" ToRole="TSISCOA_Oficina" />
+    <NavigationProperty Name="TSISCOA_Rol" Relationship="Self.FK__TSISCOA_U__FK_SI__6EC0713C" FromRole="TSISCOA_Usuario" ToRole="TSISCOA_Rol" />
+  </EntityType>
+  <Association Name="FK__TSISCOA_C__FK_TN__503BEA1C">
+    <End Role="TSISCOA_Estado" Type="Self.TSISCOA_Estado" Multiplicity="0..1" />
+    <End Role="TSISCOA_Control" Type="Self.TSISCOA_Control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Estado">
+        <PropertyRef Name="PK_SISCOA_Estado" />
+      </Principal>
+      <Dependent Role="TSISCOA_Control">
+        <PropertyRef Name="FK_TN_Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_C__FK_TN__51300E55">
+    <End Role="TSISCOA_Periodo" Type="Self.TSISCOA_Periodo" Multiplicity="0..1" />
+    <End Role="TSISCOA_Control" Type="Self.TSISCOA_Control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Periodo">
+        <PropertyRef Name="PK_SISCOA_Periodo" />
+      </Principal>
+      <Dependent Role="TSISCOA_Control">
+        <PropertyRef Name="FK_TN_Periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_O__FK_SI__5AB9788F">
+    <End Role="TSISCOA_Control" Type="Self.TSISCOA_Control" Multiplicity="1" />
+    <End Role="TSISCOA_OficinaControl" Type="Self.TSISCOA_OficinaControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Control">
+        <PropertyRef Name="PK_SISCOA_Control" />
+      </Principal>
+      <Dependent Role="TSISCOA_OficinaControl">
+        <PropertyRef Name="FK_SISCOA_CONTROL_SISCOA_OficinaControl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_O__FK_SI__5BAD9CC8">
+    <End Role="TSISCOA_Oficina" Type="Self.TSISCOA_Oficina" Multiplicity="1" />
+    <End Role="TSISCOA_OficinaControl" Type="Self.TSISCOA_OficinaControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Oficina">
+        <PropertyRef Name="PK_SISCOA_Oficina" />
+      </Principal>
+      <Dependent Role="TSISCOA_OficinaControl">
+        <PropertyRef Name="FK_SISCOA_OFICINA_SISCOA_OficinaControl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_U__FK_SI__6DCC4D03">
+    <End Role="TSISCOA_Oficina" Type="Self.TSISCOA_Oficina" Multiplicity="1" />
+    <End Role="TSISCOA_Usuario" Type="Self.TSISCOA_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Oficina">
+        <PropertyRef Name="PK_SISCOA_Oficina" />
+      </Principal>
+      <Dependent Role="TSISCOA_Usuario">
+        <PropertyRef Name="FK_SISCOA_Oficina_SISCOA_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_R__FK_SI__690797E6">
+    <End Role="TSISCOA_Permiso" Type="Self.TSISCOA_Permiso" Multiplicity="1" />
+    <End Role="TSISCOA_RolPermiso" Type="Self.TSISCOA_RolPermiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Permiso">
+        <PropertyRef Name="PK_SISCOA_Permiso" />
+      </Principal>
+      <Dependent Role="TSISCOA_RolPermiso">
+        <PropertyRef Name="FK_SISCOA_Permiso_SISCOA_RolPermiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_R__FK_SI__681373AD">
+    <End Role="TSISCOA_Rol" Type="Self.TSISCOA_Rol" Multiplicity="1" />
+    <End Role="TSISCOA_RolPermiso" Type="Self.TSISCOA_RolPermiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Rol">
+        <PropertyRef Name="PK_SISCOA_Rol" />
+      </Principal>
+      <Dependent Role="TSISCOA_RolPermiso">
+        <PropertyRef Name="FK_SISCOA_Rol_SISCOA_RolPermiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TSISCOA_U__FK_SI__6EC0713C">
+    <End Role="TSISCOA_Rol" Type="Self.TSISCOA_Rol" Multiplicity="1" />
+    <End Role="TSISCOA_Usuario" Type="Self.TSISCOA_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TSISCOA_Rol">
+        <PropertyRef Name="PK_SISCOA_Rol" />
+      </Principal>
+      <Dependent Role="TSISCOA_Usuario">
+        <PropertyRef Name="FK_SISCOA_Rol_SISCOA_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SISCOAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TSISCOA_Control" EntityType="Self.TSISCOA_Control" />
+    <EntitySet Name="TSISCOA_Estado" EntityType="Self.TSISCOA_Estado" />
+    <EntitySet Name="TSISCOA_Periodo" EntityType="Self.TSISCOA_Periodo" />
+    <EntitySet Name="TSISCOA_Oficina" EntityType="Self.TSISCOA_Oficina" />
+    <EntitySet Name="TSISCOA_OficinaControl" EntityType="Self.TSISCOA_OficinaControl" />
+    <EntitySet Name="TSISCOA_Permiso" EntityType="Self.TSISCOA_Permiso" />
+    <EntitySet Name="TSISCOA_Rol" EntityType="Self.TSISCOA_Rol" />
+    <EntitySet Name="TSISCOA_RolPermiso" EntityType="Self.TSISCOA_RolPermiso" />
+    <EntitySet Name="TSISCOA_Usuario" EntityType="Self.TSISCOA_Usuario" />
+    <AssociationSet Name="FK__TSISCOA_C__FK_TN__503BEA1C" Association="Self.FK__TSISCOA_C__FK_TN__503BEA1C">
+      <End Role="TSISCOA_Estado" EntitySet="TSISCOA_Estado" />
+      <End Role="TSISCOA_Control" EntitySet="TSISCOA_Control" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_C__FK_TN__51300E55" Association="Self.FK__TSISCOA_C__FK_TN__51300E55">
+      <End Role="TSISCOA_Periodo" EntitySet="TSISCOA_Periodo" />
+      <End Role="TSISCOA_Control" EntitySet="TSISCOA_Control" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_O__FK_SI__5AB9788F" Association="Self.FK__TSISCOA_O__FK_SI__5AB9788F">
+      <End Role="TSISCOA_Control" EntitySet="TSISCOA_Control" />
+      <End Role="TSISCOA_OficinaControl" EntitySet="TSISCOA_OficinaControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_O__FK_SI__5BAD9CC8" Association="Self.FK__TSISCOA_O__FK_SI__5BAD9CC8">
+      <End Role="TSISCOA_Oficina" EntitySet="TSISCOA_Oficina" />
+      <End Role="TSISCOA_OficinaControl" EntitySet="TSISCOA_OficinaControl" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_U__FK_SI__6DCC4D03" Association="Self.FK__TSISCOA_U__FK_SI__6DCC4D03">
+      <End Role="TSISCOA_Oficina" EntitySet="TSISCOA_Oficina" />
+      <End Role="TSISCOA_Usuario" EntitySet="TSISCOA_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_R__FK_SI__690797E6" Association="Self.FK__TSISCOA_R__FK_SI__690797E6">
+      <End Role="TSISCOA_Permiso" EntitySet="TSISCOA_Permiso" />
+      <End Role="TSISCOA_RolPermiso" EntitySet="TSISCOA_RolPermiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_R__FK_SI__681373AD" Association="Self.FK__TSISCOA_R__FK_SI__681373AD">
+      <End Role="TSISCOA_Rol" EntitySet="TSISCOA_Rol" />
+      <End Role="TSISCOA_RolPermiso" EntitySet="TSISCOA_RolPermiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TSISCOA_U__FK_SI__6EC0713C" Association="Self.FK__TSISCOA_U__FK_SI__6EC0713C">
+      <End Role="TSISCOA_Rol" EntitySet="TSISCOA_Rol" />
+      <End Role="TSISCOA_Usuario" EntitySet="TSISCOA_Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

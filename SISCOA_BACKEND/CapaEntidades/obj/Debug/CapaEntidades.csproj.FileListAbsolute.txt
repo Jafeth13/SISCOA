@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\bin\Debug\CapaEntidades.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\bin\Debug\CapaEntidades.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\obj\Debug\CapaEntidades.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\obj\Debug\CapaEntidades.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaEntidades\obj\Debug\CapaEntidades.pdb
