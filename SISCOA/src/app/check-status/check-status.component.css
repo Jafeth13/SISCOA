@@ -5,6 +5,8 @@
   margin: 30%;
   padding: 10%;
   margin: 0 auto;
+  position: absolute;right: 5%;
+  top: 0px;
 }
 
 .grafico2{
@@ -14,6 +16,7 @@
   margin: 30%;
   padding: 10%;
   margin: 0 auto;
+  position: absolute;top: 280px;
 }
 .grafico3{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -22,22 +25,24 @@
   margin: 30%;
   padding: 10%;
   margin: 0 auto;
+  position: absolute;left:35;
 }
 
 .grafico4{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-   
     width: 300px;
   margin: 30%;
   padding: 10%;
+  position: absolute;right: 5%;
+  top: 280px;
   margin: 0 auto;
 }
 
 .wrapperButton{
     position: absolute;
     
-    top: 135%;
-    left:55%;
+    top: 80%;
+    left:70%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
@@ -45,8 +50,8 @@
 .wrapperButton2{
     position: absolute;
     
-    top: 70%;
-    left:55%;
+    top: 80%;
+    left:60%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
@@ -54,8 +59,8 @@
 
 .wrapperButton3{    
     position: absolute;   
-    top: 210%;
-    left:55%;
+    top: 80%;
+    left:60%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
@@ -63,8 +68,8 @@
 
 .wrapperButton4{    
     position: absolute;   
-    top: 290%;
-    left:55%;
+    top: 80%;
+    left:70%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
