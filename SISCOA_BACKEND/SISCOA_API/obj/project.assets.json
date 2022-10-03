@@ -88,6 +88,40 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "CapaDatos/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CapaEntidades": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CapaDatos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CapaDatos.dll": {}
+        }
+      },
+      "CapaEntidades/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CapaEntidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CapaEntidades.dll": {}
+        }
+      },
+      "CapaNegocio/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "CapaDatos": "1.0.0",
+          "CapaEntidades": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CapaNegocio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CapaNegocio.dll": {}
+        }
       }
     }
   },
@@ -216,10 +250,27 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "CapaDatos/1.0.0": {
+      "type": "project",
+      "path": "../CapaDatos/CapaDatos.csproj",
+      "msbuildProject": "../CapaDatos/CapaDatos.csproj"
+    },
+    "CapaEntidades/1.0.0": {
+      "type": "project",
+      "path": "../CapaEntidades/CapaEntidades.csproj",
+      "msbuildProject": "../CapaEntidades/CapaEntidades.csproj"
+    },
+    "CapaNegocio/1.0.0": {
+      "type": "project",
+      "path": "../CapaNegocio/CapaNegocio.csproj",
+      "msbuildProject": "../CapaNegocio/CapaNegocio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "CapaEntidades >= 1.0.0",
+      "CapaNegocio >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -249,7 +300,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Usuario\\Desktop\\ProyectosPersonales\\SISCOA\\SISCOA_BACKEND\\CapaEntidades\\CapaEntidades.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\Desktop\\ProyectosPersonales\\SISCOA\\SISCOA_BACKEND\\CapaEntidades\\CapaEntidades.csproj"
+            },
+            "C:\\Users\\Usuario\\Desktop\\ProyectosPersonales\\SISCOA\\SISCOA_BACKEND\\CapaNegocio\\CapaNegocio.csproj": {
+              "projectPath": "C:\\Users\\Usuario\\Desktop\\ProyectosPersonales\\SISCOA\\SISCOA_BACKEND\\CapaNegocio\\CapaNegocio.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

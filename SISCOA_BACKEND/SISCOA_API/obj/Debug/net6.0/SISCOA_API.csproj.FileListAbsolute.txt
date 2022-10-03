@@ -25,3 +25,14 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\ob
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\obj\Debug\net6.0\SISCOA_API.pdb
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\obj\Debug\net6.0\SISCOA_API.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\obj\Debug\net6.0\ref\SISCOA_API.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaDatos.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaEntidades.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaNegocio.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\EntityFramework.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\EntityFramework.SqlServer.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaEntidades.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaNegocio.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaDatos.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\CapaDatos.dll.config
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\EntityFramework.xml
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\SISCOA_API\bin\Debug\net6.0\EntityFramework.SqlServer.xml

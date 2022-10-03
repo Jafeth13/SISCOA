@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\bin\Debug\CapaSeguridad.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\bin\Debug\CapaSeguridad.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\obj\Debug\CapaSeguridad.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\obj\Debug\CapaSeguridad.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\obj\Debug\CapaSeguridad.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACKEND\CapaSeguridad\obj\Debug\CapaSeguridad.pdb
