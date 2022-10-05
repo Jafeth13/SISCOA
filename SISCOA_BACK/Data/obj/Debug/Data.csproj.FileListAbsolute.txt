@@ -1,0 +1,17 @@
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Data.dll.config
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Data.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Data.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\AutoMapper.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Entities.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\EntityFramework.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Entities.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\Entities.dll.config
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\AutoMapper.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\EntityFramework.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\obj\Debug\Data.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\obj\Debug\Data.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\obj\Debug\Data.csproj.CopyComplete
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\obj\Debug\Data.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Data\obj\Debug\Data.pdb
