@@ -121,3 +121,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\e
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.csproj.CopyComplete
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\SISCOA_API.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Swashbuckle.Core.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\WebActivatorEx.dll

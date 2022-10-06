@@ -5,92 +5,141 @@ using Entities.Models;
 using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.UI;
+using System.Web.Http.Description;
 
 namespace SISCOA_API.Controllers
 {
+    /// <summary>
+    /// Controlador de Estados
+    /// </summary>
     public class EstadosController : ApiController
     {
         private IMapper _mapper;
-        private readonly EstadoService estadoService = new EstadoService(new EstadoRepository(SISCOA_Context.Create()));
-
+        private readonly EstadoService service = new EstadoService(new EstadoRepository(SISCOA_Context.Create()));
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public EstadosController()
         {
             this._mapper = WebApiApplication.MapperConfiguration.CreateMapper();
         }
-
+        /// <summary>
+        /// Obtiene todos los registros
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
         [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_Estado_DTO>))]
         public async Task<IHttpActionResult> GetAll()
         {
-            var estados = await estadoService.GetAll();
-            var estadoDTO = estados.Select(x => _mapper.Map<TSISCOA_Estado_DTO>(x));
+            var entities = await service.GetAll();
+            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Estado_DTO>(x));
 
-            return Ok(estadoDTO);
+            return Ok(DTO);
         }
-
+        /// <summary>
+        /// Obtiene un registro por su id
+        /// </summary>
+        /// <remark>
+        /// </remark>
+        /// <param name="id">Id del registro</param>
+        /// <returns>Registro</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
         [HttpGet]
+        [ResponseType(typeof(TSISCOA_Estado_DTO))]
         public async Task<IHttpActionResult> GetById(int id)
         {
-            var estados = await estadoService.GetById(id);
-            if (estados == null)
+            var entities = await service.GetById(id);
+            if (entities == null)
                 return NotFound();
 
-            var estadoDTO = _mapper.Map<TSISCOA_Estado_DTO>(estados);
+            var DTO = _mapper.Map<TSISCOA_Estado_DTO>(entities);
 
-            return Ok(estadoDTO);
+            return Ok(DTO);
         }
-
+        /// <summary>
+        /// Crea un registro
+        /// </summary>
+        /// <param name="DTO">El objeto JSON del registro</param>
+        /// <returns>Registro insertado</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        /// <response code="400">BadRequest. Consulta erronea</response>
+        /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO estadoDTO)
+        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                var estado = _mapper.Map<TSISCOA_Estado>(estadoDTO);
-                estado = await estadoService.Insert(estado);
-                return Ok(estado);
+                var entities = _mapper.Map<TSISCOA_Estado>(DTO);
+                entities = await service.Insert(entities);
+                return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }
         }
-
+        /// <summary>
+        /// Actualiza un registro
+        /// </summary>
+        /// <param name="DTO">El objeto JSON del registro</param>
+        /// <param name="id">Id del registro que quiere modificar</param>
+        /// <returns>Registro modificado</returns>
+        /// <response code="200">OK. Devuelve el registro modificado</response>
+        /// <response code="400">BadRequest. Consulta erronea</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
+        /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPut]
-        public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO estadoDTO, int id)
+        [ResponseType(typeof(TSISCOA_Estado_DTO))]
+        public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO DTO, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (estadoDTO.ID != id)
-                return BadRequest();
+            if (DTO.ID != id)
+                return BadRequest("Object id does not match route id");
 
-            var flag = await estadoService.GetById(id);
+            var flag = await service.GetById(id);
             if(flag == null)
                 return NotFound();
 
             try
             {
-                var estado = _mapper.Map<TSISCOA_Estado>(estadoDTO);
-                estado = await estadoService.Update(estado);
-                return Ok(estado);
+                var entities = _mapper.Map<TSISCOA_Estado>(DTO);
+                entities = await service.Update(entities);
+                return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }
         }
-
+        /// <summary>
+        /// Elimina un registro
+        /// </summary>
+        /// <param name="id">Id del registro que quiere eliminar</param>
+        /// <returns>OK</returns>
+        /// <response code="200">OK. El registro fue eliminado</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            var flag = await estadoService.GetById(id);
+            var flag = await service.GetById(id);
             if (flag == null)
                 return NotFound();
 
             try
             {
-                
-                await estadoService.Delete(id);
+                if (!await service.DeletedCheckOnEntity(id))
+                {
+                    await service.Delete(id);
+                }
+                else
+                {
+                    throw new Exception("This Estado have foreign key references with table Control");
+                }
                 return Ok();
             }
             catch (Exception ex) { return InternalServerError(ex); }

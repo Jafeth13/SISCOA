@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using Entities;
-using Business.DTOs;
 using Entities.Models;
 
 namespace Business.DTOs

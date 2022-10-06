@@ -11,10 +11,15 @@ namespace Data.Data
         {
 
         }
-
-        public DbSet<TSISCOA_Periodo> Periodos { get; set; }
-        public DbSet<TSISCOA_Estado> Estados { get; set; }
         public DbSet<TSISCOA_Control> Controles { get; set; }
+        public DbSet<TSISCOA_Estado> Estados { get; set; }
+        public DbSet<TSISCOA_Oficina> Oficinas { get; set; }
+        public DbSet<TSISCOA_OficinaControl> OficinaControles { get; set; }
+        public DbSet<TSISCOA_Periodo> Periodos { get; set; }
+        public DbSet<TSISCOA_Permiso> Permisos { get; set; }
+        public DbSet<TSISCOA_Rol> Roles { get; set; }
+        public DbSet<TSISCOA_RolPermiso> RolPermisos { get; set; }
+        public DbSet<TSISCOA_Usuario> Usuarios { get; set; }
 
         public static SISCOA_Context Create()
         {

@@ -8,14 +8,14 @@ namespace Repositories.Repositories.Implements
     public class ControlRepository : GenericRepository<TSISCOA_Control>, IControlRepository
     {
         private readonly SISCOA_Context siscoa_context;
-        public ControlRepository(SISCOA_Context siscoa_contex) : base(siscoa_contex)
+        public ControlRepository(SISCOA_Context siscoa_context) : base(siscoa_context)
         {
-            this.siscoa_context = siscoa_contex;
+            this.siscoa_context = siscoa_context;
         }
 
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
-            var flag = await siscoa_context.Estados.AnyAsync(x => x.ID == id);
+            var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.ID == id);
             return flag;
         }
     }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
-    [Table("TSISCOA_Permiso", Schema = "CONTROL")]
+    [Table("TSISCOA_Permiso", Schema = "USUARIO")]
     public class TSISCOA_Permiso
     {
         [Key]
