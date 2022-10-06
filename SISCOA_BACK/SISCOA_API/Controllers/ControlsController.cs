@@ -2,6 +2,7 @@
 using Business.DTOs;
 using Data.Data;
 using Repositories.Repositories.Implements;
+using Services.Services;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,26 @@ namespace SISCOA_API.Controllers
             var controlDTO = _mapper.Map<TSISCOA_Control_DTO>(control);
 
             return Ok(controlDTO);
+        }
+        
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var flag = await controlService.GetById(id);
+            if (flag == null)
+                return NotFound();
+            try
+            {
+                if (!await controlService.DeletedCheckOnEntity(id))
+                {
+                    await controlService.Delete(id);
+                }
+                else {
+                    throw new Exception("This control have foreign key references with others tables");
+                }
+                return Ok();
+            }
+            catch (Exception ex) { return InternalServerError(ex); }
         }
     }
 }

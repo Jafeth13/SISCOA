@@ -56,6 +56,26 @@
   <ItemGroup>
     <Compile Include="Data\SISCOA_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IControlRepository.cs" />
+    <Compile Include="Repositories\IEstadoRepository.cs" />
+    <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\Implements\ControlRepository.cs" />
+    <Compile Include="Repositories\Implements\EstadoRepository.cs" />
+    <Compile Include="Repositories\Implements\GenericRepository.cs" />
+    <Compile Include="Repositories\Implements\OficinaControlRepository.cs" />
+    <Compile Include="Repositories\Implements\OficinaRepository.cs" />
+    <Compile Include="Repositories\Implements\PeriodoRepository.cs" />
+    <Compile Include="Repositories\Implements\PermisoRepository.cs" />
+    <Compile Include="Repositories\Implements\RolPermisoRepository.cs" />
+    <Compile Include="Repositories\Implements\RolRepository.cs" />
+    <Compile Include="Repositories\Implements\UsuarioRepository.cs" />
+    <Compile Include="Repositories\IOficinaControlRepository.cs" />
+    <Compile Include="Repositories\IOficinaRepository.cs" />
+    <Compile Include="Repositories\IPeriodoRepository.cs" />
+    <Compile Include="Repositories\IPermisoRepository.cs" />
+    <Compile Include="Repositories\IRolPermisoRepository.cs" />
+    <Compile Include="Repositories\IRolRepository.cs" />
+    <Compile Include="Repositories\IUsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

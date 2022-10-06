@@ -86,10 +86,6 @@
       <Project>{9dea2505-19d8-45d0-afce-68c2c188b75c}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{33b79843-e1f6-4620-af9e-47735ba9d901}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

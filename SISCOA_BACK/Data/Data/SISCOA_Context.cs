@@ -5,7 +5,8 @@ namespace Data.Data
 {
     public class SISCOA_Context : DbContext
     {
-        private static SISCOA_Context _instance = null;
+        //private static SISCOA_Context _instance = null;
+        
         public SISCOA_Context() : base("SISCOA_Context")
         {
 

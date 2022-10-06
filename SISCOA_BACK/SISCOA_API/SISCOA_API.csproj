@@ -275,14 +275,6 @@
       <Project>{9dea2505-19d8-45d0-afce-68c2c188b75c}</Project>
       <Name>Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{33b79843-e1f6-4620-af9e-47735ba9d901}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
-      <Project>{294b7796-af43-4022-961c-9b9cdf9fa124}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

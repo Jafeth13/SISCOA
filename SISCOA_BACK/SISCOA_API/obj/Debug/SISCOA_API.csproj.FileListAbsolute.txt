@@ -69,8 +69,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\M
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Newtonsoft.Json.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Owin.dll
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Repositories.dll
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Services.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Net.Http.Formatting.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Helpers.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.dll
@@ -88,10 +86,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\D
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Data.dll.config
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Entities.pdb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Entities.dll.config
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Repositories.pdb
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Repositories.dll.config
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Services.pdb
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Services.dll.config
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\AutoMapper.xml
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\EntityFramework.xml
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\EntityFramework.SqlServer.xml
