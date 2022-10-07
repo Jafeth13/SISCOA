@@ -67,6 +67,7 @@ import { MenuConfigurationComponent } from './menu-configuration/menu-configurat
 import { ErrorSystemComponent } from './error-system/error-system.component';
 import { ActionUserComponent } from './action-user/action-user.component';
 
+
 const appRoutes: Routes = [
   {
     path: '',
