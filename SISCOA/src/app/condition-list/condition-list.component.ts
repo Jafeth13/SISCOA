@@ -11,10 +11,10 @@ import { ServiceConditionService } from '../service-condition.service';
   styleUrls: ['./condition-list.component.css']
 })
 
-export class ConditionListComponent implements AfterViewInit {
+export class ConditionListComponent implements AfterViewInit,OnInit {
   conditionalList:any
   displayedColumns: string[] = ['name','action'];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource();
   constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
@@ -27,31 +27,9 @@ export class ConditionListComponent implements AfterViewInit {
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
 
-
-  getParking(){
-   
-    this.rest.conditionalList().subscribe((data:{})=>{
-      console.log(data);
-      this.conditionalList=data;
+  ngOnInit(): void {
+    this.rest.conditionalList().subscribe((pos)=>{
+    console.log(pos);
+    this.dataSource.data=pos
     });
-   }
-
-
-}
-
-
-export interface PeriodicElement {
-  name: string;
- 
-}
-
-
-const ELEMENT_DATA: any[] = [
-  { name: 'Hydrogen'},
-  { name: 'Hydrogen'},  
-  { name: 'Hydrogen'},
-  { name: 'Hydrogen'},
-  { name: 'Hydrogen'},
-
-];
-
+  }}
