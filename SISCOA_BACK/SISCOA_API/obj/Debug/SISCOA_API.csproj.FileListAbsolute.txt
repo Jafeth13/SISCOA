@@ -124,3 +124,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\obj\D
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\SISCOA_API.xml
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Swashbuckle.Core.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\WebActivatorEx.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Cors.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.Cors.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.Cors.xml
