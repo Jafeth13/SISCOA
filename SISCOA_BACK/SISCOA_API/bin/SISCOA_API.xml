@@ -562,7 +562,7 @@
             <summary>
             Actualiza un registro
             </summary>
-            <param name="controlDTO">El objeto JSON del registro</param>
+            <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
