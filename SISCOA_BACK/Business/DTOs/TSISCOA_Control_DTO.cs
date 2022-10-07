@@ -1,12 +1,12 @@
 ﻿using Entities.Models;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Business.DTOs
 {
     public class TSISCOA_Control_DTO
     {
-        [Required(ErrorMessage = "The field ID is required")]
         public int ID { get; set; }
         [Required(ErrorMessage = "The field TC_Nombre is required")]
         [StringLength(50)]
@@ -16,9 +16,9 @@ namespace Business.DTOs
         public string TC_DescriptionDocumentacionEvidencia { get; set; }
         [Required(ErrorMessage = "The field TB_NotificacionCorreoAColaborador is required")]
         public bool TB_NotificacionCorreoAColaborador { get; set; }
-        [Required(ErrorMessage = "The field TB_EstaActivo is required")]
+        [Required(ErrorMessage = "The field TB_EstaActivo is required with value default true")]
         public bool TB_EstaActivo { get; set; }
-        [Required(ErrorMessage = "The field TB_EstaBorrado is required")]
+        [Required(ErrorMessage = "The field TB_EstaBorrado is required with value default false")]
         public bool TB_EstaBorrado { get; set; }
         [Required(ErrorMessage = "The field TC_UltimaModificacion is required")]
         [StringLength(50)]
