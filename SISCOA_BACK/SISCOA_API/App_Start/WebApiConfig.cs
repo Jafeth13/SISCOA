@@ -18,9 +18,12 @@ namespace SISCOA_API
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de Web API
-            var enableCorsAttribute = new EnableCorsAttribute("*",
-                "Origin, Content-Type, Accept",
-                "GET, PUT, POST, DELETE, OPTIONS");
+            var enableCorsAttribute = 
+                new EnableCorsAttribute(
+                    origins: "*",
+                    headers: "*",
+                    methods: "*"
+                );
             config.EnableCors(enableCorsAttribute);
 
             // Rutas de Web API
