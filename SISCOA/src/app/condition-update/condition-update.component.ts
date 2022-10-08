@@ -24,7 +24,7 @@ export class ConditionUpdateComponent implements OnInit {
     });
   }
   update(){
-    this.rest.update(this.statusDataupdate).subscribe((result) => {
+    this.rest.update(this.statusDataupdate,this.route.snapshot.params['ID']).subscribe((result) => {
    
       Swal.fire(
         'Good job!',

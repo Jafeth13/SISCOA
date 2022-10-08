@@ -34,8 +34,8 @@ export class ServiceConditionService {
     );
   }
 
-  update(status: any): Observable<any>{
-    return this.http.put(endpoint+'Estados',status, httpOptions).pipe(
+  update(status: any,id:number): Observable<any>{
+    return this.http.put(endpoint+'Estados/'+id,status, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
