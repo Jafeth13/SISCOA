@@ -8,9 +8,27 @@ import { ServiceConditionService } from '../service-condition.service';
   styleUrls: ['./condition-register.component.css']
 })
 export class ConditionRegisterComponent implements OnInit {
-  @Input()statusData={ID:0,TC_Nombre:'',TB_EstaActivo:true,TC_UltimaModificacion:'',TF_UltimaFechaModificacion:'',Controls:null};
+  @Input()statusData={"ID":0,"TC_Nombre":"","TB_EstaActivo":true, "TB_EstaBorrado": false,"TC_UltimaModificacion":"","TF_UltimaFechaModificacion":"","Controls":null};
   
   constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
+
+@Input()estado={ 
+    "ID": 3,
+    "TC_Nombre": "",
+    "TB_EstaActivo": true,
+    "TB_EstaBorrado": false,
+    "TC_UltimaModificacion": "string",
+    "TF_UltimaFechaModificacion": "2022-10-08T02:14:07.065Z",
+    "Controls": null
+}
+@Input()statusData2={
+"ID":0,
+"TC_Nombre":"",
+"TB_EstaActivo":true,
+"TC_UltimaModificacion":"jafeth",
+"TF_UltimaFechaModificacion":"2022-10-08T02:14:07.065Z",
+"Controls":null};
+
 
 
   ngOnInit(): void {
@@ -25,7 +43,7 @@ export class ConditionRegisterComponent implements OnInit {
 
 
 
-    this.rest.add(this.statusData).subscribe((result) => {
+    this.rest.add(this.estado).subscribe((result) => {
     
       Swal.fire(
         'Good job!',
