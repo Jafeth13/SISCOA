@@ -17,7 +17,7 @@ namespace Entities.Models
         public bool TB_EstaBorrado { get; set; }
         public string TC_UltimaModificacion { get; set; }
         public DateTime TF_UltimaFechaModificacion { get; set; }
-        public TSISCOA_Permiso TSISCOA_Permiso { get; set; }
-        public TSISCOA_Rol TSISCOA_Rol { get; set; }
+        public virtual TSISCOA_Permiso TSISCOA_Permiso { get; set; }
+        public virtual TSISCOA_Rol TSISCOA_Rol { get; set; }
     }
 }

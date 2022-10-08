@@ -18,7 +18,5 @@ namespace Entities.Models
         public bool TB_EstaBorrado { get; set; }
         public string TC_UltimaModificacion { get; set; }
         public DateTime TF_UltimaFechaModificacion { get; set; }
-        public virtual ICollection<TSISCOA_OficinaControl> TSISCOA_OficinaControl { get; set; }
-        public virtual ICollection<TSISCOA_Usuario> TSISCOA_Usuario { get; set; }
     }
 }

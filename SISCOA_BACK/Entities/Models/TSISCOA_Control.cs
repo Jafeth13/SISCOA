@@ -23,6 +23,5 @@ namespace Entities.Models
         public int FK_TN_Periodo { get; set; }
         public virtual TSISCOA_Estado TSISCOA_Estado { get; set; }
         public virtual TSISCOA_Periodo TSISCOA_Periodo { get; set; }
-        public virtual ICollection<TSISCOA_OficinaControl> TSISCOA_OficinaControl { get; set; }
     }
 }
