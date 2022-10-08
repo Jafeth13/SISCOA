@@ -24,4 +24,9 @@ export class ServiceConditionService {
     
   }
 
+  add(status:any){
+    return this.http.post(endpoint+'Estados',status, httpOptions); 
+  }
+  
+
 }
