@@ -41,11 +41,11 @@
         <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
         <td mat-cell *matCellDef="let element">   <div class="example-button-row">
             <div class="example-button-container">
-               <button mat-fab color="primary" routerLink="/deleteUser" aria-label="Example icon button with a delete icon">
+               <button mat-fab color="primary" routerLink="/deleteUser/{{element.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>search</mat-icon>     
                 </button>  
                   
-                <button mat-fab color="warn" routerLink="/conditionDelete" aria-label="Example icon button with a delete icon">
+                <button mat-fab color="warn" routerLink="/conditionDelete/{{element.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>delete</mat-icon>     
                 </button>
                  <button mat-fab color="primary" routerLink="/conditionUpdate"  aria-label="Example icon button with a delete icon">

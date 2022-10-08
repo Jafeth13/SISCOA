@@ -225,8 +225,8 @@ const appRoutes: Routes = [
     component: ConditionUpdateComponent,
     data: { title: 'Actualizar Estado'}, 
   },{
-    path: 'conditionDelete',
-    component: ConditionUpdateComponent,
+    path: 'conditionDelete/:ID',
+    component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
     path: 'menuConfiguration',

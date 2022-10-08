@@ -7,8 +7,8 @@ import { ServiceConditionService } from '../service-condition.service';
   templateUrl: './condition-register.component.html',
   styleUrls: ['./condition-register.component.css']
 })
+
 export class ConditionRegisterComponent implements OnInit {
-  @Input()statusData={"ID":0,"TC_Nombre":"","TB_EstaActivo":true, "TB_EstaBorrado": false,"TC_UltimaModificacion":"","TF_UltimaFechaModificacion":"","Controls":null};
   
   constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
 
@@ -18,28 +18,26 @@ export class ConditionRegisterComponent implements OnInit {
     "TB_EstaActivo": true,
     "TB_EstaBorrado": false,
     "TC_UltimaModificacion": "string",
-    "TF_UltimaFechaModificacion": "2022-10-08T02:14:07.065Z",
-    "Controls": null
-}
-@Input()statusData2={
-"ID":0,
-"TC_Nombre":"",
-"TB_EstaActivo":true,
-"TC_UltimaModificacion":"jafeth",
-"TF_UltimaFechaModificacion":"2022-10-08T02:14:07.065Z",
-"Controls":null};
-
-
+    "TF_UltimaFechaModificacion": "",
+    "Controls": null}
 
   ngOnInit(): void {
+    
   }
 
   add(){
-    this.statusData.TB_EstaActivo=true
-    this.statusData.TC_UltimaModificacion='Jafeth';
-    //=this.date+'T'+this.hour+':00.000Z'
-    this.statusData.TF_UltimaFechaModificacion='2022-04-22T10:34:23:00.000Z'
-   console.log(this.statusData);
+   
+    var date;
+    date = new Date();
+    date = date.getFullYear() + '-' +
+        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+        ('00' + date.getDate()).slice(-2) + 'T' + 
+        ('00' + date.getHours()).slice(-2) + ':' + 
+        ('00' + date.getMinutes()).slice(-2) + ':' + 
+        ('00' + date.getSeconds()).slice(-2);
+
+   this.estado.TF_UltimaFechaModificacion=date.toString();
+   console.log(this.estado);
 
 
 
@@ -47,7 +45,7 @@ export class ConditionRegisterComponent implements OnInit {
     
       Swal.fire(
         'Good job!',
-        'User added sucessfully!',
+        'Estado added sucessfully!',
         'success'
       )     
     }, (err) => {

@@ -7,13 +7,13 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form action="" *ngIf="statusDataDelete" id="userRegister-entry-form">
                     <h2>Eliminar</h2>
 
-                    <input   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="statusDataDelete.TC_Nombre"  disabled type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
                     
-                    <button class="submit-btn form-control" >Eliminar</button>
+                    <button class="submit-btn form-control " id="DF"  (click)="del()">Eliminar</button>
 
                     <button routerLink="/rolList" class="submit-btn form-control" >Cancelar</button>
                     
