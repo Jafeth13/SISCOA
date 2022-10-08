@@ -12,24 +12,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesOfficeService {
+export class ServicesRolService {
 
   constructor(private http: HttpClient) { }
 
-  officeList():Observable<any>{
+  rolList():Observable<any>{
 
-    return  this.http.get(endpoint+'Oficinas',httpOptions);
+    return  this.http.get(endpoint+'Roles',httpOptions);
     
   }
-
-  add(office :any){
-    return this.http.post(endpoint+'Oficinas', office, httpOptions);   
-  }
-
-  getStatus():Observable<any>{
-
-    return  this.http.get(endpoint+'Estados',httpOptions);
-    
-  }
-
 }

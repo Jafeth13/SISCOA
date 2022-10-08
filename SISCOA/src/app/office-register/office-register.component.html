@@ -7,21 +7,22 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form  id="userRegister-entry-form">
                     <h2>Registrar</h2>
-                    <input   type="text"  hidden>
+                    <input  [(ngModel)]="officeData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="officeData.TC_CodigoOficina" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
+                    <select [(ngModel)]="officeData.TB_EstadoActividad" id="selectReservation" formControlName="status" [(ngModel)]="officeData" required class="form-control rounded-left">
+                        <option value="">Selecciona el estado</option>
+                        <option *ngFor="let v of status" [value]="v.Id">{{v.TC_Nombre}}</option>
+                      </select>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Estado" required="">
+                    <input  [(ngModel)]="officeData.TC_Institucion" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Institucion" required="">
+         
+                    <button class="submit-btn form-control" type="submit" (click)="add()">Añadir</button>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Institucion" required="">
-
-                    <button class="submit-btn form-control" >Añadir</button>
-
-                    <button routerLink="/officeList" class="submit-btn form-control" >Cancelar</button>
+                    <button routerLink="/officeList" class="submit-btn form-control"  >Cancelar</button>
                     
                 </form>
 

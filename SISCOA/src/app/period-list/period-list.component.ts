@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { ServicesPeriodService } from '../services-period.service';
 @Component({
   selector: 'app-period-list',
   templateUrl: './period-list.component.html',
@@ -10,14 +11,21 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 
 
-export class PeriodListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['name','numOfDay','action'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+export class PeriodListComponent implements AfterViewInit,OnInit {
+  displayedColumns: string[] = ['name','action'];
+  dataSource = new MatTableDataSource();
+  constructor(public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+  ngOnInit(): void {
+    this.rest.periodList().subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
+      });
   }
 
   applyFilter(event:Event){
@@ -27,15 +35,3 @@ export class PeriodListComponent implements AfterViewInit {
 }
 
 
-export interface PeriodicElement {
-  name: string;
-  numOfDay:number;
-}
-
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { name: 'Hydrogen',numOfDay:2},
-  { name: 'Hydrogen',numOfDay:2},  
-  { name: 'Hydrogen',numOfDay:2},
-
-];
