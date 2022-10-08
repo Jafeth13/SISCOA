@@ -221,7 +221,7 @@ const appRoutes: Routes = [
     component: ConditionRegisterComponent,
     data: { title: 'Registrar Estado'}, 
   },{
-    path: 'conditionUpdate',
+    path: 'conditionUpdate/:ID',
     component: ConditionUpdateComponent,
     data: { title: 'Actualizar Estado'}, 
   },{
