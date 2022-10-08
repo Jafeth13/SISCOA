@@ -18,10 +18,5 @@ namespace Business.DTOs
         public string TC_UltimaModificacion { get; set; }
         [Required(ErrorMessage = "The field TF_UltimaFechaModificacion is required")]
         public DateTime TF_UltimaFechaModificacion { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_RolPermiso is required")]
-        
-        public TSISCOA_RolPermiso_DTO TSISCOA_RolPermiso { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_Usuario is required")]
-        public TSISCOA_Usuario_DTO TSISCOA_Usuario { get; set; }
     }
 }

@@ -22,8 +22,8 @@ namespace Business.DTOs
         [Required(ErrorMessage = "The field TF_UltimaFechaModificacion is required")]
         public DateTime TF_UltimaFechaModificacion { get; set; }
         [Required(ErrorMessage = "The field TSISCOA_Permiso is required")]
-        public TSISCOA_Permiso_DTO TSISCOA_Permiso { get; set; }
+        public virtual TSISCOA_Permiso_DTO TSISCOA_Permiso { get; set; }
         [Required(ErrorMessage = "The field TSISCOA_Rol is required")]
-        public TSISCOA_Rol_DTO TSISCOA_Rol { get; set; }
+        public virtual TSISCOA_Rol_DTO TSISCOA_Rol { get; set; }
     }
 }
