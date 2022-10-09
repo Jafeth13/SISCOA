@@ -12,9 +12,9 @@
                     <h2>Registrar</h2>
                     <input   type="text"  hidden>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input  type="text" [(ngModel)]="roleData.TC_Nombre" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <button class="submit-btn form-control" >Añadir</button>
+                    <button class="submit-btn form-control" (click)="add()" >Añadir</button>
 
                     <button routerLink="/rolList" class="submit-btn form-control" >Cancelar</button>
                     

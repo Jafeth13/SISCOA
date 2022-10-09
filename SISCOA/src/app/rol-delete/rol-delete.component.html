@@ -10,10 +10,10 @@
                 <form action="" id="userRegister-entry-form">
                     <h2>Eliminar</h2>
                     <input   type="text"  hidden>
+                
+                    <input [(ngModel)]="roleDataDelete.TC_Nombre"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
-
-                    <button class="submit-btn form-control" >Eliminar</button>
+                    <button class="submit-btn form-control" (click)="delete()" >Eliminar</button>
 
                     <button routerLink="/rolList" class="submit-btn form-control" >Cancelar</button>
                     

@@ -8,9 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
-import { UserUpdateComponent } from './user-update/user-update.component';
-import { RoleRegisterComponent } from './role-register/role-register.component';
-import {MatNativeDateModule} from '@angular/material/core';
+import { UserUpdateComponent } from './user-update/user-update.component';import {MatNativeDateModule} from '@angular/material/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -157,11 +155,11 @@ const appRoutes: Routes = [
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate',
+    path: 'rolUpdate/:ID',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete',
+    path: 'rolDelete/:ID',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
@@ -251,9 +249,7 @@ const appRoutes: Routes = [
     UserListComponent,
     UserRegisterComponent,
     UserDeleteComponent,
-    UserUpdateComponent,
-    RoleRegisterComponent,
-    MenuComponent,
+    UserUpdateComponent,MenuComponent,
     ControlRegisterComponent,
     OfficeControlManagementComponent,
     AddControlsOfficesComponent,
