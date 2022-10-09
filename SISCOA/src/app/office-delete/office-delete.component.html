@@ -11,17 +11,15 @@
                     <h2>Eliminar</h2>
                     <input   type="text"  hidden>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="officeDataDelete.TC_Nombre" type="text" autocomplete="off" name="namepiop_Admin" id="name_Admipin" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
+                    <input [(ngModel)]="officeDataDelete.TC_CodigoOficina" type="text" autocomplete="off" name="name_Adutymin" id="name_Admpoiin" class="form-control rounded-left" placeholder="Codigo" required="" disabled>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Estado" required="">
+                    <input  [(ngModel)]="officeDataDelete.TC_Institucion"  type="text" autocomplete="off" name="name_Adminuty" id="name_Admtuyin" class="form-control rounded-left" placeholder="Institucion" required="" disabled="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Institucion" required="">
-
-                    <button class="submit-btn form-control" >Eliminar</button>
+                    <button class="submit-btn form-control" (click)="delete()">Eliminar</button>
                     
-                    <button routerLink="/officeList" class="submit-btn form-control" >Cancelar</button>
+                    <button routerLink="/officeList" class="submit-btn form-control">Cancelar</button>
                     
                 </form>
 

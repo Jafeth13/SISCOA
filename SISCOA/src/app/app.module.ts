@@ -187,11 +187,11 @@ const appRoutes: Routes = [
     component: OfficeRegisterComponent,
     data: { title: 'Registrar Oficinas'}, 
   },{
-    path: 'officeUpdate',
+    path: 'officeUpdate/:ID',
     component: OfficeUpdateComponent,
     data: { title: 'Actualizar Oficinas'}, 
   },{
-    path: 'officeDelete',
+    path: 'officeDelete/:ID',
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{

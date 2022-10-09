@@ -11,7 +11,7 @@ import { ServicesOfficeService } from '../services-office.service';
 })
 //OfficeListComponent
 export class OfficeListComponent implements AfterViewInit,OnInit {
-  displayedColumns: string[] = ['name', 'code','status','institution', 'action'];
+  displayedColumns: string[] = ['name', 'code','institution', 'action'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;

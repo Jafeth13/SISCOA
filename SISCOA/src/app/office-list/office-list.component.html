@@ -40,11 +40,7 @@
         <td mat-cell *matCellDef="let element"> {{element.TC_CodigoOficina}} </td>
       </ng-container>
   
-      <!-- status Column -->
-       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef><b> Estado</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TB_EstadoActividad}} </td>
-      </ng-container>
+    
 
    <!-- institution Column -->
    <ng-container matColumnDef="institution">
@@ -61,10 +57,10 @@
                     <mat-icon>search</mat-icon>     
                 </button>  
                   
-                <button mat-fab color="warn" routerLink="/officeDelete" aria-label="Example icon button with a delete icon">
+                <button mat-fab color="warn" routerLink="/officeDelete/{{element.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>delete</mat-icon>     
                 </button>
-                 <button mat-fab color="primary" routerLink="/officeUpdate"  aria-label="Example icon button with a delete icon">
+                 <button mat-fab color="primary" routerLink="/officeUpdate/{{element.ID}}"  aria-label="Example icon button with a delete icon">
                     <mat-icon>update</mat-icon>
                    </button>  
                

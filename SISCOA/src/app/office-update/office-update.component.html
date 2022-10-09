@@ -6,20 +6,18 @@
             <br>
             <br>
             <br>
-            <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+            <div  class="entry-formRate">
+                <form *ngIf="officeDataupdate" action="" id="userRegister-entry-form">
                     <h2>Actualizar</h2>
                     <input   type="text"  hidden>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="officeDataupdate.TC_Nombre" placeholder="Nombre" type ="text" autocomplete="off" name="name_Adhgmin" id="name_Admin3" class="form-control rounded-left" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
+                    <input  type="text" autocomplete="off" name="nahgdfgme_hgAdmin" id="nadmin1" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_CodigoOficina" placeholder="Codigo" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Estado" required="">
+                    <input  type="text" autocomplete="off" name="nhgame_Admhfgin" id="namn2" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_Institucion" placeholder="Institucion" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Institucion" required="">
-
-                    <button class="submit-btn form-control" >Actualizar</button>
+                    <button class="submit-btn form-control" (click)="update()" >Actualizar</button>
 
                     <button routerLink="/officeList" class="submit-btn form-control" >Cancelar</button>
                     

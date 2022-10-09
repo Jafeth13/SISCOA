@@ -11,14 +11,9 @@
                     <h2>Registrar</h2>
                     <input  [(ngModel)]="officeData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input [(ngModel)]="officeData.TC_CodigoOficina" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
-
-                    <select [(ngModel)]="officeData.TB_EstadoActividad" id="selectReservation" formControlName="status" [(ngModel)]="officeData" required class="form-control rounded-left">
-                        <option value="">Selecciona el estado</option>
-                        <option *ngFor="let v of status" [value]="v.Id">{{v.TC_Nombre}}</option>
-                      </select>
-
-                    <input  [(ngModel)]="officeData.TC_Institucion" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Institucion" required="">
+                    <input [(ngModel)]="officeData.TC_CodigoOficina" type="text" autocomplete="off" name="" id="najhme_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
+                    
+                    <input  [(ngModel)]="officeData.TC_Institucion" type="text" autocomplete="off" name="me_Admin" id="name_Admingfh" class="form-control rounded-left" placeholder="Institucion" required="">
          
                     <button class="submit-btn form-control" type="submit" (click)="add()">Añadir</button>
 

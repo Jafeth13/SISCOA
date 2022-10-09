@@ -19,8 +19,8 @@ export class ServicesRolService {
   rolList():Observable<any>{
 
     return  this.http.get(endpoint+'Roles',httpOptions);
-    
-  }
+
+      }
 
   get(id:any):Observable<any>{
     return  this.http.get(endpoint+'Roles/'+id, httpOptions);   
