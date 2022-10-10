@@ -203,11 +203,11 @@ const appRoutes: Routes = [
     component: PeriodRegisterComponent,
     data: { title: 'Registrar Periodos'}, 
   },{
-    path: 'periodUpdate',
+    path: 'periodUpdate/:ID',
     component: PeriodUpdateComponent,
     data: { title: 'Actualizar Periodos'}, 
   },{
-    path: 'periodDelete',
+    path: 'periodDelete/:ID',
     component: PeriodDeleteComponent,
     data: { title: 'Eliminar Periodos'}, 
   },{
