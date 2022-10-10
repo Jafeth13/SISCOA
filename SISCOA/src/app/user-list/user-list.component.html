@@ -56,12 +56,12 @@
    <!-- ofice Column -->
    <ng-container matColumnDef="ofice">
     <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Oficina </b>  </th>
-    <td mat-cell *matCellDef="let element"> {{element.ofice}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.ofice.TC_Nombre}} </td>
   </ng-container>
      <!-- role Column -->
      <ng-container matColumnDef="role">
         <th mat-header-cell *matHeaderCellDef><b>Role</b></th>
-        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.role.TC_Nombre}} </td>
       </ng-container>
       <!-- action Column -->
       <ng-container matColumnDef="action">
