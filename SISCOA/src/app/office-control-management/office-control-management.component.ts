@@ -23,7 +23,7 @@ export class OfficeControlManagementComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
   displayedColumns: string[] = ['name', 'code','institution', 'action'];
   displayedxColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
-
+  controlDataupdate:any
   constructor(public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
 
   ngAfterViewInit() {
@@ -39,9 +39,15 @@ export class OfficeControlManagementComponent implements OnInit,AfterViewInit {
         this.dataSourceControl.data=pos
         });
   }
-
+  update(id:number){
+    this.rest2.get(id).subscribe((data: {}) => {
+      console.log(data);
+      this.controlDataupdate = data;
+    });
+}
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }}
 
+  

@@ -108,6 +108,8 @@
                   <div class="example-button-row">
                     <div class="example-button-container">
                       <button
+                        (click)="update(element.ID)"
+
                         mat-fab
                         color="primary"
                         mat-button  matStepperNext
@@ -145,25 +147,25 @@
                 <br>
                 <br>
                 <div class="entry-formRate">
-                    <form action="" id="userRegister-entry-form">
+                    <form *ngIf="controlDataupdate"  action="" id="userRegister-entry-form">
                         <h2>Actualizar</h2>
                         <input   type="text"  hidden>
     
     
-                        <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                        <input  [(ngModel)]="controlDataupdate.TC_Nombre"   type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
                         
-                        <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                        <select class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                             <option value=0 selected>Seleciona tu Periodo </option>            
                         </select>
 
-                        <input  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                        <input  [(ngModel)]="controlDataupdate.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
     
     
-                        <input  type="datetime-local" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Fecha limite" required="">
+                        <input  type="datetime-local" autocomplete="off" name="email_Admin" id="" class="form-control rounded-left" placeholder="Fecha limite" required="">
     
                         <input  type="text" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Dias extras" required="">
     
-                        <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                        <select   [(ngModel)]="controlDataupdate.TSISCOA_Estado.TC_Nombre"  class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                             <option value=0 selected>Seleciona tu Estado </option>            
                         </select>
                         <input  type="text" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Notificacion" required="">

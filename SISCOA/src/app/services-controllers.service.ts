@@ -19,4 +19,7 @@ export class ServicesControllersService {
     return  this.http.get(endpoint+'Controls',httpOptions);
     
   }
+  get(id:any):Observable<any>{
+    return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
+  }
 }
