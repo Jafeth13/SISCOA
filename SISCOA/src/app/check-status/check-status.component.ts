@@ -20,7 +20,7 @@ export class CheckStatusComponent  {
     name: 'myScheme',
     selectable: true,
     group: ScaleType.Ordinal,
-    domain: ['#f00', '#0f0', '#0ff'],
+    domain: ['#FFC300', '#000000', '#0ff'],
   };
 
 
