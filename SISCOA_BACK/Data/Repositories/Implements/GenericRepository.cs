@@ -1,4 +1,5 @@
 ﻿using Data.Data;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -25,11 +26,6 @@ namespace Repositories.Repositories.Implements
 
             siscoa_context.Set<TEntity>().Remove(entity);
             await siscoa_context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<TEntity>> GetAll()
-        {
-            return await siscoa_context.Set<TEntity>().ToListAsync();
         }
 
         public async Task<TEntity> GetById(int id)

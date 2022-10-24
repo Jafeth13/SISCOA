@@ -552,7 +552,7 @@
             <summary>
             Crea un registro
             </summary>
-            <param name="controlDTO">El objeto JSON del registro</param>
+            <param name="DTO">El objeto JSON del registro</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>

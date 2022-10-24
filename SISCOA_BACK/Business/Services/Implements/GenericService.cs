@@ -18,11 +18,6 @@ namespace Services.Services.Implements
             await genericRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
-        {
-            return await genericRepository.GetAll();
-        }
-
         public async Task<TEntity> GetById(int id)
         {
             return await genericRepository.GetById(id);

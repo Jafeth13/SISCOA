@@ -21,7 +21,7 @@ namespace Entities.Models
         public int FK_TN_Estado { get; set; }
         [ForeignKey("TSISCOA_Periodo")]
         public int FK_TN_Periodo { get; set; }
-        public virtual TSISCOA_Estado TSISCOA_Estado { get; set; }
-        public virtual TSISCOA_Periodo TSISCOA_Periodo { get; set; }
+        public TSISCOA_Estado TSISCOA_Estado { get; set; }
+        public TSISCOA_Periodo TSISCOA_Periodo { get; set; }
     }
 }

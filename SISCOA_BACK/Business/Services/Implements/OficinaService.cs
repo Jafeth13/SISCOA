@@ -1,6 +1,6 @@
 ﻿using Entities.Models;
 using Repositories.Repositories;
-using Repositories.Repositories.Implements;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Services.Services.Implements
@@ -11,6 +11,10 @@ namespace Services.Services.Implements
         public OficinaService(IOficinaRepository oficinaRepository) : base(oficinaRepository)
         {
             this.oficinaRepository = oficinaRepository;
+        }
+        public async Task<IEnumerable<TSISCOA_Oficina>> GetAll()
+        {
+            return await oficinaRepository.GetAll();
         }
 
         public async Task<bool> DeletedCheckOnEntity(int id)

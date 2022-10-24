@@ -26,6 +26,7 @@ namespace SISCOA_API.Controllers
         public ControlsController() {
             this._mapper = WebApiApplication.MapperConfiguration.CreateMapper();
         }
+
         /// <summary>
         /// Obtiene todos los registros
         /// </summary>
@@ -33,10 +34,11 @@ namespace SISCOA_API.Controllers
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         [HttpGet]
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
-        public async Task<IHttpActionResult> GetAll() {
+        public async Task<IHttpActionResult> GetAll()
+        {
             var entities = await service.GetAll();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Control_DTO>(x));
-            
+            var DTO = _mapper.Map<List<TSISCOA_Control_DTO>>(entities);
+
             return Ok(DTO);
         }
         /// <summary>
@@ -65,7 +67,7 @@ namespace SISCOA_API.Controllers
         /// <summary>
         /// Crea un registro
         /// </summary>
-        /// <param name="controlDTO">El objeto JSON del registro</param>
+        /// <param name="DTO">El objeto JSON del registro</param>
         /// <returns>Registro insertado</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
@@ -73,6 +75,11 @@ namespace SISCOA_API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(TSISCOA_Control_DTO DTO)
         {
+            if (DTO is null)
+            {
+                throw new ArgumentNullException(nameof(DTO));
+            }
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 

@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Repositories.Repositories
@@ -6,5 +7,6 @@ namespace Repositories.Repositories
     public interface IControlRepository : IGenericRepository<TSISCOA_Control>
     {
         Task<bool> DeletedCheckOnEntity(int id);
+        Task<IEnumerable<TSISCOA_Control>> GetAll();
     }
 }
