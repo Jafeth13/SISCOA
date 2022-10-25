@@ -65,6 +65,28 @@ namespace SISCOA_API.Controllers
             return Ok(DTO);
         }
         /// <summary>
+        /// Obtiene todos los controles que tiene la oficina ingresada
+        /// </summary>
+        /// <remark>
+        /// </remark>
+        /// <param name="id">Id del registro</param>
+        /// <returns>Registro</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
+        [Route("api/Controls/GetControlesByOficina/{id}")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
+        public async Task<IHttpActionResult> GetControlesByOficina(int id)
+        {
+            var entities = await service.GetControlesByOficina(id);
+            if (entities == null)
+                return NotFound();
+
+            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Control_DTO>(x));
+
+            return Ok(DTO);
+        }
+        /// <summary>
         /// Crea un registro
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>

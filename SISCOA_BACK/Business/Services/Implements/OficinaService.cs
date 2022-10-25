@@ -17,5 +17,9 @@ namespace Services.Services.Implements
         {
             return await oficinaRepository.DeletedCheckOnEntity(id);
         }
+
+        public async Task<IEnumerable<TSISCOA_Oficina>> GetOficinasByControl(int id) {
+            return await oficinaRepository.GetOficinasByControl(id);
+        }
     }
 }

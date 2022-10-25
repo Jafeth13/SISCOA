@@ -54,7 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\TSISCOA_Actividad.cs" />
     <Compile Include="Models\TSISCOA_Control.cs" />
+    <Compile Include="Models\TSISCOA_Error.cs" />
     <Compile Include="Models\TSISCOA_Estado.cs" />
     <Compile Include="Models\TSISCOA_Oficina.cs" />
     <Compile Include="Models\TSISCOA_OficinaControl.cs" />

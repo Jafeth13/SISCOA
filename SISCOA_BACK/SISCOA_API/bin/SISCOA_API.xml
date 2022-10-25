@@ -548,6 +548,17 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.ControlsController.GetControlesByOficina(System.Int32)">
+            <summary>
+            Obtiene todos los controles que tiene la oficina ingresada
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.ControlsController.Post(Business.DTOs.TSISCOA_Control_DTO)">
             <summary>
             Crea un registro
@@ -728,6 +739,17 @@
         <member name="M:SISCOA_API.Controllers.OficinasController.GetById(System.Int32)">
             <summary>
             Obtiene un registro por su id
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinasController.GetOficinasByControl(System.Int32)">
+            <summary>
+            Obtiene todas las oficinas que tienen el control ingresado
             </summary>
             <remark>
             </remark>
@@ -1002,6 +1024,60 @@
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
+        </member>
+        <member name="T:SISCOA_API.Controllers.ActividadController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ActividadController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ActividadController.GetAll">
+            <summary>
+            Obtiene todos los registros
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ActividadController.Post(Business.DTOs.TSISCOA_Actividad_DTO)">
+            <summary>
+            Crea un registro
+            </summary>
+            <param name="DTO">El objeto JSON del registro</param>
+            <returns>Registro insertado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
+        </member>
+        <member name="T:SISCOA_API.Controllers.ErrorController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ErrorController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ErrorController.GetAll">
+            <summary>
+            Obtiene todos los registros
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.ErrorController.Post(Business.DTOs.TSISCOA_Error_DTO)">
+            <summary>
+            Crea un registro
+            </summary>
+            <param name="DTO">El objeto JSON del registro</param>
+            <returns>Registro insertado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
         </member>
         <member name="T:SISCOA_API.Controllers.UsuarioController">
             <summary>

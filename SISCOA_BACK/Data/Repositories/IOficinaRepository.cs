@@ -7,5 +7,6 @@ namespace Repositories.Repositories
     public interface IOficinaRepository : IGenericRepository<TSISCOA_Oficina>
     {
         Task<bool> DeletedCheckOnEntity(int id);
+        Task<IEnumerable<TSISCOA_Oficina>> GetOficinasByControl(int id);
     }
 }
