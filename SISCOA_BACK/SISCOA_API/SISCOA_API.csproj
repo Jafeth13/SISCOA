@@ -207,6 +207,8 @@
     <Compile Include="Controllers\PermisoController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\RolPermisosController.cs" />
+    <Compile Include="Controllers\ActividadesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

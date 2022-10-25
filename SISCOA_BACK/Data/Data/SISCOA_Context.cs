@@ -20,6 +20,8 @@ namespace Data.Data
         public DbSet<TSISCOA_Rol> Roles { get; set; }
         public DbSet<TSISCOA_RolPermiso> RolPermisos { get; set; }
         public DbSet<TSISCOA_Usuario> Usuarios { get; set; }
+        public DbSet<TSISCOA_Error> Errores { get; set; }
+        public DbSet<TSISCOA_Actividad> Actividades { get; set; }
 
         public static SISCOA_Context Create()
         {
