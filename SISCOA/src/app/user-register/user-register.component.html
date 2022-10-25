@@ -11,28 +11,30 @@
                     <h2>Registra</h2>
                     <input   type="text"  hidden>
 
-                    <input   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Identificacion" required="">
+                    <input type="text" autocomplete="off" name="idRateTypeUpdate" id="idRateTypeUpdate" hidden>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="userData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Primer apellido" required="">
+                    <input [(ngModel)]="userData.TC_PrimerApellido" type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Primer apellido" required="">
 
-                    <input  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Segundo apellido" required="">
+                    <input [(ngModel)]="userData.TC_SegundoApellido" type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Segundo apellido" required="">
 
-                    <input  type="email" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Correo electronico" required="">
+                    <input [(ngModel)]="userData.TC_Correo" type="email" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Correo electronico" required="">
 
-                    <input  type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Contraseña" required="">
+                    <input [(ngModel)]="userData.TV_Contrasenna" [(ngModel)]="userData.TV_Contrasenna" type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Contraseña" required="">
 
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Seleciona tu oficina</option>            
+                    <select  [(ngModel)]="userData.TSISCOA_Oficina.ID"  class="form-control rounded-left" name="role_Admin2" id="role_Admin2">
+                        <option value=0 selected>Seleciona un oficina</option>
+                        <option [value]="item.ID" *ngFor="let item of dataOffice">{{item.TC_CodigoOficina}</option>
+
                     </select>
                     
-
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin">
+                    <select [(ngModel)]="userData.TSISCOA_Rol.ID"  class="form-control rounded-left" name="role_Admin" id="role_Admin">
                         <option value=0 selected>Seleciona un rol</option>
-                       
-                    </select>
+                        <option [value]="item.ID" *ngFor="let item of roleData">{{item.TcNombre}</option>
 
+                    </select>
+                  
                     <button class="submit-btn form-control" >Añadir</button>
 
                     <button routerLink="/listUser" class="submit-btn form-control" >Cancelar</button>
