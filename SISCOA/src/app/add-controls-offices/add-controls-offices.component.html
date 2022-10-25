@@ -1,204 +1,235 @@
-
 <app-navbar></app-navbar>
 
 <mat-stepper [linear]="false" #stepper>
-      <mat-step [stepControl]="firstFormGroup" [editable]="true">
-
+  <mat-step [stepControl]="firstFormGroup" [editable]="true">
+    <div class="container">
+      <div class="text-center">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Busqueda</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa datos"
+            (keyup)="applyFilter($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="mat-elevation-z8">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Seleciona la oficina</ng-template>
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="container-info-spots">
-                <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.TC_Nombre }}
+              </td>
+            </ng-container>
 
-                    <table id="ClientReservation-table" class="table table-bordered table-hover">
+            <!-- code Column -->
+            <ng-container matColumnDef="code">
+              <th mat-header-cell *matHeaderCellDef><b> Codigo</b></th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.TC_CodigoOficina }}
+              </td>
+            </ng-container>
 
-                        <thead>
-                            <tr>
-                                <th>
-                                    Nombre
-                                </th>
-                                <th>
-                                    Descripcion
-                                </th>
-                                <th>
-                                    Periodo
-                                </th>
-                                <th>
-                                    Institucion
-                                </th>
-                                
-                                <th>
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="UserReservation-tbody">
-                            <tr >
-                      <td scope="row">Oficina Central </td>
-                      <td scope="row">OC13 </td>
-                      <td scope="row">Activo</td>
-                      <td scope="row">OIJ </td>
-                   
-                      <td>      
-                        <div class="example-button-row">
-                        <div class="example-button-container">
-                            <button mat-fab color="primary" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
-                               Agregar
-                               </button>     
-                        </div>    
-                         
-                      </div>
-                    </td>
+            <!-- institution Column -->
+            <ng-container matColumnDef="institution">
+              <th mat-header-cell *matHeaderCellDef class="pintar">
+                <b> Institucion </b>
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.TC_Institucion }}
+              </td>
+            </ng-container>
 
-                            </tr>
-                         </tbody>
-
-                    </table>
+            <!-- action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef><b>Action</b></th>
+              <td mat-cell *matCellDef="let element">
+                <div class="example-button-row">
+                  <div class="example-button-container">
+                    <button
+                      mat-fab
+                      color="primary"
+                      mat-button
+                      matStepperNext
+                      aria-label="Example icon button with a delete icon"
+                    >
+                      <mat-icon>book</mat-icon>
+                    </button>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-          <div>
-            <button mat-button matStepperNext >Next</button>
-          </div>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
+          </mat-paginator>
         </form>
-      </mat-step>
-      <mat-step>
-          <ng-template matStepLabel>Agregar de controles</ng-template>
+      </div>
+      <div></div>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Agregar de controles</ng-template>
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="container-info-spots">
-                <div class="table-responsive">
+    <br />
+    <br />
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSourceControl">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
+          <td mat-cell *matCellDef="let element">{{ element.TC_Nombre }}</td>
+        </ng-container>
 
-                    <table id="ClientReservation-table" class="table table-bordered table-hover">
+        <!-- Descripcion Column -->
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef><b> Descripcion</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TC_DescriptionDocumentacionEvidencia }}
+          </td>
+        </ng-container>
 
-                        <thead>
-                            <tr>
-                                <th>
-                                    Nombre
-                                </th>
-                                <th>
-                                    Descripcion
-                                </th>
-                                <th>
-                                    Periodo
-                                </th>
-                                <th>
-                                    Institucion
-                                </th>
-                                
-                                <th>
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="UserReservation-tbody">
-                            <tr >
-                      <td scope="row">Oficina Central </td>
-                      <td scope="row">OC13 </td>
-                      <td scope="row">Activo</td>
-                      <td scope="row">OIJ </td>
-                   
-                      <td>      
-                        <div class="example-button-row">
-                        <div class="example-button-container">
-                            <button mat-fab color="primary" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
-                               Agregar
-                               </button>     
-                        </div>    
-                         
-                      </div>
-                    </td>
+        <!-- Period Column -->
+        <ng-container matColumnDef="Period">
+          <th mat-header-cell *matHeaderCellDef><b> Periodo</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Periodo.TC_Nombre }}
+          </td>
+        </ng-container>
 
-                            </tr>
-                         </tbody>
-
-                    </table>
-                </div>
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Estado </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Estado.TC_Nombre }}
+          </td>
+        </ng-container>
+        <!-- role Column -->
+        <ng-container matColumnDef="notification">
+          <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TB_NotificacionCorreoAColaborador }}
+          </td>
+        </ng-container>
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef><b>Action</b></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="example-button-row">
+              <div class="example-button-container">
+                <button
+                  mat-fab
+                  color="primary"
+                  routerLink="/deleteControl"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>bookmark</mat-icon>
+                </button>
+              </div>
             </div>
-        </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedxColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedxColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
     </div>
 
+    <br />
+    <br />
 
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSourceControl">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
+          <td mat-cell *matCellDef="let element">{{ element.TC_Nombre }}</td>
+        </ng-container>
 
-          
-          <div  class="text-center" id="spots-reservation">
-          </div>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button  matStepperNext>Next</button>
-          </div>       
-      </mat-step>
-        <mat-step>
-          <form  #formDir="ngForm">
-        <ng-template matStepLabel>Listar control</ng-template>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="container-info-spots">
-                    <div class="table-responsive">
-    
-                        <table id="ClientReservation-table" class="table table-bordered table-hover">
-    
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        Descripcion
-                                    </th>
-                                    <th>
-                                        Periodo
-                                    </th>
-                                    <th>
-                                        Institucion
-                                    </th>
-                                    
-                                    <th>
-                                        Acciones
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="UserReservation-tbody">
-                                <tr >
-                          <td scope="row">Oficina Central </td>
-                          <td scope="row">OC13 </td>
-                          <td scope="row">Activo</td>
-                          <td scope="row">OIJ </td>
-                       
-                          <td>      
-                            <div class="example-button-row">
-                            <div class="example-button-container">
-                                <button mat-fab color="warn" routerLink="/updateUser"  aria-label="Example icon button with a delete icon">
-                                    <mat-icon>delete</mat-icon> 
-                                   </button>     
-                            </div>    
-                             
-                          </div>
-                        </td>
-    
-                                </tr>
-                             </tbody>
-    
-                        </table>
-                    </div>
-                </div>
+        <!-- Descripcion Column -->
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef><b> Descripcion</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TC_DescriptionDocumentacionEvidencia }}
+          </td>
+        </ng-container>
+
+        <!-- Period Column -->
+        <ng-container matColumnDef="Period">
+          <th mat-header-cell *matHeaderCellDef><b> Periodo</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Periodo.TC_Nombre }}
+          </td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Estado </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Estado.TC_Nombre }}
+          </td>
+        </ng-container>
+        <!-- role Column -->
+        <ng-container matColumnDef="notification">
+          <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TB_NotificacionCorreoAColaborador }}
+          </td>
+        </ng-container>
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef><b>Action</b></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="example-button-row">
+              <div class="example-button-container">
+                <button
+                  mat-fab
+                  color="warn"
+                  routerLink="/deleteControl"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
             </div>
-        </div>
-            
-        </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Buy</button>
-        </div>
-      
-    </form>
-  
-        
- 
-      
-      </mat-step>
-    </mat-stepper>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedxColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedxColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+
+    <div class="text-center" id="spots-reservation"></div>
+    <br />
+    <div>
+      <button mat-button matStepperPrevious>Regresar</button>
+    </div>
+  </mat-step>
+</mat-stepper>
