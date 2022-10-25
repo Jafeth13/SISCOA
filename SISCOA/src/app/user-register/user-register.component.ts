@@ -19,31 +19,14 @@ export class UserRegisterComponent implements OnInit {
       TC_SegundoApellido: "",
       TV_Contrasenna: "",
       TC_Correo: "",
-      FK_SISCOA_Oficina_SISCOA_Usuario: 0,
+      FK_SISCOA_Oficina_SISCOA_Usuario:0 ,
       FK_SISCOA_Rol_SISCOA_Usuario: 0,
       TB_EstaActivo: true,
       TB_EstaBorrado: true,
       TC_UltimaModificacion: "insetar",
       TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z",
-      TSISCOA_Oficina: {
-        ID: 0,
-        TC_CodigoOficina: "string",
-        TC_Nombre: "string",
-        TC_Institucion: "string",
-        TB_EstadoActividad: true,
-        TB_EstaActivo: true,
-        TB_EstaBorrado: true,
-        TC_UltimaModificacion: "string",
-        TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z"
-      },
-      TSISCOA_Rol: {
-        ID: 0,
-        TC_Nombre: "string",
-        TB_EstaActivo: true,
-        TB_EstaBorrado: true,
-        TC_UltimaModificacion: "string",
-        TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z"
-      }
+      TSISCOA_Oficina:null,
+      TSISCOA_Rol:null
   }
   constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
   roleData:any;
