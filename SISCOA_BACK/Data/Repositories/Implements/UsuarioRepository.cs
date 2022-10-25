@@ -45,6 +45,7 @@ namespace Repositories.Repositories.Implements
         }
 
         public async Task<TSISCOA_Usuario> LogIn(TSISCOA_Usuario usuario) {
+            usuario.TV_Contrasenna = GetSHA256(usuario.TV_Contrasenna);
             var list = await siscoa_context.Usuarios.FirstOrDefaultAsync(x => x.TC_Identificacion == usuario.TC_Identificacion && x.TV_Contrasenna == usuario.TV_Contrasenna);
             if (list != null)
             {

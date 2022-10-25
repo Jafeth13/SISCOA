@@ -1100,7 +1100,7 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.Post(Business.DTOs.TSISCOA_UsuarioLogIn_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.Post(Business.DTOs.TSISCOA_UsuarioLogIn_DTO)">
             <summary>
             Inicia Sesion
             </summary>

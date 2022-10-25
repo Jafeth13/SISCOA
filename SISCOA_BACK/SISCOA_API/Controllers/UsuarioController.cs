@@ -39,9 +39,9 @@ namespace SISCOA_API.Controllers
         /// <response code="400">BadRequest. Consulta erronea</response>
         /// <response code="404">NotFound. No se encontro el registro</response>
         /// <response code="500">InternalServerError. Error con el servidor</response>
-        [Route("api/Usuario/LogIn/{id}")]
+        [Route("api/Usuario/LogIn")]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(TSISCOA_UsuarioLogIn_DTO DTO, int id)
+        public async Task<IHttpActionResult> Post(TSISCOA_UsuarioLogIn_DTO DTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
