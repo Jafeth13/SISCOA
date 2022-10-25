@@ -13,5 +13,15 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_contex;
         }
+        public new async Task<IEnumerable<TSISCOA_Usuario>> GetAll()
+        {
+            var list = await siscoa_context.Usuarios.ToListAsync();
+            foreach (var item in list)
+            {
+                item.TSISCOA_Oficina = await siscoa_context.Oficinas.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Oficina_SISCOA_Usuario);
+                item.TSISCOA_Rol = await siscoa_context.Roles.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Rol_SISCOA_Usuario);
+            }
+            return list;
+        }
     }
 }
