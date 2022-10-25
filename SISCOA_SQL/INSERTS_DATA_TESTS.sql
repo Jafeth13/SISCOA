@@ -27,3 +27,20 @@ INSERT INTO [CONTROL].[TSISCOA_Control]
            ('Revision','Comprobante de revision firmado',1,1)
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Control]
+GO
+INSERT INTO [USUARIO].[TSISCOA_Rol]
+           ([TC_Nombre])
+     VALUES
+           ('Administrador')
+GO
+--SELECT * FROM [USUARIO].[TSISCOA_Rol]
+GO
+INSERT INTO [OFICINA].[TSISCOA_Oficina]
+           ([TC_CodigoOficina]
+           ,[TC_Nombre]
+           ,[TC_Institucion]
+           ,[TB_EstadoActividad])
+     VALUES
+           ('AB123','Cartago','OIJ',1)
+GO
+--SELECT * FROM [OFICINA].[TSISCOA_Oficina]

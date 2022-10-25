@@ -13,10 +13,11 @@ namespace Entities.Models
     {
         [Key]
         public int ID { get; set; }
+        public string TC_Identificacion { get; set; }
         public string TC_Nombre { get; set; }
         public string TC_PrimerApellido { get; set; }
         public string TC_SegundoApellido { get; set; }
-        public byte[] TV_Contrasenna { get; set; }
+        public string TV_Contrasenna { get; set; }
         public string TC_Correo { get; set; }
         [ForeignKey("TSISCOA_Oficina")]
         public int FK_SISCOA_Oficina_SISCOA_Usuario { get; set; }
