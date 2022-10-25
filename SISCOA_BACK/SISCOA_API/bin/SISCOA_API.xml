@@ -548,6 +548,17 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.ControlsController.GetControlesByOficina(System.Int32)">
+            <summary>
+            Obtiene todos los controles que tiene la oficina ingresada
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.ControlsController.Post(Business.DTOs.TSISCOA_Control_DTO)">
             <summary>
             Crea un registro
@@ -728,6 +739,17 @@
         <member name="M:SISCOA_API.Controllers.OficinasController.GetById(System.Int32)">
             <summary>
             Obtiene un registro por su id
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinasController.GetOficinasByControl(System.Int32)">
+            <summary>
+            Obtiene todas las oficinas que tienen el control ingresado
             </summary>
             <remark>
             </remark>

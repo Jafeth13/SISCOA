@@ -3,6 +3,7 @@ using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Repositories.Repositories.Implements
@@ -39,6 +40,24 @@ namespace Repositories.Repositories.Implements
         {
             var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.ID == id);
             return flag;
+        }
+
+        public async Task<IEnumerable<TSISCOA_Control>> GetControlesByOficina(int id)
+        {
+            var temp = await siscoa_context.OficinaControles.ToListAsync();
+            if (temp != null)
+            {
+                var list = new List<TSISCOA_Control>();
+                foreach (var item in temp)
+                {
+                    if (item.FK_SISCOA_OFICINA_SISCOA_OficinaControl == id)
+                    {
+                        list = await siscoa_context.Controles.Where(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl).ToListAsync();
+                    }
+                }
+                return null;
+            }
+            return null;
         }
     }
 }
