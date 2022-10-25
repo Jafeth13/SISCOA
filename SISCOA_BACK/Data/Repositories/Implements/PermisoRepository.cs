@@ -13,11 +13,6 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
-        public async Task<IEnumerable<TSISCOA_Permiso>> GetAll()
-        {
-            var list = await siscoa_context.Permisos.ToListAsync();
-            return list;
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             var flag = await siscoa_context.RolPermisos.AnyAsync(x => x.ID == id);

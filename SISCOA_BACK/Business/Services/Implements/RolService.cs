@@ -13,10 +13,6 @@ namespace Services.Services.Implements
         {
             this.rolRepository = rolRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Rol>> GetAll()
-        {
-            return await rolRepository.GetAll();
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             return await rolRepository.DeletedCheckOnEntity(id);

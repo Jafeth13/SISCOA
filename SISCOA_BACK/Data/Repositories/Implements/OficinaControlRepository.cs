@@ -13,10 +13,5 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
-        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetAll()
-        {
-            var list = await siscoa_context.OficinaControles.ToListAsync();
-            return list;
-        }
     }
 }

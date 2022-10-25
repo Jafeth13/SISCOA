@@ -13,10 +13,6 @@ namespace Services.Services.Implements
         {
             this.permisoRepository = permisoRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Permiso>> GetAll()
-        {
-            return await permisoRepository.GetAll();
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             return await permisoRepository.DeletedCheckOnEntity(id);

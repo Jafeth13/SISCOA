@@ -13,10 +13,6 @@ namespace Services.Services.Implements
         {
             this.oficinaControlRepository = oficinaControlRepository;
         }
-        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetAll()
-        {
-            return await oficinaControlRepository.GetAll();
-        }
 
     }
 }

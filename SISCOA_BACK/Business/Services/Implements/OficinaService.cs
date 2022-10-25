@@ -12,10 +12,6 @@ namespace Services.Services.Implements
         {
             this.oficinaRepository = oficinaRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Oficina>> GetAll()
-        {
-            return await oficinaRepository.GetAll();
-        }
 
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

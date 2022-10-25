@@ -6,6 +6,5 @@ namespace Services.Services
 {
     public interface IOficinaControlService : IGenericService<TSISCOA_OficinaControl>
     {
-        Task<IEnumerable<TSISCOA_OficinaControl>> GetAll();
     }
 }

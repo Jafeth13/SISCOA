@@ -13,11 +13,6 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
-        public async Task<IEnumerable<TSISCOA_Estado>> GetAll()
-        {
-            var list = await siscoa_context.Estados.ToListAsync();
-            return list;
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             var flag = await siscoa_context.Controles.AnyAsync(x => x.ID == id);

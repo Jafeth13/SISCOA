@@ -1,4 +1,6 @@
-﻿using Repositories.Repositories;
+﻿using Entities.Models;
+using Repositories.Repositories;
+using Repositories.Repositories.Implements;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,7 +14,10 @@ namespace Services.Services.Implements
         {
             this.genericRepository = genericRepository;
         }
-
+        public async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await genericRepository.GetAll();
+        }
         public async Task Delete(int id)
         {
             await genericRepository.Delete(id);
