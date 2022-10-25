@@ -55,7 +55,7 @@ namespace Repositories.Repositories.Implements
                         list = await siscoa_context.Controles.Where(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl).ToListAsync();
                     }
                 }
-                return null;
+                return list;
             }
             return null;
         }

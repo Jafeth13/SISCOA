@@ -876,6 +876,17 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.PermisoController.GetPermisosByRol(System.Int32)">
+            <summary>
+            Obtiene todos los permisos que tiene el rol ingresado
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.PermisoController.Post(Business.DTOs.TSISCOA_Permiso_DTO)">
             <summary>
             Crea un registro
