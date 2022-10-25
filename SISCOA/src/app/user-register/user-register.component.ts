@@ -3,15 +3,49 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
 import { ServicesOfficeService } from '../services-office.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  @Input()userData:any;
-  constructor(public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
+  @Input()userData={
+    
+      ID: 0,
+      TC_Identificacion: "",
+      TC_Nombre: "",
+      TC_PrimerApellido: "",
+      TC_SegundoApellido: "",
+      TV_Contrasenna: "",
+      TC_Correo: "",
+      FK_SISCOA_Oficina_SISCOA_Usuario: 0,
+      FK_SISCOA_Rol_SISCOA_Usuario: 0,
+      TB_EstaActivo: true,
+      TB_EstaBorrado: true,
+      TC_UltimaModificacion: "insetar",
+      TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z",
+      TSISCOA_Oficina: {
+        ID: 0,
+        TC_CodigoOficina: "string",
+        TC_Nombre: "string",
+        TC_Institucion: "string",
+        TB_EstadoActividad: true,
+        TB_EstaActivo: true,
+        TB_EstaBorrado: true,
+        TC_UltimaModificacion: "string",
+        TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z"
+      },
+      TSISCOA_Rol: {
+        ID: 0,
+        TC_Nombre: "string",
+        TB_EstaActivo: true,
+        TB_EstaBorrado: true,
+        TC_UltimaModificacion: "string",
+        TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z"
+      }
+  }
+  constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
   roleData:any;
   dataOffice:any;
   ngOnInit(): void {
@@ -19,10 +53,51 @@ export class UserRegisterComponent implements OnInit {
       console.log(pos);
       this.roleData=pos
       });
-      this.rest2.officeList().subscribe((pos)=>{
-        console.log(pos);
-        this.dataOffice=pos
-        });
+
+      this.get();
   }
+
+  get(){
+    this.dataOffice=[];
+    this.rest2.officeList().subscribe((data={})=>{
+      console.log(data);
+      this.dataOffice=data
+      });
+  }
+
+  
+  add(){
+   
+    var date;
+    date = new Date();
+    date = date.getFullYear() + '-' +
+        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+        ('00' + date.getDate()).slice(-2) + 'T' + 
+        ('00' + date.getHours()).slice(-2) + ':' + 
+        ('00' + date.getMinutes()).slice(-2) + ':' + 
+        ('00' + date.getSeconds()).slice(-2);
+
+   this.userData.TF_UltimaFechaModificacion=date.toString();
+   console.log(this.userData);
+
+
+
+    this.restUser.add(this.userData).subscribe((result) => {
+    
+      Swal.fire(
+        'Good job!',
+        'User added sucessfully!',
+        'success'
+      )     
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+      console.log(err);
+    });
+ }
+
 
 }
