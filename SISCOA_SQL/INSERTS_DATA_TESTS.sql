@@ -23,7 +23,7 @@ INSERT INTO [CONTROL].[TSISCOA_Control]
            ,[FK_TN_Estado]
            ,[FK_TN_Periodo])
      VALUES
-           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia',1,6),
-           ('Revision','Comprobante de revision firmado',1,6)
+           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia',1,1),
+           ('Revision','Comprobante de revision firmado',1,1)
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Control]
