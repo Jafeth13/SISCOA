@@ -256,3 +256,6 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\D
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.csproj.CopyComplete
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.dll
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll.config

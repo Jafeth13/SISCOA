@@ -17,5 +17,9 @@ namespace Services.Services.Implements
         {
             return await permisoRepository.DeletedCheckOnEntity(id);
         }
+        public async Task<IEnumerable<TSISCOA_Permiso>> GetPermisosByRol(int id)
+        {
+            return await permisoRepository.GetPermisosByRol(id);
+        }
     }
 }

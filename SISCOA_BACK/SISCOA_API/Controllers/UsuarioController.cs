@@ -4,11 +4,10 @@ using Data.Data;
 using Entities.Models;
 using Repositories.Repositories.Implements;
 using Services.Services.Implements;
+using Security.Security.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -22,12 +21,45 @@ namespace SISCOA_API.Controllers
     {
         private IMapper _mapper;
         private readonly UsuarioService service = new UsuarioService(new UsuarioRepository(SISCOA_Context.Create()));
+        private readonly SessionModule session = new SessionModule(new UsuarioRepository(SISCOA_Context.Create()));
         /// <summary>
         /// Constructor
         /// </summary>
         public UsuarioController()
         {
             this._mapper = WebApiApplication.MapperConfiguration.CreateMapper();
+        }
+        /// <summary>
+        /// Inicia Sesion
+        /// </summary>
+        /// <param name="DTO">El objeto JSON del registro</param>
+        /// <param name="id"></param>
+        /// <returns>User</returns>
+        /// <response code="200">OK. Inicio de sesion</response>
+        /// <response code="400">BadRequest. Consulta erronea</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
+        /// <response code="500">InternalServerError. Error con el servidor</response>
+        [Route("api/Usuario/LogIn/{id}")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Post(TSISCOA_UsuarioLogIn_DTO DTO, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
+                entities = await session.LogIn(entities);
+                if (entities == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(entities);
+                }
+            }
+            catch (Exception ex) { return InternalServerError(ex); }
         }
         /// <summary>
         /// Obtiene todos los registros

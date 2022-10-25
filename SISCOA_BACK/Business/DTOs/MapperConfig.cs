@@ -33,6 +33,9 @@ namespace Business.DTOs
                 cfg.CreateMap<TSISCOA_RolPermiso, TSISCOA_RolPermiso_DTO>();
                 cfg.CreateMap<TSISCOA_RolPermiso_DTO, TSISCOA_RolPermiso>();
 
+                cfg.CreateMap<TSISCOA_Usuario, TSISCOA_UsuarioLogIn_DTO>();
+                cfg.CreateMap<TSISCOA_UsuarioLogIn_DTO, TSISCOA_Usuario>();
+
                 cfg.CreateMap<TSISCOA_Usuario, TSISCOA_Usuario_DTO>();
                 cfg.CreateMap<TSISCOA_Usuario_DTO, TSISCOA_Usuario>();
 

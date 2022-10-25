@@ -6,6 +6,9 @@ namespace Business.DTOs
     public class TSISCOA_Usuario_DTO
     {
         public int ID { get; set; }
+        [Required(ErrorMessage = "The field TC_Identificacion is required")]
+        [StringLength(50)]
+        public string TC_Identificacion { get; set; }
         [Required(ErrorMessage = "The field TC_Nombre is required")]
         [StringLength(50)]
         public string TC_Nombre { get; set; }
@@ -16,8 +19,8 @@ namespace Business.DTOs
         [StringLength(50)]
         public string TC_SegundoApellido { get; set; }
         [Required(ErrorMessage = "The field TV_Contrasenna is required")]
-        [StringLength(255)]
-        public byte[] TV_Contrasenna { get; set; }
+        [StringLength(256)]
+        public string TV_Contrasenna { get; set; }
         [Required(ErrorMessage = "The field TC_Correo is required")]
         [StringLength(50)]
         public string TC_Correo { get; set; }
@@ -34,9 +37,7 @@ namespace Business.DTOs
         public string TC_UltimaModificacion { get; set; }
         [Required(ErrorMessage = "The field TF_UltimaFechaModificacion is required")]
         public DateTime TF_UltimaFechaModificacion { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_Oficina is required")]
         public virtual TSISCOA_Oficina_DTO TSISCOA_Oficina { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_Rol is required")]
         public virtual TSISCOA_Rol_DTO TSISCOA_Rol { get; set; }
     }
 }

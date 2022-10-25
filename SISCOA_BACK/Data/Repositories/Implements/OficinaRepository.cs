@@ -32,7 +32,7 @@ namespace Repositories.Repositories.Implements
                         list = await siscoa_context.Oficinas.Where(x => x.ID == item.FK_SISCOA_OFICINA_SISCOA_OficinaControl).ToListAsync();
                     }
                 }
-                return null;
+                return list;
             }
             return null;
         }
