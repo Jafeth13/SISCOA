@@ -23,7 +23,7 @@ export class UserRegisterComponent implements OnInit {
       FK_SISCOA_Rol_SISCOA_Usuario: 0,
       TB_EstaActivo: true,
       TB_EstaBorrado: true,
-      TC_UltimaModificacion: "insetar",
+      TC_UltimaModificacion: "insertar usuario",
       TF_UltimaFechaModificacion: "2022-10-25T19:12:50.014Z",
       TSISCOA_Oficina:null,
       TSISCOA_Rol:null
