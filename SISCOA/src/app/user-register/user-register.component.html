@@ -13,6 +13,9 @@
 
                     <input type="text" autocomplete="off" name="idRateTypeUpdate" id="idRateTypeUpdate" hidden>
 
+                    <input [(ngModel)]="userData.TC_Identificacion" type="text" autocomplete="off" name="name_Identification" id="identification" class="form-control rounded-left" placeholder="Identificacion" required="">
+
+
                     <input [(ngModel)]="userData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
                     <input [(ngModel)]="userData.TC_PrimerApellido" type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Primer apellido" required="">
@@ -23,18 +26,17 @@
 
                     <input [(ngModel)]="userData.TV_Contrasenna" type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Contraseña" required="">
 
-                    <select  [(ngModel)]="userData.TSISCOA_Oficina.ID"  class="form-control rounded-left" name="role_Admin2" id="role_Admin2">
+                    <select  [(ngModel)]="userData.TSISCOA_Oficina.ID"  [(ngModel)]="userData.FK_SISCOA_Oficina_SISCOA_Usuario"   class="form-control rounded-left" name="role_Admin2" id="role_Admin2">
                         <option value=0 selected>Seleciona una oficina</option>
-                        <option [value]="item.ID" *ngFor="let item of dataOffice">{{item.TcNombre}</option>
-
+                        <option [value]="s.ID" *ngFor="let s of dataOffice">{{s.TC_Nombre}}</option>
                     </select>
                     
-                    <select [(ngModel)]="userData.TSISCOA_Rol.ID"  class="form-control rounded-left" name="role_Admin" id="role_Admin">
+                    <select [(ngModel)]="userData.TSISCOA_Rol.ID" [(ngModel)]="userData.FK_SISCOA_Rol_SISCOA_Usuario" class="form-control rounded-left" name="ghf" id="fgh">
                         <option value=0 selected>Seleciona un rol</option>
-                        <option [value]="item.ID" *ngFor="let item of roleData">{{item.TcNombre}</option>
+                        <option [value]="item.ID" *ngFor="let item of roleData">{{item.TC_Nombre}}</option>
                     </select>
                   
-                    <button class="submit-btn form-control" >Añadir</button>
+                    <button class="submit-btn form-control" (click)="add();">Añadir</button>
 
                     <button routerLink="/listUser" class="submit-btn form-control" >Cancelar</button>
                 </form>

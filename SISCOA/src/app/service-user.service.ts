@@ -22,5 +22,9 @@ export class ServiceUserService {
     return  this.http.get(endpoint+'Usuario',httpOptions);
     
   }
+
+  add(Usuario:any){
+    return  this.http.post(endpoint+'Usuario',Usuario,httpOptions);
+  }
   
 }
