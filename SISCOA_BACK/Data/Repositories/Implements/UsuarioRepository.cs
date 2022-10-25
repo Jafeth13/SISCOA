@@ -23,5 +23,16 @@ namespace Repositories.Repositories.Implements
             }
             return list;
         }
+        public new async Task<TSISCOA_Usuario> GetById(int id)
+        {
+            var list = await siscoa_context.Set<TSISCOA_Usuario>().FindAsync(id);
+
+            if (list != null)
+            {
+                list.TSISCOA_Rol = await siscoa_context.Roles.FirstOrDefaultAsync(x => x.ID == list.FK_SISCOA_Rol_SISCOA_Usuario);
+                list.TSISCOA_Oficina = await siscoa_context.Oficinas.FirstOrDefaultAsync(x => x.ID == list.FK_SISCOA_Oficina_SISCOA_Usuario);
+            }
+            return list;
+        }
     }
 }
