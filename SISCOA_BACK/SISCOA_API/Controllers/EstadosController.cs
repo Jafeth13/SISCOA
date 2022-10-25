@@ -47,12 +47,13 @@ namespace SISCOA_API.Controllers
         /// <remark>
         /// </remark>
         /// <param name="id">Id del registro</param>
+        /// <param name="rol">Rol del usuario activo</param>
         /// <returns>Registro</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="404">NotFound. No se encontro el registro</response>
         [HttpGet]
         [ResponseType(typeof(TSISCOA_Estado_DTO))]
-        public async Task<IHttpActionResult> GetById(int id)
+        public async Task<IHttpActionResult> GetById(int id, string rol)
         {
             var entities = await service.GetById(id);
             if (entities == null)
@@ -66,12 +67,13 @@ namespace SISCOA_API.Controllers
         /// Crea un registro
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
+        /// <param name="rol">Rol del usuario activo</param>
         /// <returns>Registro insertado</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO)
+        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO, string rol)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

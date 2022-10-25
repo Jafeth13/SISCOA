@@ -607,22 +607,24 @@
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.GetById(System.Int32,System.String)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="rol">Rol del usuario activo</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO,System.String)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="rol">Rol del usuario activo</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>

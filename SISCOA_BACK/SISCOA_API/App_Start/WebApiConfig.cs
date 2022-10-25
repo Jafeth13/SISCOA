@@ -31,8 +31,8 @@ namespace SISCOA_API
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{id}/{rolUserActive}",
+                defaults: new { id = RouteParameter.Optional, rolUserActive = RouteParameter.Optional }
             );
         }
     }

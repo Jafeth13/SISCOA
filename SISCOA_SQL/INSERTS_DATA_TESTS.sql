@@ -35,6 +35,52 @@ INSERT INTO [USUARIO].[TSISCOA_Rol]
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Rol]
 GO
+INSERT INTO [USUARIO].[TSISCOA_Permiso]
+           ([TC_Nombre])
+     VALUES
+           ('Puede consultar Actividades'),
+           ('Puede consultar Controles'),
+           ('Puede consultar Errores'),
+           ('Puede consultar Estados'),
+           ('Puede consultar Oficinas'),
+           ('Puede consultar Periodos'),
+           ('Puede consultar Permisos'),
+           ('Puede consultar Roles'),
+		   ('Puede consultar Usuarios'),
+
+           ('Puede crear Actividades'),
+           ('Puede crear Controles'),
+           ('Puede crear Errores'),
+           ('Puede crear Estados'),
+           ('Puede crear Oficinas'),
+           ('Puede crear Periodos'),
+           ('Puede crear Permisos'),
+           ('Puede crear Roles'),
+		   ('Puede crear Usuarios'),
+
+           ('Puede actualizar Actividades'),
+           ('Puede actualizar Controles'),
+           ('Puede actualizar Errores'),
+           ('Puede actualizar Estados'),
+           ('Puede actualizar Oficinas'),
+           ('Puede actualizar Periodos'),
+           ('Puede actualizar Permisos'),
+           ('Puede actualizar Roles'),
+		   ('Puede actualizar Usuarios'),
+
+           ('Puede eliminar Actividades'),
+           ('Puede eliminar Controles'),
+           ('Puede eliminar Errores'),
+           ('Puede eliminar Estados'),
+           ('Puede eliminar Oficinas'),
+           ('Puede eliminar Periodos'),
+           ('Puede eliminar Permisos'),
+           ('Puede eliminar Roles'),
+		   ('Puede eliminar Usuarios')
+
+GO
+--SELECT * FROM [USUARIO].[TSISCOA_Permiso]
+GO
 INSERT INTO [OFICINA].[TSISCOA_Oficina]
            ([TC_CodigoOficina]
            ,[TC_Nombre]

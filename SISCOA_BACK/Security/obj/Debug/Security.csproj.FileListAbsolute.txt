@@ -32,3 +32,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Deb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Data.dll.config
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Entities.pdb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Entities.dll.config
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Business.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Business.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Business.dll.config

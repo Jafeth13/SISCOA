@@ -1,7 +1,7 @@
 ﻿using Data.Data;
 using Entities.Models;
-using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Repositories.Repositories.Implements
@@ -19,5 +19,18 @@ namespace Repositories.Repositories.Implements
             flag = await siscoa_context.Usuarios.AnyAsync(x => x.ID == id);
             return flag;
         }
+        public async Task<bool> VerifyPrivilegesRolUser(TSISCOA_Rol rol, string permit)
+        {
+            var rolPermitsList = await siscoa_context.RolPermisos.Where(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == rol.ID).ToListAsync();
+            foreach (var item in rolPermitsList)
+            {
+                item.TSISCOA_Permiso = await siscoa_context.Permisos.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso);
+                if (item.TSISCOA_Permiso.TC_Nombre == permit)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }       
     }
 }
