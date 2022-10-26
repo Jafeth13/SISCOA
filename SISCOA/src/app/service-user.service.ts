@@ -31,6 +31,10 @@ export class ServiceUserService {
     return  this.http.post(endpoint+'Usuario',Usuario,httpOptions);
   }
 
+  logIn(Usuario:any){
+    return  this.http.post(endpoint+'Usuario/LogIn',Usuario,httpOptions);
+  }
+
   update(user: any,id:number): Observable<any>{
     return this.http.put(endpoint+'Usuario/'+id,user, httpOptions).pipe(
       catchError(this.handleError('deletePeriod'))
