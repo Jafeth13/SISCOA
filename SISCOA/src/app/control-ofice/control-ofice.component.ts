@@ -10,9 +10,11 @@ import { ServicesControllersService } from '../services-controllers.service';
   templateUrl: './control-ofice.component.html',
   styleUrls: ['./control-ofice.component.css']
 })
+
 export class ControlOficeComponent  implements AfterViewInit ,OnInit{
   displayedColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
   dataSource = new MatTableDataSource();
+  item:any=localStorage.getItem("Siscoa")!;
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
   constructor(public rest:ServicesControllersService,private route:ActivatedRoute,private router:Router) { }
@@ -25,10 +27,17 @@ export class ControlOficeComponent  implements AfterViewInit ,OnInit{
       console.log(pos);
       this.dataSource.data=pos
       });
+      console.log(this.getKey());
+  }
+
+  getKey(){
+    return JSON.parse(atob(this.item.split('.',3)[1]));
   }
 
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }}
+
+  
 
