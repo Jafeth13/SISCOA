@@ -71,7 +71,9 @@ export class UserRegisterComponent implements OnInit {
         'Good job!',
         'User added sucessfully!',
         'success'
-      )     
+      )
+      this.router.navigate(['/listUser']);    
+     
     }, (err) => {
       Swal.fire({
         icon: 'error',

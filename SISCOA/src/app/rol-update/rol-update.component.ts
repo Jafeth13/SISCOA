@@ -30,7 +30,7 @@ export class RolUpdateComponent implements OnInit {
         'role sucessfully updated!',
         'success'
       )
-           
+      this.router.navigate(['/rolList']);   
     }, (err) => {
       Swal.fire({
         icon: 'error',

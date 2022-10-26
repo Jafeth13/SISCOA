@@ -41,6 +41,8 @@ this.rut();
         (data) =>{
           console.log(data);
           this.ngOnInit();
+          this.router.navigate(['/conditionList']);
+
         }
       ); 
         Swal.fire(

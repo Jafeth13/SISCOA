@@ -56,7 +56,8 @@ console.log(this.officeData);
         'Good job!',
         'Role added sucessfully!',
         'success'
-      )     
+      ) 
+      this.router.navigate(['/officeList']);    
     }, (err) => {
       Swal.fire({
         icon: 'error',

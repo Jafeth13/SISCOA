@@ -47,7 +47,7 @@ this.rut();
         this.rest.delete(this.route.snapshot.params['ID']).subscribe(
         (data) =>{
           console.log(data);
-          this.ngOnInit();
+          this.router.navigate(['/officeList']);
         }
       ); 
         Swal.fire(

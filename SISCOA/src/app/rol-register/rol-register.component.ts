@@ -44,7 +44,8 @@ export class RolRegisterComponent implements OnInit {
         'Good job!',
         'Estado added sucessfully!',
         'success'
-      )     
+      ) 
+      this.router.navigate(['/rolList']);   
     }, (err) => {
       Swal.fire({
         icon: 'error',

@@ -60,6 +60,7 @@ export class UserDeleteComponent implements OnInit {
         'User added sucessfully!',
         'success'
       )     
+      this.router.navigate(['/listUser']);    
     }, (err) => {
       Swal.fire({
         icon: 'error',

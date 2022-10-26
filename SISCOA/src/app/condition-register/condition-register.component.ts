@@ -47,7 +47,8 @@ export class ConditionRegisterComponent implements OnInit {
         'Good job!',
         'Estado added sucessfully!',
         'success'
-      )     
+      ) 
+          
     }, (err) => {
       Swal.fire({
         icon: 'error',
