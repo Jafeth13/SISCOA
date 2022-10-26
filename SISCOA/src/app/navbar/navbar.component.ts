@@ -9,15 +9,15 @@ import { AuthService } from '../auth.service';
 })
 
 export class NavbarComponent implements OnInit {
-  role: String = '';
+    role: String = '';
     email: String = 'Log in';
 
-  constructor(private route:ActivatedRoute,private router:Router,private auth:AuthService) { }
+  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService) { }
 
   ngOnInit(): void {
     if(this.auth.getStorageRole()!=undefined){
-      this.email = this.auth.getStorageRole().TC_Identificacion;
-      this.role = this.auth.getStorageRole().TC_Identificacion;
+      this.email = this.auth.getStorageRole().sub;
+      this.role = this.auth.getStorageRole().role;
      
     }
   }
@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
     })
 
 
-    this.router.navigate(['/homes']);
+    this.router.navigate(['/']);
     this.email = 'Log in';
     this.role = ''  
     this.auth.logout();
