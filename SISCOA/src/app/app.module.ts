@@ -107,11 +107,11 @@ const appRoutes: Routes = [
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
-    path: 'deleteControl',
+    path: 'deleteControl/:ID',
     component: ControlDeleteComponent,
     data: { title: 'Elimianar control'}, 
   },{
-    path: 'updateControl',
+    path: 'updateControl/:ID',
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
@@ -171,11 +171,11 @@ const appRoutes: Routes = [
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate',
+    path: 'permissionUpdate/:ID',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete',
+    path: 'permissionDelete/:ID',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{

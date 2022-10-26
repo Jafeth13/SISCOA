@@ -8,37 +8,42 @@ const httpOptions = {
     Authorization: 'Bearer'
   })
 };
+
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesControllersService {
+
+export class PermisionServicesService {
   constructor(private http: HttpClient) { }
 
-  officeList():Observable<any>{
+  
+  permisionList():Observable<any>{
 
-    return  this.http.get(endpoint+'Controls',httpOptions);
+    return  this.http.get(endpoint+'Permiso',httpOptions);
     
   }
+
   get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
+    return  this.http.get(endpoint+'Permiso/'+id, httpOptions);   
   }
 
-  add(Controls :any){
-    return this.http.post(endpoint+'Controls', Controls, httpOptions);   
+  add(Usuario:any){
+    return  this.http.post(endpoint+'Permiso',Usuario,httpOptions);
+  }
+
+
+
+  update(user: any,id:number): Observable<any>{
+    return this.http.put(endpoint+'Permiso/'+id,user, httpOptions).pipe(
+      catchError(this.handleError('deletePeriod'))
+    );
   }
 
   delete(id: number): Observable<any>{
-    return this.http.delete(endpoint+'Controls/'+id, httpOptions).pipe(
+    return this.http.delete(endpoint+'Permiso/'+id, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
-
-  update(Controls: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Controls/'+id,Controls, httpOptions).pipe(
-      catchError(this.handleError('deleteRateType'))
-    );
-  }
-
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

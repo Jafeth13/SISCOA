@@ -7,25 +7,19 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form action="" *ngIf="controlDataDelete" id="userRegister-entry-form">
                     <h2>Eliminar</h2>
                     <input   type="text"  hidden>
 
-                    <input   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input  [(ngModel)]="controlDataDelete.TC_Nombre" disabled type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                    <input disabled  [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Periodo</option>            
-                    </select>
+                    <input disabled  [(ngModel)]="controlDataDelete.TSISCOA_Periodo.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
 
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Estado</option>            
-                    </select>
+                    <input disabled  [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Notificacion" required="">
-
-                    <button class="submit-btn form-control" >Eliminar</button>
+                    <button class="submit-btn form-control" (click)="delete()">Eliminar</button>
 
                     <button routerLink="/listControl" class="submit-btn form-control" >Cancelar</button>
                 </form>
