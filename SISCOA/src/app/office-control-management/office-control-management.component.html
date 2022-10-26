@@ -155,7 +155,9 @@
                         <input  [(ngModel)]="controlDataupdate.TC_Nombre"   type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
                         
                         <select [(ngModel)]="controlDataupdate.TSISCOA_Periodo.TC_Nombre"  class="form-control rounded-left" name="name" id="Admin">
-                            <option selected>Seleciona tu Periodo </option>            
+                            <option selected>Seleciona tu Periodo </option> 
+                            <option [value]="s.ID" *ngFor="let s of dataSourcePeriod">{{s.TC_Nombre}}</option>
+           
                         </select>
 
                         <input  [(ngModel)]="controlDataupdate.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">

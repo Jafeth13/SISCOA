@@ -66,8 +66,8 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       
   }
 
-  get password() { return this.loginForm.get('TC_Identificacion'); };
-  get email() { return this.loginForm.get('TV_Contrasenna'); };
+  get identification() { return this.loginForm.get('TC_Identificacion'); };
+  get password() { return this.loginForm.get('TV_Contrasenna'); };
 
 
 }

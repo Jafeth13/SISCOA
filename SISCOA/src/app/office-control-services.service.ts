@@ -8,23 +8,17 @@ const httpOptions = {
     Authorization: 'Bearer'
   })
 };
+
 @Injectable({
   providedIn: 'root'
 })
-export class ServicesControllersService {
+
+export class OfficeControlServicesService {
+
   constructor(private http: HttpClient) { }
 
-  officeList():Observable<any>{
-
-    return  this.http.get(endpoint+'Controls',httpOptions);
-    
-  }
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
-  }
-
-  add(Controls :any){
-    return this.http.post(endpoint+'Controls', Controls, httpOptions);   
+  add(officeControl:any){
+    return  this.http.post(endpoint+'OficinaControles',officeControl,httpOptions);
   }
 
 }

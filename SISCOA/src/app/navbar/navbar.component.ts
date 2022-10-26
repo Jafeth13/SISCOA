@@ -16,9 +16,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.auth.getStorageRole()!=undefined){
-      this.email = this.auth.getStorageRole().sub;
+     // this.email = this.auth.getStorageRole().sub;
       this.role = this.auth.getStorageRole().role;
-     
+     this.email=this.auth.getStorageRole().identification;
     }
   }
   logout(){

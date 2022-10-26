@@ -55,6 +55,7 @@
                       mat-button
                       matStepperNext
                       aria-label="Example icon button with a delete icon"
+                      (click)="darOfice(element.ID)"
                     >
                       <mat-icon>book</mat-icon>
                     </button>
@@ -79,7 +80,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Agregar de controles</ng-template>
-
+      <!-- Controles       -->
     <br />
     <br />
     <div class="mat-elevation-z8">
@@ -131,8 +132,9 @@
                 <button
                   mat-fab
                   color="primary"
-                  routerLink="/deleteControl"
                   aria-label="Example icon button with a delete icon"
+                  (click)="dar(element.ID);"
+                  
                 >
                   <mat-icon>bookmark</mat-icon>
                 </button>
@@ -155,7 +157,7 @@
 
     <br />
     <br />
-
+<!--       Controles de la oficina                  -->
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSourceControl">
         <!-- Name Column -->
