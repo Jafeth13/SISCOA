@@ -21,7 +21,7 @@
          
                     </select>
 
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                    <select [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre"[(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                         <option value=0 selected>Estado</option>
                         <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
             
