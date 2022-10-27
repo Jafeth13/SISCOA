@@ -65,6 +65,10 @@ import { MenuConfigurationComponent } from './menu-configuration/menu-configurat
 import { ErrorSystemComponent } from './error-system/error-system.component';
 import { ActionUserComponent } from './action-user/action-user.component';
 import { MatSortModule, MAT_SORT_HEADER_INTL_PROVIDER } from '@angular/material/sort';
+import { ControlSeeComponent } from './control-see/control-see.component';
+import { OfficeSeeComponent } from './office-see/office-see.component';
+import { UserSeeComponent } from './user-see/user-see.component';
+import { RolSeeComponent } from './rol-see/rol-see.component';
 
 
 const appRoutes: Routes = [
@@ -239,6 +243,10 @@ const appRoutes: Routes = [
     path: 'errorSystem',
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
+  },{
+    path: 'controlSee/:ID',
+    component: ControlSeeComponent,
+    data: { title: 'Controles'}, 
   }
 ];
 
@@ -287,7 +295,11 @@ const appRoutes: Routes = [
     ConditionRegisterComponent,
     MenuConfigurationComponent,
     ErrorSystemComponent,
-    ActionUserComponent
+    ActionUserComponent,
+    ControlSeeComponent,
+    OfficeSeeComponent,
+    UserSeeComponent,
+    RolSeeComponent
     
   ],
   imports: [

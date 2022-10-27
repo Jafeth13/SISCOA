@@ -15,16 +15,15 @@
 
                     <input   [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Periodo.TC_Nombre"    [(ngModel)]="controlDataDelete.TSISCOA_Periodo.ID" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                    <select [(ngModel)]="controlDataDelete.TSISCOA_Periodo.TC_Nombre"    [(ngModel)]="controlDataDelete.TSISCOA_Periodo.ID" class="form-control rounded-left" name="period" id="period">
                         <option value=0 selected>Periodo</option>   
                         <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
          
                     </select>
 
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre"[(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                    <select [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" [(ngModel)]="controlDataDelete.TSISCOA_Estado.ID" class="form-control rounded-left" name="conditional" id="conditional">
                         <option value=0 selected>Estado</option>
                         <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
-            
                     </select>
 
                     <div class="radio">
