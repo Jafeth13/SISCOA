@@ -1,58 +1,79 @@
 <app-navbar> </app-navbar>
-
-<section>
-    <div class="container">
-        <div class="text-center">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h2 class="section-heading text-uppercase">Errores del sistema</h2>
-            <br>
-            <br>
-            <br>
-            
-            <div class="form-group" >
-            <H5>Buscar</H5> 
-            <input>
-            </div>
-            
-        </div>
-
-          <br>
-          <br>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="table-responsive">
-
-                    <table id="ClientReservation-table" class="table table-bordered table-hover">
-
-                        <thead>
-                            <tr>
-                                <th>
-                                    Descripcion
-                                </th>
-                                <th>
-                                    Fecha
-                                </th>
-                                <th>
-                                    Causa
-                                </th>
-                                <th>
-                                    Usuario
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="UserReservation-tbody">
-                            <tr >
-                 
-
-                            </tr>
-                         </tbody>
-
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <div class="text-center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h1 class="section-heading text-uppercase">Errores </h1>
+       
+      
+        
+       
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Busqueda</mat-label>
+                <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)">
+              </mat-form-field>
+        
     </div>
-</section>
+      
+      <div class="centrarTable">
+    
+         <div class="addButton">
+        <button type="button" class="btn btn-secondary" routerLink="/officeRegister"  >+</button>
+      </div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- descrption Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef><b> Description</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TC_Description}} </td>
+      </ng-container>
+  
+      <!-- actionSys Column -->
+      <ng-container matColumnDef="actionSys">
+        <th mat-header-cell *matHeaderCellDef><b> Ultima accion</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TC_UltimaAccion}} </td>
+      </ng-container>
+  
+    
+
+   <!-- date Column -->
+   <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Fecha del error </b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.TF_FechaError}} </td>
+  </ng-container>
+
+    <!-- user Column -->
+    <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Usuario </b>  </th>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Usuario.TC_Nombre}} </td>
+      </ng-container>
+  
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
+        <td mat-cell *matCellDef="let element">   <div class="example-button-row">
+            <div class="example-button-container">
+               <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                    <mat-icon>search</mat-icon>     
+                </button>                
+            </div>    
+             
+          </div> </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
