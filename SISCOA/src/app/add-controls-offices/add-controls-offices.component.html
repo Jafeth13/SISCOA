@@ -55,7 +55,7 @@
                       mat-button
                       matStepperNext
                       aria-label="Example icon button with a delete icon"
-                      (click)="darOfice(element.ID,element.TC_Nombre)"
+                      (click)="darOfice(element.ID, element.TC_Nombre)"
                     >
                       <mat-icon>book</mat-icon>
                     </button>
@@ -75,16 +75,20 @@
           </mat-paginator>
         </form>
       </div>
+      <div>
+        <button mat-button routerLink="/controlMenu">Regresar</button>
+      </div>
+
       <div></div>
     </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Agregar de controles</ng-template>
-      <!-- Controles       -->
+    <!-- Controles       -->
     <br />
     <br />
     <div class="mat-elevation-z8">
-      <input class="nameOffice" [(ngModel)]="name.indication"  disabled>
+      <input class="nameOffice" [(ngModel)]="name.indication" disabled />
 
       <table mat-table [dataSource]="dataSourceControl">
         <!-- Name Column -->
@@ -135,8 +139,7 @@
                   mat-fab
                   color="primary"
                   aria-label="Example icon button with a delete icon"
-                  (click)="dar(element.ID);"
-                  
+                  (click)="dar(element.ID)"
                 >
                   <mat-icon>bookmark</mat-icon>
                 </button>
@@ -159,9 +162,9 @@
 
     <br />
     <br />
-<!--       Controles de la oficina                  -->
+    <!--       Controles de la oficina                  -->
     <div *ngIf="name" class="mat-elevation-z8">
-      <input class="nameOffice" [(ngModel)]="name.nameOff"  disabled>
+      <input class="nameOffice" [(ngModel)]="name.nameOff" disabled />
       <table mat-table [dataSource]="dataSourceControlOffice">
         <!-- Name Column -->
         <ng-container matColumnDef="name">

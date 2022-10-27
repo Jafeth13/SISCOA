@@ -64,6 +64,7 @@ import { ConditionRegisterComponent } from './condition-register/condition-regis
 import { MenuConfigurationComponent } from './menu-configuration/menu-configuration.component';
 import { ErrorSystemComponent } from './error-system/error-system.component';
 import { ActionUserComponent } from './action-user/action-user.component';
+import { MatSortModule, MAT_SORT_HEADER_INTL_PROVIDER } from '@angular/material/sort';
 
 
 const appRoutes: Routes = [
@@ -313,6 +314,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatTabsModule,
     NgxChartsModule,
+    MatSortModule
     
   ],
   providers: [],
