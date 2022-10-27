@@ -19,6 +19,12 @@ export class ServicesControllersService {
     return  this.http.get(endpoint+'Controls',httpOptions);
     
   }
+
+  getControl(id:any):Observable<any>{
+    return  this.http.get(endpoint+'Controls/GetControlesByOficina/'+id, httpOptions);   
+  }
+
+  
   get(id:any):Observable<any>{
     return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
   }

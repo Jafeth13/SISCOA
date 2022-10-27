@@ -22,11 +22,16 @@ export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
     });
     displayedColumns: string[] = ['name', 'code','institution', 'action'];
     displayedxColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
-
+    displayedColumnsOfice:string[] = ['name', 'Descripcion','notification', 'action'];
     dataSource = new MatTableDataSource();
     dataSourceControl = new MatTableDataSource();
+    dataSourceControlOffice=new MatTableDataSource();
     control:any;
     office:any;
+    name={
+      nameOff:'',
+      indication:'Controles'
+    }
       @ViewChild(MatPaginator) paginator :any = MatPaginator;
   constructor(public restOfficeControl:OfficeControlServicesService,public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
 
@@ -42,6 +47,7 @@ export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
         console.log(pos);
         this.dataSourceControl.data=pos
         });
+   
   }
 
   applyFilter(event:Event){
@@ -65,8 +71,14 @@ officeControl={
   Oficina:null
 }
 
-darOfice(id:any){
+darOfice(id:any,name:any){
   this.office=id;
+  this.rest2.getControl(this.office).subscribe((pos)=>{
+    console.log(pos);
+    this.dataSourceControlOffice.data=pos
+    });
+    this.control=id;
+this.name.nameOff=name;
   }
 
 addControlOffice()
@@ -105,10 +117,13 @@ addControlOffice()
     });
     console.log(this.officeControl);
   } 
-
    dar(id:any){
 this.control=id;
-this.addControlOffice();
+
+console.log(this.name.nameOff);
+
+
 
   }
+
 }

@@ -9,13 +9,14 @@ import { ServiceConditionService } from '../service-condition.service';
   styleUrls: ['./condition-delete.component.css']
 })
 export class ConditionDeleteComponent implements OnInit {
+statusDataDelete:any;  
 
   constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
-this.rut();
+              this.rut();
   }
-  statusDataDelete:any
+  
   rut(){
     this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
@@ -24,7 +25,7 @@ this.rut();
   }
 
 
-  del(){
+  delete(){
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -40,9 +41,7 @@ this.rut();
         this.rest.delete(this.route.snapshot.params['ID']).subscribe(
         (data) =>{
           console.log(data);
-          this.ngOnInit();
           this.router.navigate(['/conditionList']);
-
         }
       ); 
         Swal.fire(

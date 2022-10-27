@@ -24,6 +24,11 @@ dataSourcePeriod:any
   displayedColumns: string[] = ['name', 'code','institution', 'action'];
   displayedxColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
   controlDataupdate:any
+  name={
+    nameOff:'',
+    indication:'Controles'
+  }
+
   constructor(public restPeriodic:ServicesPeriodService,public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
 
   ngAfterViewInit() {
@@ -34,10 +39,7 @@ dataSourcePeriod:any
       console.log(pos);
       this.dataSource.data=pos
       });
-      this.rest2.officeList().subscribe((pos)=>{
-        console.log(pos);
-        this.dataSourceControl.data=pos
-        });
+  
 
         this.restPeriodic.periodList().subscribe((pos)=>{
           console.log(pos);
@@ -49,6 +51,15 @@ dataSourcePeriod:any
       console.log(data);
       this.controlDataupdate = data;
     });
+}
+office:any;
+dar(id:any,name:any){
+  this.office=id;
+  this.rest2.getControl(this.office).subscribe((pos)=>{
+    console.log(pos);
+    this.dataSourceControl.data=pos
+    });
+this.name.nameOff=name;
 }
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
