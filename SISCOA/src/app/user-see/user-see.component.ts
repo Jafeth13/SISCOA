@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ServicesRolService } from '../services-rol.service';
+import { ServicesOfficeService } from '../services-office.service';
+import { ServiceUserService } from '../service-user.service';
 
 @Component({
   selector: 'app-user-see',
@@ -6,10 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-see.component.css']
 })
 export class UserSeeComponent implements OnInit {
-
-  constructor() { }
-
+  userData:any
+  constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
+  roleData:any;
+  dataOffice:any;
   ngOnInit(): void {
+    this.rest.rolList().subscribe((pos)=>{
+      console.log(pos);
+      this.roleData=pos
+      });
+  this.rut();
+      this.get();
+  }
+  
+  get(){
+    this.dataOffice=[];
+    this.rest2.officeList().subscribe((data={})=>{
+      console.log(data);
+      this.dataOffice=data
+      });
+  }
+  rut(){
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+  }
+  
+
   }
 
-}

@@ -247,6 +247,18 @@ const appRoutes: Routes = [
     path: 'controlSee/:ID',
     component: ControlSeeComponent,
     data: { title: 'Controles'}, 
+  },{
+    path: 'userSee/:ID',
+    component: UserSeeComponent,
+    data: { title: 'Usuarios'}, 
+  },{
+    path: 'officeSee/:ID',
+    component: OfficeSeeComponent,
+    data: { title: 'Oficina'}, 
+  },{
+    path: 'rolSee/:ID',
+    component: RolSeeComponent,
+    data: { title: 'Rol'}, 
   }
 ];
 

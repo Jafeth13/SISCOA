@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesOfficeService } from '../services-office.service';
 import Swal from 'sweetalert2';
-import { getLocaleDateFormat } from '@angular/common';
-
 @Component({
   selector: 'app-office-delete',
   templateUrl: './office-delete.component.html',

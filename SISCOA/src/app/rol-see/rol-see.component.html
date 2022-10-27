@@ -1,1 +1,27 @@
-<p>rol-see works!</p>
+<app-navbar> </app-navbar>
+
+<section class="page-section" id="adminRegister">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <br>
+            <br>
+            <br>
+            <div class="entry-formRate">
+                <form action="" id="userRegister-entry-form">
+                    <h2>Observar</h2>
+                    <input   type="text"  hidden>
+                
+                    <input [(ngModel)]="roleDataDelete.TC_Nombre"  type="text" autocomplete="off" name="name_role" id="name_role" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
+
+                    <button routerLink="/rolList" class="submit-btn form-control" >Volver</button>
+                    
+                </form>
+
+            </div>
+        </div>
+         
+    </div>
+    <div class="example-button-container">
+      
+        </div>
+</section>
