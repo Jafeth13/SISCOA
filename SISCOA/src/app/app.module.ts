@@ -143,7 +143,7 @@ const appRoutes: Routes = [
     component: CompleteControlComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'completeControlFile',
+    path: 'completeControlFile/:ID',
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
