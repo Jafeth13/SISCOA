@@ -12,7 +12,7 @@ import { ServicesPeriodService } from '../services-period.service';
 
 
 export class PeriodListComponent implements AfterViewInit,OnInit {
-  displayedColumns: string[] = ['name','action'];
+  displayedColumns: string[] = ['name','start','end','action'];
   dataSource = new MatTableDataSource();
   constructor(public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
 

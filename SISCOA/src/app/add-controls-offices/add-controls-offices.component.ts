@@ -22,7 +22,7 @@ export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
     });
     displayedColumns: string[] = ['name', 'code','institution', 'action'];
     displayedxColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
-    displayedColumnsOfice:string[] = ['name', 'Descripcion','notification', 'action'];
+    displayedColumnsOfice:string[] = ['name', 'Descripcion','period','status','notification','action'];
     dataSource = new MatTableDataSource();
     dataSourceControl = new MatTableDataSource();
     dataSourceControlOffice=new MatTableDataSource();
@@ -63,10 +63,6 @@ officeControl={
   ID: 0,
   FK_SISCOA_CONTROL_SISCOA_OficinaControl: 0,
   FK_SISCOA_OFICINA_SISCOA_OficinaControl: 0,
-  TB_EstaActivo: true,
-  TB_EstaBorrado: true,
-  TC_UltimaModificacion: "insertar",
-  TF_UltimaFechaModificacion: "2022-10-26T03:39:07.984Z",
   Control:null,
   Oficina:null
 }
@@ -83,24 +79,10 @@ this.name.nameOff=name;
 
 addControlOffice()
   {
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-
-   this.officeControl.TF_UltimaFechaModificacion=date.toString();
    console.log(this.officeControl);
-
    this.officeControl.FK_SISCOA_OFICINA_SISCOA_OficinaControl=this.office;
    this.officeControl.FK_SISCOA_CONTROL_SISCOA_OficinaControl=this.control;
-
-
-
-    this.restOfficeControl.add(this.officeControl).subscribe((result) => {
+   this.restOfficeControl.add(this.officeControl).subscribe((result) => {
     
       Swal.fire(
         'Good job!',

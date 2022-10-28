@@ -13,42 +13,21 @@ export class ConditionRegisterComponent implements OnInit {
   constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
 
 @Input()estado={ 
-    "ID": 3,
-    "TC_Nombre": "",
-    "TB_EstaActivo": true,
-    "TB_EstaBorrado": false,
-    "TC_UltimaModificacion": "string",
-    "TF_UltimaFechaModificacion": "",
-    "Controls": null}
+    "ID": 0,
+    "TC_Nombre": ""}
 
   ngOnInit(): void {
     
   }
 
   add(){
-   
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-
-   this.estado.TF_UltimaFechaModificacion=date.toString();
-   console.log(this.estado);
-
-
-
     this.rest.add(this.estado).subscribe((result) => {
-    
       Swal.fire(
         'Good job!',
         'Estado added sucessfully!',
         'success'
       ) 
-          
+      this.router.navigate(['/conditionList']);   
     }, (err) => {
       Swal.fire({
         icon: 'error',
