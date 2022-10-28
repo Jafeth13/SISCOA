@@ -19,10 +19,7 @@ export class OfficeRegisterComponent implements OnInit {
     "TC_Nombre": "",
     "TC_Institucion": "",
     "TB_EstadoActividad": true,
-    "TB_EstaActivo": true,
-    "TB_EstaBorrado": true,
-    "TC_UltimaModificacion": "string",
-    "TF_UltimaFechaModificacion": ""
+  
   }
   
   constructor(private fb: FormBuilder,public rest:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { 
@@ -36,20 +33,7 @@ this.getStatus();
   }
 
   add() {
-   
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-
- this.officeData.TC_UltimaModificacion='Jafeth';
- this.officeData.TF_UltimaFechaModificacion=date;
-this.officeData.TB_EstadoActividad=true;
-console.log(this.officeData);
+    console.log(this.officeData);
     this.rest.add(this.officeData).subscribe((result) => {
       this.router.navigate(['/officeList']);
       Swal.fire(
