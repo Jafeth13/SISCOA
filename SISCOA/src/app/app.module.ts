@@ -100,7 +100,7 @@ const appRoutes: Routes = [
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
-    path: 'addoffice',
+    path: 'addoffice/:ID',
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{

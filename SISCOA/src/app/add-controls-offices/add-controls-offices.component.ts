@@ -10,7 +10,7 @@ import { ServicesOfficeService } from '../services-office.service';
 import { ServicesControllersService } from '../services-controllers.service';
 import { OfficeControlServicesService } from '../office-control-services.service';
 import Swal from 'sweetalert2';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-add-controls-offices',
   templateUrl: './add-controls-offices.component.html',
@@ -33,7 +33,7 @@ export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
       indication:'Controles'
     }
       @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  constructor(public restOfficeControl:OfficeControlServicesService,public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
+  constructor(public restUser:ServiceUserService,public restOfficeControl:OfficeControlServicesService,public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -47,6 +47,12 @@ export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
         console.log(pos);
         this.dataSourceControl.data=pos
         });
+
+        this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+          console.log(data);
+        }); 
+
+        
    
   }
 
@@ -107,6 +113,16 @@ console.log(this.name.nameOff);
 this.addControlOffice();
 
 this.ngOnInit();
+  }
+
+
+
+  back(){
+    
+    this.router.navigate(["/controlMenu/"+this.route.snapshot.params['ID']]);
+
+    
+      
   }
 
 }
