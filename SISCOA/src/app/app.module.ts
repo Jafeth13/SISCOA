@@ -124,11 +124,11 @@ const appRoutes: Routes = [
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'controlMenu',
+    path: 'controlMenu/:ID',
     component: MenuControlComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'menuPrincipal',
+    path: 'menuPrincipal/:ID',
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
@@ -140,7 +140,7 @@ const appRoutes: Routes = [
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
-    path: 'controlOfice',
+    path: 'controlOfice/:ID',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{

@@ -4,7 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServicesControllersService } from '../services-controllers.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-control-ofice',
   templateUrl: './control-ofice.component.html',
@@ -14,26 +14,49 @@ import { ServicesControllersService } from '../services-controllers.service';
 export class ControlOficeComponent  implements AfterViewInit ,OnInit{
   displayedColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
   dataSource = new MatTableDataSource();
-  item:any=localStorage.getItem("Siscoa")!;
+  
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  constructor(public rest:ServicesControllersService,private route:ActivatedRoute,private router:Router) { }
-
+  constructor(public restUser:ServiceUserService,public rest:ServicesControllersService,private route:ActivatedRoute,private router:Router) { }
+  userData:any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+  idP:number=1
+  nc={
+    ncd:0
+  }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos)=>{
+     
+     this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+      console.log(data);
+      console.log('aqi')
+      this.userData = data;
+      this.nc.ncd=this.userData.TSISCOA_Oficina.ID;
+       console.log(this.nc.ncd);
+       this.rest.getControl(this.nc.ncd).subscribe((pos)=>{
+      console.log('entre')
       console.log(pos);
-      this.dataSource.data=pos
+      this.dataSource.data=pos;
       });
-      console.log(this.getKey());
+    }); 
+   
+
+
+      console.log('pase aqui')
+     
   }
 
-  getKey(){
-    return JSON.parse(atob(this.item.split('.',3)[1]));
+
+  back(){
+    
+    this.router.navigate(["/controlMenu/"+this.route.snapshot.params['ID']]);
+
+    
+      
   }
 
+ 
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();

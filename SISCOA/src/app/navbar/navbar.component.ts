@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import {AfterViewInit, ViewChild} from '@angular/core';
+import { LoginComponent } from '../login/login.component';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,17 +15,23 @@ import { AuthService } from '../auth.service';
 
 export class NavbarComponent implements OnInit {
     role: String = '';
-    email: String = 'Log in';
 
+    @Input() datos:any
+
+       
+     email: any = ''
   constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService) { }
 
   ngOnInit(): void {
     if(this.auth.getStorageRole()!=undefined){
      // this.email = this.auth.getStorageRole().sub;
-      this.role = this.auth.getStorageRole().role;
-     this.email=this.auth.getStorageRole().identification;
+     this.email
+
     }
+     console.log('aquiiii')
+     console.log(this.email)
   }
+  
   logout(){
 
     const Toast = Swal.mixin({
@@ -42,7 +53,7 @@ export class NavbarComponent implements OnInit {
 
 
     this.router.navigate(['/']);
-    this.email = 'Log in';
+    this.email 
     this.role = ''  
     this.auth.logout();
     this.auth.user = undefined;
