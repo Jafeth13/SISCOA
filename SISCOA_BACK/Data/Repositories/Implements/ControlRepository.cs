@@ -52,7 +52,8 @@ namespace Repositories.Repositories.Implements
                 {
                     if (item.FK_SISCOA_OFICINA_SISCOA_OficinaControl == id)
                     {
-                        list = await siscoa_context.Controles.Where(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl).ToListAsync();
+                        var temp2 = await siscoa_context.Controles.Where(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl).ToListAsync();
+                        list.Add(temp2[0]);
                     }
                 }
                 foreach (var item in list)
