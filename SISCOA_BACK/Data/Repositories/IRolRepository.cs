@@ -7,6 +7,6 @@ namespace Repositories.Repositories
     public interface IRolRepository : IGenericRepository<TSISCOA_Rol>
     {
         Task<bool> DeletedCheckOnEntity(int id);
-        Task<IEnumerable<TSISCOA_Rol>> GetAll();
+        Task<bool> VerifyPrivilegesRolUser(TSISCOA_Rol rol, string permit);
     }
 }

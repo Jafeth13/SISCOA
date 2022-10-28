@@ -12,14 +12,14 @@ namespace Services.Services.Implements
         {
             this.oficinaRepository = oficinaRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Oficina>> GetAll()
-        {
-            return await oficinaRepository.GetAll();
-        }
 
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             return await oficinaRepository.DeletedCheckOnEntity(id);
+        }
+
+        public async Task<IEnumerable<TSISCOA_Oficina>> GetOficinasByControl(int id) {
+            return await oficinaRepository.GetOficinasByControl(id);
         }
     }
 }

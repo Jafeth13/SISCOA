@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\MapperConfig.cs" />
+    <Compile Include="DTOs\TSISCOA_Actividad_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Control_DTO.cs" />
+    <Compile Include="DTOs\TSISCOA_Error_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Estado_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_OficinaControl_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Oficina_DTO.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="DTOs\TSISCOA_Permiso_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_RolPermiso_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Rol_DTO.cs" />
+    <Compile Include="DTOs\TSISCOA_UsuarioLogIn_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Usuario_DTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IControlService.cs" />
@@ -77,6 +80,8 @@
     <Compile Include="Services\Implements\PermisoService.cs" />
     <Compile Include="Services\Implements\RolPermisoService.cs" />
     <Compile Include="Services\Implements\RolService.cs" />
+    <Compile Include="Services\Implements\ActividadService.cs" />
+    <Compile Include="Services\Implements\ErrorService.cs" />
     <Compile Include="Services\Implements\UsuarioService.cs" />
     <Compile Include="Services\IOficinaControlService.cs" />
     <Compile Include="Services\IOficinaService.cs" />
@@ -84,6 +89,8 @@
     <Compile Include="Services\IPermisoService.cs" />
     <Compile Include="Services\IRolPermisoService.cs" />
     <Compile Include="Services\IRolService.cs" />
+    <Compile Include="Services\IActividadService.cs" />
+    <Compile Include="Services\IErrorService.cs" />
     <Compile Include="Services\IUsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>

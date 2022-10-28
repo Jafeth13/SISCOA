@@ -13,6 +13,31 @@
 
                     <input [(ngModel)]="period.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
+                    <div class="nc">
+                        <div>
+            <br>
+            <mat-label>Elige la fecha de inicio</mat-label>
+            <br>
+            <input class="nc" id="date1" matInput [matDatepicker]="picker" (dateInput)="selectDate('input', $event)" (dateChange)="selectDate('change', $event)"formControlName="firstCtrl" required>
+            <br>
+            <mat-hint class="nc">MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker" class="nc"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> 
+                                </div>
+
+
+
+                                <mat-label>Elige la fecha de fin</mat-label>
+                                <br>
+                                <input class="nc" id="date2" matInput [matDatepicker]="picker2" (dateInput)="selectDate2('input', $event)" (dateChange)="selectDate2('change', $event)"formControlName="firstCtrl" required>
+                                <br>
+                                <mat-hint class="nc">MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker2" class="nc"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                                
+
+                    </div>
+
                     <button class="submit-btn form-control" (click)="add()">Añadir</button>
 
                     <button routerLink="/periodList" class="submit-btn form-control" >Cancelar</button>
@@ -24,7 +49,7 @@
         
     </div>
     <div class="example-button-container">
-      
+
         </div>
 </section>
 

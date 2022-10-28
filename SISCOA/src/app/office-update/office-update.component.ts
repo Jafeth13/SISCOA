@@ -38,7 +38,9 @@ this.rut();
         'Good job!',
         'estado sucessfully updated!',
         'success'
-      )     
+      ) 
+      this.router.navigate(['/officeList']);    
+    
     }, (err) => {
       Swal.fire({
         icon: 'error',

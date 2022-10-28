@@ -64,6 +64,11 @@ import { ConditionRegisterComponent } from './condition-register/condition-regis
 import { MenuConfigurationComponent } from './menu-configuration/menu-configuration.component';
 import { ErrorSystemComponent } from './error-system/error-system.component';
 import { ActionUserComponent } from './action-user/action-user.component';
+import { MatSortModule, MAT_SORT_HEADER_INTL_PROVIDER } from '@angular/material/sort';
+import { ControlSeeComponent } from './control-see/control-see.component';
+import { OfficeSeeComponent } from './office-see/office-see.component';
+import { UserSeeComponent } from './user-see/user-see.component';
+import { RolSeeComponent } from './rol-see/rol-see.component';
 
 
 const appRoutes: Routes = [
@@ -83,11 +88,11 @@ const appRoutes: Routes = [
     data: { title: 'Agregar usuarios' }, 
   },  
   {
-    path: 'deleteUser',
+    path: 'deleteUser/:ID',
     component: UserDeleteComponent,
     data: { title: 'Eliminar usuarios' }, 
   },{
-    path: 'updateUser',
+    path: 'updateUser/:ID',
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
@@ -107,11 +112,11 @@ const appRoutes: Routes = [
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
-    path: 'deleteControl',
+    path: 'deleteControl/:ID',
     component: ControlDeleteComponent,
     data: { title: 'Elimianar control'}, 
   },{
-    path: 'updateControl',
+    path: 'updateControl/:ID',
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
@@ -143,7 +148,7 @@ const appRoutes: Routes = [
     component: CompleteControlComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'completeControlFile',
+    path: 'completeControlFile/:ID',
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
@@ -171,11 +176,11 @@ const appRoutes: Routes = [
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate',
+    path: 'permissionUpdate/:ID',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete',
+    path: 'permissionDelete/:ID',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
@@ -238,6 +243,22 @@ const appRoutes: Routes = [
     path: 'errorSystem',
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
+  },{
+    path: 'controlSee/:ID',
+    component: ControlSeeComponent,
+    data: { title: 'Controles'}, 
+  },{
+    path: 'userSee/:ID',
+    component: UserSeeComponent,
+    data: { title: 'Usuarios'}, 
+  },{
+    path: 'officeSee/:ID',
+    component: OfficeSeeComponent,
+    data: { title: 'Oficina'}, 
+  },{
+    path: 'rolSee/:ID',
+    component: RolSeeComponent,
+    data: { title: 'Rol'}, 
   }
 ];
 
@@ -286,7 +307,11 @@ const appRoutes: Routes = [
     ConditionRegisterComponent,
     MenuConfigurationComponent,
     ErrorSystemComponent,
-    ActionUserComponent
+    ActionUserComponent,
+    ControlSeeComponent,
+    OfficeSeeComponent,
+    UserSeeComponent,
+    RolSeeComponent
     
   ],
   imports: [
@@ -313,6 +338,19 @@ const appRoutes: Routes = [
     MatCardModule,
     MatTabsModule,
     NgxChartsModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatCardModule,
+    MatTabsModule
+    
     
   ],
   providers: [],

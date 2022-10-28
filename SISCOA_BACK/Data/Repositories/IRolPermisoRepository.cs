@@ -6,6 +6,5 @@ namespace Repositories.Repositories
 {
     public interface IRolPermisoRepository : IGenericRepository<TSISCOA_RolPermiso>
     {
-        Task<IEnumerable<TSISCOA_RolPermiso>> GetAll();
     }
 }

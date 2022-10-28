@@ -13,13 +13,13 @@ namespace Services.Services.Implements
         {
             this.controlRepository = controlRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Control>> GetAll()
-        {
-            return await controlRepository.GetAll();
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             return await controlRepository.DeletedCheckOnEntity(id);
+        }
+        public async Task<IEnumerable<TSISCOA_Control>> GetControlesByOficina(int id)
+        {
+            return await controlRepository.GetControlesByOficina(id);
         }
     }
 }

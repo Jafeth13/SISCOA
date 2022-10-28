@@ -6,6 +6,6 @@ namespace Repositories.Repositories
 {
     public interface IUsuarioRepository : IGenericRepository<TSISCOA_Usuario>
     {
-        Task<IEnumerable<TSISCOA_Usuario>> GetAll();
+        Task<TSISCOA_Usuario> LogIn(TSISCOA_Usuario usuario);
     }
 }

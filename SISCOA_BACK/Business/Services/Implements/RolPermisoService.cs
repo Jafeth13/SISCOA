@@ -14,10 +14,5 @@ namespace Services.Services.Implements
         {
             this.rolPermisoRepository = rolPermisoRepository;
         }
-
-        public async Task<IEnumerable<TSISCOA_RolPermiso>> GetAll()
-        {
-            return await rolPermisoRepository.GetAll();
-        }
     }
 }

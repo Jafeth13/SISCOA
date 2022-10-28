@@ -14,10 +14,5 @@ namespace Services.Services.Implements
         {
             this.usuarioRepository = usuarioRepository;
         }
-
-        public async Task<IEnumerable<TSISCOA_Usuario>> GetAll()
-        {
-            return await usuarioRepository.GetAll();
-        }
     }
 }

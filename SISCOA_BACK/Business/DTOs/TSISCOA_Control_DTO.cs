@@ -29,9 +29,9 @@ namespace Business.DTOs
         public int FK_TN_Estado { get; set; }
         [Required(ErrorMessage = "The field FK_TN_Periodo is required")]
         public int FK_TN_Periodo { get; set; }
-        [Required(ErrorMessage = "The field Estado is required")]
+        
         public virtual TSISCOA_Estado_DTO TSISCOA_Estado { get; set; }
-        [Required(ErrorMessage = "The field Periodo is required")]
+
         public virtual TSISCOA_Periodo_DTO TSISCOA_Periodo { get; set; }
     }
 }

@@ -34,7 +34,8 @@
             <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
             <td mat-cell *matCellDef="let element">   <div class="example-button-row">
                 <div class="example-button-container">
-                   <button mat-fab color="primary"  mat-button matStepperNext aria-label="Example icon button with a delete icon">
+                   <button (click)="dar(element.ID,element.TC_Nombre)"
+                   mat-fab color="primary"  mat-button matStepperNext aria-label="Example icon button with a delete icon">
                         <mat-icon>book</mat-icon>     
                     </button>  
                    
@@ -52,6 +53,9 @@
         aria-label="Select page of periodic elements">
         </mat-paginator>
 
+        <div>
+          <button mat-button routerLink="/controlMenu">Regresar</button>
+        </div>
         
 
    
@@ -61,7 +65,9 @@
       <mat-step>
           <ng-template matStepLabel>Lista de controles</ng-template>
 
-          <div class="mat-elevation-z8">
+          <div class="mat-elevation-z8">  
+          <input class="nameOffice" [(ngModel)]="name.nameOff"  disabled>
+
             <table mat-table [dataSource]="dataSourceControl">
               <!-- Name Column -->
               <ng-container matColumnDef="name">
@@ -154,8 +160,10 @@
     
                         <input  [(ngModel)]="controlDataupdate.TC_Nombre"   type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
                         
-                        <select class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                            <option value=0 selected>Seleciona tu Periodo </option>            
+                        <select [(ngModel)]="controlDataupdate.TSISCOA_Periodo.TC_Nombre"  class="form-control rounded-left" name="name" id="Admin">
+                            <option selected>Seleciona tu Periodo </option> 
+                            <option [value]="s.ID" *ngFor="let s of dataSourcePeriod">{{s.TC_Nombre}}</option>
+           
                         </select>
 
                         <input  [(ngModel)]="controlDataupdate.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
@@ -165,10 +173,11 @@
     
                         <input  type="text" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Dias extras" required="">
     
-                        <select   [(ngModel)]="controlDataupdate.TSISCOA_Estado.TC_Nombre"  class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                            <option value=0 selected>Seleciona tu Estado </option>            
+                        <select [(ngModel)]="controlDataupdate.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="role_Admin" id="role_Admin">
+                            <option selected>Seleciona tu Estado </option>            
                         </select>
-                        <input  type="text" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Notificacion" required="">
+
+                        <input  [(ngModel)]="controlDataupdate.TB_NotificacionCorreoAColaborador"  type="text" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Notificacion" required="">
 
                         <button class="submit-btn form-control">Actualizar</button>
 

@@ -55,11 +55,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\ICreatePrivilegesModule.cs" />
+    <Compile Include="Security\IDeletePrivilegesModule.cs" />
+    <Compile Include="Security\Implements\ConsultPrivilegesModule.cs" />
+    <Compile Include="Security\Implements\CreatePrivilegesModule.cs" />
+    <Compile Include="Security\Implements\DeletePrivilegesModule.cs" />
+    <Compile Include="Security\Implements\PutPrivilegesModule.cs" />
+    <Compile Include="Security\Implements\SessionModule.cs" />
+    <Compile Include="Security\IConsultPrivilegesModule.cs" />
+    <Compile Include="Security\IPutPrivilegesModule.cs" />
+    <Compile Include="Security\ISessionModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{c85eb1fe-fdde-482a-9a1c-207147c8a6e5}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{3ED44D53-C6B7-4FA6-94BF-C6FC6C108B79}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{9dea2505-19d8-45d0-afce-68c2c188b75c}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

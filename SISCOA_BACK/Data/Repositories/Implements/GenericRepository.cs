@@ -16,7 +16,10 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
-
+        public async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await siscoa_context.Set<TEntity>().ToListAsync();
+        }
         public async Task Delete(int id)
         {
             var entity = await GetById(id);

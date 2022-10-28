@@ -9,24 +9,20 @@
             <div class="entry-formRate">
                 <form  id="userRegister-entry-form">
                     <h2>Registrar</h2>
-                    <input  [(ngModel)]="officeData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input  [(ngModel)]="officeData.TC_Nombre" type="text" autocomplete="off" name="name_office" id="name_office" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input [(ngModel)]="officeData.TC_CodigoOficina" type="text" autocomplete="off" name="" id="najhme_Admin" class="form-control rounded-left" placeholder="Codigo" required="">
+                    <input [(ngModel)]="officeData.TC_CodigoOficina" type="text" autocomplete="off" name="code_office" id="code_oficina" class="form-control rounded-left" placeholder="Codigo" required="">
                     
-                    <input  [(ngModel)]="officeData.TC_Institucion" type="text" autocomplete="off" name="me_Admin" id="name_Admingfh" class="form-control rounded-left" placeholder="Institucion" required="">
+                    <input  [(ngModel)]="officeData.TC_Institucion" type="text" autocomplete="off" name="office_institution" id="office_institution" class="form-control rounded-left" placeholder="Institucion" required="">
          
                     <button class="submit-btn form-control" type="submit" (click)="add()">Añadir</button>
-
-                    <button routerLink="/officeList" class="submit-btn form-control"  >Cancelar</button>
                     
+                    <button routerLink="/officeList" class="submit-btn form-control"  >Cancelar</button>
                 </form>
-
             </div>
         </div>
-        
     </div>
     <div class="example-button-container">
-      
         </div>
 </section>
 

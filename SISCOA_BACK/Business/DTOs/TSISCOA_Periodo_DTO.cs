@@ -18,5 +18,8 @@ namespace Business.DTOs
         public string TC_UltimaModificacion { get; set; }
         [Required(ErrorMessage = "The field TF_UltimaFechaModificacion is required")]
         public DateTime TF_UltimaFechaModificacion { get; set; }
+        public DateTime TF_FechaInicio { get; set; }
+        public DateTime TF_FechaFin { get; set; }
+
     }
 }

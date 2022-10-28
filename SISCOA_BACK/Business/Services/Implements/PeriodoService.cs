@@ -13,10 +13,6 @@ namespace Services.Services.Implements
         {
             this.periodoRepository = periodoRepository;
         }
-        public async Task<IEnumerable<TSISCOA_Periodo>> GetAll()
-        {
-            return await periodoRepository.GetAll();
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
             return await periodoRepository.DeletedCheckOnEntity(id);
