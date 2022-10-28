@@ -14,9 +14,5 @@ namespace Entities.Models
         public string TC_Nombre { get; set; }
         public string TC_Institucion { get; set; }
         public bool TB_EstadoActividad { get; set; }
-        public bool TB_EstaActivo { get; set; }
-        public bool TB_EstaBorrado { get; set; }
-        public string TC_UltimaModificacion { get; set; }
-        public DateTime TF_UltimaFechaModificacion { get; set; }
     }
 }

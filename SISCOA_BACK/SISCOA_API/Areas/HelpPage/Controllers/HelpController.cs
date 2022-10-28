@@ -12,25 +12,35 @@ namespace SISCOA_API.Areas.HelpPage.Controllers
     public class HelpController : Controller
     {
         private const string ErrorViewName = "Error";
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HelpController()
             : this(GlobalConfiguration.Configuration)
         {
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HelpController(HttpConfiguration config)
         {
             Configuration = config;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HttpConfiguration Configuration { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ActionResult Index()
         {
             ViewBag.DocumentationProvider = Configuration.Services.GetDocumentationProvider();
             return View(Configuration.Services.GetApiExplorer().ApiDescriptions);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ActionResult Api(string apiId)
         {
             if (!String.IsNullOrEmpty(apiId))
@@ -44,7 +54,9 @@ namespace SISCOA_API.Areas.HelpPage.Controllers
 
             return View(ErrorViewName);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ActionResult ResourceModel(string modelName)
         {
             if (!String.IsNullOrEmpty(modelName))

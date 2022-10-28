@@ -12,15 +12,6 @@ namespace Business.DTOs
         public int FK_SISCOA_Rol_SISCOA_RolPermiso { get; set; }
         [Required(ErrorMessage = "The field FK_SISCOA_Permiso_SISCOA_RolPermiso is required")]
         public int FK_SISCOA_Permiso_SISCOA_RolPermiso { get; set; }
-        [Required(ErrorMessage = "The field TB_EstaActivo is required with value default true")]
-        public bool TB_EstaActivo { get; set; }
-        [Required(ErrorMessage = "The field TB_EstaBorrado is required with value default false")]
-        public bool TB_EstaBorrado { get; set; }
-        [Required(ErrorMessage = "The field TC_UltimaModificacion is required")]
-        [StringLength(50)]
-        public string TC_UltimaModificacion { get; set; }
-        [Required(ErrorMessage = "The field TF_UltimaFechaModificacion is required")]
-        public DateTime TF_UltimaFechaModificacion { get; set; }
         [Required(ErrorMessage = "The field TSISCOA_Permiso is required")]
         public virtual TSISCOA_Permiso_DTO TSISCOA_Permiso { get; set; }
         [Required(ErrorMessage = "The field TSISCOA_Rol is required")]

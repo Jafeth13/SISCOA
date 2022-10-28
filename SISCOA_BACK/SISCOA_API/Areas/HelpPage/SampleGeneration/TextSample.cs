@@ -7,6 +7,9 @@ namespace SISCOA_API.Areas.HelpPage
     /// </summary>
     public class TextSample
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public TextSample(string text)
         {
             if (text == null)
@@ -15,20 +18,28 @@ namespace SISCOA_API.Areas.HelpPage
             }
             Text = text;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string Text { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override bool Equals(object obj)
         {
             TextSample other = obj as TextSample;
             return other != null && Text == other.Text;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override int GetHashCode()
         {
             return Text.GetHashCode();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override string ToString()
         {
             return Text;

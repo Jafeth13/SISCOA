@@ -85,7 +85,9 @@ namespace SISCOA_API.Areas.HelpPage.ModelDescriptions
         };
 
         private Lazy<IModelDocumentationProvider> _documentationProvider;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
             if (config == null)
@@ -96,7 +98,9 @@ namespace SISCOA_API.Areas.HelpPage.ModelDescriptions
             _documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
             GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<string, ModelDescription> GeneratedModels { get; private set; }
 
         private IModelDocumentationProvider DocumentationProvider
@@ -106,7 +110,9 @@ namespace SISCOA_API.Areas.HelpPage.ModelDescriptions
                 return _documentationProvider.Value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ModelDescription GetOrCreateModelDescription(Type modelType)
         {
             if (modelType == null)

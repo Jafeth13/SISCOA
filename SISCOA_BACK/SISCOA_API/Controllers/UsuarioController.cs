@@ -33,7 +33,6 @@ namespace SISCOA_API.Controllers
         /// Inicia Sesion
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
-        /// <param name="id"></param>
         /// <returns>User</returns>
         /// <response code="200">OK. Inicio de sesion</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
