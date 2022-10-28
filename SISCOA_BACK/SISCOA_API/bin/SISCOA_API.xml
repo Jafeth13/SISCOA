@@ -1052,6 +1052,72 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:SISCOA_API.Controllers.EstadoControlesController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.GetAll">
+            <summary>
+            Obtiene todos los registros
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.GetDataGraphics_ControlsByState">
+            <summary>
+            Obtiene datos para grafico controles por estado
+            </summary>
+            <returns>Lista las cantidadades de controles con cada estado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.GetById(System.Int32)">
+            <summary>
+            Obtiene un registro por su id
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id del registro</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.Post(Business.DTOs.TSISCOA_EstadoControl_DTO)">
+            <summary>
+            Crea un registro
+            </summary>
+            <param name="DTO">El objeto JSON del registro</param>
+            <returns>Registro insertado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.Put(Business.DTOs.TSISCOA_EstadoControl_DTO,System.Int32)">
+            <summary>
+            Actualiza un registro
+            </summary>
+            <param name="DTO">El objeto JSON del registro</param>
+            <param name="id">Id del registro que quiere modificar</param>
+            <returns>Registro modificado</returns>
+            <response code="200">OK. Devuelve el registro modificado</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.EstadoControlesController.Delete(System.Int32)">
+            <summary>
+            Elimina un registro
+            </summary>
+            <param name="id">Id del registro que quiere eliminar</param>
+            <returns>OK</returns>
+            <response code="200">OK. El registro fue eliminado</response>
+            <response code="404">NotFound. No se encontro el registro</response>
+        </member>
         <member name="T:SISCOA_API.Controllers.OficinaControlesController">
             <summary>
             

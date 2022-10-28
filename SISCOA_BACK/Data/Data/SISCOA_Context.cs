@@ -15,6 +15,7 @@ namespace Data.Data
         public DbSet<TSISCOA_Estado> Estados { get; set; }
         public DbSet<TSISCOA_Oficina> Oficinas { get; set; }
         public DbSet<TSISCOA_OficinaControl> OficinaControles { get; set; }
+        public DbSet<TSISCOA_EstadoControl> EstadoControles { get; set; }
         public DbSet<TSISCOA_Periodo> Periodos { get; set; }
         public DbSet<TSISCOA_Permiso> Permisos { get; set; }
         public DbSet<TSISCOA_Rol> Roles { get; set; }

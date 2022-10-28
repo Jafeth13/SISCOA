@@ -20,13 +20,23 @@ GO
 INSERT INTO [CONTROL].[TSISCOA_Control]
            ([TC_Nombre]
            ,[TC_DescriptionDocumentacionEvidencia]
-           ,[FK_TN_Estado]
            ,[FK_TN_Periodo])
      VALUES
-           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia',1,1),
-           ('Revision','Comprobante de revision firmado',1,1)
+           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia',1),
+           ('Revision','Comprobante de revision firmado',1),
+		   ('Prestamo','Comprobante de prestamo firmado',1)
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Control]
+GO
+INSERT INTO [CONTROL].[TSISCOA_EstadoControl]
+			([FK_TN_ESTADO_SISCOA_EstadoControl]
+			,[FK_TN_CONTROL_SISCOA_EstadoControl])
+		VALUES
+			(1,1),
+			(2,2),
+			(2,3)
+GO
+--SELECT * FROM [CONTROL].[TSISCOA_EstadoControl]
 GO
 INSERT INTO [USUARIO].[TSISCOA_Rol]
            ([TC_Nombre])

@@ -58,6 +58,7 @@
     <Compile Include="DTOs\TSISCOA_Actividad_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Control_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Error_DTO.cs" />
+    <Compile Include="DTOs\TSISCOA_EstadoControl_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Estado_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_OficinaControl_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Oficina_DTO.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Services\Implements\ControlService.cs" />
     <Compile Include="Services\Implements\EstadoService.cs" />
     <Compile Include="Services\Implements\GenericService.cs" />
+    <Compile Include="Services\Implements\EstadoControlService.cs" />
     <Compile Include="Services\Implements\OficinaControlService.cs" />
     <Compile Include="Services\Implements\OficinaService.cs" />
     <Compile Include="Services\Implements\PeriodoService.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Services\Implements\ActividadService.cs" />
     <Compile Include="Services\Implements\ErrorService.cs" />
     <Compile Include="Services\Implements\UsuarioService.cs" />
+    <Compile Include="Services\IEstadoControlService.cs" />
     <Compile Include="Services\IOficinaControlService.cs" />
     <Compile Include="Services\IOficinaService.cs" />
     <Compile Include="Services\IPeriodoService.cs" />
