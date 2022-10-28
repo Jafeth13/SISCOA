@@ -122,8 +122,9 @@ this.control=id;
 
 console.log(this.name.nameOff);
 
+this.addControlOffice();
 
-
+this.ngOnInit();
   }
 
 }

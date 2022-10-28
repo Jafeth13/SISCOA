@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServicesPeriodService } from '../services-period.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-period-register',
@@ -9,6 +11,13 @@ import { ServicesPeriodService } from '../services-period.service';
   styleUrls: ['./period-register.component.css']
 })
 export class PeriodRegisterComponent implements OnInit {
+
+  date:any;
+  hour:any;
+  date2:any;
+  hour2:any;
+  startDate:any
+  enddate:any
   @Input()period={ 
     "ID": 3,
     "TC_Nombre": "",
@@ -22,6 +31,9 @@ export class PeriodRegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   add(){
+
+    this.startDate=this.date+'T'+this.hour+':00.000Z';
+    this.enddate=this.date2+'T'+this.hour2+':00.000Z';
    
     var date;
     date = new Date();
@@ -53,4 +65,22 @@ export class PeriodRegisterComponent implements OnInit {
       console.log(err);
     });
  }
+
+ selectDate(type: string, event: MatDatepickerInputEvent<Date>){
+  this.date=moment(event.value).format('YYYY-MM-DD');
+}
+
+selectHour(){
+  this.hour=(<HTMLInputElement> document.getElementById("time")).value;
+  }
+  selectDate2(type: string, event: MatDatepickerInputEvent<Date>){
+    this.date2=moment(event.value).format('YYYY-MM-DD');
+  }
+  
+  selectHour2(){
+    this.hour2=(<HTMLInputElement> document.getElementById("time")).value;
+    }
+
+
+
 }

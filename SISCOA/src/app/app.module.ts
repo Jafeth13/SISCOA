@@ -338,7 +338,19 @@ const appRoutes: Routes = [
     MatCardModule,
     MatTabsModule,
     NgxChartsModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatCardModule,
+    MatTabsModule
+    
     
   ],
   providers: [],

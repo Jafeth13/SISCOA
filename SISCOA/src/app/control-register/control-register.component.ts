@@ -21,17 +21,17 @@ export class ControlRegisterComponent implements OnInit {
     
       
         ID: 0,
-        TC_Nombre: "DFHG",
-        TC_DescriptionDocumentacionEvidencia: "DGF",
+        TC_Nombre: "",
+        TC_DescriptionDocumentacionEvidencia: "",
         TB_NotificacionCorreoAColaborador: true,
         TB_EstaActivo: true,
         TB_EstaBorrado: true,
         TC_UltimaModificacion: "string",
         TF_UltimaFechaModificacion: "2022-10-26T03:39:07.926Z",
-        FK_TN_Estado: 2,
-        FK_TN_Periodo: 13,
-        TSISCOA_Estado:{ID:0},
-        TSISCOA_Periodo:{ID:0}
+        FK_TN_Estado: 0,
+        FK_TN_Periodo: 0,
+        TSISCOA_Estado:null,
+        TSISCOA_Periodo:null
       
   }
   ngOnInit(): void {
