@@ -259,3 +259,6 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\D
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.pdb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll.config
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.pdb
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll.config

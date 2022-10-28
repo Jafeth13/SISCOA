@@ -33,5 +33,6 @@ namespace Business.DTOs
         public virtual TSISCOA_Estado_DTO TSISCOA_Estado { get; set; }
 
         public virtual TSISCOA_Periodo_DTO TSISCOA_Periodo { get; set; }
+        
     }
 }

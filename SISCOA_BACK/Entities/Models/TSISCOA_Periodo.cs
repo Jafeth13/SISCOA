@@ -17,6 +17,8 @@ namespace Entities.Models
     
         public DateTime TF_UltimaFechaModificacion { get; set; }
         public virtual ICollection<TSISCOA_Control> TSISCOA_Control { get; set; }
-  
+        public DateTime TF_FechaInicio { get; set; }
+        public DateTime TF_FechaFin { get; set; }
+
     }
 }

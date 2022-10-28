@@ -55,6 +55,11 @@ namespace Repositories.Repositories.Implements
                         list = await siscoa_context.Controles.Where(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl).ToListAsync();
                     }
                 }
+                foreach (var item in list)
+                {
+                    item.TSISCOA_Estado = await siscoa_context.Estados.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Estado);
+                    item.TSISCOA_Periodo = await siscoa_context.Periodos.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Periodo);
+                }
                 return list;
             }
             return null;

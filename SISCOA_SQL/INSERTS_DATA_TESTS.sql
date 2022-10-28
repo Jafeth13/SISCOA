@@ -90,3 +90,12 @@ INSERT INTO [OFICINA].[TSISCOA_Oficina]
            ('AB123','Cartago','OIJ',1)
 GO
 --SELECT * FROM [OFICINA].[TSISCOA_Oficina]
+GO
+INSERT INTO [OFICINA].[TSISCOA_OficinaControl]
+           ([FK_SISCOA_CONTROL_SISCOA_OficinaControl]
+           ,[FK_SISCOA_OFICINA_SISCOA_OficinaControl])
+     VALUES
+           (1,1),
+		   (2,1)
+GO
+--SELECT * FROM [OFICINA].[TSISCOA_OficinaControl]
