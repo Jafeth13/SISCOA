@@ -44,7 +44,7 @@ export class ControlRegisterComponent implements OnInit {
         this.dataConditional=pos
         });
   }
-
+temp:any
   add(){
     var date;
     date = new Date();
@@ -57,6 +57,12 @@ export class ControlRegisterComponent implements OnInit {
 
    this.controlData.TF_UltimaFechaModificacion=date.toString();
    console.log(this.controlData);
+   this.temp=this.controlData.TB_NotificacionCorreoAColaborador
+if(this.temp=='no'){
+  this.controlData.TB_NotificacionCorreoAColaborador=false
+}else{
+  this.controlData.TB_NotificacionCorreoAColaborador=true
+}
 
     this.restControl.add(this.controlData).subscribe((result) => {
     
@@ -65,6 +71,7 @@ export class ControlRegisterComponent implements OnInit {
         'User added sucessfully!',
         'success'
       )     
+      this.router.navigate(['/listControl']);
     }, (err) => {
       Swal.fire({
         icon: 'error',

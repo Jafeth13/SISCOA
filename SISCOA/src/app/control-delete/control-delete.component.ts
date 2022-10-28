@@ -39,6 +39,7 @@ delete(){
       (data) =>{
         console.log(data);
         this.ngOnInit();
+        this.router.navigate(['/listControl']);
       }
     ); 
       Swal.fire(
