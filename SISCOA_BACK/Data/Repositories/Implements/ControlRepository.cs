@@ -20,8 +20,7 @@ namespace Repositories.Repositories.Implements
             var list = await siscoa_context.Controles.ToListAsync();
             foreach (var item in list)
             {
-                item.TSISCOA_Estado = await siscoa_context.Estados.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Estado);
-                item.TSISCOA_Periodo = await siscoa_context.Periodos.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Periodo);
+               item.TSISCOA_Periodo = await siscoa_context.Periodos.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Periodo);
             }
             return list;
         }
@@ -31,7 +30,6 @@ namespace Repositories.Repositories.Implements
 
             if (list != null)
             {
-                list.TSISCOA_Estado = await siscoa_context.Estados.FirstOrDefaultAsync(x => x.ID == list.FK_TN_Estado);
                 list.TSISCOA_Periodo = await siscoa_context.Periodos.FirstOrDefaultAsync(x => x.ID == list.FK_TN_Periodo);              
             }
             return list;
@@ -58,12 +56,52 @@ namespace Repositories.Repositories.Implements
                 }
                 foreach (var item in list)
                 {
-                    item.TSISCOA_Estado = await siscoa_context.Estados.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Estado);
+                    //item.TSISCOA_Estado = await siscoa_context.Estados.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Estado);
                     item.TSISCOA_Periodo = await siscoa_context.Periodos.FirstOrDefaultAsync(x => x.ID == item.FK_TN_Periodo);
                 }
                 return list;
             }
             return null;
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsByState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsByState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsSlopes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsSlopes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsNotAssigned()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsNotAssigned()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsWithExtraDays()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsWithExtraDays()
+        {
+            throw new NotImplementedException();
         }
     }
 }

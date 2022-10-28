@@ -58,6 +58,7 @@
     <Compile Include="Models\TSISCOA_Control.cs" />
     <Compile Include="Models\TSISCOA_Error.cs" />
     <Compile Include="Models\TSISCOA_Estado.cs" />
+    <Compile Include="Models\TSISCOA_EstadoControl.cs" />
     <Compile Include="Models\TSISCOA_Oficina.cs" />
     <Compile Include="Models\TSISCOA_OficinaControl.cs" />
     <Compile Include="Models\TSISCOA_Periodo.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Models\TSISCOA_RolPermiso.cs" />
     <Compile Include="Models\TSISCOA_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\TSISCOA_DataGraphics.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

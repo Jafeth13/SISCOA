@@ -1,14 +1,13 @@
 ﻿using Entities.Models;
+using Entities.Util;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Services.Services
+namespace Repositories.Repositories
 {
-    public interface IControlService : IGenericService<TSISCOA_Control>
+    public interface IEstadoControlRepository : IGenericRepository<TSISCOA_EstadoControl>
     {
-        Task<bool> DeletedCheckOnEntity(int id);
-        Task<IEnumerable<TSISCOA_Control>> GetControlesByOficina(int id);
-        Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsByState();
+        Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByState();
         Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsByState();
         Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsSlopes();
         Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsSlopes();
