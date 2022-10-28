@@ -43,15 +43,16 @@ export class ControlUpdateComponent implements OnInit {
   }
   temp: any;
   update() {
-    this.temp = this.controlDataDelete.TB_NotificacionCorreoAColaborador;
-    if (this.temp == 'no') {
-      this.controlDataDelete.TB_NotificacionCorreoAColaborador = false;
-    } else {
-      this.controlDataDelete.TB_NotificacionCorreoAColaborador = true;
+    this.temp=this.controlDataDelete.TB_NotificacionCorreoAColaborador
+    if(this.temp=='no'){
+      this.controlDataDelete.TB_NotificacionCorreoAColaborador=false
+    }else{
+      if(this.temp=='si')
+      this.controlDataDelete.TB_NotificacionCorreoAColaborador=true
     }
     console.log(this.route.snapshot.params['ID']);
     this.restControl
-      .update(this.route.snapshot.params['ID'], this.controlDataDelete)
+      .update(this.controlDataDelete,this.route.snapshot.params['ID'],)
       .subscribe(
         (data) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');

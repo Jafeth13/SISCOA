@@ -187,6 +187,21 @@
             {{ element.TB_NotificacionCorreoAColaborador }}
           </td>
         </ng-container>
+
+        <ng-container matColumnDef="period">
+          <th mat-header-cell *matHeaderCellDef><b>Periodo</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Periodo.TC_Nombre }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef><b>Estado</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Estado.TC_Nombre }}
+          </td>
+        </ng-container>
+
         <!-- action Column -->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef><b>Action</b></th>

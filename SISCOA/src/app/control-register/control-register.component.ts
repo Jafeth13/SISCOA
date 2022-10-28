@@ -24,10 +24,6 @@ export class ControlRegisterComponent implements OnInit {
         TC_Nombre: "",
         TC_DescriptionDocumentacionEvidencia: "",
         TB_NotificacionCorreoAColaborador: true,
-        TB_EstaActivo: true,
-        TB_EstaBorrado: true,
-        TC_UltimaModificacion: "string",
-        TF_UltimaFechaModificacion: "2022-10-26T03:39:07.926Z",
         FK_TN_Estado: 0,
         FK_TN_Periodo: 0,
         TSISCOA_Estado:null,
@@ -46,21 +42,12 @@ export class ControlRegisterComponent implements OnInit {
   }
 temp:any
   add(){
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-
-   this.controlData.TF_UltimaFechaModificacion=date.toString();
-   console.log(this.controlData);
-   this.temp=this.controlData.TB_NotificacionCorreoAColaborador
+    
+  this.temp=this.controlData.TB_NotificacionCorreoAColaborador
 if(this.temp=='no'){
   this.controlData.TB_NotificacionCorreoAColaborador=false
 }else{
+  if(this.temp=='si')
   this.controlData.TB_NotificacionCorreoAColaborador=true
 }
 
