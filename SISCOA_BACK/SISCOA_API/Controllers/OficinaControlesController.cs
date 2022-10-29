@@ -2,6 +2,7 @@
 using Business.DTOs;
 using Data.Data;
 using Entities.Models;
+using Entities.Util;
 using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
@@ -42,6 +43,20 @@ namespace SISCOA_API.Controllers
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
 
             return Ok(DTO);
+        }
+        /// <summary>
+        /// Obtiene todos los registros
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphics_ControlsByStates")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
+        public async Task<IHttpActionResult> GetDataGraphics_ControlsByStates()
+        {
+            var entities = await service.GetDataGraphics_ControlsByStates();
+
+            return Ok(entities);
         }
         /// <summary>
         /// Obtiene un registro por su id
