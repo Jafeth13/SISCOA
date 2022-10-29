@@ -78,7 +78,7 @@ const appRoutes: Routes = [
     data: { title: 'Login' }, 
   },
   {
-    path: 'listUser',
+    path: 'listUser/:ID',
     component: UserListComponent,
     data: { title: 'Lista de usuarios' }, 
   },  
@@ -152,19 +152,19 @@ const appRoutes: Routes = [
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'rolList',
+    path: 'rolList/:ID',
     component: RolListComponent,
     data: { title: 'Listar Roles'}, 
   },{
-    path: 'rolRegister',
+    path: 'rolRegister/:ID',
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate/:ID',
+    path: 'rolUpdate/:ID/:IDS',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete/:ID',
+    path: 'rolDelete/:ID/:IDS',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
@@ -256,7 +256,7 @@ const appRoutes: Routes = [
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
-    path: 'rolSee/:ID',
+    path: 'rolSee/:ID/:IDS',
     component: RolSeeComponent,
     data: { title: 'Rol'}, 
   },{

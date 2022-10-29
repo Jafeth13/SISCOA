@@ -12,7 +12,7 @@ import { ServiceUserService } from '../service-user.service';
 export class UserListComponent implements AfterViewInit,OnInit {
   displayedColumns: string[] = ['Identificacion', 'name', 'Surname','secondSurname','ofice','role', 'action'];
   dataSource = new MatTableDataSource();
-  constructor(public rest:ServiceUserService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:ServiceUserService,private route:ActivatedRoute,private router:Router,public restUser:ServiceUserService) { }
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
@@ -22,6 +22,7 @@ export class UserListComponent implements AfterViewInit,OnInit {
   ngOnInit(): void {
     this.rest.userList().subscribe((pos)=>{
       console.log(pos);
+      console.log('pinte')
       this.dataSource.data=pos
       });
   }
@@ -31,6 +32,15 @@ export class UserListComponent implements AfterViewInit,OnInit {
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
 
+  rut(){
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+     });
+  }
+
+  back() {
+    this.router.navigate(['/Menu/' + this.route.snapshot.params['ID']]);
+  }
 }
 
 

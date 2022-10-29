@@ -14,7 +14,9 @@ export class MenuComponent implements OnInit {
     private router: Router,
     public auth: AuthService,
     public restUser: ServiceUserService
-  ) {}
+  ) {
+    this.rut();
+  }
   userData: any;
   ngOnInit(): void {}
   rut() {
