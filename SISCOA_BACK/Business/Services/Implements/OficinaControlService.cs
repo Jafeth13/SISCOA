@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.Util;
 using Repositories.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace Services.Services.Implements
         {
             this.oficinaControlRepository = oficinaControlRepository;
         }
-
+        public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
+        {
+            return await oficinaControlRepository.GetDataGraphics_ControlsByStates();
+        }
     }
 }

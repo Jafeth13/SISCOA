@@ -1069,6 +1069,13 @@
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates">
+            <summary>
+            Obtiene todos los registros
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32)">
             <summary>
             Obtiene un registro por su id
