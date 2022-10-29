@@ -28,8 +28,10 @@ namespace Repositories.Repositories.Implements
                 var list = new List<TSISCOA_Oficina>();
                 foreach (var item in temp)
                 {
-                    if (item.FK_TN_CONTROL_SISCOA_OficinaControl == id) {
-                        list = await siscoa_context.Oficinas.Where(x => x.ID == item.FK_TN_OFICINA_SISCOA_OficinaControl).ToListAsync();
+                    if (item.FK_TN_CONTROL_SISCOA_OficinaControl == id) 
+                    {
+                        var temp2 = await siscoa_context.Oficinas.Where(x => x.ID == item.FK_TN_OFICINA_SISCOA_OficinaControl).ToListAsync();
+                        list.Add(temp2[0]);
                     }
                 }
                 return list;
