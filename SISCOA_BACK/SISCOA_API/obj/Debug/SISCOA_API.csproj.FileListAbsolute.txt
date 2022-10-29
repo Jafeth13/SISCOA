@@ -130,10 +130,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\S
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.pdb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\SISCOA_API\bin\Security.dll.config
-C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.xml
-C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Optimization.xml
-C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Razor.xml
-C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.dll
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\SISCOA_API.dll.config
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\SISCOA_API.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\SISCOA_API.dll
@@ -242,8 +238,11 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\N
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.Cors.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Net.Http.Formatting.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Helpers.xml
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Http.WebHost.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Mvc.xml
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Optimization.xml
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.Razor.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.WebPages.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\System.Web.WebPages.Razor.xml
@@ -261,4 +260,5 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\bin\e
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.csproj.AssemblyReference.cache
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.csproj.CopyComplete
+C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.dll
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\SISCOA_API\obj\Debug\SISCOA_API.pdb

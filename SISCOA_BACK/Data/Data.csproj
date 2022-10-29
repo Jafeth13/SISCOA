@@ -136,7 +136,6 @@
     <Compile Include="Repositories\Implements\ErrorRepository.cs" />
     <Compile Include="Repositories\Implements\EstadoRepository.cs" />
     <Compile Include="Repositories\Implements\GenericRepository.cs" />
-    <Compile Include="Repositories\Implements\EstadoControlRepository.cs" />
     <Compile Include="Repositories\Implements\OficinaControlRepository.cs" />
     <Compile Include="Repositories\Implements\OficinaRepository.cs" />
     <Compile Include="Repositories\Implements\PeriodoRepository.cs" />
@@ -144,7 +143,6 @@
     <Compile Include="Repositories\Implements\RolPermisoRepository.cs" />
     <Compile Include="Repositories\Implements\RolRepository.cs" />
     <Compile Include="Repositories\Implements\UsuarioRepository.cs" />
-    <Compile Include="Repositories\IEstadoControlRepository.cs" />
     <Compile Include="Repositories\IOficinaControlRepository.cs" />
     <Compile Include="Repositories\IOficinaRepository.cs" />
     <Compile Include="Repositories\IPeriodoRepository.cs" />

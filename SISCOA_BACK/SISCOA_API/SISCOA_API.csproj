@@ -201,7 +201,6 @@
     <Compile Include="Controllers\ControlsController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\EstadoControlesController.cs" />
     <Compile Include="Controllers\OficinaControlesController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\PeriodoController.cs" />

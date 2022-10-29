@@ -28,15 +28,40 @@ INSERT INTO [CONTROL].[TSISCOA_Control]
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Control]
 GO
-INSERT INTO [CONTROL].[TSISCOA_EstadoControl]
-			([FK_TN_ESTADO_SISCOA_EstadoControl]
-			,[FK_TN_CONTROL_SISCOA_EstadoControl])
-		VALUES
-			(1,1),
-			(2,2),
-			(2,3)
+INSERT INTO [OFICINA].[TSISCOA_Oficina]
+           ([TC_CodigoOficina]
+           ,[TC_Nombre]
+           ,[TC_Institucion]
+           ,[TB_EstadoActividad])
+     VALUES
+           ('AB123','Cartago','OIJ',1),
+           ('CD333','San Jose','OIJ',1),
+           ('BG553','Heredia','OIJ',1),
+           ('RU777','Puntarenas','OIJ',1)
 GO
---SELECT * FROM [CONTROL].[TSISCOA_EstadoControl]
+--SELECT * FROM [OFICINA].[TSISCOA_Oficina]
+GO
+INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
+           ([TC_Comentario]
+           ,[FK_TN_CONTROL_SISCOA_OficinaControl]
+           ,[FK_TN_OFICINA_SISCOA_OficinaControl]
+           ,[FK_TN_ESTADO_SISCOA_OficinaControl]
+           ,[FK_TN_PERIODO_SISCOA_OficinaControl])
+     VALUES
+           ('',1,1,1,1),
+           ('',2,1,2,1),
+           ('',3,1,2,2),
+           ('',2,2,2,2),
+           ('',3,3,1,1),
+           ('',1,4,2,2)
+GO
+/**
+SELECT * FROM [CONTROL].[TSISCOA_Control]
+SELECT * FROM [OFICINA].[TSISCOA_Oficina]
+SELECT * FROM [CONTROL].[TSISCOA_Estado]
+SELECT * FROM [CONTROL].[TSISCOA_Periodo]
+**/
+--SELECT * FROM [CONTROL].[TSISCOA_OficinaControl]
 GO
 INSERT INTO [USUARIO].[TSISCOA_Rol]
            ([TC_Nombre])
@@ -90,22 +115,3 @@ INSERT INTO [USUARIO].[TSISCOA_Permiso]
 
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Permiso]
-GO
-INSERT INTO [OFICINA].[TSISCOA_Oficina]
-           ([TC_CodigoOficina]
-           ,[TC_Nombre]
-           ,[TC_Institucion]
-           ,[TB_EstadoActividad])
-     VALUES
-           ('AB123','Cartago','OIJ',1)
-GO
---SELECT * FROM [OFICINA].[TSISCOA_Oficina]
-GO
-INSERT INTO [OFICINA].[TSISCOA_OficinaControl]
-           ([FK_SISCOA_CONTROL_SISCOA_OficinaControl]
-           ,[FK_SISCOA_OFICINA_SISCOA_OficinaControl])
-     VALUES
-           (1,1),
-		   (2,1)
-GO
---SELECT * FROM [OFICINA].[TSISCOA_OficinaControl]
