@@ -83,7 +83,7 @@ const appRoutes: Routes = [
     data: { title: 'Lista de usuarios' }, 
   },  
   {
-    path: 'registerUser',
+    path: 'registerUser/:ID',
     component: UserRegisterComponent,
     data: { title: 'Agregar usuarios' }, 
   },  
@@ -104,11 +104,11 @@ const appRoutes: Routes = [
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'registerControl',
+    path: 'registerControl/:ID',
     component: ControlRegisterComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'listControl',
+    path: 'listControl/:ID',
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{

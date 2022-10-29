@@ -15,17 +15,6 @@
 
                     <input  [(ngModel)]="controlData.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Adfdmin" id="name_Addfdmin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <select [(ngModel)]="controlData.FK_TN_Periodo"    class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Periodo</option>   
-                        <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
-         
-                    </select>
-
-                    <select  [(ngModel)]="controlData.FK_TN_Estado"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Estado</option>
-                        <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
-            
-                    </select>
 
                     <div class="radio">
                         <label>Notificacion al Correo?</label>
@@ -39,7 +28,7 @@
                
                     <button class="submit-btn form-control" (click)="add();" >Añadir</button>
 
-                    <button routerLink="/listControl" class="submit-btn form-control" >Cancelar</button>
+                    <button (click)="back();" class="submit-btn form-control" >Cancelar</button>
                 </form>
 
             </div>
