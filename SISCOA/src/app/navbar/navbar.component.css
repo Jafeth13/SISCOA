@@ -5373,7 +5373,13 @@ section {
     background-color: #000;
     color: #fff;
     border: #0000;
+    float: left;
 
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #ffc800;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
 
