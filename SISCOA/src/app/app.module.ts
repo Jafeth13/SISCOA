@@ -96,11 +96,11 @@ const appRoutes: Routes = [
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
-    path: 'officeControl',
+    path: 'officeControl/:ID',
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
-    path: 'addoffice',
+    path: 'addoffice/:ID',
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
@@ -120,19 +120,19 @@ const appRoutes: Routes = [
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
-    path: 'menu',
+    path: 'menu/:ID',
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'controlMenu',
+    path: 'controlMenu/:ID',
     component: MenuControlComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'menuPrincipal',
+    path: 'menuPrincipal/:ID',
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'check',
+    path: 'check/:ID',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
@@ -140,7 +140,7 @@ const appRoutes: Routes = [
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
-    path: 'controlOfice',
+    path: 'controlOfice/:ID',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{
@@ -232,7 +232,7 @@ const appRoutes: Routes = [
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
-    path: 'menuConfiguration',
+    path: 'menuConfiguration/:ID',
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
@@ -258,6 +258,10 @@ const appRoutes: Routes = [
   },{
     path: 'rolSee/:ID',
     component: RolSeeComponent,
+    data: { title: 'Rol'}, 
+  },{
+    path: 'navbar/:ID',
+    component: NavbarComponent,
     data: { title: 'Rol'}, 
   }
 ];

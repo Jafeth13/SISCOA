@@ -1,112 +1,129 @@
-
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {AfterViewInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ServicesOfficeService } from '../services-office.service';
 import { ServicesControllersService } from '../services-controllers.service';
 import { OfficeControlServicesService } from '../office-control-services.service';
 import Swal from 'sweetalert2';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-add-controls-offices',
   templateUrl: './add-controls-offices.component.html',
-  styleUrls: ['./add-controls-offices.component.css']
+  styleUrls: ['./add-controls-offices.component.css'],
 })
-export class AddControlsOfficesComponent implements OnInit,AfterViewInit {
-   firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    displayedColumns: string[] = ['name', 'code','institution', 'action'];
-    displayedxColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
-    displayedColumnsOfice:string[] = ['name', 'Descripcion','period','status','notification','action'];
-    dataSource = new MatTableDataSource();
-    dataSourceControl = new MatTableDataSource();
-    dataSourceControlOffice=new MatTableDataSource();
-    control:any;
-    office:any;
-    name={
-      nameOff:'',
-      indication:'Controles'
-    }
-      @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  constructor(public restOfficeControl:OfficeControlServicesService,public rest:ServicesOfficeService,public rest2:ServicesControllersService,private route:ActivatedRoute,private router:Router,private _formBuilder: FormBuilder) { }
+export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  displayedColumns: string[] = ['name', 'code', 'institution', 'action'];
+  displayedxColumns: string[] = [
+    'name',
+    'Descripcion',
+    'Period',
+    'status',
+    'notification',
+    'action',
+  ];
+  displayedColumnsOfice: string[] = [
+    'name',
+    'Descripcion',
+    'period',
+    'status',
+    'notification',
+    'action',
+  ];
+  dataSource = new MatTableDataSource();
+  dataSourceControl = new MatTableDataSource();
+  dataSourceControlOffice = new MatTableDataSource();
+  control: any;
+  office: any;
+  name = {
+    nameOff: '',
+    indication: 'Controles',
+  };
+  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  constructor(
+    public restUser: ServiceUserService,
+    public restOfficeControl: OfficeControlServicesService,
+    public rest: ServicesOfficeService,
+    public rest2: ServicesControllersService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private _formBuilder: FormBuilder
+  ) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos)=>{
+    this.rest.officeList().subscribe((pos) => {
       console.log(pos);
-      this.dataSource.data=pos
-      });
-     this.rest2.officeList().subscribe((pos)=>{
-        console.log(pos);
-        this.dataSourceControl.data=pos
-        });
-   
-  }
-
-  applyFilter(event:Event){
-    const filterValue=(event.target as HTMLInputElement).value;
-    this.dataSource.filter=filterValue.trim().toLowerCase();
-  }
-
-  
-
-
-
-officeControl={
-  ID: 0,
-  FK_SISCOA_CONTROL_SISCOA_OficinaControl: 0,
-  FK_SISCOA_OFICINA_SISCOA_OficinaControl: 0,
-  Control:null,
-  Oficina:null
-}
-
-darOfice(id:any,name:any){
-  this.office=id;
-  this.rest2.getControl(this.office).subscribe((pos)=>{
-    console.log(pos);
-    this.dataSourceControlOffice.data=pos
+      this.dataSource.data = pos;
     });
-    this.control=id;
-this.name.nameOff=name;
+    this.rest2.officeList().subscribe((pos) => {
+      console.log(pos);
+      this.dataSourceControl.data = pos;
+    });
+
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+      console.log(data);
+    });
   }
 
-addControlOffice()
-  {
-   console.log(this.officeControl);
-   this.officeControl.FK_SISCOA_OFICINA_SISCOA_OficinaControl=this.office;
-   this.officeControl.FK_SISCOA_CONTROL_SISCOA_OficinaControl=this.control;
-   this.restOfficeControl.add(this.officeControl).subscribe((result) => {
-    
-      Swal.fire(
-        'Good job!',
-        'Estado added sucessfully!',
-        'success'
-      )     
-    }, (err) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      });
-      console.log(err);
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  officeControl = {
+    ID: 0,
+    FK_SISCOA_CONTROL_SISCOA_OficinaControl: 0,
+    FK_SISCOA_OFICINA_SISCOA_OficinaControl: 0,
+    Control: null,
+    Oficina: null,
+  };
+
+  darOfice(id: any, name: any) {
+    this.office = id;
+    this.rest2.getControl(this.office).subscribe((pos) => {
+      console.log(pos);
+      this.dataSourceControlOffice.data = pos;
     });
+    this.control = id;
+    this.name.nameOff = name;
+  }
+
+  addControlOffice() {
     console.log(this.officeControl);
-  } 
-   dar(id:any){
-this.control=id;
-
-console.log(this.name.nameOff);
-
-this.addControlOffice();
-
-this.ngOnInit();
+    this.officeControl.FK_SISCOA_OFICINA_SISCOA_OficinaControl = this.office;
+    this.officeControl.FK_SISCOA_CONTROL_SISCOA_OficinaControl = this.control;
+    this.restOfficeControl.add(this.officeControl).subscribe(
+      (result) => {
+        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+        console.log(err);
+      }
+    );
+    console.log(this.officeControl);
+  }
+  dar(id: any) {
+    this.control = id;
+    console.log(this.name.nameOff);
+    this.addControlOffice();
+    this.ngOnInit();
   }
 
+  back() {
+    this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+  }
 }

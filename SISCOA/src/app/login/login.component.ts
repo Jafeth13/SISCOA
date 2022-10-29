@@ -18,7 +18,8 @@ export class LoginComponent implements OnInit {
     TC_Identificacion: "",
     TV_Contrasenna: "",
     TC_Correo: "" 
-}
+}  
+ name:any;
 constructor(private fb: FormBuilder,public restUser:ServiceUserService,private route:ActivatedRoute,private router:Router,private auth:AuthService) {
   
   this.loginForm = this.fb.group({
@@ -30,7 +31,7 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
   ngOnInit(): void {
   
   }
-
+ ID:number=0;
   logIn(){
 
     const Toast = Swal.mixin({
@@ -46,9 +47,13 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
     })
 
     this.auth.login(this.loginForm.value).subscribe((data={})=>{
-      console.log(this.userData);
-      this.router.navigate(["/menuPrincipal"]);
+      console.log(data); 
+      this.ID=data.ID;
+      this.router.navigate(["/controlMenu/"+this.ID]);
+      this.router.navigate(["/navbar/"+this.ID]);
 
+     
+      console.log(this.ID);
       Toast.fire({
         icon: 'success',
         title: 'Signed in successfully'

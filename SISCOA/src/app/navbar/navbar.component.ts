@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../auth.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import {AfterViewInit, ViewChild} from '@angular/core';
+import { LoginComponent } from '../login/login.component';
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,17 +15,24 @@ import { AuthService } from '../auth.service';
 
 export class NavbarComponent implements OnInit {
     role: String = '';
-    email: String = 'Log in';
+userData:any
+    @Input() datos:any
 
-  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService) { }
+       
+     email: any = ''
+  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService,public restUser: ServiceUserService   ) { }
 
   ngOnInit(): void {
-    if(this.auth.getStorageRole()!=undefined){
+   // if(this.auth.getStorageRole()!=undefined){
      // this.email = this.auth.getStorageRole().sub;
-      this.role = this.auth.getStorageRole().role;
-     this.email=this.auth.getStorageRole().identification;
-    }
+   //  this.email
+
+    //}
+    this.rut();
+     console.log('aquiiii')
+     console.log(this.email)
   }
+  
   logout(){
 
     const Toast = Swal.mixin({
@@ -42,14 +54,20 @@ export class NavbarComponent implements OnInit {
 
 
     this.router.navigate(['/']);
-    this.email = 'Log in';
+    this.email 
     this.role = ''  
     this.auth.logout();
     this.auth.user = undefined;
   }
 
-  openDialog() {
-    this.router.navigate(['/LoginForm']); 
+  rut(){
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      this.email=this.userData.TC_Identificacion;
     
+    });
   }
+
+ 
 }
