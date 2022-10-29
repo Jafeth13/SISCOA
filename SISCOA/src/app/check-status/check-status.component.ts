@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AuthService } from '../auth.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-check-status',
   templateUrl: './check-status.component.html',
@@ -64,12 +67,18 @@ export class CheckStatusComponent  {
       "value": 3
     }
   ];
+userData:any
 
+  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService,public restUser: ServiceUserService   ) {
+this.rut();
+   }
 
-constructor() {
-     //Object.assign(this, { single })
-     }
-
+   rut(){
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;    
+    });
+  }
   
 
   onSelect(data:any): void {

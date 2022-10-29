@@ -65,12 +65,9 @@ userData:any
       console.log(data);
       this.userData = data;
       this.email=this.userData.TC_Identificacion;
-      console.log('se logro hp');
+    
     });
   }
 
-  openDialog() {
-    this.router.navigate(['/LoginForm']); 
-    
-  }
+ 
 }

@@ -5,11 +5,11 @@
         
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <li class="nav-item"><a class="nav-link" id="loginId" (click)="openDialog()">{{email}}</a></li>    
-                <li class="nav-item"><a  routerLink="/check" class="nav-link" id="bookingNav">Graficos</a></li>
-                <li class="nav-item">  <a routerLink="/menu" class="nav-link">Catalogo</a></li>           
-                <li class="nav-item">  <a routerLink="/controlMenu" class="nav-link">Controles</a></li>
-                <li class="nav-item">  <a routerLink="/menuConfiguration" class="nav-link">Configuracion</a></li>
+                <li class="nav-item"><a class="nav-link" id="loginId" >{{email}}</a></li>    
+                <li class="nav-item"><a  routerLink="/check/{{this.userData.ID}}" class="nav-link" id="bookingNav">Graficos</a></li>
+                <li class="nav-item">  <a routerLink="/menu/{{this.userData.ID}}" class="nav-link">Catalogo</a></li>           
+                <li class="nav-item">  <a routerLink="/controlMenu/{{this.userData.ID}}" class="nav-link">Controles</a></li>
+                <li class="nav-item">  <a routerLink="/menuConfiguration/{{this.userData.ID}}" class="nav-link">Configuracion</a></li>
                 <li class="nav-item">   <a *ngIf="auth.isLoggedIn$ | async" (click)="logout()" id="logoutId" class="nav-link">
                     Cerrar sesion
                 </a></li>

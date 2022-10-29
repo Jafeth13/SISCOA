@@ -120,7 +120,7 @@ const appRoutes: Routes = [
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
-    path: 'menu',
+    path: 'menu/:ID',
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
@@ -132,7 +132,7 @@ const appRoutes: Routes = [
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'check',
+    path: 'check/:ID',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
@@ -232,7 +232,7 @@ const appRoutes: Routes = [
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
-    path: 'menuConfiguration',
+    path: 'menuConfiguration/:ID',
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
