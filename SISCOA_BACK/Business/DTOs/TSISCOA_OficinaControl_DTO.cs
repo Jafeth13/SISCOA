@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Business.DTOs
 {
@@ -7,10 +9,17 @@ namespace Business.DTOs
     {
         public int ID { get; set; }
         [Required(ErrorMessage = "The field FK_SISCOA_CONTROL_SISCOA_OficinaControl is required")]
-        public int FK_SISCOA_CONTROL_SISCOA_OficinaControl { get; set; }
+        public int FK_TN_CONTROL_SISCOA_OficinaControl { get; set; }
         [Required(ErrorMessage = "The field FK_SISCOA_OFICINA_SISCOA_OficinaControl is required")]
-        public int FK_SISCOA_OFICINA_SISCOA_OficinaControl { get; set; }
-        public virtual TSISCOA_Control_DTO Control { get; set; }
-        public virtual TSISCOA_Oficina_DTO Oficina { get; set; }
+        public int FK_TN_OFICINA_SISCOA_OficinaControl { get; set; }
+        [Required(ErrorMessage = "The field FK_SISCOA_ESTADO_SISCOA_OficinaControl is required")]
+        public int FK_TN_ESTADO_SISCOA_OficinaControl { get; set; }
+        [Required(ErrorMessage = "The field FK_SISCOA_PERIODO_SISCOA_OficinaControl is required")]
+        public int FK_TN_PERIODO_SISCOA_OficinaControl { get; set; }
+        public virtual TSISCOA_Control TSISCOA_Control { get; set; }
+        public virtual TSISCOA_Oficina TSISCOA_Oficina { get; set; }
+        public virtual TSISCOA_Estado TSISCOA_Estado { get; set; }
+        public virtual TSISCOA_Periodo TSISCOA_Periodo { get; set; }
+
     }
 }

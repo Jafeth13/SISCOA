@@ -15,9 +15,6 @@ namespace Business.DTOs
                 cfg.CreateMap<TSISCOA_Estado, TSISCOA_Estado_DTO>();
                 cfg.CreateMap<TSISCOA_Estado_DTO, TSISCOA_Estado>();
 
-                cfg.CreateMap<TSISCOA_EstadoControl, TSISCOA_EstadoControl_DTO>();
-                cfg.CreateMap<TSISCOA_EstadoControl_DTO, TSISCOA_EstadoControl>();
-
                 cfg.CreateMap<TSISCOA_Oficina, TSISCOA_Oficina_DTO>();
                 cfg.CreateMap<TSISCOA_Oficina_DTO, TSISCOA_Oficina>();
 

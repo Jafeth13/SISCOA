@@ -16,11 +16,7 @@ namespace Repositories.Repositories.Implements
         public new async Task<IEnumerable<TSISCOA_OficinaControl>> GetAll()
         {
             var list = await siscoa_context.OficinaControles.ToListAsync();
-            foreach (var item in list)
-            {
-                item.TSISCOA_Oficina = await siscoa_context.Oficinas.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_OFICINA_SISCOA_OficinaControl);
-                item.TSISCOA_Control = await siscoa_context.Controles.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_CONTROL_SISCOA_OficinaControl);
-            }
+            
             return list;
         }
     }

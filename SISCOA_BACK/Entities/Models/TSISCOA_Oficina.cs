@@ -14,5 +14,6 @@ namespace Entities.Models
         public string TC_Nombre { get; set; }
         public string TC_Institucion { get; set; }
         public bool TB_EstadoActividad { get; set; }
+        
     }
 }

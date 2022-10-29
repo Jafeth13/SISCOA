@@ -11,7 +11,6 @@ namespace Entities.Models
         [Key]
         public int ID { get; set; }
         public string TC_Nombre { get; set; }
-        public virtual ICollection<TSISCOA_Control> TSISCOA_Control { get; set; }
         public DateTime TF_FechaInicio { get; set; }
         public DateTime TF_FechaFin { get; set; }
 
