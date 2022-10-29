@@ -5370,9 +5370,9 @@ section {
 
 .navButton{
     text-transform: uppercase;
-    background-color: #080808;
+    background-color: #000;
     color: #fff;
-    border: #070707;
+    border: #0000;
 
 }
 

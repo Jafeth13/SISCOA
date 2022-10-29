@@ -50,7 +50,8 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       console.log(data); 
       this.ID=data.ID;
       this.router.navigate(["/controlMenu/"+this.ID]);
-      
+      this.router.navigate(["/navbar/"+this.ID]);
+
      
       console.log(this.ID);
       Toast.fire({

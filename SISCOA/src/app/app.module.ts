@@ -96,7 +96,7 @@ const appRoutes: Routes = [
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
-    path: 'officeControl',
+    path: 'officeControl/:ID',
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
@@ -258,6 +258,10 @@ const appRoutes: Routes = [
   },{
     path: 'rolSee/:ID',
     component: RolSeeComponent,
+    data: { title: 'Rol'}, 
+  },{
+    path: 'navbar/:ID',
+    component: NavbarComponent,
     data: { title: 'Rol'}, 
   }
 ];

@@ -6,7 +6,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import { LoginComponent } from '../login/login.component';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -15,19 +15,20 @@ import { LoginComponent } from '../login/login.component';
 
 export class NavbarComponent implements OnInit {
     role: String = '';
-
+userData:any
     @Input() datos:any
 
        
      email: any = ''
-  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService) { }
+  constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService,public restUser: ServiceUserService   ) { }
 
   ngOnInit(): void {
-    if(this.auth.getStorageRole()!=undefined){
+   // if(this.auth.getStorageRole()!=undefined){
      // this.email = this.auth.getStorageRole().sub;
-     this.email
+   //  this.email
 
-    }
+    //}
+    this.rut();
      console.log('aquiiii')
      console.log(this.email)
   }
@@ -57,6 +58,15 @@ export class NavbarComponent implements OnInit {
     this.role = ''  
     this.auth.logout();
     this.auth.user = undefined;
+  }
+
+  rut(){
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      this.email=this.userData.TC_Identificacion;
+      console.log('se logro hp');
+    });
   }
 
   openDialog() {
