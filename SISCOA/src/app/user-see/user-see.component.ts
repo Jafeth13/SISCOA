@@ -12,6 +12,7 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserSeeComponent implements OnInit {
   userData:any
+  userData2:any
   constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
   roleData:any;
   dataOffice:any;
@@ -35,6 +36,10 @@ export class UserSeeComponent implements OnInit {
     this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
+    });
+    this.restUser.get(this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData2 = data;
     });
   }
   

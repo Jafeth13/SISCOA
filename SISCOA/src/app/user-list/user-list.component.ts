@@ -4,6 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServiceUserService } from '../service-user.service';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -20,21 +21,25 @@ export class UserListComponent implements AfterViewInit,OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
+    this.rut();
     this.rest.userList().subscribe((pos)=>{
       console.log(pos);
-      console.log('pinte')
       this.dataSource.data=pos
       });
+      
   }
 
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
-
+userData:any
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+      
       console.log(data);
+      this.userData = data;
+      console.log(this.userData.ID )
      });
   }
 

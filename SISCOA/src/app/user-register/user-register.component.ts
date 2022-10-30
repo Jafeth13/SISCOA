@@ -32,7 +32,10 @@ export class UserRegisterComponent implements OnInit {
   ) {}
   roleData: any;
   dataOffice: any;
+  userDataLog:any
   ngOnInit(): void {
+
+    this.rut();
     this.rest.rolList().subscribe((pos) => {
       console.log(pos);
       this.roleData = pos;
@@ -54,7 +57,7 @@ export class UserRegisterComponent implements OnInit {
     this.restUser.add(this.userData).subscribe(
       (result) => {
         Swal.fire('Good job!', 'User added sucessfully!', 'success');
-        this.router.navigate(['/listUser']);
+        this.router.navigate(['/listUser/'+this.userDataLog.ID]);
       },
       (err) => {
         Swal.fire({
@@ -65,5 +68,15 @@ export class UserRegisterComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+  rut(){
+    this.restUser
+    .get(this.route.snapshot.params['ID'])
+    .subscribe((data: {}) => { 
+       console.log('sou yo')
+    
+      this.userDataLog = data;
+      console.log(this.userDataLog);
+    });
   }
 }
