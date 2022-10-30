@@ -124,8 +124,8 @@ namespace SISCOA_API.Controllers
         /// <response code="404">NotFound. No se encontro el registro</response>
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPut]
-        [ResponseType(typeof(TSISCOA_Estado_DTO))]
-        public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO DTO, int id)
+        [ResponseType(typeof(TSISCOA_Control_DTO))]
+        public async Task<IHttpActionResult> Put(TSISCOA_Control_DTO DTO, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
