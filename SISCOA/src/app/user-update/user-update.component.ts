@@ -11,6 +11,7 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserUpdateComponent implements OnInit {
   @Input() userData: any;
+  userData2:any;
   constructor(
     public restUser: ServiceUserService,
     public rest: ServicesRolService,
@@ -43,6 +44,12 @@ export class UserUpdateComponent implements OnInit {
         console.log(data);
         this.userData = data;
       });
+      this.restUser
+      .get(this.route.snapshot.params['IDS'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData2 = data;
+      });
   }
 
   Update() {
@@ -52,7 +59,7 @@ export class UserUpdateComponent implements OnInit {
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'User added sucessfully!', 'success');
-          this.router.navigate(['/listUser']);
+          this.router.navigate(['/listUser/'+this.userData2.ID]);
         },
         (err) => {
           Swal.fire({

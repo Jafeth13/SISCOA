@@ -11,6 +11,8 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserDeleteComponent implements OnInit {
   userData:any
+  userData2:any
+
   constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
   roleData:any;
   dataOffice:any;
@@ -35,32 +37,20 @@ export class UserDeleteComponent implements OnInit {
       console.log(data);
       this.userData = data;
     });
+    this.restUser.get(this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData2 = data;
+    });
   }
   
   delete(){
-   
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-  
-   this.userData.TF_UltimaFechaModificacion=date.toString();
-   console.log(this.userData);
-  
-  
-  
     this.restUser.delete(this.route.snapshot.params['ID']).subscribe((result) => {
-    
       Swal.fire(
         'Good job!',
         'User added sucessfully!',
         'success'
       )     
-      this.router.navigate(['/listUser']);    
+      this.router.navigate(['/listUser/'+this.userData2.ID]);    
     }, (err) => {
       Swal.fire({
         icon: 'error',

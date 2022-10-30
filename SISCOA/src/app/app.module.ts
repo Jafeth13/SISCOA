@@ -88,11 +88,11 @@ const appRoutes: Routes = [
     data: { title: 'Agregar usuarios' }, 
   },  
   {
-    path: 'deleteUser/:ID',
+    path: 'deleteUser/:ID/:IDS',
     component: UserDeleteComponent,
     data: { title: 'Eliminar usuarios' }, 
   },{
-    path: 'updateUser/:ID',
+    path: 'updateUser/:ID/:IDS',
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
@@ -248,7 +248,7 @@ const appRoutes: Routes = [
     component: ControlSeeComponent,
     data: { title: 'Controles'}, 
   },{
-    path: 'userSee/:ID',
+    path: 'userSee/:ID/:IDS',
     component: UserSeeComponent,
     data: { title: 'Usuarios'}, 
   },{
