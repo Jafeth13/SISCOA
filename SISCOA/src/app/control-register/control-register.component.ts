@@ -4,6 +4,8 @@ import { ServiceConditionService } from '../service-condition.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ServiceUserService } from '../service-user.service';
+
 
 @Component({
   selector: 'app-control-register',
@@ -11,8 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./control-register.component.css']
 })
 export class ControlRegisterComponent implements OnInit {
-
-  constructor(public restControl:ServicesControllersService,public restPeriod:ServicesPeriodService,
+userData:any
+  constructor(public restUser:ServiceUserService,public restControl:ServicesControllersService,public restPeriod:ServicesPeriodService,
    
     public restConditional:ServiceConditionService,private route:ActivatedRoute,private router:Router) { } 
     dataPeriod:any;
@@ -24,10 +26,7 @@ export class ControlRegisterComponent implements OnInit {
         TC_Nombre: "",
         TC_DescriptionDocumentacionEvidencia: "",
         TB_NotificacionCorreoAColaborador: true,
-        FK_TN_Estado: 0,
-        FK_TN_Periodo: 0,
-        TSISCOA_Estado:null,
-        TSISCOA_Periodo:null
+   
       
   }
   ngOnInit(): void {
@@ -58,7 +57,7 @@ if(this.temp=='no'){
         'User added sucessfully!',
         'success'
       )     
-      this.router.navigate(['/listControl']);
+      this.back();
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -68,5 +67,17 @@ if(this.temp=='no'){
       console.log(err);
     });
   }
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
+  }
 
+
+  back() {
+    this.router.navigate(['/listControl/' + this.route.snapshot.params['ID']]);
+  } 
 }

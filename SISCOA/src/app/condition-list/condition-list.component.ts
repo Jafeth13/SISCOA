@@ -4,6 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServiceConditionService } from '../service-condition.service';
+import { ServiceUserService } from '../service-user.service';
 
 @Component({
   selector: 'app-condition-list',
@@ -15,7 +16,8 @@ export class ConditionListComponent implements AfterViewInit,OnInit {
   conditionalList:any
   displayedColumns: string[] = ['name','action'];
   dataSource = new MatTableDataSource();
-  constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
+  userData:any
+  constructor(public restUser:ServiceUserService,public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
   ngAfterViewInit() {
@@ -32,4 +34,17 @@ export class ConditionListComponent implements AfterViewInit,OnInit {
     console.log(pos);
     this.dataSource.data=pos
     });
-  }}
+    this.rut();
+  }
+
+ 
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
+  }
+
+}

@@ -55,15 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\ICreatePrivilegesModule.cs" />
-    <Compile Include="Security\IDeletePrivilegesModule.cs" />
-    <Compile Include="Security\Implements\ConsultPrivilegesModule.cs" />
-    <Compile Include="Security\Implements\CreatePrivilegesModule.cs" />
-    <Compile Include="Security\Implements\DeletePrivilegesModule.cs" />
-    <Compile Include="Security\Implements\PutPrivilegesModule.cs" />
+    <Compile Include="Security\Implements\PrivilegesModule.cs" />
     <Compile Include="Security\Implements\SessionModule.cs" />
-    <Compile Include="Security\IConsultPrivilegesModule.cs" />
-    <Compile Include="Security\IPutPrivilegesModule.cs" />
+    <Compile Include="Security\IPrivilegesModule.cs" />
     <Compile Include="Security\ISessionModule.cs" />
   </ItemGroup>
   <ItemGroup>

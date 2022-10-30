@@ -13,7 +13,7 @@
                 
                     <input [(ngModel)]="roleDataDelete.TC_Nombre"  type="text" autocomplete="off" name="name_role" id="name_role" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
 
-                    <button routerLink="/rolList" class="submit-btn form-control" >Volver</button>
+                    <button (click)="back();" class="submit-btn form-control" >Volver</button>
                     
                 </form>
 
@@ -22,6 +22,6 @@
          
     </div>
     <div class="example-button-container">
-      
+        
         </div>
 </section>

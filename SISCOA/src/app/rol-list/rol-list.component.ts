@@ -4,7 +4,8 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServicesRolService } from '../services-rol.service';
-
+import { ServiceUserService } from '../service-user.service';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-rol-list',
   templateUrl: './rol-list.component.html',
@@ -13,8 +14,8 @@ import { ServicesRolService } from '../services-rol.service';
 export class RolListComponent implements AfterViewInit,OnInit {
   displayedColumns: string[] = ['name','action'];
   dataSource = new MatTableDataSource();
-  constructor(public rest:ServicesRolService,private route:ActivatedRoute,private router:Router) { }
-
+  constructor(public restUser:ServiceUserService,public rest:ServicesRolService,private route:ActivatedRoute,private router:Router) { }
+userData:any
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
   ngAfterViewInit() {
@@ -25,8 +26,19 @@ ngOnInit(): void {
     console.log(pos);
     this.dataSource.data=pos
     });
+    this.rut()
 }
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
-  }}
+  }
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
+  }
+
+}

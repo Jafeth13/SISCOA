@@ -78,12 +78,12 @@ const appRoutes: Routes = [
     data: { title: 'Login' }, 
   },
   {
-    path: 'listUser',
+    path: 'listUser/:ID',
     component: UserListComponent,
     data: { title: 'Lista de usuarios' }, 
   },  
   {
-    path: 'registerUser',
+    path: 'registerUser/:ID',
     component: UserRegisterComponent,
     data: { title: 'Agregar usuarios' }, 
   },  
@@ -104,11 +104,11 @@ const appRoutes: Routes = [
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'registerControl',
+    path: 'registerControl/:ID',
     component: ControlRegisterComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'listControl',
+    path: 'listControl/:ID',
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
@@ -152,23 +152,23 @@ const appRoutes: Routes = [
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'rolList',
+    path: 'rolList/:ID',
     component: RolListComponent,
     data: { title: 'Listar Roles'}, 
   },{
-    path: 'rolRegister',
+    path: 'rolRegister/:ID',
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate/:ID',
+    path: 'rolUpdate/:ID/:IDS',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete/:ID',
+    path: 'rolDelete/:ID/:IDS',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
-    path: 'permissionList',
+    path: 'permissionList/:ID',
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
@@ -184,7 +184,7 @@ const appRoutes: Routes = [
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
-    path: 'officeList',
+    path: 'officeList/:ID',
     component: OfficeListComponent,
     data: { title: 'Listar Oficinas'}, 
   },{
@@ -200,7 +200,7 @@ const appRoutes: Routes = [
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{
-    path: 'periodList',
+    path: 'periodList/:ID',
     component: PeriodListComponent,
     data: { title: 'Listar Periodos'}, 
   },{
@@ -216,7 +216,7 @@ const appRoutes: Routes = [
     component: PeriodDeleteComponent,
     data: { title: 'Eliminar Periodos'}, 
   },{
-    path: 'conditionList',
+    path: 'conditionList/:ID',
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
@@ -256,7 +256,7 @@ const appRoutes: Routes = [
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
-    path: 'rolSee/:ID',
+    path: 'rolSee/:ID/:IDS',
     component: RolSeeComponent,
     data: { title: 'Rol'}, 
   },{
