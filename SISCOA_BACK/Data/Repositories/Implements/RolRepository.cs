@@ -19,9 +19,9 @@ namespace Repositories.Repositories.Implements
             flag = await siscoa_context.Usuarios.AnyAsync(x => x.ID == id);
             return flag;
         }
-        public async Task<bool> VerifyPrivilegesRolUser(TSISCOA_Rol rol, string permit)
+        public async Task<bool> VerifyPrivilegesRolUser(int rol, string permit)
         {
-            var rolPermitsList = await siscoa_context.RolPermisos.Where(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == rol.ID).ToListAsync();
+            var rolPermitsList = await siscoa_context.RolPermisos.Where(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == rol).ToListAsync();
             foreach (var item in rolPermitsList)
             {
                 item.TSISCOA_Permiso = await siscoa_context.Permisos.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso);
