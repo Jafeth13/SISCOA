@@ -45,7 +45,7 @@ namespace SISCOA_API.Controllers
             return Ok(DTO);
         }
         /// <summary>
-        /// Obtiene todos los registros
+        /// Obtiene la cantidad de controles en cada uno de los estados
         /// </summary>
         /// <returns>Lista de todos los registros</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
@@ -57,6 +57,42 @@ namespace SISCOA_API.Controllers
             var entities = await service.GetDataGraphics_ControlsByStates();
 
             return Ok(entities);
+        }
+        /// <summary>
+        /// Obtiene la cantidad de controles que estan pendientes
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphics_ControlsBySlopes")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
+        public async Task<IHttpActionResult> GetDataGraphics_ControlsBySlopes()
+        {
+            var entities = await service.GetDataGraphics_ControlsSlopes();
+
+            return Ok(entities);
+        }
+        /// <summary>
+        /// Obtiene un registro por id de oficina
+        /// </summary>
+        /// <remark>
+        /// </remark>
+        /// <param name="id">Id de la oficina</param>
+        /// <returns>Registro</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
+        [Route("api/OficinaControl/GetOfficeControlByIdOffice/{id}")]
+        [HttpGet]
+        [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
+        public async Task<IHttpActionResult> GetOfficeControlByIdOffice(int id)
+        {
+            var entities = await service.GetOfficeControlByIdOffice(id);
+            if (entities == null)
+                return NotFound();
+
+            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(entities));
+
+            return Ok(DTO);
         }
         /// <summary>
         /// Obtiene un registro por su id

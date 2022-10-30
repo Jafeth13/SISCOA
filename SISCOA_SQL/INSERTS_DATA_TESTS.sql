@@ -53,7 +53,8 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ('',3,1,2,2),
            ('',2,2,2,2),
            ('',3,3,1,1),
-           ('',1,4,2,2)
+           ('',1,4,2,2),
+		   ('',1,3,1,2)
 GO
 /**
 SELECT * FROM [CONTROL].[TSISCOA_Control]
@@ -61,7 +62,12 @@ SELECT * FROM [OFICINA].[TSISCOA_Oficina]
 SELECT * FROM [CONTROL].[TSISCOA_Estado]
 SELECT * FROM [CONTROL].[TSISCOA_Periodo]
 **/
---SELECT * FROM [CONTROL].[TSISCOA_OficinaControl]
+SELECT
+*
+FROM [CONTROL].[TSISCOA_OficinaControl]
+WHERE [TSISCOA_OficinaControl].[FK_TN_ESTADO_SISCOA_OficinaControl] = 1
+GROUP BY [FK_TN_ESTADO_SISCOA_OficinaControl]
+
 GO
 INSERT INTO [USUARIO].[TSISCOA_Rol]
            ([TC_Nombre])

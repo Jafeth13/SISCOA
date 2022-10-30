@@ -28,5 +28,28 @@ namespace Repositories.Repositories.Implements
                 }).ToListAsync();
             return list;
         }
+
+        public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsSlopes()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TSISCOA_Estado.TC_Nombre == "Pendiente")
+                .GroupBy(x => x.FK_TN_PERIODO_SISCOA_OficinaControl)
+                .Select(x => new TSISCOA_DataGraphics
+                {
+                    ID_State = x.Key,
+                    //elements distints
+                    Name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
+                    Value = x.Count()
+                }).ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetOfficeControlByIdOffice(int id)
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.FK_TN_OFICINA_SISCOA_OficinaControl == id)
+                .ToListAsync();
+            return list;
+        }
     }
 }

@@ -997,24 +997,23 @@
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.GetById(System.Int32,System.String)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
-            <param name="rol">Rol del usuario activo</param>
+            <param name="rol">Id del registro</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO,System.String)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
-            <param name="rol">Rol del usuario activo</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
@@ -1071,10 +1070,28 @@
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates">
             <summary>
-            Obtiene todos los registros
+            Obtiene la cantidad de controles en cada uno de los estados
             </summary>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsBySlopes">
+            <summary>
+            Obtiene la cantidad de controles que estan pendientes
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetOfficeControlByIdOffice(System.Int32)">
+            <summary>
+            Obtiene un registro por id de oficina
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id de la oficina</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32)">
             <summary>

@@ -15,7 +15,7 @@ namespace Services.Services.Implements
         {
             return await rolRepository.DeletedCheckOnEntity(id);
         }
-        public async Task<bool> VerifyPrivilegesRolUser(TSISCOA_Rol rol, string permit)
+        public async Task<bool> VerifyPrivilegesRolUser(int rol, string permit)
         {
             return await rolRepository.VerifyPrivilegesRolUser(rol, permit);
         }
