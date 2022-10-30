@@ -1,71 +1,80 @@
-<app-navbar> </app-navbar>
-
-<section>
-    <div class="container">
-        <div class="text-center">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h2 class="section-heading text-uppercase">Control con dias extras </h2>
-            <br>
-            <br>
-            <br>
-            
-            <div class="form-group" >
-            <H5>Buscar</H5> 
-            <input>
+<app-navbar-login></app-navbar-login>
+<div class="container">
+    <div class="text-center">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <h1 class="section-heading text-uppercase">Controles que se le asignaron dias extras</h1>
+       
+      
+        
+       
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Busqueda</mat-label>
+                <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)">
+              </mat-form-field>
+        
             </div>
-            
-        </div>
+      
+      <div class="centrarTable">
     
-          <br>
-          <br>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="table-responsive">
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef><b> Nombre</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TC_Nombre}} </td>
+      </ng-container>
+  
+      <!-- Descripcion Column -->
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef><b> Descripcion</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TC_DescriptionDocumentacionEvidencia}} </td>
+      </ng-container>
+  
+      <!-- Period Column -->
+       <ng-container matColumnDef="Period">
+        <th mat-header-cell *matHeaderCellDef><b> Periodo</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Periodo.TC_Nombre}} </td>
+      </ng-container>
 
-                    <table id="ClientReservation-table" class="table table-bordered table-hover">
-
-                        <thead>
-                            <tr>
-                                <th>
-                                    Nombre
-                                </th>
-                                <th>
-                                    Oficina
-                                </th>
-                                <th>
-                                    Fecha limite
-                                </th>
-                          
-                                <th>
-                                    Nueva fecha limite
-                                </th>
-                                <th>
-                                    Cordinador
-                                </th>
-                         
-                         
-                            </tr>
-                        </thead>
-                        <tbody id="UserReservation-tbody">
-                            <tr >
-                      <td scope="row">Asistencia </td>
-                      <td scope="row">Oficina central</td>
-                      <td scope="row">15-2-2022</td>
-                      <td scope="row">17-2-2022 </td>
-                      <td scope="row">Jose Perez</td>
-                      
-                     
-                      
-
-                            </tr>
-                         </tbody>
-
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+   <!-- status Column -->
+   <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Estado </b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Estado.TC_Nombre}} </td>
+  </ng-container>
+     <!-- role Column -->
+     <ng-container matColumnDef="notification">
+        <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
+        <td mat-cell *matCellDef="let element"> {{element.TB_NotificacionCorreoAColaborador}} </td>
+      </ng-container>
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
+        <td mat-cell *matCellDef="let element">   <div class="example-button-row">
+            <div class="example-button-container">
+              <button mat-fab color="primary" routerLink="/controlSee/{{element.ID}}" aria-label="Example icon button with a delete icon">
+                    <mat-icon>search</mat-icon>     
+                </button>  
+                             
+            </div>    
+             
+          </div> </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>

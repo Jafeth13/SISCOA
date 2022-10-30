@@ -122,14 +122,18 @@ namespace SISCOA_API.Areas.HelpPage
         /// Gets the parameter names.
         /// </summary>
         public HashSet<string> ParameterNames { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public Type ParameterType { get; private set; }
 
         /// <summary>
         /// Gets the <see cref="SampleDirection"/>.
         /// </summary>
         public SampleDirection? SampleDirection { get; private set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override bool Equals(object obj)
         {
             HelpPageSampleKey otherKey = obj as HelpPageSampleKey;
@@ -145,7 +149,9 @@ namespace SISCOA_API.Areas.HelpPage
                 SampleDirection == otherKey.SampleDirection &&
                 ParameterNames.SetEquals(otherKey.ParameterNames);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override int GetHashCode()
         {
             int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();

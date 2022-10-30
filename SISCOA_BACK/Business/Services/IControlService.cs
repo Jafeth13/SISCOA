@@ -8,5 +8,13 @@ namespace Services.Services
     {
         Task<bool> DeletedCheckOnEntity(int id);
         Task<IEnumerable<TSISCOA_Control>> GetControlesByOficina(int id);
+        Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsByState();
+        Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsByState();
+        Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsSlopes();
+        Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsSlopes();
+        Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsNotAssigned();
+        Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsNotAssigned();
+        Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsWithExtraDays();
+        Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsWithExtraDays();
     }
 }

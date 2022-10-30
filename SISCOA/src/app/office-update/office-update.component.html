@@ -11,11 +11,11 @@
                     <h2>Actualizar</h2>
                     <input   type="text"  hidden>
 
-                    <input [(ngModel)]="officeDataupdate.TC_Nombre" placeholder="Nombre" type ="text" autocomplete="off" name="name_Adhgmin" id="name_Admin3" class="form-control rounded-left" required="">
+                    <input [(ngModel)]="officeDataupdate.TC_Nombre" placeholder="Nombre" type ="text" autocomplete="off" name="name_office" id="name_office" class="form-control rounded-left" required="">
 
-                    <input  type="text" autocomplete="off" name="nahgdfgme_hgAdmin" id="nadmin1" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_CodigoOficina" placeholder="Codigo" required="">
+                    <input  type="text" autocomplete="off" name="office_code" id="office_code" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_CodigoOficina" placeholder="Codigo" required="">
 
-                    <input  type="text" autocomplete="off" name="nhgame_Admhfgin" id="namn2" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_Institucion" placeholder="Institucion" required="">
+                    <input  type="text" autocomplete="off" name="office_institution" id="office_institution" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_Institucion" placeholder="Institucion" required="">
 
                     <button class="submit-btn form-control" (click)="update()" >Actualizar</button>
 

@@ -11,23 +11,24 @@
                     <h2>Registra</h2>
                     <input   type="text"  hidden>
 
-                    <input   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input   [(ngModel)]="controlData.TC_Nombre"  type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                    <input  [(ngModel)]="controlData.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Adfdmin" id="name_Addfdmin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Periodo</option>            
-                    </select>
 
-                    <select   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Estado</option>            
-                    </select>
+                    <div class="radio">
+                        <label>Notificacion al Correo?</label>
+                    <br>
+                    <br>
+                    
+                        <input [(ngModel)]="controlData.TB_NotificacionCorreoAColaborador"  label="Si" type="radio" id="male" name="notification" value="si" checked>
+                        <input  [(ngModel)]="controlData.TB_NotificacionCorreoAColaborador" label="No" type="radio" id="female" name="notification2" value="no" checked >
+                    </div>
 
-                    <input  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Notificacion" required="">
+               
+                    <button class="submit-btn form-control" (click)="add();" >Añadir</button>
 
-                    <button class="submit-btn form-control" >Añadir</button>
-
-                    <button routerLink="/listControl" class="submit-btn form-control" >Cancelar</button>
+                    <button (click)="back();" class="submit-btn form-control" >Cancelar</button>
                 </form>
 
             </div>

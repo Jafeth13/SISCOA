@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesOfficeService } from '../services-office.service';
 import Swal from 'sweetalert2';
-import { getLocaleDateFormat } from '@angular/common';
-
 @Component({
   selector: 'app-office-delete',
   templateUrl: './office-delete.component.html',
@@ -47,7 +45,7 @@ this.rut();
         this.rest.delete(this.route.snapshot.params['ID']).subscribe(
         (data) =>{
           console.log(data);
-          this.ngOnInit();
+          this.router.navigate(['/officeList']);
         }
       ); 
         Swal.fire(

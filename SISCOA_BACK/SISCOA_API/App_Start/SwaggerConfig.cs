@@ -9,6 +9,9 @@ using System.Security.Cryptography;
 
 namespace SISCOA_API
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SwaggerConfig
     {
         /// <summary>
@@ -19,6 +22,9 @@ namespace SISCOA_API
         {
             return Path.Combine(System.Web.HttpRuntime.AppDomainAppPath, "bin", "SISCOA_API.XML");
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;

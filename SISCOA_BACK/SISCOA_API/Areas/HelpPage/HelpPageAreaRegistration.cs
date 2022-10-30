@@ -3,8 +3,14 @@ using System.Web.Mvc;
 
 namespace SISCOA_API.Areas.HelpPage
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HelpPageAreaRegistration : AreaRegistration
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public override string AreaName
         {
             get
@@ -12,7 +18,9 @@ namespace SISCOA_API.Areas.HelpPage
                 return "HelpPage";
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(

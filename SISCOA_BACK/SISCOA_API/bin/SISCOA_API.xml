@@ -4,6 +4,16 @@
         <name>SISCOA_API</name>
     </assembly>
     <members>
+        <member name="T:SISCOA_API.BundleConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.FilterConfig">
             <summary>
             
@@ -26,11 +36,21 @@
             </summary>
             <param name="routes"></param>
         </member>
+        <member name="T:SISCOA_API.SwaggerConfig">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:SISCOA_API.SwaggerConfig.GetXmlCommentsPath">
             <summary>
                 Se obtiene el path del archivo XML de documentacion
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:SISCOA_API.SwaggerConfig.Register">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:SISCOA_API.WebApiConfig">
             <summary>
@@ -42,6 +62,11 @@
             
             </summary>
             <param name="config"></param>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ApiDescriptionExtensions">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:SISCOA_API.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
             <summary>
@@ -57,9 +82,64 @@
             or you can provide the samples for the requests/responses.
             </summary>
         </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.HelpPageConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.Areas.HelpPage.Controllers.HelpController">
             <summary>
             The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.Controllers.HelpController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.Controllers.HelpController.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.Controllers.HelpController.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.Controllers.HelpController.Index">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.Controllers.HelpController.Api(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.Controllers.HelpController.ResourceModel(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.HelpPageAreaRegistration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.HelpPageAreaRegistration.AreaName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.HelpPageAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.HelpPageConfigurationExtensions">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:SISCOA_API.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
@@ -208,9 +288,119 @@
             An <see cref="T:SISCOA_API.Areas.HelpPage.Models.HelpPageApiModel"/>
             </returns>
         </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.CollectionModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.CollectionModelDescription.ElementDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.Values">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumValueDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.KeyModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.ValueModelDescription">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescription">
             <summary>
             Describes a type model.
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescription.ModelType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescription.Name">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
@@ -218,9 +408,84 @@
             Generates model descriptions for given types.
             </summary>
         </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GeneratedModels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetOrCreateModelDescription(System.Type)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
             <summary>
             Use this attribute to change the name of the <see cref="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterAnnotation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.AnnotationAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription.Annotations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription.Documentation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ModelDescriptions.ParameterDescription.TypeDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SISCOA_API.Areas.HelpPage.ModelDescriptions.SimpleTypeModelDescription">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SISCOA_API.Areas.HelpPage.Models.HelpPageApiModel">
@@ -457,9 +722,24 @@
             Gets the parameter names.
             </summary>
         </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.HelpPageSampleKey.ParameterType">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:SISCOA_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
             <summary>
             Gets the <see cref="P:SISCOA_API.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.HelpPageSampleKey.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.HelpPageSampleKey.GetHashCode">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SISCOA_API.Areas.HelpPage.ImageSample">
@@ -473,9 +753,54 @@
             </summary>
             <param name="src">The URL of an image.</param>
         </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.ImageSample.Src">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ImageSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ImageSample.GetHashCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.ImageSample.ToString">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.Areas.HelpPage.InvalidSample">
             <summary>
             This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.InvalidSample.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.InvalidSample.ErrorMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.InvalidSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.InvalidSample.GetHashCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.InvalidSample.ToString">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SISCOA_API.Areas.HelpPage.ObjectGenerator">
@@ -504,9 +829,44 @@
             Indicates whether the sample is used for request or response
             </summary>
         </member>
+        <member name="F:SISCOA_API.Areas.HelpPage.SampleDirection.Request">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SISCOA_API.Areas.HelpPage.SampleDirection.Response">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:SISCOA_API.Areas.HelpPage.TextSample">
             <summary>
             This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.TextSample.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SISCOA_API.Areas.HelpPage.TextSample.Text">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.TextSample.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.TextSample.GetHashCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.TextSample.ToString">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider">
@@ -519,6 +879,36 @@
             Initializes a new instance of the <see cref="T:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider"/> class.
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:SISCOA_API.Controllers.ControlsController">
             <summary>
@@ -672,6 +1062,13 @@
             </summary>
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetAll">
+            <summary>
+            Obtiene todos los registros
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates">
             <summary>
             Obtiene todos los registros
             </summary>
@@ -1106,7 +1503,6 @@
             Inicia Sesion
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
-            <param name="id"></param>
             <returns>User</returns>
             <response code="200">OK. Inicio de sesion</response>
             <response code="400">BadRequest. Consulta erronea</response>
@@ -1161,6 +1557,16 @@
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
+        </member>
+        <member name="T:SISCOA_API.WebApiApplication">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SISCOA_API.WebApiApplication.Application_Start">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:SISCOA_API.Startup">
             <summary>

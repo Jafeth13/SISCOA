@@ -16,6 +16,9 @@ using SISCOA_API.Areas.HelpPage.Models;
 
 namespace SISCOA_API.Areas.HelpPage
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class HelpPageConfigurationExtensions
     {
         private const string ApiModelPrefix = "MS_HelpPageApiModel_";

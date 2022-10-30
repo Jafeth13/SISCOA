@@ -30,7 +30,8 @@ export class ConditionUpdateComponent implements OnInit {
         'Good job!',
         'estado sucessfully updated!',
         'success'
-      )     
+      ) 
+      this.router.navigate(['/conditionList']);    
     }, (err) => {
       Swal.fire({
         icon: 'error',

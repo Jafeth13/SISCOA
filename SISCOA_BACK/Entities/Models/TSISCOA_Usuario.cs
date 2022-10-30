@@ -23,10 +23,6 @@ namespace Entities.Models
         public int FK_SISCOA_Oficina_SISCOA_Usuario { get; set; }
         [ForeignKey("TSISCOA_Rol")]
         public int FK_SISCOA_Rol_SISCOA_Usuario { get; set; }
-        public bool TB_EstaActivo { get; set; }
-        public bool TB_EstaBorrado { get; set; }
-        public string TC_UltimaModificacion { get; set; }
-        public DateTime TF_UltimaFechaModificacion { get; set; }
         public virtual TSISCOA_Oficina TSISCOA_Oficina { get; set; }
         public virtual TSISCOA_Rol TSISCOA_Rol { get; set; }
         public virtual ICollection<TSISCOA_Error> TSISCOA_Error { get; set; }

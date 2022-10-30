@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ServicesPeriodService } from '../services-period.service';
-
+import { PermisionServicesService } from '../permision-services.service';
 @Component({
   selector: 'app-permission-delete',
   templateUrl: './permission-delete.component.html',
@@ -11,7 +10,7 @@ import { ServicesPeriodService } from '../services-period.service';
 export class PermissionDeleteComponent implements OnInit {
 
 
-  constructor(public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:PermisionServicesService,private route:ActivatedRoute,private router:Router) { }
   @Input()periodDataDelete:any
 
   

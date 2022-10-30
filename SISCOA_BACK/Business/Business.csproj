@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DTOs\MapperConfig.cs" />
     <Compile Include="DTOs\TSISCOA_Actividad_DTO.cs" />
+    <Compile Include="DTOs\TSISCOA_Archivo_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Control_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Error_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Estado_DTO.cs" />

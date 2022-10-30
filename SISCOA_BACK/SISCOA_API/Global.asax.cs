@@ -7,9 +7,15 @@ using System.Web.Routing;
 
 namespace SISCOA_API
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WebApiApplication : System.Web.HttpApplication
     {
         internal static MapperConfiguration MapperConfiguration { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

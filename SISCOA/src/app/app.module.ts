@@ -64,6 +64,11 @@ import { ConditionRegisterComponent } from './condition-register/condition-regis
 import { MenuConfigurationComponent } from './menu-configuration/menu-configuration.component';
 import { ErrorSystemComponent } from './error-system/error-system.component';
 import { ActionUserComponent } from './action-user/action-user.component';
+import { MatSortModule, MAT_SORT_HEADER_INTL_PROVIDER } from '@angular/material/sort';
+import { ControlSeeComponent } from './control-see/control-see.component';
+import { OfficeSeeComponent } from './office-see/office-see.component';
+import { UserSeeComponent } from './user-see/user-see.component';
+import { RolSeeComponent } from './rol-see/rol-see.component';
 
 
 const appRoutes: Routes = [
@@ -73,61 +78,61 @@ const appRoutes: Routes = [
     data: { title: 'Login' }, 
   },
   {
-    path: 'listUser',
+    path: 'listUser/:ID',
     component: UserListComponent,
     data: { title: 'Lista de usuarios' }, 
   },  
   {
-    path: 'registerUser',
+    path: 'registerUser/:ID',
     component: UserRegisterComponent,
     data: { title: 'Agregar usuarios' }, 
   },  
   {
-    path: 'deleteUser',
+    path: 'deleteUser/:ID',
     component: UserDeleteComponent,
     data: { title: 'Eliminar usuarios' }, 
   },{
-    path: 'updateUser',
+    path: 'updateUser/:ID',
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
-    path: 'officeControl',
+    path: 'officeControl/:ID',
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
-    path: 'addoffice',
+    path: 'addoffice/:ID',
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'registerControl',
+    path: 'registerControl/:ID',
     component: ControlRegisterComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'listControl',
+    path: 'listControl/:ID',
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
-    path: 'deleteControl',
+    path: 'deleteControl/:ID',
     component: ControlDeleteComponent,
     data: { title: 'Elimianar control'}, 
   },{
-    path: 'updateControl',
+    path: 'updateControl/:ID',
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
-    path: 'menu',
+    path: 'menu/:ID',
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'controlMenu',
+    path: 'controlMenu/:ID',
     component: MenuControlComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'menuPrincipal',
+    path: 'menuPrincipal/:ID',
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'check',
+    path: 'check/:ID',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
@@ -135,7 +140,7 @@ const appRoutes: Routes = [
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
-    path: 'controlOfice',
+    path: 'controlOfice/:ID',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{
@@ -143,27 +148,27 @@ const appRoutes: Routes = [
     component: CompleteControlComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'completeControlFile',
+    path: 'completeControlFile/:ID',
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'rolList',
+    path: 'rolList/:ID',
     component: RolListComponent,
     data: { title: 'Listar Roles'}, 
   },{
-    path: 'rolRegister',
+    path: 'rolRegister/:ID',
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate/:ID',
+    path: 'rolUpdate/:ID/:IDS',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete/:ID',
+    path: 'rolDelete/:ID/:IDS',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
-    path: 'permissionList',
+    path: 'permissionList/:ID',
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
@@ -171,15 +176,15 @@ const appRoutes: Routes = [
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate',
+    path: 'permissionUpdate/:ID',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete',
+    path: 'permissionDelete/:ID',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
-    path: 'officeList',
+    path: 'officeList/:ID',
     component: OfficeListComponent,
     data: { title: 'Listar Oficinas'}, 
   },{
@@ -195,7 +200,7 @@ const appRoutes: Routes = [
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{
-    path: 'periodList',
+    path: 'periodList/:ID',
     component: PeriodListComponent,
     data: { title: 'Listar Periodos'}, 
   },{
@@ -211,7 +216,7 @@ const appRoutes: Routes = [
     component: PeriodDeleteComponent,
     data: { title: 'Eliminar Periodos'}, 
   },{
-    path: 'conditionList',
+    path: 'conditionList/:ID',
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
@@ -227,7 +232,7 @@ const appRoutes: Routes = [
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
-    path: 'menuConfiguration',
+    path: 'menuConfiguration/:ID',
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
@@ -238,6 +243,26 @@ const appRoutes: Routes = [
     path: 'errorSystem',
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
+  },{
+    path: 'controlSee/:ID',
+    component: ControlSeeComponent,
+    data: { title: 'Controles'}, 
+  },{
+    path: 'userSee/:ID',
+    component: UserSeeComponent,
+    data: { title: 'Usuarios'}, 
+  },{
+    path: 'officeSee/:ID',
+    component: OfficeSeeComponent,
+    data: { title: 'Oficina'}, 
+  },{
+    path: 'rolSee/:ID/:IDS',
+    component: RolSeeComponent,
+    data: { title: 'Rol'}, 
+  },{
+    path: 'navbar/:ID',
+    component: NavbarComponent,
+    data: { title: 'Rol'}, 
   }
 ];
 
@@ -286,7 +311,11 @@ const appRoutes: Routes = [
     ConditionRegisterComponent,
     MenuConfigurationComponent,
     ErrorSystemComponent,
-    ActionUserComponent
+    ActionUserComponent,
+    ControlSeeComponent,
+    OfficeSeeComponent,
+    UserSeeComponent,
+    RolSeeComponent
     
   ],
   imports: [
@@ -313,6 +342,19 @@ const appRoutes: Routes = [
     MatCardModule,
     MatTabsModule,
     NgxChartsModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatCardModule,
+    MatTabsModule
+    
     
   ],
   providers: [],

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
+import { ServiceUserService } from '../service-user.service';
+
 @Component({
   selector: 'app-rol-update',
   templateUrl: './rol-update.component.html',
@@ -10,8 +12,8 @@ import { ServicesRolService } from '../services-rol.service';
 export class RolUpdateComponent implements OnInit {
   @Input()roleDataupdate:any;
 
-  constructor(public rest:ServicesRolService,private route:ActivatedRoute,private router:Router) { }
-
+  constructor(public rest:ServicesRolService,private route:ActivatedRoute,private router:Router,public restUser:ServiceUserService) { }
+userData:any
   ngOnInit(): void {
     this.rut();
   }
@@ -19,6 +21,13 @@ export class RolUpdateComponent implements OnInit {
     this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.roleDataupdate = data;
+    });
+
+    this.restUser
+    .get(this.route.snapshot.params['IDS'])
+    .subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
     });
   }
 
@@ -30,7 +39,7 @@ export class RolUpdateComponent implements OnInit {
         'role sucessfully updated!',
         'success'
       )
-           
+      this.router.navigate(['/rolList/' + this.route.snapshot.params['IDS']]);
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -40,4 +49,9 @@ export class RolUpdateComponent implements OnInit {
       console.log(err);
     });
   }
+
+  back() {
+    this.router.navigate(['/rolList/' + this.route.snapshot.params['IDS']]);
+  }
+  
 }

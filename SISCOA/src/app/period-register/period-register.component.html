@@ -1,30 +1,84 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
-                    <h2>Registrar</h2>
-                    <input   type="text"  hidden>
+  <div class="container">
+    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form action="" id="userRegister-entry-form">
+          <h2>Registrar</h2>
+          <input type="text" hidden />
 
-                    <input [(ngModel)]="period.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+          <input
+            [(ngModel)]="period.TC_Nombre"
+            type="text"
+            autocomplete="off"
+            name="name_Admin"
+            id="name_Admin"
+            class="form-control rounded-left"
+            placeholder="Nombre"
+            required=""
+          />
 
-                    <button class="submit-btn form-control" (click)="add()">Añadir</button>
-
-                    <button routerLink="/periodList" class="submit-btn form-control" >Cancelar</button>
-                    
-                </form>
-
+          <div class="nc">
+            <div>
+              <br />
+              <mat-label>Elige la fecha de inicio</mat-label>
+              <br />
+              <input
+                class="nc"
+                id="date1"
+                matInput
+                [matDatepicker]="picker"
+                (dateInput)="selectDate('input', $event)"
+                (dateChange)="selectDate('change', $event)"
+                formControlName="firstCtrl"
+                required
+              />
+              <br />
+              <mat-hint class="nc">MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+                class="nc"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </div>
-        </div>
-        
-    </div>
-    <div class="example-button-container">
-      
-        </div>
-</section>
 
+            <mat-label>Elige la fecha de fin</mat-label>
+            <br />
+            <input
+              class="nc"
+              id="date2"
+              matInput
+              [matDatepicker]="picker2"
+              (dateInput)="selectDate2('input', $event)"
+              (dateChange)="selectDate2('change', $event)"
+              formControlName="firstCtrl"
+              required
+            />
+            <br />
+            <mat-hint class="nc">MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker2"
+              class="nc"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </div>
+
+          <button class="submit-btn form-control" (click)="add()">
+            Añadir
+          </button>
+
+          <button routerLink="/periodList" class="submit-btn form-control">
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="example-button-container"></div>
+</section>
