@@ -145,7 +145,7 @@ namespace SISCOA_API.Controllers
             {
                 var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
                 entities = await service.Update(entities);
-                return Ok(entities);
+                return Ok(DTO);
             }
             catch (Exception ex) { return InternalServerError(ex); }
         }
