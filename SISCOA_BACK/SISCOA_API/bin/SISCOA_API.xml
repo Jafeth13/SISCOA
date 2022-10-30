@@ -959,7 +959,7 @@
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.Put(Business.DTOs.TSISCOA_Estado_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.Put(Business.DTOs.TSISCOA_Control_DTO,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
