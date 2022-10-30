@@ -15,13 +15,9 @@
 
                     <input disabled  [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <input disabled  [(ngModel)]="controlDataDelete.TSISCOA_Periodo.TC_Nombre" class="form-control rounded-left" name="period" id="period">
-
-                    <input disabled  [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left" name="conditional" id="conditional">
-
                     <button class="submit-btn form-control" (click)="delete()">Eliminar</button>
 
-                    <button routerLink="/listControl" class="submit-btn form-control" >Cancelar</button>
+                    <button routerLink="/listControl//{{userData.ID}}" class="submit-btn form-control" >Cancelar</button>
                 </form>
 
             </div>

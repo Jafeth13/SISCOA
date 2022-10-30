@@ -112,11 +112,11 @@ const appRoutes: Routes = [
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
-    path: 'deleteControl/:ID',
+    path: 'deleteControl/:ID/:IDS',
     component: ControlDeleteComponent,
     data: { title: 'Elimianar control'}, 
   },{
-    path: 'updateControl/:ID',
+    path: 'updateControl/:ID/:IDS',
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
@@ -244,7 +244,7 @@ const appRoutes: Routes = [
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
   },{
-    path: 'controlSee/:ID',
+    path: 'controlSee/:ID/:IDS',
     component: ControlSeeComponent,
     data: { title: 'Controles'}, 
   },{

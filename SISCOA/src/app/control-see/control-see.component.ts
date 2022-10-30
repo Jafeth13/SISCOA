@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServicesControllersService } from '../services-controllers.service';
+import { ServiceUserService } from '../service-user.service';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { ServicesControllersService } from '../services-controllers.service';
 })
 export class ControlSeeComponent implements OnInit {
   @Input()controlData:any
-  constructor(public rest:ServicesControllersService,private route:ActivatedRoute,private router:Router) { }
+  userData:any
+  constructor(public rest:ServicesControllersService,private route:ActivatedRoute,private router:Router,public restUser: ServiceUserService  ) { }
 
   ngOnInit(): void {
     this.rut();
@@ -22,6 +24,13 @@ export class ControlSeeComponent implements OnInit {
       console.log(data);
       this.controlData = data;
     });
+
+    this.restUser.get(this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;    
+    });
+
+
   }
 
 }

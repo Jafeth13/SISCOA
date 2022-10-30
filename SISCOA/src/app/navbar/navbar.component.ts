@@ -64,7 +64,7 @@ userData:any
     this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
-      this.email=this.userData.TC_Identificacion;
+      this.email=this.userData.TC_Nombre+' '+this.userData.TC_PrimerApellido;
     
     });
   }
