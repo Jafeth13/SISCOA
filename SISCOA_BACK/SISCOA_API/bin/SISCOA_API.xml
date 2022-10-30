@@ -1071,10 +1071,28 @@
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates">
             <summary>
-            Obtiene todos los registros
+            Obtiene la cantidad de controles en cada uno de los estados
             </summary>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsBySlopes">
+            <summary>
+            Obtiene la cantidad de controles que estan pendientes
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetOfficeControlByIdOffice(System.Int32)">
+            <summary>
+            Obtiene un registro por id de oficina
+            </summary>
+            <remark>
+            </remark>
+            <param name="id">Id de la oficina</param>
+            <returns>Registro</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="404">NotFound. No se encontro el registro</response>
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32)">
             <summary>
