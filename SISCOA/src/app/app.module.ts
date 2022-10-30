@@ -188,15 +188,15 @@ const appRoutes: Routes = [
     component: OfficeListComponent,
     data: { title: 'Listar Oficinas'}, 
   },{
-    path: 'officeRegister',
+    path: 'officeRegister/:ID',
     component: OfficeRegisterComponent,
     data: { title: 'Registrar Oficinas'}, 
   },{
-    path: 'officeUpdate/:ID',
+    path: 'officeUpdate/:ID/:IDS',
     component: OfficeUpdateComponent,
     data: { title: 'Actualizar Oficinas'}, 
   },{
-    path: 'officeDelete/:ID',
+    path: 'officeDelete/:ID/:IDS',
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{
@@ -252,7 +252,7 @@ const appRoutes: Routes = [
     component: UserSeeComponent,
     data: { title: 'Usuarios'}, 
   },{
-    path: 'officeSee/:ID',
+    path: 'officeSee/:ID/:IDS',
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
