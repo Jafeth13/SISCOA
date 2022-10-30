@@ -95,6 +95,38 @@ namespace SISCOA_API.Controllers
             return Ok(DTO);
         }
         /// <summary>
+        /// Obtiene la cantidad de controles que estan con dias extra
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphics_ControlsWithExtraDays")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
+        public async Task<IHttpActionResult> GetDataGraphics_ControlsWithExtraDays()
+        {
+            var entities = await service.GetDataGraphics_ControlsWithExtraDays();
+            if (entities == null)
+                return NotFound();
+
+            return Ok(entities);
+        }
+        /// <summary>
+        /// Obtiene los datos de los controles que tienen dias extra
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphicsTable_ControlsWithExtraDays")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
+        public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsWithExtraDays()
+        {
+            var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
+            if (entities == null)
+                return NotFound();
+            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
+            return Ok(DTO);
+        }
+        /// <summary>
         /// Obtiene un registro por id de oficina
         /// </summary>
         /// <remark>
