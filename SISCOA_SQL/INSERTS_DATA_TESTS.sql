@@ -46,15 +46,17 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ,[FK_TN_CONTROL_SISCOA_OficinaControl]
            ,[FK_TN_OFICINA_SISCOA_OficinaControl]
            ,[FK_TN_ESTADO_SISCOA_OficinaControl]
-           ,[FK_TN_PERIODO_SISCOA_OficinaControl])
+           ,[FK_TN_PERIODO_SISCOA_OficinaControl]
+		   ,[TF_FechaFin_DiasExtra])
      VALUES
-           ('',1,1,1,1),
-           ('',2,1,2,1),
-           ('',3,1,2,2),
-           ('',2,2,2,2),
-           ('',3,3,1,1),
-           ('',1,4,2,2),
-		   ('',1,3,1,2)
+           ('',1,1,1,1,'0001-01-01T00:00:00'),
+           ('',2,1,2,1,'0001-01-01T00:00:00'),
+           ('',3,1,2,2,'0001-01-01T00:00:00'),
+           ('',2,2,2,2,'0001-01-01T00:00:00'),
+           ('',3,3,1,1,'0001-01-01T00:00:00'),
+           ('',1,4,2,2,'0001-01-01T00:00:00'),
+		   ('',1,3,1,2,'0001-01-01T00:00:00'),
+		   ('',2,4,1,2,GETDATE())
 GO
 /**
 SELECT * FROM [CONTROL].[TSISCOA_Control]

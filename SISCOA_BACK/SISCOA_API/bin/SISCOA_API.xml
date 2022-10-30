@@ -1088,6 +1088,20 @@
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsWithExtraDays">
+            <summary>
+            Obtiene la cantidad de controles que estan con dias extra
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphicsTable_ControlsWithExtraDays">
+            <summary>
+            Obtiene los datos de los controles que tienen dias extra
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetOfficeControlByIdOffice(System.Int32)">
             <summary>
             Obtiene un registro por id de oficina

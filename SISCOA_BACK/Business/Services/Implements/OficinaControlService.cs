@@ -26,6 +26,14 @@ namespace Services.Services.Implements
         {
             return await oficinaControlRepository.GetDataGraphicsTable_ControlsSlopes();
         }
+        public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsWithExtraDays()
+        {
+            return await oficinaControlRepository.GetDataGraphics_ControlsWithExtraDays();
+        }
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsWithExtraDays()
+        {
+            return await oficinaControlRepository.GetDataGraphicsTable_ControlsWithExtraDays();
+        }
         public async Task<IEnumerable<TSISCOA_OficinaControl>> GetOfficeControlByIdOffice(int id)
         {
             return await oficinaControlRepository.GetOfficeControlByIdOffice(id);

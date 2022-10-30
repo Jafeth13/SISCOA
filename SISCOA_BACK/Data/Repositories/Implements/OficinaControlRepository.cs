@@ -1,6 +1,7 @@
 ﻿using Data.Data;
 using Entities.Models;
 using Entities.Util;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -37,7 +38,6 @@ namespace Repositories.Repositories.Implements
                 .Select(x => new TSISCOA_DataGraphics
                 {
                     ID_State = x.Key,
-                    //elements distints
                     Name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
                     Value = x.Count()
                 }).ToListAsync();
@@ -55,6 +55,28 @@ namespace Repositories.Repositories.Implements
         {
             var list = await siscoa_context.OficinaControles
                 .Where(x => x.FK_TN_OFICINA_SISCOA_OficinaControl == id)
+                .ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsWithExtraDays()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TF_FechaFin_DiasExtra != new DateTime(0001,01,01,00,00,00))
+                .GroupBy(x => x.FK_TN_CONTROL_SISCOA_OficinaControl)
+                .Select(x => new TSISCOA_DataGraphics
+                {
+                    ID_State = x.Key,
+                    Name = x.FirstOrDefault().TSISCOA_Control.TC_Nombre,
+                    Value = x.Count()
+                }).ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsWithExtraDays()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TF_FechaFin_DiasExtra != new DateTime(0001,01,01,00,00,00))
                 .ToListAsync();
             return list;
         }
