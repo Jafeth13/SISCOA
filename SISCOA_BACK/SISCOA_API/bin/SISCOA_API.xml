@@ -1076,7 +1076,14 @@
         </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsBySlopes">
             <summary>
-            Obtiene la cantidad de controles que estan pendientes
+            Obtiene la cantidad de controles que estan pendientes distribuidos por periodo
+            </summary>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphicsTable_ControlsBySlopes">
+            <summary>
+            Obtiene los datos de los controles que estan pendientes
             </summary>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>

@@ -43,6 +43,13 @@ namespace Repositories.Repositories.Implements
                 }).ToListAsync();
             return list;
         }
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsSlopes()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TSISCOA_Estado.TC_Nombre == "Pendiente")
+                .ToListAsync();
+            return list;
+        }
 
         public async Task<IEnumerable<TSISCOA_OficinaControl>> GetOfficeControlByIdOffice(int id)
         {

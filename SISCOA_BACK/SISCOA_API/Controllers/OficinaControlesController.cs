@@ -63,7 +63,7 @@ namespace SISCOA_API.Controllers
             return Ok(entities);
         }
         /// <summary>
-        /// Obtiene la cantidad de controles que estan pendientes
+        /// Obtiene la cantidad de controles que estan pendientes distribuidos por periodo
         /// </summary>
         /// <returns>Lista de todos los registros</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
@@ -77,6 +77,22 @@ namespace SISCOA_API.Controllers
                 return NotFound();
 
             return Ok(entities);
+        }
+        /// <summary>
+        /// Obtiene los datos de los controles que estan pendientes
+        /// </summary>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphicsTable_ControlsBySlopes")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
+        public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsBySlopes()
+        {
+            var entities = await service.GetDataGraphicsTable_ControlsSlopes();
+            if (entities == null)
+                return NotFound();
+            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
+            return Ok(DTO);
         }
         /// <summary>
         /// Obtiene un registro por id de oficina
