@@ -15,8 +15,8 @@ namespace Repositories.Repositories.Implements
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
-            var flag = await siscoa_context.RolPermisos.AnyAsync(x => x.ID == id);
-            flag = await siscoa_context.Usuarios.AnyAsync(x => x.ID == id);
+            var flag = await siscoa_context.RolPermisos.AnyAsync(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == id);
+            flag = await siscoa_context.Usuarios.AnyAsync(x => x.FK_SISCOA_Rol_SISCOA_Usuario == id);
             return flag;
         }
         public async Task<bool> VerifyPrivilegesRolUser(int rol, string permit)
