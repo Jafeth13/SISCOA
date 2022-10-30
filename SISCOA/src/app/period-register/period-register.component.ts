@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { ServicesPeriodService } from '../services-period.service';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import * as moment from 'moment';
+import { ServiceUserService } from '../service-user.service';
+
 
 @Component({
   selector: 'app-period-register',
@@ -11,6 +13,7 @@ import * as moment from 'moment';
   styleUrls: ['./period-register.component.css'],
 })
 export class PeriodRegisterComponent implements OnInit {
+  userData:any;
   date: any;
   hour: any;
   date2: any;
@@ -24,12 +27,15 @@ export class PeriodRegisterComponent implements OnInit {
     TF_FechaFin: '',
   };
   constructor(
+    public restUser: ServiceUserService,
     public rest: ServicesPeriodService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rut()
+  }
   add() {
     var date;
     date = new Date();
@@ -47,6 +53,7 @@ export class PeriodRegisterComponent implements OnInit {
     this.rest.add(this.period).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+        this.router.navigate(['/periodList/' + this.route.snapshot.params['ID']]);
       },
       (err) => {
         Swal.fire({
@@ -73,4 +80,14 @@ export class PeriodRegisterComponent implements OnInit {
   selectHour2() {
     this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
   }
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
+  }
+
+
 }
