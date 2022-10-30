@@ -40,6 +40,8 @@ namespace SISCOA_API.Controllers
         public async Task<IHttpActionResult> GetAll()
         {
             var entities = await service.GetAll();
+            if (entities == null)
+                return NotFound();
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
 
             return Ok(DTO);
@@ -55,6 +57,8 @@ namespace SISCOA_API.Controllers
         public async Task<IHttpActionResult> GetDataGraphics_ControlsByStates()
         {
             var entities = await service.GetDataGraphics_ControlsByStates();
+            if (entities == null)
+                return NotFound();
 
             return Ok(entities);
         }
@@ -69,6 +73,8 @@ namespace SISCOA_API.Controllers
         public async Task<IHttpActionResult> GetDataGraphics_ControlsBySlopes()
         {
             var entities = await service.GetDataGraphics_ControlsSlopes();
+            if (entities == null)
+                return NotFound();
 
             return Ok(entities);
         }
@@ -90,9 +96,7 @@ namespace SISCOA_API.Controllers
             if (entities == null)
                 return NotFound();
 
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(entities));
-
-            return Ok(DTO);
+            return Ok(entities);
         }
         /// <summary>
         /// Obtiene un registro por su id
