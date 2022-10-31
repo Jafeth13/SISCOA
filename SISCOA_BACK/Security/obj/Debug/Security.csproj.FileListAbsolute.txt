@@ -21,6 +21,8 @@ C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\Security\obj\Deb
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.CopyComplete
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.dll
 C:\Users\Usuario\Desktop\ProyectosPersonales\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Security.dll.config
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Security.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\Security.pdb
@@ -39,8 +41,6 @@ C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Deb
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\AutoMapper.xml
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\EntityFramework.xml
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.AssemblyReference.cache
-C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.csproj.CopyComplete
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.dll
 C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Security\obj\Debug\Security.pdb

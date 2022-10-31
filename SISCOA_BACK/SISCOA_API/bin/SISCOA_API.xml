@@ -1113,6 +1113,17 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.CompleteOfficeControl(Microsoft.AspNetCore.Http.IFormFile,System.Int32)">
+            <summary>
+            Completar control
+            </summary>
+            <param name="files">Lista de documentos</param>
+            <param name="id">El id de controlOficina para completar control</param>
+            <returns>Registro insertado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
+        </member>
         <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32)">
             <summary>
             Obtiene un registro por su id

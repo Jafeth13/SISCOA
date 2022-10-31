@@ -3,14 +3,15 @@ using Business.DTOs;
 using Data.Data;
 using Entities.Models;
 using Entities.Util;
+using Microsoft.AspNetCore.Http;
 using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -145,6 +146,36 @@ namespace SISCOA_API.Controllers
                 return NotFound();
 
             return Ok(entities);
+        }
+        /// <summary>
+        /// Completar control
+        /// </summary>
+        /// <param name="files">Lista de documentos</param>
+        /// <param name="id">El id de controlOficina para completar control</param>
+        /// <returns>Registro insertado</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        /// <response code="400">BadRequest. Consulta erronea</response>
+        /// <response code="500">InternalServerError. Error con el servidor</response>
+        [Route("api/OficinaControl/CompleteOfficeControl/{id}")]
+        [HttpPost]
+        public IHttpActionResult CompleteOfficeControl(IFormFile files, int id)
+        {
+            /*int count = 1;
+            if (files != null)
+            {
+                foreach (var file in files)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        //path combine
+                        var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads/"), fileName);
+                        file.SaveAs(path);
+                        count++;
+                    }
+                }
+            }*/
+            return Ok();
         }
         /// <summary>
         /// Obtiene un registro por su id
