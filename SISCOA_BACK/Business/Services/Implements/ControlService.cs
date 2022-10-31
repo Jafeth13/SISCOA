@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Data.Data;
+using Entities.Models;
 using Repositories.Repositories;
 using Repositories.Repositories.Implements;
 using System.Collections.Generic;
@@ -8,10 +9,11 @@ namespace Services.Services.Implements
 {
     public class ControlService : GenericService<TSISCOA_Control>, IControlService
     {
+        private readonly static ControlRepository _Repository = new ControlRepository(SISCOA_Context.Create());
         private readonly IControlRepository controlRepository;
-        public ControlService(IControlRepository controlRepository) : base(controlRepository)
+        public ControlService() : base(_Repository)
         {
-            this.controlRepository = controlRepository;
+            this.controlRepository = _Repository;
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
@@ -20,46 +22,6 @@ namespace Services.Services.Implements
         public async Task<IEnumerable<TSISCOA_Control>> GetControlesByOficina(int id)
         {
             return await controlRepository.GetControlesByOficina(id);
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsByState()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsNotAssigned()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsSlopes()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataGraphics_ControlsWithExtraDays()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsByState()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsNotAssigned()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsSlopes()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<TSISCOA_Control>> GetDataTable_ControlsWithExtraDays()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

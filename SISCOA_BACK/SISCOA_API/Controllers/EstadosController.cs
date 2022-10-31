@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class EstadosController : ApiController
     {
         private IMapper _mapper;
-        private readonly EstadoService service = new EstadoService(new EstadoRepository(SISCOA_Context.Create()));
+        private readonly EstadoService service = new EstadoService();
         /// <summary>
         /// Constructor
         /// </summary>

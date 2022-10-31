@@ -1,5 +1,4 @@
-﻿using Data.Data;
-using Owin;
+﻿using Owin;
 
 namespace SISCOA_API
 {
@@ -15,7 +14,6 @@ namespace SISCOA_API
         public void ConfigureAuth(IAppBuilder app)
         {
             //Configura el db context para ser usado como una instancia por request
-            app.CreatePerOwinContext(SISCOA_Context.Create);
         }
     }
 }

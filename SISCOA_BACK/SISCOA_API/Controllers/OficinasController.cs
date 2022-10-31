@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class OficinasController : ApiController
     {
         private IMapper _mapper;
-        private readonly OficinaService service = new OficinaService(new OficinaRepository(SISCOA_Context.Create()));
+        private readonly OficinaService service = new OficinaService();
         /// <summary>
         /// Constructor
         /// </summary>

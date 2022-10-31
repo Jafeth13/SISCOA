@@ -1,5 +1,7 @@
-﻿using Entities.Models;
+﻿using Data.Data;
+using Entities.Models;
 using Repositories.Repositories;
+using Repositories.Repositories.Implements;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,10 +9,11 @@ namespace Services.Services.Implements
 {
     public class OficinaService : GenericService<TSISCOA_Oficina>, IOficinaService
     {
+        private readonly static OficinaRepository _Repository = new OficinaRepository(SISCOA_Context.Create());
         private readonly IOficinaRepository oficinaRepository;
-        public OficinaService(IOficinaRepository oficinaRepository) : base(oficinaRepository)
+        public OficinaService() : base(_Repository)
         {
-            this.oficinaRepository = oficinaRepository;
+            this.oficinaRepository = _Repository;
         }
 
         public async Task<bool> DeletedCheckOnEntity(int id)

@@ -1,8 +1,10 @@
 ﻿using Business.DTOs;
+using Data.Data;
 using Entities.Models;
 using Entities.Util;
 using Microsoft.AspNetCore.Http;
 using Repositories.Repositories;
+using Repositories.Repositories.Implements;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,10 +13,11 @@ namespace Services.Services.Implements
 {
     public class OficinaControlService : GenericService<TSISCOA_OficinaControl>, IOficinaControlService
     {
+        private readonly static OficinaControlRepository _Repository = new OficinaControlRepository(SISCOA_Context.Create());
         private readonly IOficinaControlRepository oficinaControlRepository;
-        public OficinaControlService(IOficinaControlRepository oficinaControlRepository) : base(oficinaControlRepository)
+        public OficinaControlService() : base(_Repository)
         {
-            this.oficinaControlRepository = oficinaControlRepository;
+            this.oficinaControlRepository = _Repository;
         }
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
         {

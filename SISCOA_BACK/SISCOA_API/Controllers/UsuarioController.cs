@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
-using Services.Services.Implements;
 using Security.Security.Implements;
+using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +18,8 @@ namespace SISCOA_API.Controllers
     public class UsuarioController : ApiController
     {
         private IMapper _mapper;
-        private readonly UsuarioService service = new UsuarioService(new UsuarioRepository(SISCOA_Context.Create()));
-        private readonly SessionModule session = new SessionModule(new UsuarioRepository(SISCOA_Context.Create()));
+        private readonly UsuarioService service = new UsuarioService();
+        private readonly SessionModule session = new SessionModule();
         /// <summary>
         /// Constructor
         /// </summary>
