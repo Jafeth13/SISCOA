@@ -66,7 +66,10 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
         });
         console.log(error);
         console.log(this.userData);
-
+        this.loginForm = this.fb.group({
+          TC_Identificacion: ['', [Validators.required]],
+          TV_Contrasenna: ['', [Validators.required]]
+        });
       });
       
   }
