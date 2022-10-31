@@ -177,13 +177,6 @@ namespace SISCOA_API.Controllers
                 return BadRequest("Object id does not match route id");
 
             var flag = await service.GetById(id);
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Actualizar usuario: " + DTO.TC_Identificacion,
-                TC_Accion = "Put",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
             if (flag == null)
                 return NotFound();
 
@@ -191,6 +184,13 @@ namespace SISCOA_API.Controllers
             {
                 var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
                 entities = await service.Update(entities);
+                await activity.Insert(new TSISCOA_Actividad
+                {
+                    TC_Description = "Actualizar usuario: " + DTO.TC_Identificacion,
+                    TC_Accion = "Put",
+                    TF_FechaAccion = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
                 return Ok(DTO);
             }
             catch (Exception ex) { return InternalServerError(ex); }
@@ -206,21 +206,20 @@ namespace SISCOA_API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
-            var flag = await service.GetById(id);
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Eliminar usuario: " + flag.TC_Identificacion,
-                TC_Accion = "Delete",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            var flag = await service.GetById(id);          
             if (flag == null)
                 return NotFound();
 
             try
             {
-
                 await service.Delete(id);
+                await activity.Insert(new TSISCOA_Actividad
+                {
+                    TC_Description = "Eliminar usuario: " + flag.TC_Identificacion,
+                    TC_Accion = "Delete",
+                    TF_FechaAccion = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
                 return Ok();
             }
             catch (Exception ex) { return InternalServerError(ex); }
