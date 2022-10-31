@@ -174,15 +174,15 @@ const appRoutes: Routes = [
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
-    path: 'permissionRegister',
+    path: 'permissionRegister/:ID',
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate/:ID',
+    path: 'permissionUpdate/:ID/:IDS',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete/:ID',
+    path: 'permissionDelete/:ID/:IDS',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
@@ -222,15 +222,15 @@ const appRoutes: Routes = [
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
-    path: 'conditionRegister',
+    path: 'conditionRegister/:ID',
     component: ConditionRegisterComponent,
     data: { title: 'Registrar Estado'}, 
   },{
-    path: 'conditionUpdate/:ID',
+    path: 'conditionUpdate/:ID/:IDS',
     component: ConditionUpdateComponent,
     data: { title: 'Actualizar Estado'}, 
   },{
-    path: 'conditionDelete/:ID',
+    path: 'conditionDelete/:ID/:IDS',
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{

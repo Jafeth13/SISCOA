@@ -2,14 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermisionServicesService } from '../permision-services.service';
+import { ServiceUserService } from '../service-user.service';
+
 @Component({
   selector: 'app-permission-update',
   templateUrl: './permission-update.component.html',
   styleUrls: ['./permission-update.component.css']
 })
 export class PermissionUpdateComponent implements OnInit {
-
-  constructor(public rest:PermisionServicesService,private route:ActivatedRoute,private router:Router) { }
+userData:any;
+  constructor(public rest:PermisionServicesService,private route:ActivatedRoute,private router:Router,public restUser:ServiceUserService,
+    ) { }
   @Input()roleDataupdate:any;
 
   ngOnInit(): void {
@@ -19,7 +22,14 @@ export class PermissionUpdateComponent implements OnInit {
     this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.roleDataupdate = data;
-    });
+    });  
+    
+    this.restUser
+      .get(this.route.snapshot.params['IDS'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
   }
 
   update(){
@@ -30,7 +40,8 @@ export class PermissionUpdateComponent implements OnInit {
         'role sucessfully updated!',
         'success'
       )
-           
+      this.router.navigate(['/permissionList/'+this.userData.ID]);   
+      
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -40,4 +51,7 @@ export class PermissionUpdateComponent implements OnInit {
       console.log(err);
     });
   }
+
+
+
 }
