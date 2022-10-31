@@ -1,0 +1,37 @@
+<app-navbar> </app-navbar>
+
+<section class="page-section" id="adminRegister">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <br>
+            <br>
+            <br>
+            <div class="entry-formRate">
+                <form action="" *ngIf="dataSource" id="userRegister-entry-form">
+                    <h2>Observar</h2>
+                    <input   type="text"  hidden>
+
+                    <input  [(ngModel)]="dataSource.TSISCOA_Control.TC_Nombre" disabled type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+
+                    <input disabled  [(ngModel)]="dataSource.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_vbAdmin" id="navme_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                    <input disabled  [(ngModel)]="dataSource.TSISCOA_Control.TB_NotificacionCorreoAColaborador" type="text" autocomplete="off" name="des" id="des" class="form-control rounded-left" placeholder="Descripcion" required="">
+
+                    <input disabled  [(ngModel)]="dataSource.TSISCOA_Estado.TC_Nombre" type="text" autocomplete="off" name="name_status" id="name_status" class="form-control rounded-left" placeholder="Descripcion" required="">
+                    <input disabled  [(ngModel)]="dataSource.TSISCOA_Periodo.TC_Nombre" type="text" autocomplete="off" name="name_Period" id="namePeriod" class="form-control rounded-left" placeholder="Descripcion" required="">
+
+                    
+                    <button routerLink="/check/{{userData.ID}}" class="submit-btn form-control" >Volver</button>
+                </form>
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="example-button-container">
+        <div>
+          </div>
+        </div>
+</section>
+
+
+

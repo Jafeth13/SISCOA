@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServiceConditionService } from '../service-condition.service';
+import { ServiceUserService } from '../service-user.service';
+
 @Component({
   selector: 'app-condition-update',
   templateUrl: './condition-update.component.html',
@@ -9,9 +11,9 @@ import { ServiceConditionService } from '../service-condition.service';
 })
 export class ConditionUpdateComponent implements OnInit {
 
-  constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public restUser:ServiceUserService,public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
   @Input()statusDataupdate:any
-
+userData:any;
   
 
   ngOnInit(): void {
@@ -22,6 +24,13 @@ export class ConditionUpdateComponent implements OnInit {
       console.log(data);
       this.statusDataupdate = data;
     });
+    this.restUser
+    .get(this.route.snapshot.params['IDS'])
+    .subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+
   }
   update(){
     this.rest.update(this.statusDataupdate,this.route.snapshot.params['ID']).subscribe((result) => {
@@ -31,7 +40,7 @@ export class ConditionUpdateComponent implements OnInit {
         'estado sucessfully updated!',
         'success'
       ) 
-      this.router.navigate(['/conditionList']);    
+      this.router.navigate(['/conditionList/'+this.userData.ID]);    
     }, (err) => {
       Swal.fire({
         icon: 'error',

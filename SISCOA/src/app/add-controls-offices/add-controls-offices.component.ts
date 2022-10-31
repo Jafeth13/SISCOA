@@ -63,7 +63,7 @@ form={
     public restConditional:ServiceConditionService
 
   ) {}
-
+userData:any
   dataPeriod:any
 dataConditional:any
   ngAfterViewInit() {
@@ -81,6 +81,7 @@ dataConditional:any
 
     this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
       console.log(data);
+      this.userData=data;
     });
   }
 
@@ -147,8 +148,20 @@ dataConditional:any
     });
   }
 
-  sendControl(){
-
+  delete(){
+   /* this.restOfficeControl.delete(this.officeControl).subscribe(
+      (result) => {
+        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+        console.log(err);
+      }
+    );*/
   }
 
   back() {

@@ -23,7 +23,7 @@
       <div class="centrarTable">
     
          <div class="addButton">
-        <button type="button" class="btn btn-secondary" routerLink="/conditionRegister"  >+</button>
+        <button type="button" class="btn btn-secondary" routerLink="/conditionRegister/{{userData.ID}}"  >+</button>
       </div>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
@@ -45,10 +45,10 @@
                     <mat-icon>search</mat-icon>     
                 </button>  
                   
-                <button mat-fab color="warn" routerLink="/conditionDelete/{{element.ID}}" aria-label="Example icon button with a delete icon">
+                <button mat-fab color="warn" routerLink="/conditionDelete/{{element.ID}}/{{userData.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>delete</mat-icon>     
                 </button>
-                 <button mat-fab color="primary" routerLink="/conditionUpdate/{{element.ID}}"  aria-label="Example icon button with a delete icon">
+                 <button mat-fab color="primary" routerLink="/conditionUpdate/{{element.ID}}/{{userData.ID}}"  aria-label="Example icon button with a delete icon">
                     <mat-icon>update</mat-icon>
                    </button>  
                

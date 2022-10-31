@@ -11,10 +11,25 @@
                     <mat-icon>account_circle</mat-icon>  
                 </button> 
                 <li class="nav-item"><a class="nav-link" id="loginId" >{{email}}</a></li>   
+                <button id="iconos" class="navButton">
+                    <mat-icon><mat-icon> bar_chart</mat-icon></mat-icon>  
+                </button> 
                 <li class="nav-item"><a  routerLink="/check/{{this.userData.ID}}" class="nav-link" id="bookingNav">Graficos</a></li>
-                <li class="nav-item">  <a routerLink="/menu/{{this.userData.ID}}" class="nav-link">Catalogo</a></li>           
+                <button id="iconoDs" class="navButton">
+                    <mat-icon><mat-icon> chrome_reader_mode</mat-icon></mat-icon>  
+                </button> 
+                <li class="nav-item">  <a routerLink="/menu/{{this.userData.ID}}" class="nav-link">Catalogo</a></li>  
+                <button id="iconoDs" class="navButton">
+                    <mat-icon><mat-icon>  list_alt</mat-icon></mat-icon>  
+                </button>          
                 <li class="nav-item">  <a routerLink="/controlMenu/{{this.userData.ID}}" class="nav-link">Controles</a></li>
+                <button id="iconoDs" class="navButton">
+                    <mat-icon><mat-icon>  help_outline</mat-icon></mat-icon>  
+                </button>  
                 <li class="nav-item">  <a routerLink="/menuConfiguration/{{this.userData.ID}}" class="nav-link">Configuracion</a></li>
+                <button id="iconoDs" class="navButton">
+                    <mat-icon><mat-icon>  exit_to_app</mat-icon></mat-icon>  
+                </button>      
                 <li class="nav-item">   <a *ngIf="auth.isLoggedIn$ | async" (click)="logout()" id="logoutId" class="nav-link">
                     Cerrar sesion
                 </a></li>

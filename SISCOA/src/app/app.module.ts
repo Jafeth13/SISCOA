@@ -69,6 +69,8 @@ import { ControlSeeComponent } from './control-see/control-see.component';
 import { OfficeSeeComponent } from './office-see/office-see.component';
 import { UserSeeComponent } from './user-see/user-see.component';
 import { RolSeeComponent } from './rol-see/rol-see.component';
+import { ControlBySlopesComponent } from './control-by-slopes/control-by-slopes.component';
+import { SeeControlFullComponent } from './see-control-full/see-control-full.component';
 
 
 const appRoutes: Routes = [
@@ -136,7 +138,7 @@ const appRoutes: Routes = [
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
-    path: 'extraDay',
+    path: 'extraDay/:ID',
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
@@ -172,15 +174,15 @@ const appRoutes: Routes = [
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
-    path: 'permissionRegister',
+    path: 'permissionRegister/:ID',
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate/:ID',
+    path: 'permissionUpdate/:ID/:IDS',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete/:ID',
+    path: 'permissionDelete/:ID/:IDS',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
@@ -220,15 +222,15 @@ const appRoutes: Routes = [
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
-    path: 'conditionRegister',
+    path: 'conditionRegister/:ID',
     component: ConditionRegisterComponent,
     data: { title: 'Registrar Estado'}, 
   },{
-    path: 'conditionUpdate/:ID',
+    path: 'conditionUpdate/:ID/:IDS',
     component: ConditionUpdateComponent,
     data: { title: 'Actualizar Estado'}, 
   },{
-    path: 'conditionDelete/:ID',
+    path: 'conditionDelete/:ID/:IDS',
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
@@ -236,11 +238,11 @@ const appRoutes: Routes = [
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
-    path: 'actionUser',
+    path: 'actionUser/:ID',
     component: ActionUserComponent,
     data: { title: 'Acciones'}, 
   },{
-    path: 'errorSystem',
+    path: 'errorSystem/:ID',
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
   },{
@@ -263,6 +265,14 @@ const appRoutes: Routes = [
     path: 'navbar/:ID',
     component: NavbarComponent,
     data: { title: 'Rol'}, 
+  },{
+    path: 'controlBySlope/:ID',
+    component: ControlBySlopesComponent,
+    data: { title: 'Pendiente'}, 
+  },{
+    path: 'seeControlFull/:ID/:IDS',
+    component: SeeControlFullComponent,
+    data: { title: 'Completo'}, 
   }
 ];
 
@@ -315,7 +325,9 @@ const appRoutes: Routes = [
     ControlSeeComponent,
     OfficeSeeComponent,
     UserSeeComponent,
-    RolSeeComponent
+    RolSeeComponent,
+    ControlBySlopesComponent,
+    SeeControlFullComponent
     
   ],
   imports: [

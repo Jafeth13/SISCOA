@@ -1,7 +1,10 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermisionServicesService } from '../permision-services.service';
+import { ServiceUserService } from '../service-user.service';
+
 @Component({
   selector: 'app-permission-register',
   templateUrl: './permission-register.component.html',
@@ -12,7 +15,9 @@ export class PermissionRegisterComponent implements OnInit {
     ID: 0,
     TC_Nombre: '',
   };
+  userData:any;
   constructor(
+    public restUser:ServiceUserService,
     public rest: PermisionServicesService,
     private route: ActivatedRoute,
     private router: Router
@@ -24,7 +29,7 @@ export class PermissionRegisterComponent implements OnInit {
     this.rest.add(this.permisionData).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success'); 
-        this.router.navigate(['/permissionList']);   
+        this.router.navigate(['/permissionList/'+this.userData.ID]);   
       },
       (err) => {
         Swal.fire({
@@ -36,4 +41,17 @@ export class PermissionRegisterComponent implements OnInit {
       }
     );
   }
+
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+      });
+  }
+  back() {
+    this.router.navigate(['/permissionList/' + this.route.snapshot.params['ID']]);
+  }
+
 }

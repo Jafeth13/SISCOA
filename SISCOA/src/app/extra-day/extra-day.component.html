@@ -1,4 +1,4 @@
-<app-navbar-login></app-navbar-login>
+<app-navbar></app-navbar>
 <div class="container">
     <div class="text-center">
         <br>
@@ -29,13 +29,13 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef><b> Nombre</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_Nombre}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Control.TC_Nombre}} </td>
       </ng-container>
   
       <!-- Descripcion Column -->
       <ng-container matColumnDef="Descripcion">
         <th mat-header-cell *matHeaderCellDef><b> Descripcion</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_DescriptionDocumentacionEvidencia}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia}} </td>
       </ng-container>
   
       <!-- Period Column -->
@@ -52,14 +52,14 @@
      <!-- role Column -->
      <ng-container matColumnDef="notification">
         <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
-        <td mat-cell *matCellDef="let element"> {{element.TB_NotificacionCorreoAColaborador}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Control.TB_NotificacionCorreoAColaborador}} </td>
       </ng-container>
       <!-- action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
         <td mat-cell *matCellDef="let element">   <div class="example-button-row">
             <div class="example-button-container">
-              <button mat-fab color="primary" routerLink="/controlSee/{{element.ID}}" aria-label="Example icon button with a delete icon">
+              <button mat-fab color="primary" routerLink="/seeControlFull/{{element.ID}}/{{this.userData.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>search</mat-icon>     
                 </button>  
                              
@@ -76,5 +76,8 @@
                    showFirstLastButtons 
                    aria-label="Select page of periodic elements">
     </mat-paginator>
+  </div>
+  <div>
+    <button mat-button routerLink="/check/{{userData.ID}}">Regresar</button>
   </div>
 </div>

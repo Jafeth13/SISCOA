@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServiceConditionService } from '../service-condition.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-condition-delete',
   templateUrl: './condition-delete.component.html',
@@ -10,8 +10,8 @@ import { ServiceConditionService } from '../service-condition.service';
 })
 export class ConditionDeleteComponent implements OnInit {
 statusDataDelete:any;  
-
-  constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
+userData:any;
+  constructor(public restUser:ServiceUserService,public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
               this.rut();
@@ -21,6 +21,12 @@ statusDataDelete:any;
     this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.statusDataDelete = data;
+    });
+    this.restUser
+    .get(this.route.snapshot.params['IDS'])
+    .subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
     });
   }
 
@@ -41,7 +47,7 @@ statusDataDelete:any;
         this.rest.delete(this.route.snapshot.params['ID']).subscribe(
         (data) =>{
           console.log(data);
-          this.router.navigate(['/conditionList']);
+          this.router.navigate(['/conditionList/'+this.userData.ID]);
         }
       ); 
         Swal.fire(

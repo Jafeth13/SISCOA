@@ -1,6 +1,7 @@
+
 .grafico1{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height : 50px;
     width: 300px;
   margin: 30%;
   padding: 10%;
@@ -10,17 +11,17 @@
 }
 
 .grafico2{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-   
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height : 50px;
     width: 300px;
   margin: 30%;
   padding: 10%;
   margin: 0 auto;
-  position: absolute;top: 280px;
+  position: absolute;top: 380px;
 }
 .grafico3{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
+   
+    line-height : 50px;
     width: 300px;
   margin: 30%;
   padding: 10%;
@@ -29,19 +30,25 @@
 }
 
 .grafico4{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 11px;
+    line-height : 50px;
     width: 300px;
   margin: 30%;
   padding: 10%;
   position: absolute;right: 5%;
-  top: 280px;
+  top: 380px;
   margin: 0 auto;
+  
+  
+  
 }
 
 .wrapperButton{
     position: absolute;
     
-    top: 80%;
+    top: 90%;
     left:70%;
     transform: translate(-50%, -50%);
     width: fit-content;
@@ -50,7 +57,7 @@
 .wrapperButton2{
     position: absolute;
     
-    top: 80%;
+    top: 90%;
     left:60%;
     transform: translate(-50%, -50%);
     width: fit-content;
@@ -59,7 +66,7 @@
 
 .wrapperButton3{    
     position: absolute;   
-    top: 80%;
+    top: 90%;
     left:60%;
     transform: translate(-50%, -50%);
     width: fit-content;
@@ -68,7 +75,7 @@
 
 .wrapperButton4{    
     position: absolute;   
-    top: 80%;
+    top: 90%;
     left:70%;
     transform: translate(-50%, -50%);
     width: fit-content;
@@ -186,3 +193,4 @@
 .myB:hover span{
     animation-play-state: paused;
 }
+

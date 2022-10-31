@@ -80,6 +80,7 @@ data1={
 
 datosprueba:any;
 dataWithDay:any;
+dataWithSlopes:any;
   rut() {
     this.restUser
       .get(this.route.snapshot.params['ID'])
@@ -102,6 +103,14 @@ dataWithDay:any;
         console.log(data);
        // this.userData = data;
        this.dataWithDay=data
+      });
+
+      this.officeControl
+      .ListBySlopes()
+      .subscribe((data: {}) => {
+        console.log(data);
+       // this.userData = data;
+       this.dataWithSlopes=data
       });
 
     
