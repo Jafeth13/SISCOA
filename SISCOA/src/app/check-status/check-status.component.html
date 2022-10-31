@@ -14,7 +14,7 @@
       >
     </ngx-charts-advanced-pie-chart>
     <div class="wrapperButton2">
-      <button  routerLink="/extraDay" class="myB">
+      <button  routerLink="/extraDay/{{userData.ID}}" class="myB">
         Controles que se le asignaron dias extras
         <span></span>
         <span></span>
@@ -74,7 +74,7 @@
   >
 </ngx-charts-advanced-pie-chart>
 <div class="wrapperButton3">
-  <button   class="myB">
+  <button routerLink="/controlBySlope/{{userData.ID}}"  class="myB">
     Controles pendiente por mes
     <span></span>
     <span></span>

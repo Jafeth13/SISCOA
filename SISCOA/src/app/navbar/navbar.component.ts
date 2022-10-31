@@ -65,7 +65,6 @@ userData:any
       console.log(data);
       this.userData = data;
       this.email=this.userData.TC_Nombre+' '+this.userData.TC_PrimerApellido;
-    
     });
   }
 

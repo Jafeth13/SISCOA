@@ -20,6 +20,14 @@ export class ServicesControllersService {
     
   }
 
+  getControlDayExtra():Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsWithExtraDays',httpOptions);
+  }
+
+  getControlDaySlopes():Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes',httpOptions);
+  }
+
   getControl(id:any):Observable<any>{
     return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id, httpOptions);   
   }

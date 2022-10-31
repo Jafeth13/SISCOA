@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="wrapperButton">
-    <button  routerLink="/errorSystem" class="myB">
+    <button  routerLink="/errorSystem/{{userData.ID}}" class="myB">
       Errores del sistema
       <span></span>
       <span></span>
@@ -10,7 +10,7 @@
   </div>
 
   <div class="wrapperButton2">
-    <button  routerLink="/actionUser" class="myB">
+    <button  routerLink="/actionUser/{{userData.ID}}" class="myB">
       Acciones del sistema
       <span></span>
       <span></span>

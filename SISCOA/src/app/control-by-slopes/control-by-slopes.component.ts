@@ -6,11 +6,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServiceUserService } from '../service-user.service';
 @Component({
-  selector: 'app-extra-day',
-  templateUrl: './extra-day.component.html',
-  styleUrls: ['./extra-day.component.css']
+  selector: 'app-control-by-slopes',
+  templateUrl: './control-by-slopes.component.html',
+  styleUrls: ['./control-by-slopes.component.css']
 })
-export class ExtraDayComponent implements AfterViewInit ,OnInit{
+export class ControlBySlopesComponent implements AfterViewInit ,OnInit{
   displayedColumns: string[] = ['name', 'Descripcion','Period','status','notification', 'action'];
   dataSource = new MatTableDataSource();
 
@@ -28,7 +28,7 @@ export class ExtraDayComponent implements AfterViewInit ,OnInit{
         this.userData = data;
       });
 
- this.rest.getControlDayExtra().subscribe((pos)=>{
+ this.rest.getControlDaySlopes().subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });
@@ -42,3 +42,4 @@ export class ExtraDayComponent implements AfterViewInit ,OnInit{
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }}
+
