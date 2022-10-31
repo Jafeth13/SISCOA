@@ -1,6 +1,6 @@
 <app-navbar> </app-navbar>
-
-  <div class="grafico4">
+ 
+  <div mat-elevation-z8 class="grafico4">
         
          
     <ngx-charts-advanced-pie-chart
@@ -66,7 +66,7 @@
 <ngx-charts-advanced-pie-chart
   [view]="view"
   [scheme]="colorScheme"
-  [results]="single2"
+  [results]="dataWithSlopes"
   [gradient]="gradient"
   (select)="onSelect($event)"
   (activate)="onActivate($event)"
@@ -92,7 +92,7 @@
     <ngx-charts-advanced-pie-chart
       [view]="view"
       [scheme]="colorScheme"
-      [results]="single2"
+      [results]="dataWithSlopes"
       [gradient]="gradient"
       (select)="onSelect($event)"
       (activate)="onActivate($event)"
@@ -112,3 +112,4 @@
 
 
     </div>
+  

@@ -41,7 +41,7 @@ export class OfficeControlServicesService {
   
   ListBySlopes():Observable<any>{
 
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsWithExtraDays',httpOptions);
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsBySlopes',httpOptions);
     
   }
 
