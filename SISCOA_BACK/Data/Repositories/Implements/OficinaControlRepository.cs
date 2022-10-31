@@ -23,9 +23,9 @@ namespace Repositories.Repositories.Implements
                 .GroupBy(x => x.FK_TN_ESTADO_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
                 {
-                    ID_State = x.Key,
-                    Name = x.FirstOrDefault().TSISCOA_Estado.TC_Nombre,
-                    Value = x.Count()
+                   
+                    name = x.FirstOrDefault().TSISCOA_Estado.TC_Nombre,
+                    value = x.Count()
                 }).ToListAsync();
             return list;
         }
@@ -37,9 +37,9 @@ namespace Repositories.Repositories.Implements
                 .GroupBy(x => x.FK_TN_PERIODO_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
                 {
-                    ID_State = x.Key,
-                    Name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
-                    Value = x.Count()
+                    
+                    name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
+                    value = x.Count()
                 }).ToListAsync();
             return list;
         }
@@ -66,9 +66,9 @@ namespace Repositories.Repositories.Implements
                 .GroupBy(x => x.FK_TN_CONTROL_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
                 {
-                    ID_State = x.Key,
-                    Name = x.FirstOrDefault().TSISCOA_Control.TC_Nombre,
-                    Value = x.Count()
+                   
+                    name = x.FirstOrDefault().TSISCOA_Control.TC_Nombre,
+                    value = x.Count()
                 }).ToListAsync();
             return list;
         }

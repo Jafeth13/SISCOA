@@ -9,6 +9,11 @@ import { ServicesControllersService } from '../services-controllers.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { ServicesPeriodService } from '../services-period.service';
 import { ServiceUserService } from '../service-user.service';
+import * as moment from 'moment';
+import { OfficeControlServicesService } from '../office-control-services.service';
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-office-control-management',
   templateUrl: './office-control-management.component.html',
@@ -18,6 +23,12 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
+  date: any;
+  hour: any;
+  date2: any;
+  hour2: any;
+  startDate: any;
+  enddate: any;
   dataSource = new MatTableDataSource();
   dataSourceControl = new MatTableDataSource();
   dataSourcePeriod: any;
@@ -44,7 +55,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     public rest2: ServicesControllersService,
     private route: ActivatedRoute,
     private router: Router,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    public officeControl:OfficeControlServicesService
   ) {}
 
   ngAfterViewInit() {
@@ -66,7 +78,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     });
   }
   update(id: number) {
-    this.rest2.get(id).subscribe((data: {}) => {
+    this.rest2.getControlFull(id).subscribe((data: {}) => {
       console.log(data);
       this.controlDataupdate = data;
     });
@@ -87,4 +99,44 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   back() {
     this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
   }
+
+  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    this.date = moment(event.value).format('YYYY-MM-DD');
+  }
+
+  selectHour() {
+    this.hour = (<HTMLInputElement>document.getElementById('time')).value;
+  }
+  extraDay(){
+    var date;
+    date = new Date();
+    date =  
+        ('00' + date.getHours()).slice(-2) + ':' + 
+        ('00' + date.getMinutes()).slice(-2) + ':' + 
+        ('00' + date.getSeconds()).slice(-2);
+    
+    this.startDate = this.date + 'T' + date+'Z';
+
+    this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
+
+    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate).subscribe(
+      (result) => {
+        Swal.fire('Good job!', 'UPDATE sucessfully!', 'success'); 
+        this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+      }
+     
+      ,
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+        console.log(err);
+      }
+    );
+    console.log(this.officeControl);
+
+   }
+
 }

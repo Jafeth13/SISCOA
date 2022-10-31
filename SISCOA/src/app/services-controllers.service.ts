@@ -29,6 +29,11 @@ export class ServicesControllersService {
     return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
   }
 
+  getControlFull(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControles/'+id, httpOptions);   
+  }
+
+
   add(Controls :any){
     return this.http.post(endpoint+'Controls', Controls, httpOptions);   
   }

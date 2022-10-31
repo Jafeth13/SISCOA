@@ -9,6 +9,7 @@ const httpOptions = {
   })
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,4 +22,29 @@ export class OfficeControlServicesService {
     return  this.http.post(endpoint+'OficinaControles',officeControl,httpOptions);
   }
 
+  update(id:any,officeControl:any){
+    return  this.http.put(endpoint+'OficinaControles/'+id,officeControl,httpOptions);
+  }
+
+  List():Observable<any>{
+
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsByStates',httpOptions);
+    
+  }
+
+  ListControlsWithExtraDays():Observable<any>{
+
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsWithExtraDays',httpOptions);
+    
+  }
+
+  
+  ListBySlopes():Observable<any>{
+
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsWithExtraDays',httpOptions);
+    
+  }
+
 }
+
+
