@@ -205,13 +205,12 @@ namespace SISCOA_API.Controllers
         /// </summary>
         /// <param name="files">Lista de documentos</param>
         /// <param name="id">El id de controlOficina para completar control</param>
-        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Registro insertado</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [Route("api/OficinaControl/CompleteOfficeControl/{id}")]
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult CompleteOfficeControl(IFormFile files, int id)
         {
             /*int count = 1;

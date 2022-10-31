@@ -79,52 +79,100 @@ GO
 INSERT INTO [USUARIO].[TSISCOA_Rol]
            ([TC_Nombre])
      VALUES
-           ('Administrador')
+           ('Administrador del Sistema'),
+		   ('Jefatura de Supervisores'),
+		   ('Colaborador de Supervisor'),
+		   ('Jefatura Oficina'),
+		   ('Colaborador Oficina')
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Rol]
 GO
 INSERT INTO [USUARIO].[TSISCOA_Permiso]
            ([TC_Nombre])
      VALUES
-           ('Puede consultar Actividades'),
-           ('Puede consultar Controles'),
-           ('Puede consultar Errores'),
-           ('Puede consultar Estados'),
-           ('Puede consultar Oficinas'),
-           ('Puede consultar Periodos'),
-           ('Puede consultar Permisos'),
-           ('Puede consultar Roles'),
-		   ('Puede consultar Usuarios'),
+           ('Puede consultar Registros'),
+           ('Puede crear Registros'),
+           ('Puede actualizar Registros'),
+           ('Puede eliminar Registros'),
 
-           ('Puede crear Actividades'),
-           ('Puede crear Controles'),
-           ('Puede crear Errores'),
-           ('Puede crear Estados'),
-           ('Puede crear Oficinas'),
-           ('Puede crear Periodos'),
-           ('Puede crear Permisos'),
-           ('Puede crear Roles'),
-		   ('Puede crear Usuarios'),
+           ('Puede gestionar Roles'),
+           ('Puede gestionar Permisos'),
+           ('Puede gestionar Usuarios'),
+           ('Puede gestionar Periodos'),
+           ('Puede gestionar Estados'),
+		   ('Puede consultar Actividades'),
 
-           ('Puede actualizar Actividades'),
-           ('Puede actualizar Controles'),
-           ('Puede actualizar Errores'),
-           ('Puede actualizar Estados'),
-           ('Puede actualizar Oficinas'),
-           ('Puede actualizar Periodos'),
-           ('Puede actualizar Permisos'),
-           ('Puede actualizar Roles'),
-		   ('Puede actualizar Usuarios'),
-
-           ('Puede eliminar Actividades'),
-           ('Puede eliminar Controles'),
-           ('Puede eliminar Errores'),
-           ('Puede eliminar Estados'),
-           ('Puede eliminar Oficinas'),
-           ('Puede eliminar Periodos'),
-           ('Puede eliminar Permisos'),
-           ('Puede eliminar Roles'),
-		   ('Puede eliminar Usuarios')
+		   ('Puede consultar Errores')
 
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Permiso]
+GO
+INSERT INTO [USUARIO].[TSISCOA_RolPermiso]
+           ([FK_SISCOA_Rol_SISCOA_RolPermiso]
+           ,[FK_SISCOA_Permiso_SISCOA_RolPermiso])
+     VALUES
+	 --Administrador del Sistema
+           (1,1),
+           (1,2),
+           (1,3),
+           (1,4),
+           (1,5),
+           (1,6),
+           (1,7),
+           (1,8),
+           (1,9),
+           (1,10),
+           (1,11),
+	--Jefatura de Supervisores
+           (2,1),
+           (2,2),
+           (2,3),
+           (2,4),
+	--Colaborador de Supervisor
+           (3,1),
+           (3,2),
+           (3,3),
+           (3,4),
+	--Jefatura Oficina
+           (4,1),
+           (4,3),
+	--Colaborador Oficina
+           (5,1),
+           (5,3)
+GO
+--SELECT * FROM [USUARIO].[TSISCOA_RolPermiso]
+GO
+INSERT INTO [USUARIO].[TSISCOA_Usuario]
+           ([TC_Identificacion]
+           ,[TC_Nombre]
+           ,[TC_PrimerApellido]
+           ,[TC_SegundoApellido]
+           ,[TV_Contrasenna]
+           ,[TC_Correo]
+           ,[FK_SISCOA_Oficina_SISCOA_Usuario]
+           ,[FK_SISCOA_Rol_SISCOA_Usuario])
+     VALUES
+           ('12345678','User','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user@gmail.com',1,1)
+GO
+--SELECT * FROM [USUARIO].[TSISCOA_Usuario]
+GO
+INSERT INTO [SISTEMA].[TSISCOA_Actividad]
+           ([TC_Description]
+           ,[TC_Accion]
+           ,[FK_ID_UsuarioActivo]
+           ,[TF_FechaAccion])
+     VALUES
+           ('Accion de prueba','Prueba',1,GETDATE())
+GO
+--SELECT * FROM [SISTEMA].[TSISCOA_Actividad]
+GO
+INSERT INTO [SISTEMA].[TSISCOA_Error]
+           ([TC_Description]
+           ,[TC_UltimaAccion]
+           ,[FK_ID_UsuarioActivo]
+           ,[TF_FechaError])
+     VALUES
+           ('Error de prueba','Prueba',1,GETDATE())
+GO
+
+
