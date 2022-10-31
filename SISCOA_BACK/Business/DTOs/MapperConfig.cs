@@ -42,7 +42,7 @@ namespace Business.DTOs
                 cfg.CreateMap<TSISCOA_Error, TSISCOA_Error_DTO>();
                 cfg.CreateMap<TSISCOA_Error_DTO, TSISCOA_Error>();
 
-                cfg.CreateMap<TSISCOA_Actividad, TSISCOA_Actividad_DTO>();
+                cfg.CreateMap<TSISCOA_Actividad, TSISCOA_Actividad_DTO>();                  
                 cfg.CreateMap<TSISCOA_Actividad_DTO, TSISCOA_Actividad>();
                 
                 cfg.CreateMap<TSISCOA_Archivo, TSISCOA_Archivo_DTO>();

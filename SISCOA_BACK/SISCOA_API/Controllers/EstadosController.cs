@@ -18,6 +18,7 @@ namespace SISCOA_API.Controllers
     {
         private IMapper _mapper;
         private readonly EstadoService service = new EstadoService();
+        private readonly ActividadService activity = new ActividadService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -32,9 +33,16 @@ namespace SISCOA_API.Controllers
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         [HttpGet]
         [ResponseType(typeof(IEnumerable<TSISCOA_Estado_DTO>))]
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
             var entities = await service.GetAll();
+            await activity.Insert(new TSISCOA_Actividad
+            {
+                TC_Description = "Obtener todos los estados",
+                TC_Accion = "GetAll",
+                TF_FechaAccion = DateTime.Now,
+                FK_ID_UsuarioActivo = IDuserLogged
+            });
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Estado_DTO>(x));
 
             return Ok(DTO);
