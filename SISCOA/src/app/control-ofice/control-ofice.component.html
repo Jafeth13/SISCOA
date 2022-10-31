@@ -25,14 +25,14 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
-          <td mat-cell *matCellDef="let element">{{ element.TC_Nombre }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.TSISCOA_Control.TC_Nombre }}</td>
         </ng-container>
 
         <!-- Descripcion Column -->
         <ng-container matColumnDef="Descripcion">
           <th mat-header-cell *matHeaderCellDef><b> Descripcion</b></th>
           <td mat-cell *matCellDef="let element">
-            {{ element.TC_DescriptionDocumentacionEvidencia }}
+            {{ element.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia }}
           </td>
         </ng-container>
 
@@ -57,7 +57,7 @@
         <ng-container matColumnDef="notification">
           <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
           <td mat-cell *matCellDef="let element">
-            {{ element.TB_NotificacionCorreoAColaborador }}
+            {{ element.TSISCOA_Control.TB_NotificacionCorreoAColaborador }}
           </td>
         </ng-container>
         <!-- action Column -->
