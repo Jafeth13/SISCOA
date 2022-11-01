@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Business.DTOs;
 using Entities.Models;
+using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -20,6 +22,7 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly ErrorService service = new ErrorService();
         private readonly ActividadService activity = new ActividadService();
+        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -37,6 +40,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Error_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Errores"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetAll();
             await activity.Insert(new TSISCOA_Actividad
             {

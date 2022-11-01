@@ -5,7 +5,8 @@ INSERT INTO [CONTROL].[TSISCOA_Estado]
            ([TC_Nombre])
      VALUES
            ('Pendiente'),
-		   ('Completado')
+		   ('Completado'),
+		   ('Atrasado')
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Estado]
 GO
@@ -13,18 +14,18 @@ INSERT INTO [CONTROL].[TSISCOA_Periodo]
 			([TC_Nombre], [TF_FechaInicio], [TF_FechaFin])
 		VALUES
 			('Noviembre', '2022-11-01', '2022-11-29'),
-			('Diciembre', '2022-12-01', '2022-12-29')
+			('Diciembre', '2022-12-01', '2022-12-29'),
+			('Enero', '2023-01-01', '2023-01-29')
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Periodo]
 GO
 INSERT INTO [CONTROL].[TSISCOA_Control]
            ([TC_Nombre]
-           ,[TC_DescriptionDocumentacionEvidencia]
-           ,[FK_TN_Periodo])
+           ,[TC_DescriptionDocumentacionEvidencia])
      VALUES
-           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia',1),
-           ('Revision','Comprobante de revision firmado',1),
-		   ('Prestamo','Comprobante de prestamo firmado',1)
+           ('Asistencia','Debe presentar una firma digital con la fecha y hora de asistencia'),
+           ('Revision','Comprobante de revision firmado'),
+		   ('Prestamo','Comprobante de prestamo firmado')
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Control]
 GO
@@ -91,17 +92,15 @@ INSERT INTO [USUARIO].[TSISCOA_Permiso]
            ([TC_Nombre])
      VALUES
            ('Puede consultar Registros'),
-           ('Puede crear Registros'),
            ('Puede actualizar Registros'),
+
            ('Puede eliminar Registros'),
+           ('Puede crear Registros'),
 
-           ('Puede gestionar Roles'),
-           ('Puede gestionar Permisos'),
-           ('Puede gestionar Usuarios'),
-           ('Puede gestionar Periodos'),
-           ('Puede gestionar Estados'),
+		   ('Puede consultar Graficos'),
+		   ('Puede gestionar Catalogos'),
+
 		   ('Puede consultar Actividades'),
-
 		   ('Puede consultar Errores')
 
 GO
@@ -120,25 +119,24 @@ INSERT INTO [USUARIO].[TSISCOA_RolPermiso]
            (1,6),
            (1,7),
            (1,8),
-           (1,9),
-           (1,10),
-           (1,11),
 	--Jefatura de Supervisores
            (2,1),
            (2,2),
            (2,3),
            (2,4),
+           (2,5),
 	--Colaborador de Supervisor
            (3,1),
            (3,2),
            (3,3),
            (3,4),
+		   (2,5),
 	--Jefatura Oficina
            (4,1),
-           (4,3),
+           (4,2),
 	--Colaborador Oficina
            (5,1),
-           (5,3)
+           (5,2)
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_RolPermiso]
 GO
@@ -152,7 +150,8 @@ INSERT INTO [USUARIO].[TSISCOA_Usuario]
            ,[FK_SISCOA_Oficina_SISCOA_Usuario]
            ,[FK_SISCOA_Rol_SISCOA_Usuario])
      VALUES
-           ('12345678','User','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user@gmail.com',1,1)
+           ('12345678','User','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user@gmail.com',1,1),
+           ('11111111','User2','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user@gmail.com',1,5)
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Usuario]
 GO
@@ -174,5 +173,5 @@ INSERT INTO [SISTEMA].[TSISCOA_Error]
      VALUES
            ('Error de prueba','Prueba',1,GETDATE())
 GO
-
+--SLECT * FROM [SISTEMA].[TSISCOA_Error]
 

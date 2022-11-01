@@ -19,13 +19,14 @@ namespace Repositories.Repositories.Implements
             flag = await siscoa_context.Usuarios.AnyAsync(x => x.FK_SISCOA_Rol_SISCOA_Usuario == id);
             return flag;
         }
-        public async Task<bool> VerifyPrivilegesRolUser(int rol, string permit)
+        public async Task<bool> VerifyPrivilegesRolUser(int rol, string permission)
         {
-            var rolPermitsList = await siscoa_context.RolPermisos.Where(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == rol).ToListAsync();
-            foreach (var item in rolPermitsList)
+            //Busca los permisos del rol
+            var rolPermissionList = await siscoa_context.RolPermisos.Where(x => x.FK_SISCOA_Rol_SISCOA_RolPermiso == rol).ToListAsync();
+            foreach (var item in rolPermissionList)
             {
-                item.TSISCOA_Permiso = await siscoa_context.Permisos.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso);
-                if (item.TSISCOA_Permiso.TC_Nombre == permit)
+                //Verifica si el permiso del rol es igual al permiso que tiene el usuario logueado
+                if (item.TSISCOA_Permiso.TC_Nombre == permission)
                 {
                     return true;
                 }

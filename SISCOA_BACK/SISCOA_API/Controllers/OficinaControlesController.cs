@@ -3,10 +3,12 @@ using Business.DTOs;
 using Entities.Models;
 using Entities.Util;
 using Microsoft.AspNetCore.Http;
+using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -21,6 +23,7 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly OficinaControlService service = new OficinaControlService();
         private readonly ActividadService activity = new ActividadService();
+        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -38,6 +41,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetAll();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -63,6 +70,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsByStates(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetDataGraphics_ControlsByStates();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -87,6 +98,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsBySlopes(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetDataGraphics_ControlsSlopes();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -111,6 +126,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsBySlopes(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetDataGraphicsTable_ControlsSlopes();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -135,6 +154,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsWithExtraDays(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetDataGraphics_ControlsWithExtraDays();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -159,6 +182,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsWithExtraDays(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -187,6 +214,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
         public async Task<IHttpActionResult> GetOfficeControlByIdOffice(int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetOfficeControlByIdOffice(id);
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -244,6 +275,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetById(id);
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -271,6 +306,10 @@ namespace SISCOA_API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(TSISCOA_OficinaControl_DTO DTO, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede crear Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -304,6 +343,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
         public async Task<IHttpActionResult> Put(TSISCOA_OficinaControl_DTO DTO, int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede actualizar Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -340,6 +383,10 @@ namespace SISCOA_API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede eliminar Registros"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var flag = await service.GetById(id);
             if (flag == null)
                 return NotFound();

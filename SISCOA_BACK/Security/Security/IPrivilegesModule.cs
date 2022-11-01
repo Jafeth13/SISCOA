@@ -8,6 +8,6 @@ namespace Security.Security
 {
     public interface IPrivilegesModule
     {
-        Task<bool> VerifyPrivilegesRolUser(int rol, string privilege);
+        Task<bool> VerifyPrivilegesRolUser(int rol, string permission);
     }
 }
