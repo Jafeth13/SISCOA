@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Data.Data;
+using Entities.Models;
 using Repositories.Repositories;
 using Repositories.Repositories.Implements;
 using System.Collections.Generic;
@@ -8,10 +9,11 @@ namespace Services.Services.Implements
 {
     public class PeriodoService : GenericService<TSISCOA_Periodo>, IPeriodoService
     {
+        private readonly static PeriodoRepository _Repository = new PeriodoRepository(SISCOA_Context.Create());
         private readonly IPeriodoRepository periodoRepository;
-        public PeriodoService(IPeriodoRepository periodoRepository) : base(periodoRepository)
+        public PeriodoService() : base(_Repository)
         {
-            this.periodoRepository = periodoRepository;
+            this.periodoRepository = _Repository;
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

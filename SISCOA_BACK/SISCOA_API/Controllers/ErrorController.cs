@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -21,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class ErrorController : ApiController
     {
         private IMapper _mapper;
-        private readonly ErrorService service = new ErrorService(new ErrorRepository(SISCOA_Context.Create()));
+        private readonly ErrorService service = new ErrorService();
         /// <summary>
         /// Constructor
         /// </summary>

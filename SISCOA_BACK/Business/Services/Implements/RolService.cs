@@ -1,15 +1,18 @@
-﻿using Entities.Models;
+﻿using Data.Data;
+using Entities.Models;
 using Repositories.Repositories;
+using Repositories.Repositories.Implements;
 using System.Threading.Tasks;
 
 namespace Services.Services.Implements
 {
     public class RolService : GenericService<TSISCOA_Rol>, IRolService
     {
+        private readonly static RolRepository _Repository = new RolRepository(SISCOA_Context.Create());
         private readonly IRolRepository rolRepository;
-        public RolService(IRolRepository rolRepository) : base(rolRepository)
+        public RolService() : base(_Repository)
         {
-            this.rolRepository = rolRepository;
+            this.rolRepository = _Repository;
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class ControlsController : ApiController
     {
         private IMapper _mapper;
-        private readonly ControlService service = new ControlService(new ControlRepository(SISCOA_Context.Create()));
+        private readonly ControlService service = new ControlService();
         /// <summary>
         /// Constructor
         /// </summary>

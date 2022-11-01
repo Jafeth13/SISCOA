@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class ActividadController : ApiController
     {
         private IMapper _mapper;
-        private readonly ActividadService service = new ActividadService(new ActividadRepository(SISCOA_Context.Create()));
+        private readonly ActividadService service = new ActividadService();
         /// <summary>
         /// Constructor
         /// </summary>

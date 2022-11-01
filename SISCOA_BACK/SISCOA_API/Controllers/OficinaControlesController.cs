@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
 using Entities.Util;
 using Microsoft.AspNetCore.Http;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -23,7 +19,7 @@ namespace SISCOA_API.Controllers
     public class OficinaControlesController : ApiController
     {
         private IMapper _mapper;
-        private readonly OficinaControlService service = new OficinaControlService(new OficinaControlRepository(SISCOA_Context.Create()));
+        private readonly OficinaControlService service = new OficinaControlService();
         /// <summary>
         /// Constructor
         /// </summary>

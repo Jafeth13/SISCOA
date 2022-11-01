@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
@@ -19,7 +17,7 @@ namespace SISCOA_API.Controllers
     public class RolesController : ApiController
     {
         private IMapper _mapper;
-        private readonly RolService service = new RolService(new RolRepository(SISCOA_Context.Create()));
+        private readonly RolService service = new RolService();
         /// <summary>
         /// Constructor
         /// </summary>

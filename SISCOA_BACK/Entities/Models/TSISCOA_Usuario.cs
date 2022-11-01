@@ -25,7 +25,5 @@ namespace Entities.Models
         public int FK_SISCOA_Rol_SISCOA_Usuario { get; set; }
         public virtual TSISCOA_Oficina TSISCOA_Oficina { get; set; }
         public virtual TSISCOA_Rol TSISCOA_Rol { get; set; }
-        public virtual ICollection<TSISCOA_Error> TSISCOA_Error { get; set; }
-        public virtual ICollection<TSISCOA_Actividad> TSISCOA_Actividad { get; set; }
     }
 }

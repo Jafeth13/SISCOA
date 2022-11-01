@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Data.Data;
+using Entities.Models;
 using Repositories.Repositories;
 using Repositories.Repositories.Implements;
 using System.Collections.Generic;
@@ -8,10 +9,11 @@ namespace Services.Services.Implements
 {
     public class PermisoService : GenericService<TSISCOA_Permiso>, IPermisoService
     {
+        private readonly static PermisoRepository _Repository = new PermisoRepository(SISCOA_Context.Create());
         private readonly IPermisoRepository permisoRepository;
-        public PermisoService(IPermisoRepository permisoRepository) : base(permisoRepository)
+        public PermisoService() : base(_Repository)
         {
-            this.permisoRepository = permisoRepository;
+            this.permisoRepository = _Repository;
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
