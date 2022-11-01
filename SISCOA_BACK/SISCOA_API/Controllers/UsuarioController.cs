@@ -34,7 +34,6 @@ namespace SISCOA_API.Controllers
         /// Inicia Sesion
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
-        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>User</returns>
         /// <response code="200">OK. Inicio de sesion</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
@@ -42,7 +41,7 @@ namespace SISCOA_API.Controllers
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [Route("api/Usuario/LogIn")]
         [HttpPost]
-        public async Task<IHttpActionResult> Post(TSISCOA_UsuarioLogIn_DTO DTO, int IDuserLogged)
+        public async Task<IHttpActionResult> Post(TSISCOA_UsuarioLogIn_DTO DTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -53,13 +52,6 @@ namespace SISCOA_API.Controllers
                 entities = await session.LogIn(entities);             
                 if (entities == null)
                 {
-                    await activity.Insert(new TSISCOA_Actividad
-                    {
-                        TC_Description = "Inicio de sesion fallido",
-                        TC_Accion = "LogIn",
-                        TF_FechaAccion = DateTime.Now,
-                        FK_ID_UsuarioActivo = IDuserLogged
-                    });
                     return NotFound();
                 }
                 else
@@ -69,7 +61,7 @@ namespace SISCOA_API.Controllers
                         TC_Description = "Inicio de sesion exitoso",
                         TC_Accion = "LogIn",
                         TF_FechaAccion = DateTime.Now,
-                        FK_ID_UsuarioActivo = IDuserLogged
+                        FK_ID_UsuarioActivo = entities.ID
                     });
                     return Ok(entities);
                 }
@@ -165,6 +157,7 @@ namespace SISCOA_API.Controllers
                     TF_FechaAccion = DateTime.Now,
                     FK_ID_UsuarioActivo = IDuserLogged
                 });
+                entities.TV_Contrasenna = null;
                 return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }
