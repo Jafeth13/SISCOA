@@ -15,9 +15,7 @@ INSERT INTO [CONTROL].[TSISCOA_Periodo]
 		VALUES
 			('Noviembre', '2022-11-01', '2022-11-29'),
 			('Diciembre', '2022-12-01', '2022-12-29'),
-			('Enero', '2023-01-01', '2023-01-29'),
-			('Febrero', '2023-02-01', '2023-02-29'),
-			('Marzo', '2023-03-01', '2023-03-29')
+			('Enero', '2023-01-01', '2023-01-29')
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Periodo]
 GO
