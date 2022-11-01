@@ -149,7 +149,7 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
-                entities = await service.Insert(entities);
+                entities = await session.Insert(entities);
                 await activity.Insert(new TSISCOA_Actividad
                 {
                     TC_Description = "Crear usuario: " + DTO.TC_Identificacion,
@@ -157,8 +157,7 @@ namespace SISCOA_API.Controllers
                     TF_FechaAccion = DateTime.Now,
                     FK_ID_UsuarioActivo = IDuserLogged
                 });
-                entities.TV_Contrasenna = null;
-                return Ok(entities);
+                return Ok(DTO);
             }
             catch (Exception ex) { return InternalServerError(ex); }
         }

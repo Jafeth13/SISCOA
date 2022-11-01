@@ -33,14 +33,12 @@ namespace Repositories.Repositories.Implements
         }
         public new async Task<TSISCOA_Usuario> Insert(TSISCOA_Usuario entity)
         {
-            entity.TV_Contrasenna = GetSHA256(entity.TV_Contrasenna);
             siscoa_context.Set<TSISCOA_Usuario>().Add(entity);
             await siscoa_context.SaveChangesAsync();
             return entity;
         }
 
         public async Task<TSISCOA_Usuario> LogIn(TSISCOA_Usuario usuario) {
-            usuario.TV_Contrasenna = GetSHA256(usuario.TV_Contrasenna);
             var list = await siscoa_context.Usuarios.FirstOrDefaultAsync(x => x.TC_Identificacion == usuario.TC_Identificacion && x.TV_Contrasenna == usuario.TV_Contrasenna);
             if (list != null)
             {
@@ -50,16 +48,6 @@ namespace Repositories.Repositories.Implements
                 return list;
             }
             return null;
-        }
-        private string GetSHA256(string str)
-        {
-            SHA256 sha256 = SHA256Managed.Create();
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] stream = null;
-            StringBuilder sb = new StringBuilder();
-            stream = sha256.ComputeHash(encoding.GetBytes(str));
-            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
-            return sb.ToString();
         }
     }
 }
