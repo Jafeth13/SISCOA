@@ -41,6 +41,11 @@ export class ServicesRolService {
     );
   }
 
+  
+  rolPermision(roles:any){
+    return  this.http.post(endpoint+'RolPermisos',roles,httpOptions);
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
