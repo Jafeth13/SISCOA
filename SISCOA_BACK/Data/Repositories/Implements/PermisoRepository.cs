@@ -30,7 +30,8 @@ namespace Repositories.Repositories.Implements
                 {
                     if (item.FK_SISCOA_Rol_SISCOA_RolPermiso == id)
                     {
-                        list = await siscoa_context.Permisos.Where(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso).ToListAsync();
+                        var temp2 = await siscoa_context.Permisos.Where(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso).ToListAsync();
+                        list.Add(temp2[0]);
                     }
                 }
                 return list;
