@@ -20,10 +20,7 @@ export class CompleteControlComponent implements AfterViewInit ,OnInit{
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos)=>{
-      console.log(pos);
-      this.dataSource.data=pos
-      });
+  
   }
 
   applyFilter(event:Event){

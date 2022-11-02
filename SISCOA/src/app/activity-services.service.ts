@@ -19,9 +19,9 @@ export class ActivityServicesService {
   constructor(private http: HttpClient) { }
 
 
-  List():Observable<any>{
+  List(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Actividad',httpOptions);
+    return  this.http.get(endpoint+'Actividad?IDuserLogged='+id,httpOptions);
     
   }
 }

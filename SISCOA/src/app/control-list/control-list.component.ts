@@ -27,12 +27,10 @@ export class ControlListComponent implements AfterViewInit ,OnInit{
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos)=>{
-      console.log(pos);
-      this.dataSource.data=pos
-      });
+    this.rut()
+   
 
-      this.rut()
+      
   }
 
   applyFilter(event:Event){
@@ -41,10 +39,14 @@ export class ControlListComponent implements AfterViewInit ,OnInit{
   }
   rut() {
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
+      });
+       this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
       });
   }
 }

@@ -30,7 +30,7 @@ export class ControlSeeComponent implements OnInit {
     });
 
     this.restUser
-      .get(this.route.snapshot.params['IDS'])
+      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;

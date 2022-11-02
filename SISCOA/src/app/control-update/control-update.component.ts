@@ -36,7 +36,7 @@ userData:any
         this.controlDataDelete = data;
       });
 
-      this.restUser.get(this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+      this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
         console.log(data);
         this.userData = data;      
       }); 
@@ -52,7 +52,7 @@ userData:any
     }
     console.log(this.route.snapshot.params['ID']);
     this.restControl
-      .update(this.controlDataDelete,this.controlDataDelete.ID,)
+      .update(this.controlDataDelete,this.controlDataDelete.ID,this.route.snapshot.params['IDS'])
       .subscribe(
         (data) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');

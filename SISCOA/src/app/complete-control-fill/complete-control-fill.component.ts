@@ -34,7 +34,7 @@ export class CompleteControlFillComponent implements OnInit {
       this.controlDataDelete = data;
     });
   }
-
+/*
 update(){
 
       console.log(this.route.snapshot.params['ID'])
@@ -55,7 +55,7 @@ update(){
         });
         console.log(err);
       });        
-}
+}*/
 }
 
 
