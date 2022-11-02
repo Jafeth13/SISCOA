@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
 import { ServicesOfficeService } from '../services-office.service';
 import { ServiceUserService } from '../service-user.service';
+import { id } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -36,28 +37,18 @@ export class UserRegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.rut();
-    this.rest.rolList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.roleData = pos;
-    });
-
     this.get();
   }
 
-  get() {
-    this.dataOffice = [];
-    this.rest2.officeList(this.route.snapshot.params['ID']).subscribe((data = {}) => {
-      console.log(data);
-      this.dataOffice = data;
-    });
-  }
+  
 
   add() {
+    let idU =  localStorage.getItem("idUsuario") ;
     console.log(this.userData);
-    this.restUser.add(this.userData).subscribe(
+    this.restUser.add(this.userData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'User added sucessfully!', 'success');
-        this.router.navigate(['/listUser/'+this.userDataLog.ID]);
+        this.router.navigate(['/listUser']);
       },
       (err) => {
         Swal.fire({
@@ -70,13 +61,34 @@ export class UserRegisterComponent implements OnInit {
     );
   }
   rut(){
-    this.restUser
-    .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-    .subscribe((data: {}) => { 
-       console.log('sou yo')
-    
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
       this.userDataLog = data;
-      console.log(this.userDataLog);
+      
+    });
+    this.rest2.officeList(idU).subscribe((data = {}) => {
+      console.log(data);
+      this.dataOffice = data;
+    });
+    this.rest.rolList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.roleData = pos;
     });
   }
+
+  get(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.rest2.officeList(idU).subscribe((data = {}) => {
+      console.log(data);
+      this.dataOffice = data;
+    });
+  }
+
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    }
+
 }

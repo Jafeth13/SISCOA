@@ -28,7 +28,11 @@ export class ControlUpdateComponent implements OnInit {
     this.rut();
   }
 userData:any
-  rut() {
+  rut() {   
+       this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;      
+      }); 
     this.restControl
       .get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
@@ -36,10 +40,7 @@ userData:any
         this.controlDataDelete = data;
       });
 
-      this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;      
-      }); 
+
   }
   temp: any;
   update() {

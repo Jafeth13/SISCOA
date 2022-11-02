@@ -80,21 +80,21 @@ const appRoutes: Routes = [
     data: { title: 'Login' }, 
   },
   {
-    path: 'listUser/:ID',
+    path: 'listUser',
     component: UserListComponent,
     data: { title: 'Lista de usuarios' }, 
   },  
   {
-    path: 'registerUser/:ID',
+    path: 'registerUser',
     component: UserRegisterComponent,
     data: { title: 'Agregar usuarios' }, 
   },  
   {
-    path: 'deleteUser/:ID/:IDS',
+    path: 'deleteUser/:ID',
     component: UserDeleteComponent,
     data: { title: 'Eliminar usuarios' }, 
   },{
-    path: 'updateUser/:ID/:IDS',
+    path: 'updateUser/:ID',
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
@@ -102,7 +102,7 @@ const appRoutes: Routes = [
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
-    path: 'addoffice/:ID',
+    path: 'addoffice',
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
@@ -122,11 +122,11 @@ const appRoutes: Routes = [
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
-    path: 'menu/:ID',
+    path: 'menu',
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'controlMenu/:ID',
+    path: 'controlMenu',
     component: MenuControlComponent,
     data: { title: 'Menu'}, 
   },{
@@ -186,19 +186,19 @@ const appRoutes: Routes = [
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
-    path: 'officeList/:ID',
+    path: 'officeList',
     component: OfficeListComponent,
     data: { title: 'Listar Oficinas'}, 
   },{
-    path: 'officeRegister/:ID',
+    path: 'officeRegister',
     component: OfficeRegisterComponent,
     data: { title: 'Registrar Oficinas'}, 
   },{
-    path: 'officeUpdate/:ID/:IDS',
+    path: 'officeUpdate/:ID',
     component: OfficeUpdateComponent,
     data: { title: 'Actualizar Oficinas'}, 
   },{
-    path: 'officeDelete/:ID/:IDS',
+    path: 'officeDelete/:ID',
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{
@@ -234,11 +234,11 @@ const appRoutes: Routes = [
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
-    path: 'menuConfiguration/:ID',
+    path: 'menuConfiguration',
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
-    path: 'actionUser/:ID',
+    path: 'actionUser',
     component: ActionUserComponent,
     data: { title: 'Acciones'}, 
   },{
@@ -250,11 +250,11 @@ const appRoutes: Routes = [
     component: ControlSeeComponent,
     data: { title: 'Controles'}, 
   },{
-    path: 'userSee/:ID/:IDS',
+    path: 'userSee/:ID',
     component: UserSeeComponent,
     data: { title: 'Usuarios'}, 
   },{
-    path: 'officeSee/:ID/:IDS',
+    path: 'officeSee/:ID',
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
@@ -262,7 +262,7 @@ const appRoutes: Routes = [
     component: RolSeeComponent,
     data: { title: 'Rol'}, 
   },{
-    path: 'navbar/:ID',
+    path: 'navbar',
     component: NavbarComponent,
     data: { title: 'Rol'}, 
   },{

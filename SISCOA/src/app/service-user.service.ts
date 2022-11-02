@@ -27,8 +27,8 @@ export class ServiceUserService {
     return  this.http.get('https://localhost:44353/api/Usuario/'+id+'?IDuserLogged='+ids);   
   }
 
-  add(Usuario:any){
-    return  this.http.post(endpoint+'Usuario?IDuserLogged=',Usuario,httpOptions);
+  add(Usuario:any,id:any){
+    return  this.http.post(endpoint+'Usuario?IDuserLogged='+id,Usuario,httpOptions);
   }
 
   logIn(Usuario:any){

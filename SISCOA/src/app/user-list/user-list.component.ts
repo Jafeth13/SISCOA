@@ -18,34 +18,49 @@ export class UserListComponent implements AfterViewInit,OnInit {
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
   ngAfterViewInit() {
+    this.rut();
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
+
     this.rut();
-    this.rest.userList(this.route.snapshot.params['ID']).subscribe((pos)=>{
-      console.log(pos);
-      this.dataSource.data=pos
-      });
+    this.obtener_localStorage()
+   
       
   }
 
   applyFilter(event:Event){
+    this.rut();
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
 userData:any
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data) => {
-      
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
-      console.log(this.userData.ID )
-     });
+      
+    });
+    this.rest.userList(idU).subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
+      });
+
+     
   }
 
   back() {
     this.router.navigate(['/Menu/' + this.route.snapshot.params['ID']]);
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+
+
 }
 
 

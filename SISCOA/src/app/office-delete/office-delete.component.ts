@@ -25,19 +25,24 @@ userData:any
   }
   officeDataDelete: any;
   rut() {
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.officeDataDelete = data;
     });
-    this.restUser
-      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+    
   }
 
   delete() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -48,12 +53,17 @@ userData:any
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.rest.delete(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data) => {
+        this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((data) => {
           console.log(data);
-          this.router.navigate(['/officeList/'+this.userData.ID]);
+          this.router.navigate(['/officeList']);
         });
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
     });
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 }

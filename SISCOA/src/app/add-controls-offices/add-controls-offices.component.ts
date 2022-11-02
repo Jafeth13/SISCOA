@@ -69,21 +69,14 @@ dataConditional:any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnInit(): void {
-    this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.dataSource.data = pos;
-    });
-    this.rest2.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.dataSourceControl.data = pos;
-    });
-
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data) => {
-      console.log(data);
-      this.userData=data;
-    });
+  ngOnInit(): void { 
+this.rut();
+this.obtener_localStorage();
   }
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -102,8 +95,10 @@ dataConditional:any
   };
 
   darOfice(id: any, name: any) {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.office = id;
-    this.rest2.getControl(this.office,this.route.snapshot.params['ID']).subscribe((pos) => {
+    this.rest2.getControl(this.office,idU).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControlOffice.data = pos;
     });
@@ -112,11 +107,13 @@ dataConditional:any
   }
 
   addControlOffice() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     console.log(this.officeControl);
     this.officeControl.FK_TN_OFICINA_SISCOA_OficinaControl = this.office;
     this.officeControl.FK_TN_CONTROL_SISCOA_OficinaControl = this.control;
     
-    this.restOfficeControl.add(this.officeControl,this.route.snapshot.params['ID']).subscribe(
+    this.restOfficeControl.add(this.officeControl,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
       },
@@ -132,17 +129,19 @@ dataConditional:any
     console.log(this.officeControl);
   }
   dar(id: any,name2 :any) {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.control = id;
     this.form.name=name2;
     console.log(this.name.nameOff);
     //this.addControlOffice();
     this.ngOnInit();
 
-    this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
+    this.restPeriod.periodList(idU).subscribe((pos) => {
       console.log(pos);
       this.dataPeriod = pos;
     });
-    this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos) => {
+    this.restConditional.conditionalList(idU).subscribe((pos) => {
       console.log(pos);
       this.dataConditional = pos;
     });
@@ -165,6 +164,32 @@ dataConditional:any
   }
 
   back() {
-    this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/controlMenu']);
+  }
+
+  rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.officeList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSource.data = pos;
+    });
+    this.rest2.officeList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSourceControl.data = pos;
+    });
+
+    this.restUser.get(idU,idU).subscribe((data) => {
+      console.log(data);
+      this.userData=data;
+    });
+
+
   }
 }

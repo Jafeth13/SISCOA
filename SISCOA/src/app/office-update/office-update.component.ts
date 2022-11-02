@@ -21,29 +21,35 @@ export class OfficeUpdateComponent implements OnInit {
 userData:any
   ngOnInit(): void {
     this.rut();
+    this.obtener_localStorage()
   }
   @Input() officeDataupdate: any;
   rut() {
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+      console.log(idU)
+      this.restUser.get(idU,idU).subscribe((data: {}) => {
+        console.log(data);
+        this.userData = data;
+        
+      });
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.officeDataupdate = data;
     });
 
-    this.restUser
-      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+  
+      
   }
 
   update() {
+    let idU =  localStorage.getItem("idUsuario") ;
     this.rest
-      .update(this.officeDataupdate, this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
+      .update(this.officeDataupdate, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
-          this.router.navigate(['/officeList/'+this.userData.ID]);
+          this.router.navigate(['/officeList']);
         },
         (err) => {
           Swal.fire({
@@ -55,4 +61,11 @@ userData:any
         }
       );
   }
+
+
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 }

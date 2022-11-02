@@ -17,32 +17,47 @@ export class UserSeeComponent implements OnInit {
   roleData:any;
   dataOffice:any;
   ngOnInit(): void {
-    this.rest.rolList(this.route.snapshot.params['IDS']).subscribe((pos)=>{
+   
+    this.rut();
+    this.obtener_localStorage()
+  }
+  
+
+  rut(){
+
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.rolList(idU).subscribe((pos)=>{
       console.log(pos);
       this.roleData=pos
       });
-  this.rut();
-      this.get();
-  }
-  
-  get(){
+
+
+    this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+    this.restUser.get(this.route.snapshot.params['IDS'],idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData2 = data;
+    });
+
     this.dataOffice=[];
-    this.rest2.officeList(this.route.snapshot.params['IDS']).subscribe((data={})=>{
+    this.rest2.officeList(idU).subscribe((data={})=>{
       console.log(data);
       this.dataOffice=data
       });
   }
-  rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
-    this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
-      console.log(data);
-      this.userData2 = data;
-    });
-  }
   
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 
   }
 

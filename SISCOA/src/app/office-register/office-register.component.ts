@@ -32,17 +32,19 @@ export class OfficeRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getStatus();
     this.rut();
+    this.obtener_localStorage()
+    this.getStatus();
+   
   }
 
   add() {
     console.log(this.officeData);
-    this.rest.add(this.officeData,this.route.snapshot.params['ID']).subscribe(
+    this.rest.add(this.officeData,this.userData.ID).subscribe(
       (result) => {
         this.router.navigate(['/officeList']);
-        Swal.fire('Good job!', 'Role added sucessfully!', 'success');
-        this.router.navigate(['/officeList/'+this.userData.ID]);
+        Swal.fire('Buen trabajo!', 'Oficina ingresada exitosamente!');
+        this.router.navigate(['/officeList']);
       },
       (err) => {
         Swal.fire({
@@ -64,11 +66,17 @@ export class OfficeRegisterComponent implements OnInit {
   }
 
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 }

@@ -17,9 +17,22 @@ export class MenuControlComponent implements OnInit {
     this.rut();
   }
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    
+
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
+      
     });
+
   }
+
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+  
 }

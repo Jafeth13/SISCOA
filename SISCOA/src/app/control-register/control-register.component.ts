@@ -30,6 +30,7 @@ userData:any
       
   }
   ngOnInit(): void {
+    this.rut() ;
     this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataPeriod=pos
@@ -78,6 +79,7 @@ if(this.temp=='no'){
 
 
   back() {
+    
     this.router.navigate(['/listControl/' + this.route.snapshot.params['ID']]);
   } 
 }

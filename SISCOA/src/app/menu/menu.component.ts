@@ -18,13 +18,25 @@ export class MenuComponent implements OnInit {
     this.rut();
   }
   userData: any;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rut();
+    this.obtener_localStorage()
+
+
+  }
   rut() {
+    let idU =  localStorage.getItem("idUsuario") ;
     this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
+      .get(idU,idU)
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
       });
   }
+
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 }

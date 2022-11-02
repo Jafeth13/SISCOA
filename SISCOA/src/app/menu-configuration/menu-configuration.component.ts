@@ -15,12 +15,25 @@ userData:any
   constructor(private route:ActivatedRoute,private router:Router,public auth:AuthService,public restUser: ServiceUserService   ) {
     this.rut();
        }
-  ngOnInit(): void {
-  }
-  rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;    
-    });
-  }
+       ngOnInit(): void {
+        this.rut();
+      }
+      rut(){
+        
+    
+        let idU =  localStorage.getItem("idUsuario") ;
+        console.log(idU)
+        this.restUser.get(idU,idU).subscribe((data: {}) => {
+          console.log(data);
+          this.userData = data;
+          
+        });
+    
+      }
+    
+    
+      obtener_localStorage(){
+        let idU =  localStorage.getItem("idUsuario") ;
+        this.userData.ID=idU
+        }
 }

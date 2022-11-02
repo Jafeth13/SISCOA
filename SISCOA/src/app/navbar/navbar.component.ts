@@ -15,7 +15,7 @@ import { ServiceUserService } from '../service-user.service';
 
 export class NavbarComponent implements OnInit {
     role: String = '';
-userData:any
+userData:any=null;
     @Input() datos:any
 
        
@@ -28,7 +28,8 @@ userData:any
    //  this.email
 
     //}
-    this.rut();
+  this.rut();
+    this.obtener_localStorage()
      console.log('aquiiii')
      console.log(this.email)
   }
@@ -61,12 +62,25 @@ userData:any
   }
 
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
+      
       this.email=this.userData.TC_Nombre+' '+this.userData.TC_PrimerApellido;
     });
+   /* this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      console.log(this.route.snapshot.params['ID'])
+      this.email=this.userData.TC_Nombre+' '+this.userData.TC_PrimerApellido;
+    });*/
   }
 
- 
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+    
 }
