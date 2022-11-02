@@ -107,7 +107,7 @@ const appRoutes: Routes = [
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'registerControl/:ID',
+    path: 'registerControl',
     component: ControlRegisterComponent,
     data: { title: 'Añadir oficina' }, 
   },{
