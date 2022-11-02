@@ -70,10 +70,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsByStates(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            /*if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
             {
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            }*/
             var entities = await service.GetDataGraphics_ControlsByStates();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -98,10 +98,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsBySlopes(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            /*if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
             {
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            }*/
             var entities = await service.GetDataGraphics_ControlsSlopes();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -126,10 +126,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsBySlopes(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            /*if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
             {
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            }*/
             var entities = await service.GetDataGraphicsTable_ControlsSlopes();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -154,10 +154,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsWithExtraDays(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            /*if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
             {
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            }*/
             var entities = await service.GetDataGraphics_ControlsWithExtraDays();
             await activity.Insert(new TSISCOA_Actividad
             {
@@ -182,10 +182,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsWithExtraDays(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
+            /*if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Graficos"))
             {
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            }*/
             var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
             await activity.Insert(new TSISCOA_Actividad
             {
