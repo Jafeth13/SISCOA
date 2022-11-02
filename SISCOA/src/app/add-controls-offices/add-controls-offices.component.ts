@@ -70,7 +70,7 @@ dataConditional:any
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos) => {
+    this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSource.data = pos;
     });
@@ -103,7 +103,7 @@ dataConditional:any
 
   darOfice(id: any, name: any) {
     this.office = id;
-    this.rest2.getControl(this.office).subscribe((pos) => {
+    this.rest2.getControl(this.office,this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControlOffice.data = pos;
     });
@@ -116,7 +116,7 @@ dataConditional:any
     this.officeControl.FK_TN_OFICINA_SISCOA_OficinaControl = this.office;
     this.officeControl.FK_TN_CONTROL_SISCOA_OficinaControl = this.control;
     
-    this.restOfficeControl.add(this.officeControl).subscribe(
+    this.restOfficeControl.add(this.officeControl,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
       },
@@ -138,11 +138,11 @@ dataConditional:any
     //this.addControlOffice();
     this.ngOnInit();
 
-    this.restPeriod.periodList().subscribe((pos) => {
+    this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataPeriod = pos;
     });
-    this.restConditional.conditionalList().subscribe((pos) => {
+    this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataConditional = pos;
     });

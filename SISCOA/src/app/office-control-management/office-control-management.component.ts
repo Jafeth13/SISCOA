@@ -63,12 +63,12 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos) => {
+    this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSource.data = pos;
     });
 
-    this.restPeriodic.periodList().subscribe((pos) => {
+    this.restPeriodic.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSourcePeriod = pos;
     });
@@ -78,7 +78,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     });
   }
   update(id: number) {
-    this.rest2.getControlFull(id).subscribe((data: {}) => {
+    this.rest2.getControlFull(id,this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.controlDataupdate = data;
     });
@@ -86,7 +86,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   office: any;
   dar(id: any, name: any) {
     this.office = id;
-    this.rest2.getControl(this.office).subscribe((pos) => {
+    this.rest2.getControl(this.office,this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControl.data = pos;
     });
@@ -119,7 +119,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
 
     this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
 
-    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate).subscribe(
+    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         Swal.fire('Good job!', 'UPDATE sucessfully!', 'success'); 
         this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);

@@ -30,7 +30,7 @@ userData:any
     this.rut();
   }
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.roleDataupdate = data;
     });
@@ -42,7 +42,7 @@ userData:any
       this.userData = data;
     });
 
-    this.restPermision.permisionList().subscribe((pos)=>{
+    this.restPermision.permisionList(this.route.snapshot.params['IDS']).subscribe((pos)=>{
       console.log(pos);
       this.dataPermision=pos
       });
@@ -55,7 +55,7 @@ num:number=0;
     this.rolPermisionU.FK_SISCOA_Permiso_SISCOA_RolPermiso=this.num;
     this.rolPermisionU.FK_SISCOA_Rol_SISCOA_RolPermiso= this.roleDataupdate.ID;
 console.log(this.rolPermisionU)
-    this.rest.rolPermision(this.rolPermisionU).subscribe((result) => {
+    this.rest.rolPermision(this.rolPermisionU,this.route.snapshot.params['IDS']).subscribe((result) => {
       
       Swal.fire(
         'Good job!',

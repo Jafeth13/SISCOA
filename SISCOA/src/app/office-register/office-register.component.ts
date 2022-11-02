@@ -38,7 +38,7 @@ export class OfficeRegisterComponent implements OnInit {
 
   add() {
     console.log(this.officeData);
-    this.rest.add(this.officeData).subscribe(
+    this.rest.add(this.officeData,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         this.router.navigate(['/officeList']);
         Swal.fire('Good job!', 'Role added sucessfully!', 'success');
@@ -57,7 +57,7 @@ export class OfficeRegisterComponent implements OnInit {
 
   status: any;
   getStatus() {
-    this.rest.getStatus().subscribe((data: {}) => {
+    this.rest.getStatus(this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.status = data;
     });

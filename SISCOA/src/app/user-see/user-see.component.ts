@@ -17,7 +17,7 @@ export class UserSeeComponent implements OnInit {
   roleData:any;
   dataOffice:any;
   ngOnInit(): void {
-    this.rest.rolList().subscribe((pos)=>{
+    this.rest.rolList(this.route.snapshot.params['IDS']).subscribe((pos)=>{
       console.log(pos);
       this.roleData=pos
       });
@@ -27,7 +27,7 @@ export class UserSeeComponent implements OnInit {
   
   get(){
     this.dataOffice=[];
-    this.rest2.officeList().subscribe((data={})=>{
+    this.rest2.officeList(this.route.snapshot.params['IDS']).subscribe((data={})=>{
       console.log(data);
       this.dataOffice=data
       });

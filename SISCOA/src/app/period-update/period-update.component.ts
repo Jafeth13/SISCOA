@@ -30,12 +30,12 @@ export class PeriodUpdateComponent implements OnInit {
     this.rut();
   }
   rut() {
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.periodDataupdate = data;
     });
     this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
@@ -59,7 +59,7 @@ export class PeriodUpdateComponent implements OnInit {
     this.periodDataupdate.TF_FechaFin = this.enddate;
 
     this.rest
-      .update(this.periodDataupdate, this.route.snapshot.params['ID'])
+      .update(this.periodDataupdate, this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');

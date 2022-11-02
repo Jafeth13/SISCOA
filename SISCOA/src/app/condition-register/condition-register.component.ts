@@ -23,7 +23,7 @@ export class ConditionRegisterComponent implements OnInit {
   }
 userData:any;
   add(){
-    this.rest.add(this.estado).subscribe((result) => {
+    this.rest.add(this.estado,this.route.snapshot.params['ID']).subscribe((result) => {
       Swal.fire(
         'Good job!',
         'Estado added sucessfully!',

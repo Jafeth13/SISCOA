@@ -26,7 +26,7 @@ export class SeeControlFullComponent implements  OnInit{
         this.userData = data;
       });
 
- this.rest.getControlFull(this.route.snapshot.params['ID']).subscribe((pos)=>{
+ this.rest.getControlFull(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((pos)=>{
       console.log(pos);
       this.dataSource=pos
       });

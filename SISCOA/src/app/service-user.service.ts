@@ -17,9 +17,9 @@ export class ServiceUserService {
   constructor(private http: HttpClient) { }
 
   
-  userList():Observable<any>{
+  userList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Usuario',httpOptions);
+    return  this.http.get(endpoint+'Usuario?IDuserLogged='+id,httpOptions);
     
   }
 
@@ -28,21 +28,21 @@ export class ServiceUserService {
   }
 
   add(Usuario:any){
-    return  this.http.post(endpoint+'Usuario',Usuario,httpOptions);
+    return  this.http.post(endpoint+'Usuario?IDuserLogged=',Usuario,httpOptions);
   }
 
   logIn(Usuario:any){
     return  this.http.post(endpoint+'Usuario/LogIn',Usuario,httpOptions);
   }
 
-  update(user: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Usuario/'+id,user, httpOptions).pipe(
+  update(user: any,id:any,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Usuario/'+id+'?IDuserLogged='+idUser,user, httpOptions).pipe(
       catchError(this.handleError('deletePeriod'))
     );
   }
 
-  delete(id: number): Observable<any>{
-    return this.http.delete(endpoint+'Usuario/'+id, httpOptions).pipe(
+  delete(id: number,idUser:any): Observable<any>{
+    return this.http.delete(endpoint+'Usuario/'+id+'?IDuserLogged='+idUser, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }

@@ -16,34 +16,34 @@ export class ServicesOfficeService {
 
   constructor(private http: HttpClient) { }
 
-  officeList():Observable<any>{
+  officeList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Oficinas',httpOptions);
+    return  this.http.get(endpoint+'Oficinas?IDuserLogged='+id,httpOptions);
     
   }
 
   
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Oficinas/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Oficinas/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
   
-  delete(id:any):Observable<any>{
-    return  this.http.delete(endpoint+'Oficinas/'+id, httpOptions);   
+  delete(id:any,idUser:any):Observable<any>{
+    return  this.http.delete(endpoint+'Oficinas/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
   
-  update(office: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Oficinas/'+id,office, httpOptions).pipe(
+  update(office: any,id:number,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Oficinas/'+id+'?IDuserLogged='+idUser,office, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
 
-  add(office :any){
-    return this.http.post(endpoint+'Oficinas', office, httpOptions);   
+  add(office :any,id:any){
+    return this.http.post(endpoint+'Oficinas?IDuserLogged='+id, office, httpOptions);   
   }
 
-  getStatus():Observable<any>{
+  getStatus(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Estados',httpOptions);
+    return  this.http.get(endpoint+'Estados?IDuserLogged='+id,httpOptions);
     
   }
 

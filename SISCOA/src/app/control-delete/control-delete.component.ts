@@ -23,7 +23,7 @@ userData:any;
   }
 
   rut() {
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.controlDataDelete = data;
     });
@@ -47,7 +47,7 @@ userData:any;
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(this.route.snapshot.params['ID']);
-        this.rest.delete(this.controlDataDelete.ID).subscribe((data) => {
+        this.rest.delete(this.controlDataDelete.ID,this.route.snapshot.params['IDS']).subscribe((data) => {
           console.log(data);
           this.ngOnInit();
           this.router.navigate(['/listControl/'+this.userData.ID]);

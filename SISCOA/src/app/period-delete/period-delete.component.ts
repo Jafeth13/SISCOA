@@ -20,7 +20,7 @@ userData:any
     this.rut();
   }
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.periodDataDelete = data;
     });
@@ -34,7 +34,7 @@ userData:any
     
   }
   delete(){
-    this.rest.delete(this.route.snapshot.params['ID']).subscribe((result) => {
+    this.rest.delete(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((result) => {
       this.router.navigate(['/periodList/' + this.route.snapshot.params['IDS']]);
 
       Swal.fire(

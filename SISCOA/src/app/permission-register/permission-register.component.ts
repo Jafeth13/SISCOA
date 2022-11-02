@@ -26,7 +26,7 @@ export class PermissionRegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   add() {
-    this.rest.add(this.permisionData).subscribe(
+    this.rest.add(this.permisionData,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success'); 
         this.router.navigate(['/permissionList/'+this.userData.ID]);   

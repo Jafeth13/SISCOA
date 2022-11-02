@@ -22,7 +22,7 @@ userData:any;
     this.dataSource.paginator = this.paginator;
   }
 ngOnInit(): void {
-  this.rest.List().subscribe((pos)=>{
+  this.rest.List(this.route.snapshot.params['ID']).subscribe((pos)=>{
     console.log(pos);
     this.dataSource.data=pos
     });

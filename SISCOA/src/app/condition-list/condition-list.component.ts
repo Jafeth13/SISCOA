@@ -30,7 +30,7 @@ export class ConditionListComponent implements AfterViewInit,OnInit {
   }
 
   ngOnInit(): void {
-    this.rest.conditionalList().subscribe((pos)=>{
+    this.rest.conditionalList(this.route.snapshot.params['ID']).subscribe((pos)=>{
     console.log(pos);
     this.dataSource.data=pos
     });

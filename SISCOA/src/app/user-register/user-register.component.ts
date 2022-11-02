@@ -36,7 +36,7 @@ export class UserRegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.rut();
-    this.rest.rolList().subscribe((pos) => {
+    this.rest.rolList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.roleData = pos;
     });
@@ -46,7 +46,7 @@ export class UserRegisterComponent implements OnInit {
 
   get() {
     this.dataOffice = [];
-    this.rest2.officeList().subscribe((data = {}) => {
+    this.rest2.officeList(this.route.snapshot.params['ID']).subscribe((data = {}) => {
       console.log(data);
       this.dataOffice = data;
     });

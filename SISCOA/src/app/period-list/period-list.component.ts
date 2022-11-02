@@ -27,7 +27,7 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.periodList().subscribe((pos) => {
+    this.rest.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSource.data = pos;
     });

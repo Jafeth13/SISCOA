@@ -36,7 +36,7 @@ export class RolRegisterComponent implements OnInit {
   
 
   add() {
-    this.rest.add(this.roleData).subscribe(
+    this.rest.add(this.roleData,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
         this.back();

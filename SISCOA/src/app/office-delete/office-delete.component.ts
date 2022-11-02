@@ -25,7 +25,7 @@ userData:any
   }
   officeDataDelete: any;
   rut() {
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.officeDataDelete = data;
     });
@@ -48,7 +48,7 @@ userData:any
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.rest.delete(this.route.snapshot.params['ID']).subscribe((data) => {
+        this.rest.delete(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data) => {
           console.log(data);
           this.router.navigate(['/officeList/'+this.userData.ID]);
         });

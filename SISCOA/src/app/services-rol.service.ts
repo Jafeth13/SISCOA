@@ -16,34 +16,34 @@ export class ServicesRolService {
 
   constructor(private http: HttpClient) { }
 
-  rolList():Observable<any>{
+  rolList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Roles',httpOptions);
+    return  this.http.get(endpoint+'Roles?IDuserLogged='+id,httpOptions);
 
       }
 
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Roles/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Roles/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
   
-  delete(id:any):Observable<any>{
-    return  this.http.delete(endpoint+'Roles/'+id, httpOptions);   
+  delete(id:any,idUser:any):Observable<any>{
+    return  this.http.delete(endpoint+'Roles/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
 
-  add(roles:any){
-    return  this.http.post(endpoint+'Roles',roles,httpOptions);
+  add(roles:any,id:any){
+    return  this.http.post(endpoint+'Roles?IDuserLogged='+id,roles,httpOptions);
   }
 
-  update(role: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Roles/'+id,role, httpOptions).pipe(
+  update(role: any,id:number,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Roles/'+id+'?IDuserLogged='+idUser,role, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
 
   
-  rolPermision(roles:any){
-    return  this.http.post(endpoint+'RolPermisos',roles,httpOptions);
+  rolPermision(roles:any,id:any){
+    return  this.http.post(endpoint+'RolPermisos?IDuserLogged='+id,roles,httpOptions);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

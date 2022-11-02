@@ -34,7 +34,7 @@ export class ControlOficeComponent  implements AfterViewInit ,OnInit{
       this.userData = data;
       this.nc.ncd=this.userData.TSISCOA_Oficina.ID;
        console.log(this.nc.ncd);
-       this.rest.getControl(this.nc.ncd).subscribe((pos)=>{
+       this.rest.getControl(this.nc.ncd,this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log('entre')
       console.log(pos);
       this.dataSource.data=pos;

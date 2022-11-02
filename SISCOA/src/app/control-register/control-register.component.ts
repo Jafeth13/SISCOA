@@ -30,11 +30,11 @@ userData:any
       
   }
   ngOnInit(): void {
-    this.restPeriod.periodList().subscribe((pos)=>{
+    this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataPeriod=pos
       });
-      this.restConditional.conditionalList().subscribe((pos)=>{
+      this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos)=>{
         console.log(pos);
         this.dataConditional=pos
         });

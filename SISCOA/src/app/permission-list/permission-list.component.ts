@@ -21,7 +21,7 @@ export class PermissionListComponent implements OnInit,AfterViewInit {
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
   ngOnInit(): void {
-    this.rest.permisionList().subscribe((pos)=>{
+    this.rest.permisionList(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });

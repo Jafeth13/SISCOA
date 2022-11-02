@@ -22,7 +22,7 @@ userData:any;
     this.rut();
   }
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.periodDataDelete = data;
     });

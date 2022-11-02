@@ -30,7 +30,7 @@ export class ControlUpdateComponent implements OnInit {
 userData:any
   rut() {
     this.restControl
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
         console.log(data);
         this.controlDataDelete = data;

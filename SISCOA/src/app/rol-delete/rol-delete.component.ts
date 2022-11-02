@@ -19,7 +19,7 @@ this.rut();
   }
   roleDataDelete:any
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.roleDataDelete = data;
     });
@@ -50,7 +50,7 @@ this.rut();
       if (result.isConfirmed) {
   
         console.log(this.route.snapshot.params['ID'])
-        this.rest.delete(this.route.snapshot.params['ID']).subscribe(
+        this.rest.delete(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe(
         (data) =>{
           console.log(data);
           this.back();

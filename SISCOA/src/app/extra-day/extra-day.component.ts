@@ -28,7 +28,7 @@ export class ExtraDayComponent implements AfterViewInit ,OnInit{
         this.userData = data;
       });
 
- this.rest.getControlDayExtra().subscribe((pos)=>{
+ this.rest.getControlDayExtra(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });

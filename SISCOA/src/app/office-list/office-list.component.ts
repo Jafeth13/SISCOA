@@ -25,7 +25,7 @@ userData:any
     this.dataSource.sort = this.sort;
   }
 ngOnInit(): void {
-  this.rest.officeList().subscribe((pos)=>{
+  this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos)=>{
     console.log(pos);
     this.dataSource.data=pos
     });

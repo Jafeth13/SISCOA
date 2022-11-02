@@ -22,7 +22,7 @@ export class UserUpdateComponent implements OnInit {
   roleData: any;
   dataOffice: any;
   ngOnInit(): void {
-    this.rest.rolList().subscribe((pos) => {
+    this.rest.rolList(this.route.snapshot.params['IDS']).subscribe((pos) => {
       console.log(pos);
       this.roleData = pos;
     });
@@ -32,7 +32,7 @@ export class UserUpdateComponent implements OnInit {
 
   get() {
     this.dataOffice = [];
-    this.rest2.officeList().subscribe((data = {}) => {
+    this.rest2.officeList(this.route.snapshot.params['IDS']).subscribe((data = {}) => {
       console.log(data);
       this.dataOffice = data;
     });
@@ -55,7 +55,7 @@ export class UserUpdateComponent implements OnInit {
   Update() {
     console.log(this.userData);
     this.restUser
-      .update(this.userData, this.route.snapshot.params['ID'])
+      .update(this.userData, this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'User added sucessfully!', 'success');

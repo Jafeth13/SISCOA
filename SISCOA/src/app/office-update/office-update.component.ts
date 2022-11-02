@@ -24,7 +24,7 @@ userData:any
   }
   @Input() officeDataupdate: any;
   rut() {
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
       console.log(data);
       this.officeDataupdate = data;
     });
@@ -39,7 +39,7 @@ userData:any
 
   update() {
     this.rest
-      .update(this.officeDataupdate, this.route.snapshot.params['ID'])
+      .update(this.officeDataupdate, this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');

@@ -22,7 +22,7 @@ export class UserListComponent implements AfterViewInit,OnInit {
   }
   ngOnInit(): void {
     this.rut();
-    this.rest.userList().subscribe((pos)=>{
+    this.rest.userList(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });

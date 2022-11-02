@@ -28,7 +28,7 @@ export class ControlBySlopesComponent implements AfterViewInit ,OnInit{
         this.userData = data;
       });
 
- this.rest.getControlDaySlopes().subscribe((pos)=>{
+ this.rest.getControlDaySlopes(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });

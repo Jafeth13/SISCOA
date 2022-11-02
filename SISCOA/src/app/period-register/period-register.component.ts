@@ -50,7 +50,7 @@ export class PeriodRegisterComponent implements OnInit {
 
     this.period.TF_FechaInicio = this.startDate;
     this.period.TF_FechaFin = this.enddate;
-    this.rest.add(this.period).subscribe(
+    this.rest.add(this.period,this.route.snapshot.params['ID']).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
         this.router.navigate(['/periodList/' + this.route.snapshot.params['ID']]);

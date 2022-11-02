@@ -20,25 +20,25 @@ export class ServicesControllersService {
     
   }
 
-  getControlDayExtra():Observable<any>{
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsWithExtraDays',httpOptions);
+  getControlDayExtra(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsWithExtraDays?IDuserLogged='+id,httpOptions);
   }
 
-  getControlDaySlopes():Observable<any>{
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes',httpOptions);
+  getControlDaySlopes(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes?IDuserLogged='+id,httpOptions);
   }
 
-  getControl(id:any):Observable<any>{
-    return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id, httpOptions);   
+  getControl(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
   
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
-  getControlFull(id:any):Observable<any>{
-    return  this.http.get(endpoint+'OficinaControles/'+id, httpOptions);   
+  getControlFull(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControles/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
 
@@ -46,8 +46,8 @@ export class ServicesControllersService {
     return this.http.post(endpoint+'Controls?IDuserLogged='+id, Controls, httpOptions);   
   }
 
-  delete(id: number): Observable<any>{
-    return this.http.delete(endpoint+'Controls/'+id, httpOptions).pipe(
+  delete(id: number,idUser:any): Observable<any>{
+    return this.http.delete(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
