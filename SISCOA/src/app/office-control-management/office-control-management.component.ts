@@ -63,30 +63,22 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.dataSource.data = pos;
-    });
-
-    this.restPeriodic.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.dataSourcePeriod = pos;
-    });
-
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data) => {
-      console.log(data);
-    });
+   this.rut();
   }
   update(id: number) {
-    this.rest2.getControlFull(id,this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest2.getControlFull(id,idU).subscribe((data: {}) => {
       console.log(data);
       this.controlDataupdate = data;
     });
   }
   office: any;
   dar(id: any, name: any) {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.office = id;
-    this.rest2.getControl(this.office,this.route.snapshot.params['ID']).subscribe((pos) => {
+    this.rest2.getControl(this.office,idU).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControl.data = pos;
     });
@@ -97,7 +89,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   back() {
-    this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/controlMenu']);
   }
 
   selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -108,6 +100,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     this.hour = (<HTMLInputElement>document.getElementById('time')).value;
   }
   extraDay(){
+    let idU =  localStorage.getItem("idUsuario") ;
+
     var date;
     date = new Date();
     date =  
@@ -119,10 +113,10 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
 
     this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
 
-    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate,this.route.snapshot.params['ID']).subscribe(
+    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'UPDATE sucessfully!', 'success'); 
-        this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+        this.router.navigate(['/controlMenu']);
       }
      
       ,
@@ -137,6 +131,27 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     );
     console.log(this.officeControl);
 
+   }
+
+
+   rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);         
+    });
+
+    this.rest.officeList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSource.data = pos;
+    });
+
+    this.restPeriodic.periodList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSourcePeriod = pos;
+    });
+
+    
    }
 
 }

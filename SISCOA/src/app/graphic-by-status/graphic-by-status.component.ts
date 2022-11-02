@@ -7,11 +7,11 @@ import { ServiceUserService } from '../service-user.service';
 import { OfficeControlServicesService } from '../office-control-services.service';
 import { map } from 'rxjs/operators'; // do not forget !
 @Component({
-  selector: 'app-check-status',
-  templateUrl: './check-status.component.html',
-  styleUrls: ['./check-status.component.css'],
+  selector: 'app-graphic-by-status',
+  templateUrl: './graphic-by-status.component.html',
+  styleUrls: ['./graphic-by-status.component.css']
 })
-export class CheckStatusComponent {
+export class GraphicByStatusComponent implements OnInit {
 
   view: [number, number] = [500, 200];
 
@@ -62,25 +62,19 @@ dataWithSlopes:any;
 
       
 
-      this.officeControl
-      .ListControlsWithExtraDays(idU)
-      .subscribe((data: {}) => {
-        console.log(data);
-       // this.userData = data;
-       this.dataWithDay=data
-      });
+     
 
       this.officeControl
-      .ListBySlopes(idU)
-      .subscribe((data: {}) => {
-        console.log(data);
-       // this.userData = data;
-       this.dataWithSlopes=data
-      });
-
+        .List(idU)
+        .subscribe((data: {}) => {
+          console.log(data);
+         // this.userData = data;
+         this.datosprueba=data
+        });
     
   }
 
+  
   
 
 
@@ -96,5 +90,5 @@ dataWithSlopes:any;
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
-}
 
+}

@@ -71,6 +71,7 @@ import { UserSeeComponent } from './user-see/user-see.component';
 import { RolSeeComponent } from './rol-see/rol-see.component';
 import { ControlBySlopesComponent } from './control-by-slopes/control-by-slopes.component';
 import { SeeControlFullComponent } from './see-control-full/see-control-full.component';
+import { GraphicByStatusComponent } from './graphic-by-status/graphic-by-status.component';
 
 
 const appRoutes: Routes = [
@@ -98,7 +99,7 @@ const appRoutes: Routes = [
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
-    path: 'officeControl/:ID',
+    path: 'officeControl',
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
@@ -134,15 +135,15 @@ const appRoutes: Routes = [
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'check/:ID',
+    path: 'check',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
-    path: 'extraDay/:ID',
+    path: 'extraDay',
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
-    path: 'controlOfice/:ID',
+    path: 'controlOfice',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{
@@ -266,11 +267,11 @@ const appRoutes: Routes = [
     component: NavbarComponent,
     data: { title: 'Rol'}, 
   },{
-    path: 'controlBySlope/:ID',
+    path: 'controlBySlope',
     component: ControlBySlopesComponent,
     data: { title: 'Pendiente'}, 
   },{
-    path: 'seeControlFull/:ID/:IDS',
+    path: 'seeControlFull/:ID',
     component: SeeControlFullComponent,
     data: { title: 'Completo'}, 
   }
@@ -327,7 +328,8 @@ const appRoutes: Routes = [
     UserSeeComponent,
     RolSeeComponent,
     ControlBySlopesComponent,
-    SeeControlFullComponent
+    SeeControlFullComponent,
+    GraphicByStatusComponent
     
   ],
   imports: [

@@ -59,6 +59,8 @@ userData:any=null;
     this.role = ''  
     this.auth.logout();
     this.auth.user = undefined;
+    let idU =  localStorage.getItem("idUsuario") ;
+    idU='';
   }
 
   rut(){

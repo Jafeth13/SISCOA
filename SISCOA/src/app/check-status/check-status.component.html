@@ -14,7 +14,7 @@
       >
     </ngx-charts-advanced-pie-chart>
     <div class="wrapperButton2">
-      <button  routerLink="/extraDay/{{userData.ID}}" class="myB">
+      <button  routerLink="/extraDay" class="myB">
         Controles que se le asignaron dias extras
         <span></span>
         <span></span>
@@ -30,28 +30,7 @@
     <div class="grafico3">
   
    
-      <ngx-charts-advanced-pie-chart
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="datosprueba"
-        [gradient]="gradient"
-        (select)="onSelect($event)"
-        (activate)="onActivate($event)"
-        (deactivate)="onDeactivate($event)"
-        >
-      </ngx-charts-advanced-pie-chart>
-
-
-      <div class="wrapperButton">
-        <button  routerLink="/completeControlFile" class="myB">
-          Controles por estado
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      
 
 
 
@@ -74,7 +53,7 @@
   >
 </ngx-charts-advanced-pie-chart>
 <div class="wrapperButton3">
-  <button routerLink="/controlBySlope/{{userData.ID}}"  class="myB">
+  <button routerLink="/controlBySlope"  class="myB">
     Controles pendiente por mes
     <span></span>
     <span></span>
@@ -85,31 +64,18 @@
 </div>
 </div>
 
-
-<div class="grafico2">
-  
-   
-    <ngx-charts-advanced-pie-chart
-      [view]="view"
-      [scheme]="colorScheme"
-      [results]="dataWithSlopes"
-      [gradient]="gradient"
-      (select)="onSelect($event)"
-      (activate)="onActivate($event)"
-      (deactivate)="onDeactivate($event)"
-      >
-    </ngx-charts-advanced-pie-chart>
-    <div class="wrapperButton4">
-      <button  routerLink="/completeControl" class="myB">
-        Grafico de Controles sin asignacion
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<app-graphic-by-status>
 
 
-    </div>
+
+
+    
   

@@ -21,17 +21,22 @@ export class SeeControlFullComponent implements  OnInit{
   ngOnInit(): void {
    
 
-      this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+      this.rut();
+     
+  }
 
- this.rest.getControlFull(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((pos)=>{
+  rut(){
+    let idU = localStorage.getItem('idUsuario');
+    console.log(idU);
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+    this.rest.getControlFull(this.route.snapshot.params['ID'],idU).subscribe((pos)=>{
       console.log(pos);
       this.dataSource=pos
       });
 
-     
   }
 
 
