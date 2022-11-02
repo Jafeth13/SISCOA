@@ -27,11 +27,7 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.periodList(this.route.snapshot.params['ID']).subscribe((pos) => {
-      console.log(pos);
-      this.dataSource.data = pos;
-    });
-
+   
     this.rut();
   }
 
@@ -41,11 +37,16 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
   }
 
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+    let idU = localStorage.getItem('idUsuario');
+    console.log(idU);
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    }); 
+      this.rest.periodList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSource.data = pos;
+    });
+
   }
 }

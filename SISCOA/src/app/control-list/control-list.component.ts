@@ -38,13 +38,13 @@ export class ControlListComponent implements AfterViewInit ,OnInit{
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
-       this.rest.officeList(this.route.snapshot.params['ID']).subscribe((pos)=>{
+    let idU = localStorage.getItem('idUsuario');
+    console.log(idU);
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+       this.rest.officeList(idU).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos
       });

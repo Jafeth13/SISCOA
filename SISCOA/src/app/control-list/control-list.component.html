@@ -26,7 +26,7 @@
       <button
         type="button"
         class="btn btn-secondary"
-        routerLink="/registerControl/{{ userData.ID }}"
+        routerLink="/registerControl"
       >
         +
       </button>
@@ -63,7 +63,7 @@
                 <button
                   mat-fab
                   color="primary"
-                  routerLink="/controlSee/{{ element.ID }}/{{ userData.ID }}"
+                  routerLink="/controlSee/{{ element.ID }}"
                   aria-label="Example icon button with a delete icon"
                 >
                   <mat-icon>search</mat-icon>
@@ -72,7 +72,7 @@
                 <button
                   mat-fab
                   color="warn"
-                  routerLink="/deleteControl/{{ element.ID }}/{{ userData.ID }}"
+                  routerLink="/deleteControl/{{ element.ID }}"
                   aria-label="Example icon button with a delete icon"
                 >
                   <mat-icon>delete</mat-icon>
@@ -80,7 +80,7 @@
                 <button
                   mat-fab
                   color="primary"
-                  routerLink="/updateControl/{{ element.ID }}/{{ userData.ID }}"
+                  routerLink="/updateControl/{{ element.ID }}"
                   aria-label="Example icon button with a delete icon"
                 >
                   <mat-icon>update</mat-icon>
