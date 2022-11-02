@@ -82,7 +82,7 @@ export class PeriodRegisterComponent implements OnInit {
   }
   rut() {
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;

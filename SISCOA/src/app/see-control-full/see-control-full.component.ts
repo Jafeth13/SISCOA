@@ -21,7 +21,7 @@ export class SeeControlFullComponent implements  OnInit{
   ngOnInit(): void {
    
 
-      this.restUser.get(this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+      this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
       });

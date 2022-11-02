@@ -50,7 +50,7 @@ if(this.temp=='no'){
   this.controlData.TB_NotificacionCorreoAColaborador=true
 }
 
-    this.restControl.add(this.controlData).subscribe((result) => {
+    this.restControl.add(this.controlData,this.route.snapshot.params['ID']).subscribe((result) => {
     
       Swal.fire(
         'Good job!',
@@ -69,7 +69,7 @@ if(this.temp=='no'){
   }
   rut() {
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;

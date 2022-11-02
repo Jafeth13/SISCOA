@@ -23,8 +23,8 @@ export class ServiceUserService {
     
   }
 
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Usuario/'+id, httpOptions);   
+  get(id:any,ids:any):Observable<any>{
+    return  this.http.get('https://localhost:44353/api/Usuario/'+id+'?IDuserLogged='+ids);   
   }
 
   add(Usuario:any){

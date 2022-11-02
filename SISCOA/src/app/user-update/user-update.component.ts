@@ -39,13 +39,13 @@ export class UserUpdateComponent implements OnInit {
   }
   rut() {
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
       });
       this.restUser
-      .get(this.route.snapshot.params['IDS'])
+      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData2 = data;

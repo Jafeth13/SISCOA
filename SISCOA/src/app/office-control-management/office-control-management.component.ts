@@ -73,7 +73,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
       this.dataSourcePeriod = pos;
     });
 
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data) => {
       console.log(data);
     });
   }

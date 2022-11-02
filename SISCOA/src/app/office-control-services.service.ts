@@ -32,22 +32,22 @@ export class OfficeControlServicesService {
     return  this.http.put(endpoint+'OficinaControles/'+id,officeControl,httpOptions);
   }
 
-  List():Observable<any>{
+  List(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsByStates',httpOptions);
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsByStates?IDuserLogged='+id,httpOptions);
     
   }
 
-  ListControlsWithExtraDays():Observable<any>{
+  ListControlsWithExtraDays(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsWithExtraDays',httpOptions);
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsWithExtraDays?IDuserLogged='+id,httpOptions);
     
   }
 
   
-  ListBySlopes():Observable<any>{
+  ListBySlopes(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsBySlopes',httpOptions);
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphics_ControlsBySlopes?IDuserLogged='+id,httpOptions);
     
   }
 

@@ -83,14 +83,14 @@ dataWithDay:any;
 dataWithSlopes:any;
   rut() {
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
       });
 
       this.officeControl
-      .List()
+      .List(this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
        // this.userData = data;
@@ -98,7 +98,7 @@ dataWithSlopes:any;
       });
 
       this.officeControl
-      .ListControlsWithExtraDays()
+      .ListControlsWithExtraDays(this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
        // this.userData = data;
@@ -106,7 +106,7 @@ dataWithSlopes:any;
       });
 
       this.officeControl
-      .ListBySlopes()
+      .ListBySlopes(this.route.snapshot.params['ID'])
       .subscribe((data: {}) => {
         console.log(data);
        // this.userData = data;

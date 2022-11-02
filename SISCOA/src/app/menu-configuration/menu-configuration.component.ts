@@ -18,7 +18,7 @@ userData:any
   ngOnInit(): void {
   }
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;    
     });

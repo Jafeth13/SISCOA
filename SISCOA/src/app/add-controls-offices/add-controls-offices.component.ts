@@ -74,12 +74,12 @@ dataConditional:any
       console.log(pos);
       this.dataSource.data = pos;
     });
-    this.rest2.officeList().subscribe((pos) => {
+    this.rest2.officeList(this.route.snapshot.params['ID']).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControl.data = pos;
     });
 
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
+    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data) => {
       console.log(data);
       this.userData=data;
     });
