@@ -39,7 +39,7 @@ export class PermisionServicesService {
     );
   }
 
-  delete(id: number): Observable<any>{
+  delete(id: any): Observable<any>{
     return this.http.delete(endpoint+'Permiso/'+id, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );

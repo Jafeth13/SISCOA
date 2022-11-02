@@ -183,7 +183,7 @@ const appRoutes: Routes = [
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{
-    path: 'permissionDelete/:ID/:IDS',
+    path: 'permissionDelete/:ID',
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{

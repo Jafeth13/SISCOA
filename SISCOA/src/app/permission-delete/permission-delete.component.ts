@@ -22,28 +22,32 @@ userData:any;
     this.rut();
   }
   rut(){
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.periodDataDelete = data;
     });
 
-    this.restUser
-    .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
+    
 
   }
   delete(){
-    this.rest.delete(this.route.snapshot.params['ID']).subscribe((result) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.delete(idU).subscribe((result) => {
    
       Swal.fire(
         'Good job!',
         'estado sucessfully updated!',
         'success'
       )     
-      this.router.navigate(['/permissionList/'+this.userData.ID]);   
+      this.router.navigate(['/permissionList']);   
 
     }, (err) => {
       Swal.fire({
