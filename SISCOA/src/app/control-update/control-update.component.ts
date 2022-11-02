@@ -29,12 +29,16 @@ export class ControlUpdateComponent implements OnInit {
   }
 userData:any
   rut() {   
-       this.restUser.get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;      
-      }); 
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
     this.restControl
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
+      .get(this.route.snapshot.params['ID'],idU)
       .subscribe((data: {}) => {
         console.log(data);
         this.controlDataDelete = data;
@@ -44,6 +48,8 @@ userData:any
   }
   temp: any;
   update() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.temp=this.controlDataDelete.TB_NotificacionCorreoAColaborador
     if(this.temp=='no'){
       this.controlDataDelete.TB_NotificacionCorreoAColaborador=false
@@ -53,11 +59,11 @@ userData:any
     }
     console.log(this.route.snapshot.params['ID']);
     this.restControl
-      .update(this.controlDataDelete,this.controlDataDelete.ID,this.route.snapshot.params['IDS'])
+      .update(this.controlDataDelete,this.controlDataDelete.ID,idU)
       .subscribe(
         (data) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
-          this.router.navigate(['/listControl/'+this.userData.ID]);
+          this.router.navigate(['/listControl']);
         },
         (err) => {
           Swal.fire({

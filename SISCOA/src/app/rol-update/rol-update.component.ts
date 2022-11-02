@@ -29,20 +29,22 @@ userData:any
   ngOnInit(): void {
     this.rut();
   }
-  rut(){
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+  rut(){ 
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.roleDataupdate = data;
     });
 
-    this.restUser
-    .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
-
-    this.restPermision.permisionList(this.route.snapshot.params['IDS']).subscribe((pos)=>{
+   
+    this.restPermision.permisionList(idU).subscribe((pos)=>{
       console.log(pos);
       this.dataPermision=pos
       });
@@ -51,18 +53,20 @@ userData:any
 num:number=0;
 
   update(){
+    let idU =  localStorage.getItem("idUsuario") ;
+
     console.log(this.num)
     this.rolPermisionU.FK_SISCOA_Permiso_SISCOA_RolPermiso=this.num;
     this.rolPermisionU.FK_SISCOA_Rol_SISCOA_RolPermiso= this.roleDataupdate.ID;
 console.log(this.rolPermisionU)
-    this.rest.rolPermision(this.rolPermisionU,this.route.snapshot.params['IDS']).subscribe((result) => {
+    this.rest.rolPermision(this.rolPermisionU,idU).subscribe((result) => {
       
       Swal.fire(
         'Good job!',
         'role sucessfully updated!',
         'success'
       )
-      this.router.navigate(['/rolList/' + this.route.snapshot.params['IDS']]);
+      this.router.navigate(['/rolList']);
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -74,7 +78,7 @@ console.log(this.rolPermisionU)
   }
 
   back() {
-    this.router.navigate(['/rolList/' + this.route.snapshot.params['IDS']]);
+    this.router.navigate(['/rolList']);
   }
   
 }

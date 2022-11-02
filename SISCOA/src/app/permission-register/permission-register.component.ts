@@ -23,13 +23,17 @@ export class PermissionRegisterComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rut();
+  }
 
   add() {
-    this.rest.add(this.permisionData,this.route.snapshot.params['ID']).subscribe(
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.add(this.permisionData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success'); 
-        this.router.navigate(['/permissionList/'+this.userData.ID]);   
+        this.router.navigate(['/permissionList']);   
       },
       (err) => {
         Swal.fire({
@@ -43,15 +47,16 @@ export class PermissionRegisterComponent implements OnInit {
   }
 
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
   }
   back() {
-    this.router.navigate(['/permissionList/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/permissionList']);
   }
 
 }

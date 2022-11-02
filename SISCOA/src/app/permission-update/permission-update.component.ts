@@ -18,29 +18,34 @@ userData:any;
   ngOnInit(): void {
     this.rut();
   }
-  rut(){
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+  rut(){ 
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.roleDataupdate = data;
     });  
     
-    this.restUser
-      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+   
   }
 
   update(){
-    this.rest.update(this.roleDataupdate,this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((result) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.update(this.roleDataupdate,this.route.snapshot.params['ID'],idU).subscribe((result) => {
       
       Swal.fire(
         'Good job!',
         'role sucessfully updated!',
         'success'
       )
-      this.router.navigate(['/permissionList/'+this.userData.ID]);   
+      this.router.navigate(['/permissionList']);   
       
     }, (err) => {
       Swal.fire({

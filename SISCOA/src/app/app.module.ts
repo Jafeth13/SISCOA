@@ -115,11 +115,11 @@ const appRoutes: Routes = [
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
-    path: 'deleteControl/:ID/:IDS',
+    path: 'deleteControl/:ID',
     component: ControlDeleteComponent,
     data: { title: 'Elimianar control'}, 
   },{
-    path: 'updateControl/:ID/:IDS',
+    path: 'updateControl/:ID',
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
@@ -159,15 +159,15 @@ const appRoutes: Routes = [
     component: RolListComponent,
     data: { title: 'Listar Roles'}, 
   },{
-    path: 'rolRegister/:ID',
+    path: 'rolRegister',
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate/:ID/:IDS',
+    path: 'rolUpdate/:ID',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete/:ID/:IDS',
+    path: 'rolDelete/:ID',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
@@ -175,11 +175,11 @@ const appRoutes: Routes = [
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
-    path: 'permissionRegister/:ID',
+    path: 'permissionRegister',
     component: PermissionRegisterComponent,
     data: { title: 'Registrar Permisos'}, 
   },{
-    path: 'permissionUpdate/:ID/:IDS',
+    path: 'permissionUpdate/:ID',
     component: PermissionUpdateComponent,
     data: { title: 'Actualizar Permisos'}, 
   },{

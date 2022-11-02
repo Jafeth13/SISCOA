@@ -23,19 +23,25 @@ userData:any;
   }
 
   rut() {
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.controlDataDelete = data;
     });
-    this.restUser
-      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+   
   }
 
   delete() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -47,10 +53,10 @@ userData:any;
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(this.route.snapshot.params['ID']);
-        this.rest.delete(this.controlDataDelete.ID,this.route.snapshot.params['IDS']).subscribe((data) => {
+        this.rest.delete(this.controlDataDelete.ID,idU).subscribe((data) => {
           console.log(data);
           this.ngOnInit();
-          this.router.navigate(['/listControl/'+this.userData.ID]);
+          this.router.navigate(['/listControl']);
         });
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
