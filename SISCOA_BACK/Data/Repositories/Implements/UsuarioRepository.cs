@@ -18,17 +18,11 @@ namespace Repositories.Repositories.Implements
         public new async Task<IEnumerable<TSISCOA_Usuario>> GetAll()
         {
             var list = await siscoa_context.Usuarios.ToListAsync();
-            foreach (var item in list)
-            {
-                item.TV_Contrasenna = null;
-            }
             return list;
         }
         public new async Task<TSISCOA_Usuario> GetById(int id)
         {
             var item = await siscoa_context.Set<TSISCOA_Usuario>().FindAsync(id);
-            if(item != null)    
-                item.TV_Contrasenna = null;
             return item;
         }
         public new async Task<TSISCOA_Usuario> Insert(TSISCOA_Usuario entity)
@@ -42,7 +36,6 @@ namespace Repositories.Repositories.Implements
             var list = await siscoa_context.Usuarios.FirstOrDefaultAsync(x => x.TC_Identificacion == usuario.TC_Identificacion && x.TV_Contrasenna == usuario.TV_Contrasenna);
             if (list != null)
             {
-                list.TV_Contrasenna = null;
                 list.TSISCOA_Rol = await siscoa_context.Roles.FirstOrDefaultAsync(x => x.ID == list.FK_SISCOA_Rol_SISCOA_Usuario);
                 list.TSISCOA_Oficina = await siscoa_context.Oficinas.FirstOrDefaultAsync(x => x.ID == list.FK_SISCOA_Oficina_SISCOA_Usuario);
                 return list;
