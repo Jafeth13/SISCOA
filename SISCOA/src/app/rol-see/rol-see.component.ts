@@ -21,21 +21,24 @@ userData:any
   }
   roleDataDelete: any;
   rut() {
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.roleDataDelete = data;
     });
 
-    this.restUser
-    .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
+    
   }
 
   back() {
-    this.router.navigate(['/rolList/' + this.route.snapshot.params['IDS']]);
+    this.router.navigate(['/rolList']);
   }
   
 }

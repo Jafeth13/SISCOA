@@ -23,13 +23,15 @@ export class ConditionRegisterComponent implements OnInit {
   }
 userData:any;
   add(){
-    this.rest.add(this.estado,this.route.snapshot.params['ID']).subscribe((result) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.add(this.estado,idU).subscribe((result) => {
       Swal.fire(
         'Good job!',
         'Estado added sucessfully!',
         'success'
       ) 
-      this.router.navigate(['/conditionList/'+this.userData.ID]);   
+      this.router.navigate(['/conditionList']);   
     }, (err) => {
       Swal.fire({
         icon: 'error',
@@ -41,12 +43,13 @@ userData:any;
  }
 
  rut() {
-  this.restUser
-    .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
+  let idU =  localStorage.getItem("idUsuario") ;
+  console.log(idU)
+  this.restUser.get(idU,idU).subscribe((data: {}) => {
+    console.log(data);
+    this.userData = data;
+    
+  });
 }
 
 }

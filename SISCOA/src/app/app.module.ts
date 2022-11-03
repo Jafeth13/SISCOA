@@ -207,15 +207,15 @@ const appRoutes: Routes = [
     component: PeriodListComponent,
     data: { title: 'Listar Periodos'}, 
   },{
-    path: 'periodRegister/:ID',
+    path: 'periodRegister',
     component: PeriodRegisterComponent,
     data: { title: 'Registrar Periodos'}, 
   },{
-    path: 'periodUpdate/:ID/:IDS',
+    path: 'periodUpdate/:ID',
     component: PeriodUpdateComponent,
     data: { title: 'Actualizar Periodos'}, 
   },{
-    path: 'periodDelete/:ID/:IDS',
+    path: 'periodDelete/:ID',
     component: PeriodDeleteComponent,
     data: { title: 'Eliminar Periodos'}, 
   },{
@@ -223,15 +223,15 @@ const appRoutes: Routes = [
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
-    path: 'conditionRegister/:ID',
+    path: 'conditionRegister',
     component: ConditionRegisterComponent,
     data: { title: 'Registrar Estado'}, 
   },{
-    path: 'conditionUpdate/:ID/:IDS',
+    path: 'conditionUpdate/:ID',
     component: ConditionUpdateComponent,
     data: { title: 'Actualizar Estado'}, 
   },{
-    path: 'conditionDelete/:ID/:IDS',
+    path: 'conditionDelete/:ID',
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
@@ -243,11 +243,11 @@ const appRoutes: Routes = [
     component: ActionUserComponent,
     data: { title: 'Acciones'}, 
   },{
-    path: 'errorSystem/:ID',
+    path: 'errorSystem',
     component: ErrorSystemComponent,
     data: { title: 'Errores'}, 
   },{
-    path: 'controlSee/:ID/:IDS',
+    path: 'controlSee/:ID',
     component: ControlSeeComponent,
     data: { title: 'Controles'}, 
   },{
@@ -259,7 +259,7 @@ const appRoutes: Routes = [
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
-    path: 'rolSee/:ID/:IDS',
+    path: 'rolSee/:ID',
     component: RolSeeComponent,
     data: { title: 'Rol'}, 
   },{

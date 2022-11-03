@@ -5,6 +5,7 @@ import { ServicesPeriodService } from '../services-period.service';
 import * as moment from 'moment';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ServiceUserService } from '../service-user.service';
+import { id } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-period-update',
   templateUrl: './period-update.component.html',
@@ -29,17 +30,19 @@ export class PeriodUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.rut();
   }
-  rut() {
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+  rut() { 
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.periodDataupdate = data;
     });
-    this.restUser
-      .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+   
   }
   update() {
     var date;
@@ -57,13 +60,14 @@ export class PeriodUpdateComponent implements OnInit {
 
     this.periodDataupdate.TF_FechaInicio = this.startDate;
     this.periodDataupdate.TF_FechaFin = this.enddate;
+    let idU =  localStorage.getItem("idUsuario") ;
 
     this.rest
-      .update(this.periodDataupdate, this.route.snapshot.params['ID'],this.route.snapshot.params['IDS'])
+      .update(this.periodDataupdate, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
-          this.router.navigate(['/periodList/'+this.userData.ID]);
+          this.router.navigate(['/periodList']);
 
         },
         (err) => {

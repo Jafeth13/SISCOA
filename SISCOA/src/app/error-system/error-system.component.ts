@@ -22,16 +22,24 @@ userData:any;
     this.dataSource.paginator = this.paginator;
   }
 ngOnInit(): void {
-  this.rest.List(this.route.snapshot.params['ID']).subscribe((pos)=>{
+
+  this.rut();
+    
+
+}
+
+
+rut(){
+  let idU =  localStorage.getItem("idUsuario") ;
+  console.log(idU)
+  this.restUser.get(idU,idU).subscribe((data: {}) => {
+    console.log(data);
+    this.userData = data;
+    
+  });
+  this.rest.List(idU).subscribe((pos)=>{
     console.log(pos);
     this.dataSource.data=pos
-    });
-
-    this.restUser
-    .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
     });
 
 }

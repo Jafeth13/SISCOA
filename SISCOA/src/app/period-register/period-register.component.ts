@@ -47,13 +47,14 @@ export class PeriodRegisterComponent implements OnInit {
     this.startDate = this.date + 'T' + date+'Z';
     this.enddate = this.date2 + 'T' + date+'Z';
     console.log(this.period);
+    let idU =  localStorage.getItem("idUsuario") ;
 
     this.period.TF_FechaInicio = this.startDate;
     this.period.TF_FechaFin = this.enddate;
-    this.rest.add(this.period,this.route.snapshot.params['ID']).subscribe(
+    this.rest.add(this.period,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
-        this.router.navigate(['/periodList/' + this.route.snapshot.params['ID']]);
+        this.router.navigate(['/periodList']);
       },
       (err) => {
         Swal.fire({
@@ -81,12 +82,13 @@ export class PeriodRegisterComponent implements OnInit {
     this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
   }
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
   }
 
 

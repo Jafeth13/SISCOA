@@ -18,20 +18,24 @@ userData:any;
   }
   
   rut(){
-    this.rest.get(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.statusDataDelete = data;
     });
-    this.restUser
-    .get(this.route.snapshot.params['IDS'],this.route.snapshot.params['IDS'])
-    .subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
+   
   }
 
 
   delete(){
+    let idU =  localStorage.getItem("idUsuario") ;
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -44,10 +48,10 @@ userData:any;
       if (result.isConfirmed) {
   
         console.log(this.route.snapshot.params['ID'])
-        this.rest.delete(this.route.snapshot.params['ID'],this.route.snapshot.params['IDS']).subscribe(
+        this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe(
         (data) =>{
           console.log(data);
-          this.router.navigate(['/conditionList/'+this.userData.ID]);
+          this.router.navigate(['/conditionList']);
         }
       ); 
         Swal.fire(
