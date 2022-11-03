@@ -25,6 +25,10 @@
           <div class="nc">
             <div>
               <br />
+              <br />
+              <br />
+              <br />
+              <br />
               <mat-label>Elige la fecha de inicio</mat-label>
               <br />
               <input
@@ -54,8 +58,8 @@
               id="date2"
               matInput
               [matDatepicker]="picker2"
-              (dateInput)="selectDate2('input', $event)"
-              (dateChange)="selectDate2('change', $event)"
+              (dateInput)="selectDate('input', $event)"
+              (dateChange)="selectDate('change', $event)"
               formControlName="firstCtrl"
               required
             />

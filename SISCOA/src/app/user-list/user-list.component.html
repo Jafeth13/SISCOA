@@ -1,98 +1,129 @@
-
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="text-center">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <h1 class="section-heading text-uppercase">Usuarios </h1>
-       
-      
-        
-       
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Busqueda</mat-label>
-                <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)">
-              </mat-form-field>
-        
-    </div>
-      
-      <div class="centrarTable">
-    
-         <div class="addButton">
-        <button type="button" class="btn btn-secondary" routerLink="/registerUser"  >+</button>
-      </div>
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-  
-      <!-- Identificacion Column -->
-      <ng-container matColumnDef="Identificacion">
-        <th mat-header-cell *matHeaderCellDef><b>Identificacion</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_Identificacion}} </td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef><b> Nombre</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_Nombre}} </td>
-      </ng-container>
-  
-      <!-- Surname Column -->
-      <ng-container matColumnDef="Surname">
-        <th mat-header-cell *matHeaderCellDef><b> Primer apellido</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_PrimerApellido}} </td>
-      </ng-container>
-  
-      <!-- secondSurname Column -->
-       <ng-container matColumnDef="secondSurname">
-        <th mat-header-cell *matHeaderCellDef><b> Segundo apellido</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_SegundoApellido}} </td>
-      </ng-container>
+  <div class="text-center">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-   <!-- ofice Column -->
-   <ng-container matColumnDef="ofice">
-    <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Oficina </b>  </th>
-    <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Oficina.TC_Nombre}} </td>
-  </ng-container>
-     <!-- role Column -->
-     <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef><b>Role</b></th>
-        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Rol.TC_Nombre}} </td>
-      </ng-container>
-      <!-- action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
-        <td mat-cell *matCellDef="let element">   <div class="example-button-row">
-            <div class="example-button-container">
-               <button mat-fab color="primary" routerLink="/userSee/{{element.ID}}" aria-label="Example icon button with a delete icon">
-                    <mat-icon>search</mat-icon>     
-                </button>  
-                  
-                <button mat-fab color="warn" routerLink="/deleteUser/{{element.ID}}" aria-label="Example icon button with a delete icon">
-                    <mat-icon>delete</mat-icon>     
-                </button>
-                 <button mat-fab color="primary" routerLink="/updateUser/{{element.ID}}"  aria-label="Example icon button with a delete icon">
-                    <mat-icon>update</mat-icon>
-                   </button>  
-               
-            </div>    
-             
-          </div> </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons 
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
+    <h1 class="section-heading text-uppercase">Usuarios</h1>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Busqueda</mat-label>
+      <input
+        matInput
+        placeholder="Ingresa datos"
+        (keyup)="applyFilter($event)"
+      />
+    </mat-form-field>
   </div>
- 
 
+  <div class="centrarTable">
+    <div class="addButton">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        routerLink="/registerUser"
+      >
+        +
+      </button>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Identificacion Column -->
+        <ng-container matColumnDef="Identificacion">
+          <th mat-header-cell *matHeaderCellDef><b>Identificacion</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TC_Identificacion }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
+          <td mat-cell *matCellDef="let element">{{ element.TC_Nombre }}</td>
+        </ng-container>
+
+        <!-- Surname Column -->
+        <ng-container matColumnDef="Surname">
+          <th mat-header-cell *matHeaderCellDef><b> Primer apellido</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TC_PrimerApellido }}
+          </td>
+        </ng-container>
+
+        <!-- secondSurname Column -->
+        <ng-container matColumnDef="secondSurname">
+          <th mat-header-cell *matHeaderCellDef><b> Segundo apellido</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TC_SegundoApellido }}
+          </td>
+        </ng-container>
+
+        <!-- ofice Column -->
+        <ng-container matColumnDef="ofice">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Oficina </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Oficina.TC_Nombre }}
+          </td>
+        </ng-container>
+        <!-- role Column -->
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef><b>Role</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Rol.TC_Nombre }}
+          </td>
+        </ng-container>
+        <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef><b>Action</b></th>
+          <td mat-cell *matCellDef="let element">
+            <div class="example-button-row">
+              <div class="example-button-container">
+                <button
+                  mat-fab
+                  color="primary"
+                  routerLink="/userSee/{{ element.ID }}"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>search</mat-icon>
+                </button>
+
+                <button
+                  mat-fab
+                  color="warn"
+                  routerLink="/deleteUser/{{ element.ID }}"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button
+                  mat-fab
+                  color="primary"
+                  routerLink="/updateUser/{{ element.ID }}"
+                  aria-label="Example icon button with a delete icon"
+                >
+                  <mat-icon>update</mat-icon>
+                </button>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div>
 </div>

@@ -18,9 +18,9 @@ export class ErrorServicesService {
   constructor(private http: HttpClient) { }
 
 
-  List():Observable<any>{
+  List(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Error',httpOptions);
+    return  this.http.get(endpoint+'Error?IDuserLogged='+id,httpOptions);
     
   }
 

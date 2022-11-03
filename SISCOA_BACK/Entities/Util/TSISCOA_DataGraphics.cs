@@ -8,8 +8,8 @@ namespace Entities.Util
 {
     public class TSISCOA_DataGraphics
     {
-        public int ID_State { get; set; }
-        public string Name { get; set; }
-        public int Value { get; set; }
+      
+        public string name { get; set; }
+        public int value { get; set; }
     }
 }

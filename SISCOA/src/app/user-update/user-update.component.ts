@@ -11,6 +11,7 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserUpdateComponent implements OnInit {
   @Input() userData: any;
+  userData2:any;
   constructor(
     public restUser: ServiceUserService,
     public rest: ServicesRolService,
@@ -21,34 +22,45 @@ export class UserUpdateComponent implements OnInit {
   roleData: any;
   dataOffice: any;
   ngOnInit(): void {
-    this.rest.rolList().subscribe((pos) => {
-      console.log(pos);
-      this.roleData = pos;
-    });
     this.rut();
-    this.get();
   }
 
-  get() {
-    this.dataOffice = [];
-    this.rest2.officeList().subscribe((data = {}) => {
-      console.log(data);
-      this.dataOffice = data;
-    });
-  }
-  rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-      });
-  }
+ 
+  rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+   console.log(idU)
+   this.restUser.get(idU,idU).subscribe((data: {}) => {
+     console.log(data);
+     this.userData = data;
+   });
+
+   this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
+     console.log(data);
+     this.userData = data;
+   });
+
+   this.rest2.officeList(idU).subscribe((data={})=>{
+     console.log(data);
+     this.dataOffice=data
+     });
+
+     this.rest.rolList(idU).subscribe((pos)=>{
+       console.log(pos);
+       this.roleData=pos
+       });
+       this.dataOffice=[];
+       this.rest2.officeList(idU).subscribe((data={})=>{
+         console.log(data);
+         this.dataOffice=data
+         });
+  
+ }
 
   Update() {
+    let idU =  localStorage.getItem("idUsuario") ;
     console.log(this.userData);
     this.restUser
-      .update(this.userData, this.route.snapshot.params['ID'])
+      .update(this.userData, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
           Swal.fire('Good job!', 'User added sucessfully!', 'success');
@@ -64,4 +76,10 @@ export class UserUpdateComponent implements OnInit {
         }
       );
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+
 }

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
 import { ServicesOfficeService } from '../services-office.service';
 import { ServiceUserService } from '../service-user.service';
+import { id } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -32,26 +33,19 @@ export class UserRegisterComponent implements OnInit {
   ) {}
   roleData: any;
   dataOffice: any;
+  userDataLog:any
   ngOnInit(): void {
-    this.rest.rolList().subscribe((pos) => {
-      console.log(pos);
-      this.roleData = pos;
-    });
 
+    this.rut();
     this.get();
   }
 
-  get() {
-    this.dataOffice = [];
-    this.rest2.officeList().subscribe((data = {}) => {
-      console.log(data);
-      this.dataOffice = data;
-    });
-  }
+  
 
   add() {
+    let idU =  localStorage.getItem("idUsuario") ;
     console.log(this.userData);
-    this.restUser.add(this.userData).subscribe(
+    this.restUser.add(this.userData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'User added sucessfully!', 'success');
         this.router.navigate(['/listUser']);
@@ -66,4 +60,35 @@ export class UserRegisterComponent implements OnInit {
       }
     );
   }
+  rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userDataLog = data;
+      
+    });
+    this.rest2.officeList(idU).subscribe((data = {}) => {
+      console.log(data);
+      this.dataOffice = data;
+    });
+    this.rest.rolList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.roleData = pos;
+    });
+  }
+
+  get(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.rest2.officeList(idU).subscribe((data = {}) => {
+      console.log(data);
+      this.dataOffice = data;
+    });
+  }
+
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    }
+
 }

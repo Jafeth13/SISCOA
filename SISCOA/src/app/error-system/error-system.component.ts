@@ -4,7 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ErrorServicesService } from '../error-services.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-error-system',
   templateUrl: './error-system.component.html',
@@ -15,16 +15,33 @@ export class ErrorSystemComponent implements AfterViewInit,OnInit {
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  constructor(public rest:ErrorServicesService,private route:ActivatedRoute,private router:Router) { }
-
+  constructor(public rest:ErrorServicesService,private route:ActivatedRoute,private router:Router,
+    public restUser:ServiceUserService) { }
+userData:any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 ngOnInit(): void {
-  this.rest.List().subscribe((pos)=>{
+
+  this.rut();
+    
+
+}
+
+
+rut(){
+  let idU =  localStorage.getItem("idUsuario") ;
+  console.log(idU)
+  this.restUser.get(idU,idU).subscribe((data: {}) => {
+    console.log(data);
+    this.userData = data;
+    
+  });
+  this.rest.List(idU).subscribe((pos)=>{
     console.log(pos);
     this.dataSource.data=pos
     });
+
 }
   applyFilter(event:Event){
     const filterValue=(event.target as HTMLInputElement).value;

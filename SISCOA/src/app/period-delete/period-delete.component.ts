@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServicesPeriodService } from '../services-period.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-period-delete',
   templateUrl: './period-delete.component.html',
@@ -11,23 +11,36 @@ import { ServicesPeriodService } from '../services-period.service';
 export class PeriodDeleteComponent implements OnInit {
 
 
-  constructor(public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public restUser:ServiceUserService,public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
   @Input()periodDataDelete:any
-
+userData:any
   
 
   ngOnInit(): void {
     this.rut();
   }
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.periodDataDelete = data;
     });
+    
+    
+    
   }
   delete(){
-    this.rest.delete(this.route.snapshot.params['ID']).subscribe((result) => {
-   
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((result) => {
+      this.router.navigate(['/periodList']);
+
       Swal.fire(
         'Good job!',
         'estado sucessfully updated!',

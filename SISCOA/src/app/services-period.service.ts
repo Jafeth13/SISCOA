@@ -16,26 +16,26 @@ export class ServicesPeriodService {
 
   constructor(private http: HttpClient) { }
 
-  periodList():Observable<any>{
+  periodList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Periodo',httpOptions);
+    return  this.http.get(endpoint+'Periodo?IDuserLogged='+id,httpOptions);
     
   }
   
-  delete(id:any):Observable<any>{
-    return  this.http.delete(endpoint+'Periodo/'+id, httpOptions);   
+  delete(id:any,idUser:any):Observable<any>{
+    return  this.http.delete(endpoint+'Periodo/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
 
-  add(period:any){
-    return  this.http.post(endpoint+'Periodo',period,httpOptions);
+  add(period:any,id:any){
+    return  this.http.post(endpoint+'Periodo?IDuserLogged='+id,period,httpOptions);
   }
 
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Periodo/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Periodo/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
-  update(period: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Periodo/'+id,period, httpOptions).pipe(
+  update(period: any,id:number,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Periodo/'+id+'?IDuserLogged='+idUser,period, httpOptions).pipe(
       catchError(this.handleError('deletePeriod'))
     );
   }

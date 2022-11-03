@@ -18,23 +18,23 @@ export class CompleteControlFillComponent implements OnInit {
     public restConditional:ServiceConditionService,private route:ActivatedRoute,private router:Router) { } 
   ngOnInit(): void {
     this.rut();
-    this.restPeriod.periodList().subscribe((pos)=>{
+    this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos)=>{
       console.log(pos);
       this.dataPeriod=pos
       });
-      this.restConditional.conditionalList().subscribe((pos)=>{
+      this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos)=>{
         console.log(pos);
         this.dataConditional=pos
         });
   }
 
   rut(){
-    this.restControl.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    this.restControl.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
       console.log(data);
       this.controlDataDelete = data;
     });
   }
-
+/*
 update(){
 
       console.log(this.route.snapshot.params['ID'])
@@ -55,7 +55,7 @@ update(){
         });
         console.log(err);
       });        
-}
+}*/
 }
 
 

@@ -4,6 +4,9 @@ import Swal from 'sweetalert2';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServicesPeriodService } from '../services-period.service';
 import { ServiceConditionService } from '../service-condition.service';
+import { ServiceUserService } from '../service-user.service';
+import { ThisReceiver } from '@angular/compiler';
+
 @Component({
   selector: 'app-control-update',
   templateUrl: './control-update.component.html',
@@ -16,33 +19,37 @@ export class ControlUpdateComponent implements OnInit {
   constructor(
     public restControl: ServicesControllersService,
     public restPeriod: ServicesPeriodService,
-
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public restUser: ServiceUserService 
   ) {}
   ngOnInit(): void {
     this.rut();
-    this.restPeriod.periodList().subscribe((pos) => {
-      console.log(pos);
-      this.dataPeriod = pos;
-    });
-    this.restConditional.conditionalList().subscribe((pos) => {
-      console.log(pos);
-      this.dataConditional = pos;
-    });
   }
+userData:any
+  rut() {   
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
 
-  rut() {
     this.restControl
-      .get(this.route.snapshot.params['ID'])
+      .get(this.route.snapshot.params['ID'],idU)
       .subscribe((data: {}) => {
         console.log(data);
         this.controlDataDelete = data;
       });
+
+
   }
   temp: any;
   update() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.temp=this.controlDataDelete.TB_NotificacionCorreoAColaborador
     if(this.temp=='no'){
       this.controlDataDelete.TB_NotificacionCorreoAColaborador=false
@@ -52,7 +59,7 @@ export class ControlUpdateComponent implements OnInit {
     }
     console.log(this.route.snapshot.params['ID']);
     this.restControl
-      .update(this.controlDataDelete,this.route.snapshot.params['ID'],)
+      .update(this.controlDataDelete,this.controlDataDelete.ID,idU)
       .subscribe(
         (data) => {
           Swal.fire('Good job!', 'estado sucessfully updated!', 'success');

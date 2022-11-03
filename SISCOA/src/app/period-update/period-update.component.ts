@@ -4,69 +4,83 @@ import Swal from 'sweetalert2';
 import { ServicesPeriodService } from '../services-period.service';
 import * as moment from 'moment';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-
-
+import { ServiceUserService } from '../service-user.service';
+import { id } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-period-update',
   templateUrl: './period-update.component.html',
-  styleUrls: ['./period-update.component.css']
+  styleUrls: ['./period-update.component.css'],
 })
 export class PeriodUpdateComponent implements OnInit {
-
   date: any;
   hour: any;
   date2: any;
   hour2: any;
   startDate: any;
   enddate: any;
-  constructor(public rest:ServicesPeriodService,private route:ActivatedRoute,private router:Router) { }
-  @Input()periodDataupdate:any
-
-  
+  userData:any
+  constructor(
+    public restUser: ServiceUserService,
+    public rest: ServicesPeriodService,
+    private route: ActivatedRoute,
+    private router: Router
+      ) {}
+  @Input() periodDataupdate: any;
 
   ngOnInit(): void {
     this.rut();
   }
-  rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+  rut() { 
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.periodDataupdate = data;
     });
+   
   }
-  update(){
+  update() {
     var date;
     date = new Date();
-    date =  
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-    
-    this.startDate = this.date + 'T' + date+'Z';
-    this.enddate = this.date2 + 'T' + date+'Z';
+    date =
+      ('00' + date.getHours()).slice(-2) +
+      ':' +
+      ('00' + date.getMinutes()).slice(-2) +
+      ':' +
+      ('00' + date.getSeconds()).slice(-2);
+
+    this.startDate = this.date + 'T' + date + 'Z';
+    this.enddate = this.date2 + 'T' + date + 'Z';
     console.log(this.periodDataupdate);
 
     this.periodDataupdate.TF_FechaInicio = this.startDate;
     this.periodDataupdate.TF_FechaFin = this.enddate;
+    let idU =  localStorage.getItem("idUsuario") ;
 
-    this.rest.update(this.periodDataupdate,this.route.snapshot.params['ID']).subscribe((result) => {
-   
-      Swal.fire(
-        'Good job!',
-        'estado sucessfully updated!',
-        'success'
-      )     
-    }, (err) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      });
-      console.log(err);
-    });
+    this.rest
+      .update(this.periodDataupdate, this.route.snapshot.params['ID'],idU)
+      .subscribe(
+        (result) => {
+          Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
+          this.router.navigate(['/periodList']);
+
+        },
+        (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          });
+          console.log(err);
+        }
+      );
   }
 
-
-  
   selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
     this.date = moment(event.value).format('YYYY-MM-DD');
   }

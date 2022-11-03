@@ -16,7 +16,7 @@ namespace Repositories.Repositories.Implements
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
-            var flag = await siscoa_context.RolPermisos.AnyAsync(x => x.ID == id);
+            var flag = await siscoa_context.RolPermisos.AnyAsync(x => x.FK_SISCOA_Permiso_SISCOA_RolPermiso == id);
             return flag;
         }
 
@@ -30,7 +30,8 @@ namespace Repositories.Repositories.Implements
                 {
                     if (item.FK_SISCOA_Rol_SISCOA_RolPermiso == id)
                     {
-                        list = await siscoa_context.Permisos.Where(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso).ToListAsync();
+                        var temp2 = await siscoa_context.Permisos.Where(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso).ToListAsync();
+                        list.Add(temp2[0]);
                     }
                 }
                 return list;

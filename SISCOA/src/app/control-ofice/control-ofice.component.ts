@@ -28,23 +28,25 @@ export class ControlOficeComponent  implements AfterViewInit ,OnInit{
   }
   ngOnInit(): void {
      
-     this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
-      console.log(data);
-      console.log('aqi')
-      this.userData = data;
-      this.nc.ncd=this.userData.TSISCOA_Oficina.ID;
-       console.log(this.nc.ncd);
-       this.rest.getControl(this.nc.ncd).subscribe((pos)=>{
-      console.log('entre')
-      console.log(pos);
-      this.dataSource.data=pos;
-      });
-    }); 
+    this.rut();
    
 
 
-      console.log('pase aqui')
      
+  }
+
+  rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);         
+      this.userData = data;
+      this.nc.ncd=this.userData.TSISCOA_Oficina.ID;
+      this.rest.getControl(this.nc.ncd,idU).subscribe((pos)=>{
+        console.log(pos);
+        this.dataSource.data=pos;
+        });
+    });
   }
 
 

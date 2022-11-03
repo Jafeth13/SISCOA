@@ -105,23 +105,8 @@
           </td>
         </ng-container>
 
-        <!-- Period Column -->
-        <ng-container matColumnDef="Period">
-          <th mat-header-cell *matHeaderCellDef><b> Periodo</b></th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.TSISCOA_Periodo.TC_Nombre }}
-          </td>
-        </ng-container>
 
-        <!-- status Column -->
-        <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef class="pintar">
-            <b> Estado </b>
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.TSISCOA_Estado.TC_Nombre }}
-          </td>
-        </ng-container>
+      
         <!-- role Column -->
         <ng-container matColumnDef="notification">
           <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
@@ -139,7 +124,7 @@
                   mat-fab
                   color="primary"
                   aria-label="Example icon button with a delete icon"
-                  (click)="dar(element.ID)"
+                  (click)="dar(element.ID,element.TC_Nombre)"
                 >
                   <mat-icon>bookmark</mat-icon>
                 </button>
@@ -162,6 +147,32 @@
 
     <br />
     <br />
+    <div class="col-md-offset-2 col-md-4 col-sm-12" id="log">
+    
+    <div class="entry-formRate">
+      <h5 class="form-control rounded-left">Completa control de la oficina</h5>
+    <mat-form-field appearance="fill">
+      <mat-label>Control</mat-label>
+      <input class="form-control rounded-left" matInput [(ngModel)]="form.name" id="Id_Vehicle_Ticket" name="Vehicle_Ticket"  type="text" placeholder="Control" [disabled]="true">
+    </mat-form-field>
+
+    <select [(ngModel)]="officeControl.FK_TN_PERIODO_SISCOA_OficinaControl"    class="form-control rounded-left" name="period" id="period">
+      <option value=0 selected>Periodo</option>   
+      <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
+
+  </select>
+
+  <select [(ngModel)]="officeControl.FK_TN_ESTADO_SISCOA_OficinaControl"  class="form-control rounded-left" name="conditional" id="conditional">
+      <option value=0 selected>Estado</option>
+      <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
+  </select>
+  <button class="submit-btn form-control" (click)="addControlOffice()">
+    Completar control
+  </button>
+  </div>
+</div>
+<br>
+<br>
     <!--       Controles de la oficina                  -->
     <div *ngIf="name" class="mat-elevation-z8">
       <input class="nameOffice" [(ngModel)]="name.nameOff" disabled />
@@ -169,14 +180,14 @@
         <!-- Name Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef><b> Nombre</b></th>
-          <td mat-cell *matCellDef="let element">{{ element.TC_Nombre }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.TSISCOA_Control.TC_Nombre }}</td>
         </ng-container>
 
         <!-- Descripcion Column -->
         <ng-container matColumnDef="Descripcion">
           <th mat-header-cell *matHeaderCellDef><b> Descripcion</b></th>
           <td mat-cell *matCellDef="let element">
-            {{ element.TC_DescriptionDocumentacionEvidencia }}
+            {{ element.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia }}
           </td>
         </ng-container>
 
@@ -184,7 +195,7 @@
         <ng-container matColumnDef="notification">
           <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
           <td mat-cell *matCellDef="let element">
-            {{ element.TB_NotificacionCorreoAColaborador }}
+            {{ element.TSISCOA_Control.TB_NotificacionCorreoAColaborador }}
           </td>
         </ng-container>
 
@@ -210,11 +221,11 @@
               <div class="example-button-container">
                 <button
                   mat-fab
-                  color="warn"
-                  routerLink="/deleteControl"
+                  color="primary"
                   aria-label="Example icon button with a delete icon"
+                  routerLink="/seeControlFull/{{element.ID}}/{{this.userData.ID}}"
                 >
-                  <mat-icon>delete</mat-icon>
+                  <mat-icon>search</mat-icon>
                 </button>
               </div>
             </div>

@@ -18,19 +18,22 @@ export class OfficeListComponent implements AfterViewInit,OnInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort) sort = new MatSort();
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
-  constructor(public restUser:ServiceUserService,public rest:ServicesOfficeService,private route:ActivatedRoute,private router:Router,private _liveAnnouncer: LiveAnnouncer) { }
+  
+  constructor(public restUser:ServiceUserService,public rest:ServicesOfficeService,private route:ActivatedRoute,private router:Router,private _liveAnnouncer: LiveAnnouncer) { 
+
+  }
 userData:any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+  idf=1
 ngOnInit(): void {
-  this.rest.officeList().subscribe((pos)=>{
-    console.log(pos);
-    this.dataSource.data=pos
-    });
+  
+  this.rut();
+  this.obtener_localStorage();
     this.dataSource.sort=this.sort;
-this.rut();
+
 
 }
   applyFilter(event:Event){
@@ -39,12 +42,26 @@ this.rut();
   }
 
   rut() {
+    let idU =  localStorage.getItem("idUsuario") ;
     this.restUser
-      .get(this.route.snapshot.params['ID'])
+      .get(idU,idU)
       .subscribe((data: {}) => {
         console.log(data);
         this.userData = data;
+
+      });
+      
+      console.log('XD')
+      console.log(idU)
+      this.rest.officeList(idU).subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
       });
   }
+  
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ; 
+    this.userData.ID=idU   
+    }
 
 }

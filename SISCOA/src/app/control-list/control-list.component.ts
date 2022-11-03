@@ -27,12 +27,10 @@ export class ControlListComponent implements AfterViewInit ,OnInit{
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.officeList().subscribe((pos)=>{
-      console.log(pos);
-      this.dataSource.data=pos
-      });
+    this.rut()
+   
 
-      this.rut()
+      
   }
 
   applyFilter(event:Event){
@@ -40,11 +38,15 @@ export class ControlListComponent implements AfterViewInit ,OnInit{
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
+    let idU = localStorage.getItem('idUsuario');
+    console.log(idU);
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+       this.rest.officeList(idU).subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
       });
   }
 }

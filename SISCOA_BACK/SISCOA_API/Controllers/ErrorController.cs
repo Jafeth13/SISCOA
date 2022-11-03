@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
+using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -21,7 +20,9 @@ namespace SISCOA_API.Controllers
     public class ErrorController : ApiController
     {
         private IMapper _mapper;
-        private readonly ErrorService service = new ErrorService(new ErrorRepository(SISCOA_Context.Create()));
+        private readonly ErrorService service = new ErrorService();
+        private readonly ActividadService activity = new ActividadService();
+        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -32,13 +33,25 @@ namespace SISCOA_API.Controllers
         /// <summary>
         /// Obtiene todos los registros
         /// </summary>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Lista de todos los registros</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         [HttpGet]
         [ResponseType(typeof(IEnumerable<TSISCOA_Error_DTO>))]
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Errores"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetAll();
+            await activity.Insert(new TSISCOA_Actividad
+            {
+                TC_Description = "Obtener todos los errores",
+                TC_Accion = "GetAll",
+                TF_FechaAccion = DateTime.Now,
+                FK_ID_UsuarioActivo = IDuserLogged
+            });
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Error_DTO>(x));
 
             return Ok(DTO);
@@ -60,7 +73,7 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_Error>(DTO);
-                entities = await service.Insert(entities);
+                entities = await service.Insert(entities);             
                 return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }

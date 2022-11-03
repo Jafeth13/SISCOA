@@ -18,32 +18,32 @@ export class ServiceConditionService {
   constructor(private http: HttpClient) { }
 
 
-  conditionalList():Observable<any>{
+  conditionalList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Estados',httpOptions);
+    return  this.http.get(endpoint+'Estados?IDuserLogged='+id,httpOptions);
     
   }
 
-  add(status:any){
-    return this.http.post(endpoint+'Estados',status, httpOptions); 
+  add(status:any,id:any){
+    return this.http.post(endpoint+'Estados?IDuserLogged='+id,status, httpOptions); 
   }
 
-  delete(id: number): Observable<any>{
-    return this.http.delete(endpoint+'Estados/'+id, httpOptions).pipe(
+  delete(id: number,idUser:any): Observable<any>{
+    return this.http.delete(endpoint+'Estados/'+id+'?IDuserLogged='+idUser, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
 
-  update(status: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Estados/'+id,status, httpOptions).pipe(
+  update(status: any,id:number,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Estados/'+id+'?IDuserLogged='+idUser,status, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
 
 
 
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Estados/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Estados/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

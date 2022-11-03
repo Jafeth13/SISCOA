@@ -10,6 +10,8 @@ import { ServicesControllersService } from '../services-controllers.service';
 import { OfficeControlServicesService } from '../office-control-services.service';
 import Swal from 'sweetalert2';
 import { ServiceUserService } from '../service-user.service';
+import { ServicesPeriodService } from '../services-period.service';
+import { ServiceConditionService } from '../service-condition.service';
 @Component({
   selector: 'app-add-controls-offices',
   templateUrl: './add-controls-offices.component.html',
@@ -19,12 +21,15 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
+
+form={
+  "name":''
+}
+
   displayedColumns: string[] = ['name', 'code', 'institution', 'action'];
-  displayedxColumns: string[] = [
+   displayedxColumns: string[] = [
     'name',
     'Descripcion',
-    'Period',
-    'status',
     'notification',
     'action',
   ];
@@ -53,26 +58,25 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     public rest2: ServicesControllersService,
     private route: ActivatedRoute,
     private router: Router,
-    private _formBuilder: FormBuilder
-  ) {}
+    private _formBuilder: FormBuilder,
+    public restPeriod:ServicesPeriodService,
+    public restConditional:ServiceConditionService
 
+  ) {}
+userData:any
+  dataPeriod:any
+dataConditional:any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnInit(): void {
-    this.rest.officeList().subscribe((pos) => {
-      console.log(pos);
-      this.dataSource.data = pos;
-    });
-    this.rest2.officeList().subscribe((pos) => {
-      console.log(pos);
-      this.dataSourceControl.data = pos;
-    });
-
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data) => {
-      console.log(data);
-    });
+  ngOnInit(): void { 
+this.rut();
+this.obtener_localStorage();
   }
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -80,16 +84,21 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   }
 
   officeControl = {
-    ID: 0,
-    FK_SISCOA_CONTROL_SISCOA_OficinaControl: 0,
-    FK_SISCOA_OFICINA_SISCOA_OficinaControl: 0,
-    Control: null,
-    Oficina: null,
+    "ID": 0,
+    "FK_TN_CONTROL_SISCOA_OficinaControl": 0,
+    "FK_TN_OFICINA_SISCOA_OficinaControl": 0,
+    "FK_TN_ESTADO_SISCOA_OficinaControl": 0,
+    "FK_TN_PERIODO_SISCOA_OficinaControl": 0,
+    "TF_FechaFin_DiasExtra": 
+                             "0001-01-01T00:00:00.000Z",
+    "TSISCOA_Control": null,   "TSISCOA_Oficina": null,   "TSISCOA_Estado": null,   "TSISCOA_Periodo": null 
   };
 
   darOfice(id: any, name: any) {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.office = id;
-    this.rest2.getControl(this.office).subscribe((pos) => {
+    this.rest2.getControl(this.office,idU).subscribe((pos) => {
       console.log(pos);
       this.dataSourceControlOffice.data = pos;
     });
@@ -98,10 +107,13 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   }
 
   addControlOffice() {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     console.log(this.officeControl);
-    this.officeControl.FK_SISCOA_OFICINA_SISCOA_OficinaControl = this.office;
-    this.officeControl.FK_SISCOA_CONTROL_SISCOA_OficinaControl = this.control;
-    this.restOfficeControl.add(this.officeControl).subscribe(
+    this.officeControl.FK_TN_OFICINA_SISCOA_OficinaControl = this.office;
+    this.officeControl.FK_TN_CONTROL_SISCOA_OficinaControl = this.control;
+    
+    this.restOfficeControl.add(this.officeControl,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
       },
@@ -116,14 +128,68 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     );
     console.log(this.officeControl);
   }
-  dar(id: any) {
+  dar(id: any,name2 :any) {
+    let idU =  localStorage.getItem("idUsuario") ;
+
     this.control = id;
+    this.form.name=name2;
     console.log(this.name.nameOff);
-    this.addControlOffice();
+    //this.addControlOffice();
     this.ngOnInit();
+
+    this.restPeriod.periodList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataPeriod = pos;
+    });
+    this.restConditional.conditionalList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataConditional = pos;
+    });
+  }
+
+  delete(){
+   /* this.restOfficeControl.delete(this.officeControl).subscribe(
+      (result) => {
+        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+        console.log(err);
+      }
+    );*/
   }
 
   back() {
-    this.router.navigate(['/controlMenu/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/controlMenu']);
+  }
+
+  rut(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+
+    this.rest.officeList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSource.data = pos;
+    });
+    this.rest2.officeList(idU).subscribe((pos) => {
+      console.log(pos);
+      this.dataSourceControl.data = pos;
+    });
+
+    this.restUser.get(idU,idU).subscribe((data) => {
+      console.log(data);
+      this.userData=data;
+    });
+
+
   }
 }

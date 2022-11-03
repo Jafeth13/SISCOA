@@ -1,7 +1,10 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { PermisionServicesService } from '../permision-services.service';
+import { ServiceUserService } from '../service-user.service';
+
 @Component({
   selector: 'app-permission-register',
   templateUrl: './permission-register.component.html',
@@ -12,16 +15,22 @@ export class PermissionRegisterComponent implements OnInit {
     ID: 0,
     TC_Nombre: '',
   };
+  userData:any;
   constructor(
+    public restUser:ServiceUserService,
     public rest: PermisionServicesService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rut();
+  }
 
   add() {
-    this.rest.add(this.permisionData).subscribe(
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.add(this.permisionData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success'); 
         this.router.navigate(['/permissionList']);   
@@ -36,4 +45,18 @@ export class PermissionRegisterComponent implements OnInit {
       }
     );
   }
+
+  rut() {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+  }
+  back() {
+    this.router.navigate(['/permissionList']);
+  }
+
 }

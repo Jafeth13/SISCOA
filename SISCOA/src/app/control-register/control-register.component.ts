@@ -30,18 +30,12 @@ userData:any
       
   }
   ngOnInit(): void {
-    this.restPeriod.periodList().subscribe((pos)=>{
-      console.log(pos);
-      this.dataPeriod=pos
-      });
-      this.restConditional.conditionalList().subscribe((pos)=>{
-        console.log(pos);
-        this.dataConditional=pos
-        });
+    this.rut() ;
+   
   }
 temp:any
   add(){
-    
+    let idU =  localStorage.getItem("idUsuario") ;
   this.temp=this.controlData.TB_NotificacionCorreoAColaborador
 if(this.temp=='no'){
   this.controlData.TB_NotificacionCorreoAColaborador=false
@@ -50,7 +44,7 @@ if(this.temp=='no'){
   this.controlData.TB_NotificacionCorreoAColaborador=true
 }
 
-    this.restControl.add(this.controlData).subscribe((result) => {
+    this.restControl.add(this.controlData,idU).subscribe((result) => {
     
       Swal.fire(
         'Good job!',
@@ -68,16 +62,26 @@ if(this.temp=='no'){
     });
   }
   rut() {
-    this.restUser
-      .get(this.route.snapshot.params['ID'])
-      .subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.restPeriod.periodList(idU).subscribe((pos)=>{
+      console.log(pos);
+      this.dataPeriod=pos
       });
+      this.restConditional.conditionalList(idU).subscribe((pos)=>{
+        console.log(pos);
+        this.dataConditional=pos
+        });
   }
 
 
   back() {
-    this.router.navigate(['/listControl/' + this.route.snapshot.params['ID']]);
+    
+    this.router.navigate(['/listControl']);
   } 
 }

@@ -4,6 +4,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServiceUserService } from '../service-user.service';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -17,30 +18,49 @@ export class UserListComponent implements AfterViewInit,OnInit {
   @ViewChild(MatPaginator) paginator :any = MatPaginator;
 
   ngAfterViewInit() {
+    this.rut();
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-    this.rest.userList().subscribe((pos)=>{
-      console.log(pos);
-      console.log('pinte')
-      this.dataSource.data=pos
-      });
+
+    this.rut();
+    this.obtener_localStorage()
+   
+      
   }
 
   applyFilter(event:Event){
+    this.rut();
     const filterValue=(event.target as HTMLInputElement).value;
     this.dataSource.filter=filterValue.trim().toLowerCase();
   }
-
+userData:any
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
-     });
+      this.userData = data;
+      
+    });
+    this.rest.userList(idU).subscribe((pos)=>{
+      console.log(pos);
+      this.dataSource.data=pos
+      });
+
+     
   }
 
   back() {
     this.router.navigate(['/Menu/' + this.route.snapshot.params['ID']]);
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+
+
 }
 
 

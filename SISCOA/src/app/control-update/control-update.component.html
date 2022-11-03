@@ -1,55 +1,70 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form action="" *ngIf="controlDataDelete" id="userRegister-entry-form">
-                    <h2>Actualizar</h2>
-                    <input   type="text"  hidden>
-
-                    <input  [(ngModel)]="controlDataDelete.TC_Nombre"  type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
-
-                    <input   [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
-
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Periodo.TC_Nombre"    [(ngModel)]="controlDataDelete.TSISCOA_Periodo.ID" class="form-control rounded-left" name="period" id="period">
-                        <option value=0 selected>Periodo</option>   
-                        <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
-         
-                    </select>
-
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre" [(ngModel)]="controlDataDelete.TSISCOA_Estado.ID" class="form-control rounded-left" name="conditional" id="conditional">
-                        <option value=0 selected>Estado</option>
-                        <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
-                    </select>
-
-                    <div class="radio">
-                        <label>Notificacion al Correo?</label>
-                    <br>
-                    <br>
-                    
-                    <input [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador"  label="Si" type="radio" id="male" name="notification" value="si" checked>
-                    <input  [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador" label="No" type="radio" id="female" name="notification2" value="no" checked >
-                    </div>
-
-
-
-                    <button class="submit-btn form-control" (click)="update()">Actualizar</button>
-
-                    <button routerLink="/listControl" class="submit-btn form-control" >Cancelar</button>
-                </form>
-
-            </div>
-        </div>
-        
+  <div class="container">
+    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form action="" *ngIf="controlDataDelete" id="userRegister-entry-form">
+          <h2>Actualizar</h2>
+          <input type="text" hidden />
+          <input
+            [(ngModel)]="controlDataDelete.TC_Nombre"
+            type="text"
+            autocomplete="off"
+            name="identification_Admin"
+            id="identification_Admin"
+            class="form-control rounded-left"
+            placeholder="Nombre"
+            required=""
+          />
+          <input
+            [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia"
+            type="text"
+            autocomplete="off"
+            name="name_Admin"
+            id="name_Admin"
+            class="form-control rounded-left"
+            placeholder="Descripcion"
+            required=""
+          />
+          <div class="radio">
+            <label>Notificacion al Correo?</label>
+            <br />
+            <br />
+            <input
+              [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador"
+              label="Si"
+              type="radio"
+              id="male"
+              name="notification"
+              value="si"
+              checked
+            />
+            <input
+              [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador"
+              label="No"
+              type="radio"
+              id="female"
+              name="notification2"
+              value="no"
+              checked
+            />
+          </div>
+          <button class="submit-btn form-control" (click)="update()">
+            Actualizar
+          </button>
+          <button
+            routerLink="/listControl"
+            class="submit-btn form-control"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>
-
-
-

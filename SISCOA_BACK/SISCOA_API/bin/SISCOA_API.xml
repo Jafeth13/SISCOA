@@ -920,62 +920,68 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.GetAll">
+        <member name="M:SISCOA_API.Controllers.ControlsController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.GetControlesByOficina(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.GetControlesByOficina(System.Int32,System.Int32)">
             <summary>
             Obtiene todos los controles que tiene la oficina ingresada
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.Post(Business.DTOs.TSISCOA_Control_DTO)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.Post(Business.DTOs.TSISCOA_Control_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.Put(Business.DTOs.TSISCOA_Estado_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.Put(Business.DTOs.TSISCOA_Control_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.ControlsController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.ControlsController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -990,10 +996,11 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.GetAll">
+        <member name="M:SISCOA_API.Controllers.EstadosController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
@@ -1004,38 +1011,41 @@
             <remark>
             </remark>
             <param name="id">Id del registro</param>
-            <param name="rol">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.Post(Business.DTOs.TSISCOA_Estado_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.Put(Business.DTOs.TSISCOA_Estado_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.Put(Business.DTOs.TSISCOA_Estado_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.EstadosController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.EstadosController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1061,76 +1071,119 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetAll">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStates(System.Int32)">
             <summary>
             Obtiene la cantidad de controles en cada uno de los estados
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsBySlopes">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsBySlopes(System.Int32)">
             <summary>
-            Obtiene la cantidad de controles que estan pendientes
+            Obtiene la cantidad de controles que estan pendientes distribuidos por periodo
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetOfficeControlByIdOffice(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphicsTable_ControlsBySlopes(System.Int32)">
             <summary>
-            Obtiene un registro por id de oficina
+            Obtiene los datos de los controles que estan pendientes
+            </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsWithExtraDays(System.Int32)">
+            <summary>
+            Obtiene la cantidad de controles que estan con dias extra
+            </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphicsTable_ControlsWithExtraDays(System.Int32)">
+            <summary>
+            Obtiene los datos de los controles que tienen dias extra
+            </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
+            <returns>Lista de todos los registros</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetOfficeControlByIdOffice(System.Int32,System.Int32)">
+            <summary>
+            Obtiene los controles de una oficina
             </summary>
             <remark>
             </remark>
             <param name="id">Id de la oficina</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.CompleteOfficeControl(Microsoft.AspNetCore.Http.IFormFile,System.Int32)">
+            <summary>
+            Completar control
+            </summary>
+            <param name="files">Lista de documentos</param>
+            <param name="id">El id de controlOficina para completar control</param>
+            <returns>Registro insertado</returns>
+            <response code="200">OK. Devuelve la lista de los registros</response>
+            <response code="400">BadRequest. Consulta erronea</response>
+            <response code="500">InternalServerError. Error con el servidor</response>
+        </member>
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Post(Business.DTOs.TSISCOA_OficinaControl_DTO)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Post(Business.DTOs.TSISCOA_OficinaControl_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Put(Business.DTOs.TSISCOA_OficinaControl_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Put(Business.DTOs.TSISCOA_OficinaControl_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1145,28 +1198,31 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.GetAll">
+        <member name="M:SISCOA_API.Controllers.OficinasController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinasController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.GetOficinasByControl(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinasController.GetOficinasByControl(System.Int32,System.Int32)">
             <summary>
             Obtiene todas las oficinas que tienen el control ingresado
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
@@ -1174,33 +1230,36 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.Post(Business.DTOs.TSISCOA_Oficina_DTO)">
+        <member name="M:SISCOA_API.Controllers.OficinasController.Post(Business.DTOs.TSISCOA_Oficina_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.Put(Business.DTOs.TSISCOA_Oficina_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinasController.Put(Business.DTOs.TSISCOA_Oficina_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinasController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinasController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1215,51 +1274,56 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.PeriodoController.GetAll">
+        <member name="M:SISCOA_API.Controllers.PeriodoController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PeriodoController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PeriodoController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PeriodoController.Post(Business.DTOs.TSISCOA_Periodo_DTO)">
+        <member name="M:SISCOA_API.Controllers.PeriodoController.Post(Business.DTOs.TSISCOA_Periodo_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PeriodoController.Put(Business.DTOs.TSISCOA_Periodo_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PeriodoController.Put(Business.DTOs.TSISCOA_Periodo_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PeriodoController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PeriodoController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1274,17 +1338,19 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.GetAll">
+        <member name="M:SISCOA_API.Controllers.PermisoController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PermisoController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
@@ -1292,44 +1358,48 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.GetPermisosByRol(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PermisoController.GetPermisosByRol(System.Int32,System.Int32)">
             <summary>
             Obtiene todos los permisos que tiene el rol ingresado
             </summary>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.Post(Business.DTOs.TSISCOA_Permiso_DTO)">
+        <member name="M:SISCOA_API.Controllers.PermisoController.Post(Business.DTOs.TSISCOA_Permiso_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.Put(Business.DTOs.TSISCOA_Permiso_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PermisoController.Put(Business.DTOs.TSISCOA_Permiso_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.PermisoController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.PermisoController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1344,17 +1414,19 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolesController.GetAll">
+        <member name="M:SISCOA_API.Controllers.RolesController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolesController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolesController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
@@ -1362,33 +1434,36 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolesController.Post(Business.DTOs.TSISCOA_Rol_DTO)">
+        <member name="M:SISCOA_API.Controllers.RolesController.Post(Business.DTOs.TSISCOA_Rol_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolesController.Put(Business.DTOs.TSISCOA_Rol_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolesController.Put(Business.DTOs.TSISCOA_Rol_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolesController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolesController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1403,17 +1478,19 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolPermisosController.GetAll">
+        <member name="M:SISCOA_API.Controllers.RolPermisosController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolPermisosController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolPermisosController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
@@ -1421,33 +1498,36 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolPermisosController.Post(Business.DTOs.TSISCOA_RolPermiso_DTO)">
+        <member name="M:SISCOA_API.Controllers.RolPermisosController.Post(Business.DTOs.TSISCOA_RolPermiso_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolPermisosController.Put(Business.DTOs.TSISCOA_RolPermiso_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolPermisosController.Put(Business.DTOs.TSISCOA_RolPermiso_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.RolPermisosController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.RolPermisosController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>
@@ -1462,10 +1542,11 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.ActividadController.GetAll">
+        <member name="M:SISCOA_API.Controllers.ActividadController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
@@ -1489,10 +1570,11 @@
             Constructor
             </summary>
         </member>
-        <member name="M:SISCOA_API.Controllers.ErrorController.GetAll">
+        <member name="M:SISCOA_API.Controllers.ErrorController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
@@ -1527,17 +1609,19 @@
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.GetAll">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.GetAll(System.Int32)">
             <summary>
             Obtiene todos los registros
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.GetById(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.GetById(System.Int32,System.Int32)">
             <summary>
             Obtiene un registro por su id
             </summary>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <remark>
             </remark>
             <param name="id">Id del registro</param>
@@ -1545,33 +1629,36 @@
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="404">NotFound. No se encontro el registro</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.Post(Business.DTOs.TSISCOA_Usuario_DTO)">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.Post(Business.DTOs.TSISCOA_Usuario_DTO,System.Int32)">
             <summary>
             Crea un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro insertado</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.Put(Business.DTOs.TSISCOA_Usuario_DTO,System.Int32)">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.Put(Business.DTOs.TSISCOA_Usuario_DTO,System.Int32,System.Int32)">
             <summary>
             Actualiza un registro
             </summary>
             <param name="DTO">El objeto JSON del registro</param>
             <param name="id">Id del registro que quiere modificar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>Registro modificado</returns>
             <response code="200">OK. Devuelve el registro modificado</response>
             <response code="400">BadRequest. Consulta erronea</response>
             <response code="404">NotFound. No se encontro el registro</response>
             <response code="500">InternalServerError. Error con el servidor</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.UsuarioController.Delete(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.UsuarioController.Delete(System.Int32,System.Int32)">
             <summary>
             Elimina un registro
             </summary>
             <param name="id">Id del registro que quiere eliminar</param>
+            <param name="IDuserLogged">Id del usuario loggeado</param>
             <returns>OK</returns>
             <response code="200">OK. El registro fue eliminado</response>
             <response code="404">NotFound. No se encontro el registro</response>

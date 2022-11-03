@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Business.DTOs;
-using Data.Data;
 using Entities.Models;
-using Repositories.Repositories.Implements;
+using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -19,7 +19,9 @@ namespace SISCOA_API.Controllers
     public class EstadosController : ApiController
     {
         private IMapper _mapper;
-        private readonly EstadoService service = new EstadoService(new EstadoRepository(SISCOA_Context.Create()));
+        private readonly EstadoService service = new EstadoService();
+        private readonly ActividadService activity = new ActividadService();
+        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -30,13 +32,25 @@ namespace SISCOA_API.Controllers
         /// <summary>
         /// Obtiene todos los registros
         /// </summary>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Lista de todos los registros</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         [HttpGet]
         [ResponseType(typeof(IEnumerable<TSISCOA_Estado_DTO>))]
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetAll();
+            await activity.Insert(new TSISCOA_Actividad
+            {
+                TC_Description = "Obtener todos los estados",
+                TC_Accion = "GetAll",
+                TF_FechaAccion = DateTime.Now,
+                FK_ID_UsuarioActivo = IDuserLogged
+            });
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Estado_DTO>(x));
 
             return Ok(DTO);
@@ -47,14 +61,26 @@ namespace SISCOA_API.Controllers
         /// <remark>
         /// </remark>
         /// <param name="id">Id del registro</param>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Registro</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="404">NotFound. No se encontro el registro</response>
         [HttpGet]
         [ResponseType(typeof(TSISCOA_Estado_DTO))]
-        public async Task<IHttpActionResult> GetById(int id)
+        public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var entities = await service.GetById(id);
+            await activity.Insert(new TSISCOA_Actividad
+            {
+                TC_Description = "Obtener estado por id: "+id,
+                TC_Accion = "GetById",
+                TF_FechaAccion = DateTime.Now,
+                FK_ID_UsuarioActivo = IDuserLogged
+            });
             if (entities == null)
                 return NotFound();
 
@@ -66,13 +92,18 @@ namespace SISCOA_API.Controllers
         /// Crea un registro
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Registro insertado</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPost]
-        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO)
+        public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -80,6 +111,13 @@ namespace SISCOA_API.Controllers
             {
                 var entities = _mapper.Map<TSISCOA_Estado>(DTO);
                 entities = await service.Insert(entities);
+                await activity.Insert(new TSISCOA_Actividad
+                {
+                    TC_Description = "Crear estado: "+DTO.TC_Nombre,
+                    TC_Accion = "Post",
+                    TF_FechaAccion = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
                 return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }
@@ -89,6 +127,7 @@ namespace SISCOA_API.Controllers
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
         /// <param name="id">Id del registro que quiere modificar</param>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Registro modificado</returns>
         /// <response code="200">OK. Devuelve el registro modificado</response>
         /// <response code="400">BadRequest. Consulta erronea</response>
@@ -96,8 +135,12 @@ namespace SISCOA_API.Controllers
         /// <response code="500">InternalServerError. Error con el servidor</response>
         [HttpPut]
         [ResponseType(typeof(TSISCOA_Estado_DTO))]
-        public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO DTO, int id)
+        public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO DTO, int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -112,6 +155,13 @@ namespace SISCOA_API.Controllers
             {
                 var entities = _mapper.Map<TSISCOA_Estado>(DTO);
                 entities = await service.Update(entities);
+                await activity.Insert(new TSISCOA_Actividad
+                {
+                    TC_Description = "Actualizar estado: " + DTO.TC_Nombre,
+                    TC_Accion = "Put",
+                    TF_FechaAccion = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
                 return Ok(entities);
             }
             catch (Exception ex) { return InternalServerError(ex); }
@@ -120,12 +170,17 @@ namespace SISCOA_API.Controllers
         /// Elimina un registro
         /// </summary>
         /// <param name="id">Id del registro que quiere eliminar</param>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>OK</returns>
         /// <response code="200">OK. El registro fue eliminado</response>
         /// <response code="404">NotFound. No se encontro el registro</response>
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
+            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
+            {
+                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            }
             var flag = await service.GetById(id);
             if (flag == null)
                 return NotFound();
@@ -135,6 +190,13 @@ namespace SISCOA_API.Controllers
                 if (!await service.DeletedCheckOnEntity(id))
                 {
                     await service.Delete(id);
+                    await activity.Insert(new TSISCOA_Actividad
+                    {
+                        TC_Description = "Eliminar estado: " + flag.TC_Nombre,
+                        TC_Accion = "Delete",
+                        TF_FechaAccion = DateTime.Now,
+                        FK_ID_UsuarioActivo = IDuserLogged
+                    });
                 }
                 else
                 {

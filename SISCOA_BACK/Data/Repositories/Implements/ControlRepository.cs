@@ -15,19 +15,9 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
-        public new async Task<IEnumerable<TSISCOA_Control>> GetAll()
-        {
-            var list = await siscoa_context.Controles.ToListAsync();
-            return list;
-        }
-        public new async Task<TSISCOA_Control> GetById(int id)
-        {
-            var list = await siscoa_context.Set<TSISCOA_Control>().FindAsync(id);
-            return list;
-        }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
-            var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.ID == id);
+            var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.FK_TN_CONTROL_SISCOA_OficinaControl == id);
             return flag;
         }
 

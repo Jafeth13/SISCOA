@@ -11,50 +11,57 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserDeleteComponent implements OnInit {
   userData:any
+  userData2:any
+
   constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
   roleData:any;
   dataOffice:any;
   ngOnInit(): void {
-    this.rest.rolList().subscribe((pos)=>{
-      console.log(pos);
-      this.roleData=pos
-      });
-  this.rut();
-      this.get();
+
+
+    this.rut();
+    this.obtener_localStorage()
+
+    
+  
+     
   }
   
-  get(){
-    this.dataOffice=[];
-    this.rest2.officeList().subscribe((data={})=>{
-      console.log(data);
-      this.dataOffice=data
-      });
-  }
   rut(){
-    this.restUser.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+     let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
     });
+
+    this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+    });
+
+    this.rest2.officeList(idU).subscribe((data={})=>{
+      console.log(data);
+      this.dataOffice=data
+      });
+
+      this.rest.rolList(idU).subscribe((pos)=>{
+        console.log(pos);
+        this.roleData=pos
+        });
+
+        this.dataOffice=[];
+    this.rest2.officeList(idU).subscribe((data={})=>{
+      console.log(data);
+      this.dataOffice=data
+      });
+   
   }
   
   delete(){
-   
-    var date;
-    date = new Date();
-    date = date.getFullYear() + '-' +
-        ('00' + (date.getMonth()+1)).slice(-2) + '-' +
-        ('00' + date.getDate()).slice(-2) + 'T' + 
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-  
-   this.userData.TF_UltimaFechaModificacion=date.toString();
-   console.log(this.userData);
-  
-  
-  
-    this.restUser.delete(this.route.snapshot.params['ID']).subscribe((result) => {
-    
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.restUser.delete(this.route.snapshot.params['ID'],idU).subscribe((result) => {
       Swal.fire(
         'Good job!',
         'User added sucessfully!',
@@ -70,4 +77,10 @@ export class UserDeleteComponent implements OnInit {
       console.log(err);
     });
   }
+
+  obtener_localStorage(){
+    let idU =  localStorage.getItem("idUsuario") ;
+    this.userData.ID=idU
+    }
+
   }

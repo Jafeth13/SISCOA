@@ -69,6 +69,9 @@ import { ControlSeeComponent } from './control-see/control-see.component';
 import { OfficeSeeComponent } from './office-see/office-see.component';
 import { UserSeeComponent } from './user-see/user-see.component';
 import { RolSeeComponent } from './rol-see/rol-see.component';
+import { ControlBySlopesComponent } from './control-by-slopes/control-by-slopes.component';
+import { SeeControlFullComponent } from './see-control-full/see-control-full.component';
+import { GraphicByStatusComponent } from './graphic-by-status/graphic-by-status.component';
 
 
 const appRoutes: Routes = [
@@ -78,12 +81,12 @@ const appRoutes: Routes = [
     data: { title: 'Login' }, 
   },
   {
-    path: 'listUser/:ID',
+    path: 'listUser',
     component: UserListComponent,
     data: { title: 'Lista de usuarios' }, 
   },  
   {
-    path: 'registerUser/:ID',
+    path: 'registerUser',
     component: UserRegisterComponent,
     data: { title: 'Agregar usuarios' }, 
   },  
@@ -96,19 +99,19 @@ const appRoutes: Routes = [
     component: UserUpdateComponent,
     data: { title: 'Actualizar usuarios' }, 
   },{
-    path: 'officeControl/:ID',
+    path: 'officeControl',
     component: OfficeControlManagementComponent,
     data: { title: 'Oficina control de oficina' }, 
   },{
-    path: 'addoffice/:ID',
+    path: 'addoffice',
     component: AddControlsOfficesComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'registerControl/:ID',
+    path: 'registerControl',
     component: ControlRegisterComponent,
     data: { title: 'Añadir oficina' }, 
   },{
-    path: 'listControl/:ID',
+    path: 'listControl',
     component: ControlListComponent,
     data: { title: 'Control'}, 
   },{
@@ -120,11 +123,11 @@ const appRoutes: Routes = [
     component: ControlUpdateComponent,
     data: { title: 'Actualizar control'}, 
   },{
-    path: 'menu/:ID',
+    path: 'menu',
     component: MenuComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'controlMenu/:ID',
+    path: 'controlMenu',
     component: MenuControlComponent,
     data: { title: 'Menu'}, 
   },{
@@ -132,7 +135,7 @@ const appRoutes: Routes = [
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
-    path: 'check/:ID',
+    path: 'check',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
   },{
@@ -140,7 +143,7 @@ const appRoutes: Routes = [
     component: ExtraDayComponent,
     data: { title: 'Extra day'}, 
   },{
-    path: 'controlOfice/:ID',
+    path: 'controlOfice',
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{
@@ -152,23 +155,23 @@ const appRoutes: Routes = [
     component: CompleteControlFillComponent,
     data: { title: 'Completar control'}, 
   },{
-    path: 'rolList/:ID',
+    path: 'rolList',
     component: RolListComponent,
     data: { title: 'Listar Roles'}, 
   },{
-    path: 'rolRegister/:ID',
+    path: 'rolRegister',
     component: RolRegisterComponent,
     data: { title: 'Registrar Roles'}, 
   },{
-    path: 'rolUpdate/:ID/:IDS',
+    path: 'rolUpdate/:ID',
     component: RolUpdateComponent,
     data: { title: 'Actualizar Roles'}, 
   },{
-    path: 'rolDelete/:ID/:IDS',
+    path: 'rolDelete/:ID',
     component: RolDeleteComponent,
     data: { title: 'Eliminar Roles'}, 
   },{
-    path: 'permissionList/:ID',
+    path: 'permissionList',
     component: PermissionListComponent,
     data: { title: 'Listar Permisos'}, 
   },{
@@ -184,7 +187,7 @@ const appRoutes: Routes = [
     component: PermissionDeleteComponent,
     data: { title: 'Eliminar Permisos'}, 
   },{
-    path: 'officeList/:ID',
+    path: 'officeList',
     component: OfficeListComponent,
     data: { title: 'Listar Oficinas'}, 
   },{
@@ -200,7 +203,7 @@ const appRoutes: Routes = [
     component: OfficeDeleteComponent,
     data: { title: 'Eliminar Oficinas'}, 
   },{
-    path: 'periodList/:ID',
+    path: 'periodList',
     component: PeriodListComponent,
     data: { title: 'Listar Periodos'}, 
   },{
@@ -216,7 +219,7 @@ const appRoutes: Routes = [
     component: PeriodDeleteComponent,
     data: { title: 'Eliminar Periodos'}, 
   },{
-    path: 'conditionList/:ID',
+    path: 'conditionList',
     component: ConditionListComponent,
     data: { title: 'Lista Estado'}, 
   },{
@@ -232,7 +235,7 @@ const appRoutes: Routes = [
     component: ConditionDeleteComponent,
     data: { title: 'Eliminar Estado'}, 
   },{
-    path: 'menuConfiguration/:ID',
+    path: 'menuConfiguration',
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
@@ -256,13 +259,21 @@ const appRoutes: Routes = [
     component: OfficeSeeComponent,
     data: { title: 'Oficina'}, 
   },{
-    path: 'rolSee/:ID/:IDS',
+    path: 'rolSee/:ID',
     component: RolSeeComponent,
     data: { title: 'Rol'}, 
   },{
-    path: 'navbar/:ID',
+    path: 'navbar',
     component: NavbarComponent,
     data: { title: 'Rol'}, 
+  },{
+    path: 'controlBySlope',
+    component: ControlBySlopesComponent,
+    data: { title: 'Pendiente'}, 
+  },{
+    path: 'seeControlFull/:ID',
+    component: SeeControlFullComponent,
+    data: { title: 'Completo'}, 
   }
 ];
 
@@ -315,7 +326,10 @@ const appRoutes: Routes = [
     ControlSeeComponent,
     OfficeSeeComponent,
     UserSeeComponent,
-    RolSeeComponent
+    RolSeeComponent,
+    ControlBySlopesComponent,
+    SeeControlFullComponent,
+    GraphicByStatusComponent
     
   ],
   imports: [

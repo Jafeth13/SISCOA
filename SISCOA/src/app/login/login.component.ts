@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 }  
  name:any;
 constructor(private fb: FormBuilder,public restUser:ServiceUserService,private route:ActivatedRoute,private router:Router,private auth:AuthService) {
+  this.obtener_localStorage()
   
   this.loginForm = this.fb.group({
     TC_Identificacion: ['', [Validators.required]],
@@ -38,7 +39,7 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       toast: true,
       position: 'bottom-end',
       showConfirmButton: false,
-      timer: 1700,
+      timer: 1700000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -46,13 +47,18 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       }
     })
 
+
+
     this.auth.login(this.loginForm.value).subscribe((data={})=>{
       console.log(data); 
-      this.ID=data.ID;
-      this.router.navigate(["/controlMenu/"+this.ID]);
-      this.router.navigate(["/navbar/"+this.ID]);
 
-     
+      this.ID=data.ID;
+      
+      this.router.navigate(["/controlMenu"]);
+      this.router.navigate(["/navbar"]);
+      this.userData.ID =  this.ID;
+      this.grabarLocalstorage();
+    
       console.log(this.ID);
       Toast.fire({
         icon: 'success',
@@ -66,10 +72,29 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
         });
         console.log(error);
         console.log(this.userData);
-
+        this.loginForm = this.fb.group({
+          TC_Identificacion: ['', [Validators.required]],
+          TV_Contrasenna: ['', [Validators.required]]
+        });
       });
+
+      
+
       
   }
+  grabarLocalstorage(){
+   let UsuarioLog={
+    id:this.ID
+   };
+  
+  localStorage.setItem("idUsuario",this.ID+"")
+}
+
+obtener_localStorage(){
+let idU =  localStorage.getItem("idUsuario") ;
+}
+
+
 
   get identification() { return this.loginForm.get('TC_Identificacion'); };
   get password() { return this.loginForm.get('TV_Contrasenna'); };

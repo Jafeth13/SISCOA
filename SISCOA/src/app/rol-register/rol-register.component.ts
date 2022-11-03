@@ -22,21 +22,27 @@ export class RolRegisterComponent implements OnInit {
     public restUser:ServiceUserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.rut();
+  }
 
   rut(){
  
-    this.restUser
-    .get(this.route.snapshot.params['ID'])
-    .subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
+      
     });
+
   }
   
 
   add() {
-    this.rest.add(this.roleData).subscribe(
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    this.rest.add(this.roleData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
         this.back();
@@ -53,7 +59,7 @@ export class RolRegisterComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/rolList/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/rolList']);
   }
 
 }

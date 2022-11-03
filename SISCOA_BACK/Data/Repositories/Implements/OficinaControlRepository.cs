@@ -1,8 +1,12 @@
 ﻿using Data.Data;
 using Entities.Models;
 using Entities.Util;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,9 +26,9 @@ namespace Repositories.Repositories.Implements
                 .GroupBy(x => x.FK_TN_ESTADO_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
                 {
-                    ID_State = x.Key,
-                    Name = x.FirstOrDefault().TSISCOA_Estado.TC_Nombre,
-                    Value = x.Count()
+                   
+                    name = x.FirstOrDefault().TSISCOA_Estado.TC_Nombre,
+                    value = x.Count()
                 }).ToListAsync();
             return list;
         }
@@ -36,11 +40,17 @@ namespace Repositories.Repositories.Implements
                 .GroupBy(x => x.FK_TN_PERIODO_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
                 {
-                    ID_State = x.Key,
-                    //elements distints
-                    Name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
-                    Value = x.Count()
+                    
+                    name = x.FirstOrDefault().TSISCOA_Periodo.TC_Nombre,
+                    value = x.Count()
                 }).ToListAsync();
+            return list;
+        }
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsSlopes()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TSISCOA_Estado.TC_Nombre == "Pendiente")
+                .ToListAsync();
             return list;
         }
 
@@ -48,6 +58,28 @@ namespace Repositories.Repositories.Implements
         {
             var list = await siscoa_context.OficinaControles
                 .Where(x => x.FK_TN_OFICINA_SISCOA_OficinaControl == id)
+                .ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsWithExtraDays()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TF_FechaFin_DiasExtra != new DateTime(0001,01,01,00,00,00))
+                .GroupBy(x => x.FK_TN_CONTROL_SISCOA_OficinaControl)
+                .Select(x => new TSISCOA_DataGraphics
+                {
+                   
+                    name = x.FirstOrDefault().TSISCOA_Control.TC_Nombre,
+                    value = x.Count()
+                }).ToListAsync();
+            return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsWithExtraDays()
+        {
+            var list = await siscoa_context.OficinaControles
+                .Where(x => x.TF_FechaFin_DiasExtra != new DateTime(0001,01,01,00,00,00))
                 .ToListAsync();
             return list;
         }

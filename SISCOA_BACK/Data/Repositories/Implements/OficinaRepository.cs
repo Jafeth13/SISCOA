@@ -16,8 +16,8 @@ namespace Repositories.Repositories.Implements
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
-            var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.ID == id);
-            flag = await siscoa_context.Usuarios.AnyAsync(x => x.ID == id);
+            var flag = await siscoa_context.OficinaControles.AnyAsync(x => x.FK_TN_OFICINA_SISCOA_OficinaControl == id);
+            flag = await siscoa_context.Usuarios.AnyAsync(x => x.FK_SISCOA_Oficina_SISCOA_Usuario == id);
             return flag;
         }
 

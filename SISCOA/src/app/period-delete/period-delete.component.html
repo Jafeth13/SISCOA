@@ -11,7 +11,7 @@
                     <h2>Eliminar</h2>
                     <input   type="text"  hidden>
 
-                    <input  [(ngModel)]="periodDataDelete.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input disabled [(ngModel)]="periodDataDelete.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
                     <button class="submit-btn form-control" (click)="delete()" >Eliminar</button>
 

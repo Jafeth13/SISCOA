@@ -14,33 +14,46 @@ const httpOptions = {
 export class ServicesControllersService {
   constructor(private http: HttpClient) { }
 
-  officeList():Observable<any>{
+  officeList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Controls',httpOptions);
+    return  this.http.get('https://localhost:44353/api/Controls?IDuserLogged='+id,httpOptions);
     
   }
 
-  getControl(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Controls/GetControlesByOficina/'+id, httpOptions);   
+  getControlDayExtra(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsWithExtraDays?IDuserLogged='+id,httpOptions);
+  }
+
+  getControlDaySlopes(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes?IDuserLogged='+id,httpOptions);
+  }
+
+  getControl(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
   
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Controls/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
-  add(Controls :any){
-    return this.http.post(endpoint+'Controls', Controls, httpOptions);   
+  getControlFull(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControles/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
-  delete(id: number): Observable<any>{
-    return this.http.delete(endpoint+'Controls/'+id, httpOptions).pipe(
+
+  add(Controls :any,id:any){
+    return this.http.post(endpoint+'Controls?IDuserLogged='+id, Controls, httpOptions);   
+  }
+
+  delete(id: number,idUser:any): Observable<any>{
+    return this.http.delete(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
 
-  update(Controls: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Controls/'+id,Controls, httpOptions).pipe(
+  update(Controls: any,id:number,idU:any): Observable<any>{
+    return this.http.put(endpoint+'Controls/'+id+'?IDuserLogged='+idU,Controls, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }

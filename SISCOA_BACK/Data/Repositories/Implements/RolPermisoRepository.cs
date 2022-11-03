@@ -13,15 +13,5 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_contex;
         }
-        public new async Task<IEnumerable<TSISCOA_RolPermiso>> GetAll()
-        {
-            var list = await siscoa_context.RolPermisos.ToListAsync();
-            foreach (var item in list)
-            {
-                item.TSISCOA_Rol = await siscoa_context.Roles.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Rol_SISCOA_RolPermiso);
-                item.TSISCOA_Permiso = await siscoa_context.Permisos.FirstOrDefaultAsync(x => x.ID == item.FK_SISCOA_Permiso_SISCOA_RolPermiso);
-            }
-            return list;
-        }
     }
 }

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServiceConditionService } from '../service-condition.service';
-
+import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-condition-delete',
   templateUrl: './condition-delete.component.html',
@@ -10,22 +10,32 @@ import { ServiceConditionService } from '../service-condition.service';
 })
 export class ConditionDeleteComponent implements OnInit {
 statusDataDelete:any;  
-
-  constructor(public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
+userData:any;
+  constructor(public restUser:ServiceUserService,public rest:ServiceConditionService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
               this.rut();
   }
   
   rut(){
-    this.rest.get(this.route.snapshot.params['ID']).subscribe((data: {}) => {
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(idU)
+    this.restUser.get(idU,idU).subscribe((data: {}) => {
+      console.log(data);
+      this.userData = data;
+      
+    });
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       console.log(data);
       this.statusDataDelete = data;
     });
+   
   }
 
 
   delete(){
+    let idU =  localStorage.getItem("idUsuario") ;
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -38,7 +48,7 @@ statusDataDelete:any;
       if (result.isConfirmed) {
   
         console.log(this.route.snapshot.params['ID'])
-        this.rest.delete(this.route.snapshot.params['ID']).subscribe(
+        this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe(
         (data) =>{
           console.log(data);
           this.router.navigate(['/conditionList']);

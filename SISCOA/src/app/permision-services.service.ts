@@ -17,29 +17,29 @@ export class PermisionServicesService {
   constructor(private http: HttpClient) { }
 
   
-  permisionList():Observable<any>{
+  permisionList(id:any):Observable<any>{
 
-    return  this.http.get(endpoint+'Permiso',httpOptions);
+    return  this.http.get(endpoint+'Permiso?IDuserLogged='+id,httpOptions);
     
   }
 
-  get(id:any):Observable<any>{
-    return  this.http.get(endpoint+'Permiso/'+id, httpOptions);   
+  get(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'Permiso/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
 
-  add(Usuario:any){
-    return  this.http.post(endpoint+'Permiso',Usuario,httpOptions);
+  add(Usuario:any,idUser:any){
+    return  this.http.post(endpoint+'Permiso?IDuserLogged='+idUser,Usuario,httpOptions);
   }
 
 
 
-  update(user: any,id:number): Observable<any>{
-    return this.http.put(endpoint+'Permiso/'+id,user, httpOptions).pipe(
+  update(user: any,id:number,idUser:any): Observable<any>{
+    return this.http.put(endpoint+'Permiso/'+id+'?IDuserLogged='+idUser,user, httpOptions).pipe(
       catchError(this.handleError('deletePeriod'))
     );
   }
 
-  delete(id: number): Observable<any>{
+  delete(id: any): Observable<any>{
     return this.http.delete(endpoint+'Permiso/'+id, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
