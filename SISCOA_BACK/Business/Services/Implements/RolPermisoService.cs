@@ -14,7 +14,7 @@ namespace Services.Services.Implements
         private readonly IRolPermisoRepository rolPermisoRepository;
         public RolPermisoService() : base(_Repository)
         {
-            this.rolPermisoRepository = _Repository;
+            this.rolPermisoRepository = new RolPermisoRepository(SISCOA_Context.Create());
         }
     }
 }

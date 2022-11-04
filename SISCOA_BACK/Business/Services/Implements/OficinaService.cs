@@ -13,7 +13,7 @@ namespace Services.Services.Implements
         private readonly IOficinaRepository oficinaRepository;
         public OficinaService() : base(_Repository)
         {
-            this.oficinaRepository = _Repository;
+            this.oficinaRepository = new OficinaRepository(SISCOA_Context.Create());
         }
 
         public async Task<bool> DeletedCheckOnEntity(int id)

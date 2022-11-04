@@ -13,7 +13,7 @@ namespace Services.Services.Implements
         private readonly IPeriodoRepository periodoRepository;
         public PeriodoService() : base(_Repository)
         {
-            this.periodoRepository = _Repository;
+            this.periodoRepository = new PeriodoRepository(SISCOA_Context.Create());
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

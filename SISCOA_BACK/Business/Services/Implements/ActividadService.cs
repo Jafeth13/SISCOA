@@ -11,7 +11,7 @@ namespace Services.Services.Implements
         private readonly IActividadRepository actividadRepository;
         public ActividadService() : base(_Repository)
         {
-            this.actividadRepository = _Repository;
+            this.actividadRepository = new ActividadRepository(SISCOA_Context.Create());
         }
     }
 }

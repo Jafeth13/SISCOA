@@ -13,7 +13,7 @@ namespace Services.Services.Implements
         private readonly IControlRepository controlRepository;
         public ControlService() : base(_Repository)
         {
-            this.controlRepository = _Repository;
+            this.controlRepository = new ControlRepository(SISCOA_Context.Create());
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

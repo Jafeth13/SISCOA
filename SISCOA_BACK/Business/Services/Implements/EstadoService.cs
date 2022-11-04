@@ -13,7 +13,7 @@ namespace Services.Services.Implements
         private readonly IEstadoRepository estadoRepository;
         public EstadoService() : base(_Repository)
         {
-            this.estadoRepository = _Repository;
+            this.estadoRepository = new EstadoRepository(SISCOA_Context.Create());
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

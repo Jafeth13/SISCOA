@@ -14,7 +14,7 @@ namespace Services.Services.Implements
         private readonly IUsuarioRepository usuarioRepository;
         public UsuarioService() : base(_Repository)
         {
-            this.usuarioRepository = _Repository;
+            this.usuarioRepository = new UsuarioRepository(SISCOA_Context.Create());
         }
     }
 }
