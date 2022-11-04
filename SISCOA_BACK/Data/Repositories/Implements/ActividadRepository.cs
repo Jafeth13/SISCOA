@@ -16,10 +16,6 @@ namespace Repositories.Repositories.Implements
         public new async Task<IEnumerable<TSISCOA_Actividad>> GetAll()
         {
             var activities= await siscoa_context.Actividades.ToListAsync();
-            foreach (var item in activities)
-            {
-                item.TSISCOA_Usuario.TV_Contrasenna = "";
-            }
             return activities;
         }
     }

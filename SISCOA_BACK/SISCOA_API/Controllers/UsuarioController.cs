@@ -148,16 +148,22 @@ namespace SISCOA_API.Controllers
 
             try
             {
-                var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
-                entities = await session.Insert(entities);
-                await activity.Insert(new TSISCOA_Actividad
+                var userSaved = _mapper.Map<TSISCOA_Usuario>(DTO);
+                userSaved = await session.Insert(userSaved);
+                if (userSaved != null)
                 {
-                    TC_Description = "Crear usuario: " + DTO.TC_Identificacion,
-                    TC_Accion = "Post",
-                    TF_FechaAccion = DateTime.Now,
-                    FK_ID_UsuarioActivo = IDuserLogged
-                });
-                return Ok(DTO);
+                    await activity.Insert(new TSISCOA_Actividad
+                    {
+                        TC_Description = "Crear usuario: " + DTO.TC_Identificacion,
+                        TC_Accion = "Post",
+                        TF_FechaAccion = DateTime.Now,
+                        FK_ID_UsuarioActivo = IDuserLogged
+                    });
+                    return Ok(DTO);
+                }
+                else {
+                    return Content(HttpStatusCode.BadRequest, "Consideraciones: El usuario ya existe, Contrasena/Identificacion menor a 8 caracteres");
+                }
             }
             catch (Exception ex) { return InternalServerError(ex); }
         }
