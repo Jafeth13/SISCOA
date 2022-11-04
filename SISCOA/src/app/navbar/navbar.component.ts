@@ -50,6 +50,10 @@ export class NavbarComponent implements OnInit {
     this.auth.user = undefined;
     let idU = localStorage.getItem('idUsuario');
     idU = '';
+    let nombreUsuario = localStorage.getItem('nombreUsuario');
+    nombreUsuario = '';
+    let apellido = localStorage.getItem('apellido');
+    apellido = '';
   }
 
   rut() {

@@ -48,8 +48,8 @@
 .wrapperButton{
     position: absolute;
     
-    top: 65%;
-    left:10%;
+    top: 95%;
+    left:60%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
@@ -57,8 +57,18 @@
 .wrapperButton2{
     position: absolute;
     
-    top: 90%;
-    left:60%;
+    top: 150%;
+    left:99%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height:auto;
+}
+
+.wrapperButton5{
+    position: absolute;
+    
+    top: 2%;
+    left:50%;
     transform: translate(-50%, -50%);
     width: fit-content;
     height:auto;
