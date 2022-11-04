@@ -54,6 +54,14 @@ export class CheckStatusComponent {
     this.officeControl.ListBySlopes(idU).subscribe((data: {}) => {  
       this.dataWithSlopes = data;
     });
+
+    this.officeControl
+    .List(idU)
+    .subscribe((data: {}) => {
+      console.log(data);
+     // this.userData = data;
+     this.datosprueba=data
+    });
   }
 
   onSelect(data: any): void {
