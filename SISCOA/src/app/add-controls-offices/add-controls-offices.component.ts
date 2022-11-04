@@ -75,7 +75,7 @@ this.obtener_localStorage();
   }
   obtener_localStorage(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
+ 
     }
 
   applyFilter(event: Event) {
@@ -99,7 +99,6 @@ this.obtener_localStorage();
 
     this.office = id;
     this.rest2.getControl(this.office,idU).subscribe((pos) => {
-      console.log(pos);
       this.dataSourceControlOffice.data = pos;
     });
     this.control = id;
@@ -109,7 +108,6 @@ this.obtener_localStorage();
   addControlOffice() {
     let idU =  localStorage.getItem("idUsuario") ;
 
-    console.log(this.officeControl);
     this.officeControl.FK_TN_OFICINA_SISCOA_OficinaControl = this.office;
     this.officeControl.FK_TN_CONTROL_SISCOA_OficinaControl = this.control;
     
@@ -123,26 +121,21 @@ this.obtener_localStorage();
           title: 'Oops...',
           text: 'Something went wrong!',
         });
-        console.log(err);
       }
     );
-    console.log(this.officeControl);
   }
   dar(id: any,name2 :any) {
     let idU =  localStorage.getItem("idUsuario") ;
 
     this.control = id;
     this.form.name=name2;
-    console.log(this.name.nameOff);
     //this.addControlOffice();
     this.ngOnInit();
 
     this.restPeriod.periodList(idU).subscribe((pos) => {
-      console.log(pos);
       this.dataPeriod = pos;
     });
     this.restConditional.conditionalList(idU).subscribe((pos) => {
-      console.log(pos);
       this.dataConditional = pos;
     });
   }
