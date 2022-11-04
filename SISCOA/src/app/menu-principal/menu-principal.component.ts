@@ -7,19 +7,25 @@ import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.component.html',
-  styleUrls: ['./menu-principal.component.css']
+  styleUrls: ['./menu-principal.component.css'],
 })
 export class MenuPrincipalComponent implements OnInit {
-
-  constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
-  userData:any;
+  constructor(
+    public restUser: ServiceUserService,
+    public rest: ServicesRolService,
+    public rest2: ServicesOfficeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+  userData: any;
   ngOnInit(): void {
     this.rut();
   }
-  rut(){
-    this.restUser.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
+  rut() {
+    this.restUser
+      .get(this.route.snapshot.params['ID'], this.route.snapshot.params['ID'])
+      .subscribe((data: {}) => {
+        this.userData = data;
+      });
   }
 }

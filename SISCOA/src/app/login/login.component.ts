@@ -50,16 +50,12 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
 
 
     this.auth.login(this.loginForm.value).subscribe((data={})=>{
-      console.log(data); 
-
       this.ID=data.ID;
-      
       this.router.navigate(["/controlMenu"]);
       this.router.navigate(["/navbar"]);
       this.userData.ID =  this.ID;
       this.grabarLocalstorage();
     
-      console.log(this.ID);
       Toast.fire({
         icon: 'success',
         title: 'Signed in successfully'
@@ -70,8 +66,6 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
           title: 'Oops...',
           text: 'Bad credentials',
         });
-        console.log(error);
-        console.log(this.userData);
         this.loginForm = this.fb.group({
           TC_Identificacion: ['', [Validators.required]],
           TV_Contrasenna: ['', [Validators.required]]

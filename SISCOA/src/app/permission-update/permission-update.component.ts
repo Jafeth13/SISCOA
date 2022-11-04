@@ -7,56 +7,50 @@ import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-permission-update',
   templateUrl: './permission-update.component.html',
-  styleUrls: ['./permission-update.component.css']
+  styleUrls: ['./permission-update.component.css'],
 })
 export class PermissionUpdateComponent implements OnInit {
-userData:any;
-  constructor(public rest:PermisionServicesService,private route:ActivatedRoute,private router:Router,public restUser:ServiceUserService,
-    ) { }
-  @Input()roleDataupdate:any;
+  userData: any;
+  constructor(
+    public rest: PermisionServicesService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public restUser: ServiceUserService
+  ) {}
+  @Input() roleDataupdate: any;
 
   ngOnInit(): void {
     this.rut();
   }
-  rut(){ 
-    let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
+  rut() {
+    let idU = localStorage.getItem('idUsuario');
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
       this.userData = data;
-      
     });
 
-    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
-      this.roleDataupdate = data;
-    });  
-    
-   
-  }
-
-  update(){
-    let idU =  localStorage.getItem("idUsuario") ;
-
-    this.rest.update(this.roleDataupdate,this.route.snapshot.params['ID'],idU).subscribe((result) => {
-      
-      Swal.fire(
-        'Good job!',
-        'role sucessfully updated!',
-        'success'
-      )
-      this.router.navigate(['/permissionList']);   
-      
-    }, (err) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
+    this.rest
+      .get(this.route.snapshot.params['ID'], idU)
+      .subscribe((data: {}) => {
+        this.roleDataupdate = data;
       });
-      console.log(err);
-    });
   }
 
-
-
+  update() {
+    let idU = localStorage.getItem('idUsuario');
+    this.rest
+      .update(this.roleDataupdate, this.route.snapshot.params['ID'], idU)
+      .subscribe(
+        (result) => {
+          Swal.fire('Good job!', 'role sucessfully updated!', 'success');
+          this.router.navigate(['/permissionList']);
+        },
+        (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          });
+        }
+      );
+  }
 }

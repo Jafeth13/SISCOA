@@ -30,17 +30,13 @@ export class ControlUpdateComponent implements OnInit {
 userData:any
   rut() {   
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
 
     this.restControl
       .get(this.route.snapshot.params['ID'],idU)
       .subscribe((data: {}) => {
-        console.log(data);
         this.controlDataDelete = data;
       });
 
@@ -57,7 +53,6 @@ userData:any
       if(this.temp=='si')
       this.controlDataDelete.TB_NotificacionCorreoAColaborador=true
     }
-    console.log(this.route.snapshot.params['ID']);
     this.restControl
       .update(this.controlDataDelete,this.controlDataDelete.ID,idU)
       .subscribe(
@@ -71,7 +66,6 @@ userData:any
             title: 'Oops...',
             text: 'Something went wrong!',
           });
-          console.log(err);
         }
       );
   }

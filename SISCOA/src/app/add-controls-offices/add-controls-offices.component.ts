@@ -147,46 +147,25 @@ this.obtener_localStorage();
     });
   }
 
-  delete(){
-   /* this.restOfficeControl.delete(this.officeControl).subscribe(
-      (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
-      },
-      (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-        console.log(err);
-      }
-    );*/
-  }
-
   back() {
     this.router.navigate(['/controlMenu']);
   }
 
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
       
     });
 
     this.rest.officeList(idU).subscribe((pos) => {
-      console.log(pos);
       this.dataSource.data = pos;
     });
     this.rest2.officeList(idU).subscribe((pos) => {
-      console.log(pos);
       this.dataSourceControl.data = pos;
     });
 
     this.restUser.get(idU,idU).subscribe((data) => {
-      console.log(data);
       this.userData=data;
     });
 

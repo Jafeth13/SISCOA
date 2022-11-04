@@ -29,7 +29,6 @@ export class MenuComponent implements OnInit {
     this.restUser
       .get(idU,idU)
       .subscribe((data: {}) => {
-        console.log(data);
         this.userData = data;
       });
   }

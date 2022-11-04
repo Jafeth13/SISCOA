@@ -26,20 +26,12 @@ userData:any
   @Input() officeDataupdate: any;
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;
-      console.log(idU)
       this.restUser.get(idU,idU).subscribe((data: {}) => {
-        console.log(data);
-        this.userData = data;
-        
+        this.userData = data;   
       });
-
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
-      this.officeDataupdate = data;
+    this.officeDataupdate = data;
     });
-
-  
-      
   }
 
   update() {
@@ -57,7 +49,6 @@ userData:any
             title: 'Oops...',
             text: 'Something went wrong!',
           });
-          console.log(err);
         }
       );
   }

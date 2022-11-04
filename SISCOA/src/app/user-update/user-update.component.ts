@@ -28,29 +28,23 @@ export class UserUpdateComponent implements OnInit {
  
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-   console.log(idU)
    this.restUser.get(idU,idU).subscribe((data: {}) => {
-     console.log(data);
      this.userData = data;
    });
 
    this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-     console.log(data);
      this.userData = data;
    });
 
    this.rest2.officeList(idU).subscribe((data={})=>{
-     console.log(data);
      this.dataOffice=data
      });
 
      this.rest.rolList(idU).subscribe((pos)=>{
-       console.log(pos);
        this.roleData=pos
        });
        this.dataOffice=[];
        this.rest2.officeList(idU).subscribe((data={})=>{
-         console.log(data);
          this.dataOffice=data
          });
   
@@ -58,7 +52,6 @@ export class UserUpdateComponent implements OnInit {
 
   Update() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(this.userData);
     this.restUser
       .update(this.userData, this.route.snapshot.params['ID'],idU)
       .subscribe(
@@ -72,7 +65,6 @@ export class UserUpdateComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!',
           });
-          console.log(err);
         }
       );
   }

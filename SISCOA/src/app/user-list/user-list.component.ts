@@ -4,7 +4,6 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServiceUserService } from '../service-user.service';
-import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -37,14 +36,10 @@ export class UserListComponent implements AfterViewInit,OnInit {
 userData:any
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
     this.rest.userList(idU).subscribe((pos)=>{
-      console.log(pos);
       this.dataSource.data=pos
       });
 
@@ -52,7 +47,7 @@ userData:any
   }
 
   back() {
-    this.router.navigate(['/Menu/' + this.route.snapshot.params['ID']]);
+    this.router.navigate(['/Menu']);
   }
 
   obtener_localStorage(){

@@ -39,7 +39,6 @@ export class OfficeRegisterComponent implements OnInit {
   }
 
   add() {
-    console.log(this.officeData);
     this.rest.add(this.officeData,this.userData.ID).subscribe(
       (result) => {
         this.router.navigate(['/officeList']);
@@ -52,7 +51,6 @@ export class OfficeRegisterComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!',
         });
-        console.log(err);
       }
     );
   }
@@ -60,18 +58,14 @@ export class OfficeRegisterComponent implements OnInit {
   status: any;
   getStatus() {
     this.rest.getStatus(this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      console.log(data);
       this.status = data;
     });
   }
 
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
   }
 

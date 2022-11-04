@@ -46,7 +46,6 @@ export class PeriodRegisterComponent implements OnInit {
     
     this.startDate = this.date + 'T' + date+'Z';
     this.enddate = this.date2 + 'T' + date+'Z';
-    console.log(this.period);
     let idU =  localStorage.getItem("idUsuario") ;
 
     this.period.TF_FechaInicio = this.startDate;
@@ -62,7 +61,6 @@ export class PeriodRegisterComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!',
         });
-        console.log(err);
       }
     );
   }
@@ -83,11 +81,8 @@ export class PeriodRegisterComponent implements OnInit {
   }
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
   }
 

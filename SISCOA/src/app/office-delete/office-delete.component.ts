@@ -25,16 +25,13 @@ userData:any
   }
   officeDataDelete: any;
   rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
+    let idU =  localStorage.getItem("idUsuario") ;  
+    this.restUser.get(idU,idU).subscribe((data: {}) => {    
       this.userData = data;
       
     });
 
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.officeDataDelete = data;
     });
     
@@ -54,7 +51,6 @@ userData:any
     }).then((result) => {
       if (result.isConfirmed) {
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((data) => {
-          console.log(data);
           this.router.navigate(['/officeList']);
         });
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success');

@@ -46,13 +46,8 @@ ngOnInit(): void {
     this.restUser
       .get(idU,idU)
       .subscribe((data: {}) => {
-        console.log(data);
         this.userData = data;
-
-      });
-      
-      console.log('XD')
-      console.log(idU)
+      });  
       this.rest.officeList(idU).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos

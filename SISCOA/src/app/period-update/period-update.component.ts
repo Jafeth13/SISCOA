@@ -32,14 +32,10 @@ export class PeriodUpdateComponent implements OnInit {
   }
   rut() { 
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.periodDataupdate = data;
     });
    
@@ -56,8 +52,6 @@ export class PeriodUpdateComponent implements OnInit {
 
     this.startDate = this.date + 'T' + date + 'Z';
     this.enddate = this.date2 + 'T' + date + 'Z';
-    console.log(this.periodDataupdate);
-
     this.periodDataupdate.TF_FechaInicio = this.startDate;
     this.periodDataupdate.TF_FechaFin = this.enddate;
     let idU =  localStorage.getItem("idUsuario") ;
@@ -76,7 +70,6 @@ export class PeriodUpdateComponent implements OnInit {
             title: 'Oops...',
             text: 'Something went wrong!',
           });
-          console.log(err);
         }
       );
   }

@@ -12,7 +12,6 @@ import { map } from 'rxjs/operators'; // do not forget !
   styleUrls: ['./check-status.component.css'],
 })
 export class CheckStatusComponent {
-
   view: [number, number] = [500, 200];
 
   // options
@@ -35,55 +34,30 @@ export class CheckStatusComponent {
     private router: Router,
     public auth: AuthService,
     public restUser: ServiceUserService,
-    public officeControl: OfficeControlServicesService,
-  
-  ) {
-    
-   
-    
-  }
+    public officeControl: OfficeControlServicesService
+  ) {}
 
   ngOnInit(): void {
-    this.rut();  
+    this.rut();
   }
 
-
-datosprueba:any;
-dataWithDay:any;
-dataWithSlopes:any;
+  datosprueba: any;
+  dataWithDay: any;
+  dataWithSlopes: any;
   rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
+    let idU = localStorage.getItem('idUsuario');
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
       this.userData = data;
-      
     });
 
-      
+    this.officeControl.ListControlsWithExtraDays(idU).subscribe((data: {}) => {
+      this.dataWithDay = data;
+    });
 
-      this.officeControl
-      .ListControlsWithExtraDays(idU)
-      .subscribe((data: {}) => {
-        console.log(data);
-       // this.userData = data;
-       this.dataWithDay=data
-      });
-
-      this.officeControl
-      .ListBySlopes(idU)
-      .subscribe((data: {}) => {
-        console.log(data);
-       // this.userData = data;
-       this.dataWithSlopes=data
-      });
-
-    
+    this.officeControl.ListBySlopes(idU).subscribe((data: {}) => {  
+      this.dataWithSlopes = data;
+    });
   }
-
-  
-
-
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -97,4 +71,3 @@ dataWithSlopes:any;
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }
-

@@ -44,7 +44,6 @@ export class UserRegisterComponent implements OnInit {
 
   add() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(this.userData);
     this.restUser.add(this.userData,idU).subscribe(
       (result) => {
         Swal.fire('Good job!', 'User added sucessfully!', 'success');
@@ -56,24 +55,18 @@ export class UserRegisterComponent implements OnInit {
           title: 'Oops...',
           text: 'Something went wrong!',
         });
-        console.log(err);
       }
     );
   }
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userDataLog = data;
-      
     });
     this.rest2.officeList(idU).subscribe((data = {}) => {
-      console.log(data);
       this.dataOffice = data;
     });
     this.rest.rolList(idU).subscribe((pos) => {
-      console.log(pos);
       this.roleData = pos;
     });
   }
@@ -81,7 +74,6 @@ export class UserRegisterComponent implements OnInit {
   get(){
     let idU =  localStorage.getItem("idUsuario") ;
     this.rest2.officeList(idU).subscribe((data = {}) => {
-      console.log(data);
       this.dataOffice = data;
     });
   }

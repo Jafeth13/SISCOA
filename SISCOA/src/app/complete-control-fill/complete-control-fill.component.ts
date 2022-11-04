@@ -19,43 +19,18 @@ export class CompleteControlFillComponent implements OnInit {
   ngOnInit(): void {
     this.rut();
     this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos)=>{
-      console.log(pos);
       this.dataPeriod=pos
       });
       this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos)=>{
-        console.log(pos);
         this.dataConditional=pos
         });
   }
 
   rut(){
     this.restControl.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      console.log(data);
       this.controlDataDelete = data;
     });
   }
-/*
-update(){
-
-      console.log(this.route.snapshot.params['ID'])
-      this.restControl.update(this.route.snapshot.params['ID'],this.controlDataDelete).subscribe(
-      (data) =>{
-        
-
-        Swal.fire(
-          'Good job!',
-          'estado sucessfully updated!',
-          'success'
-        )     
-      }, (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-        console.log(err);
-      });        
-}*/
 }
 
 

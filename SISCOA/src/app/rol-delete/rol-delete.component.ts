@@ -20,20 +20,12 @@ this.rut();
   roleDataDelete:any
   rut(){ 
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.roleDataDelete = data;
     });
-   
-
-
-
   }
   back() {
     this.router.navigate(['/rolList']);
@@ -50,12 +42,9 @@ this.rut();
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-      if (result.isConfirmed) {
-  
-        console.log(this.route.snapshot.params['ID'])
+      if (result.isConfirmed) { 
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe(
         (data) =>{
-          console.log(data);
           this.back();
         }
       ); 

@@ -22,11 +22,8 @@ userData:any
   roleDataDelete: any;
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
 
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {

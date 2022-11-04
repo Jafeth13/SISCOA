@@ -19,14 +19,11 @@ userData:any;
   
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
       
     });
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.statusDataDelete = data;
     });
    
@@ -50,7 +47,6 @@ userData:any;
         console.log(this.route.snapshot.params['ID'])
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe(
         (data) =>{
-          console.log(data);
           this.router.navigate(['/conditionList']);
         }
       ); 

@@ -7,32 +7,29 @@ import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-menu-control',
   templateUrl: './menu-control.component.html',
-  styleUrls: ['./menu-control.component.css']
+  styleUrls: ['./menu-control.component.css'],
 })
 export class MenuControlComponent implements OnInit {
-
-  constructor(public restUser:ServiceUserService,public rest:ServicesRolService,public rest2:ServicesOfficeService,private route:ActivatedRoute,private router:Router) { }
-  userData:any;
+  constructor(
+    public restUser: ServiceUserService,
+    public rest: ServicesRolService,
+    public rest2: ServicesOfficeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+  userData: any;
   ngOnInit(): void {
     this.rut();
   }
-  rut(){
-    
-
-    let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
+  rut() {
+    let idU = localStorage.getItem('idUsuario');
+    this.restUser.get(idU, idU).subscribe((data: {}) => {
       this.userData = data;
-      
     });
-
   }
 
-
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
-  
+  obtener_localStorage() {
+    let idU = localStorage.getItem('idUsuario');
+    this.userData.ID = idU;
+  }
 }

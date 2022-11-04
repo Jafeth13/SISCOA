@@ -30,14 +30,12 @@ export class ControlBySlopesComponent implements AfterViewInit ,OnInit{
 
   rut(){
     let idU = localStorage.getItem('idUsuario');
-    console.log(idU);
     this.restUser.get(idU, idU).subscribe((data: {}) => {
       console.log(data);
       this.userData = data;
     });
 
     this.rest.getControlDaySlopes(idU).subscribe((pos)=>{
-      console.log(pos);
       this.dataSource.data=pos
       });
   }

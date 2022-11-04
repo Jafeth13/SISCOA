@@ -31,21 +31,16 @@ userData:any
   }
   rut(){ 
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
-      
     });
 
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.roleDataupdate = data;
     });
 
    
     this.restPermision.permisionList(idU).subscribe((pos)=>{
-      console.log(pos);
       this.dataPermision=pos
       });
 
@@ -55,10 +50,8 @@ num:number=0;
   update(){
     let idU =  localStorage.getItem("idUsuario") ;
 
-    console.log(this.num)
     this.rolPermisionU.FK_SISCOA_Permiso_SISCOA_RolPermiso=this.num;
     this.rolPermisionU.FK_SISCOA_Rol_SISCOA_RolPermiso= this.roleDataupdate.ID;
-console.log(this.rolPermisionU)
     this.rest.rolPermision(this.rolPermisionU,idU).subscribe((result) => {
       
       Swal.fire(
@@ -73,7 +66,6 @@ console.log(this.rolPermisionU)
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 

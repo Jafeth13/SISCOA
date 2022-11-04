@@ -26,30 +26,24 @@ export class UserSeeComponent implements OnInit {
   rut(){
 
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
       
     });
     this.rest.rolList(idU).subscribe((pos)=>{
-      console.log(pos);
       this.roleData=pos
       });
 
 
     this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
     });
     this.restUser.get(this.route.snapshot.params['IDS'],idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData2 = data;
     });
 
     this.dataOffice=[];
     this.rest2.officeList(idU).subscribe((data={})=>{
-      console.log(data);
       this.dataOffice=data
       });
   }
