@@ -62,6 +62,6 @@ export class NavbarComponent implements OnInit {
 
   obtener_localStorage() {
     let idU = localStorage.getItem('idUsuario');
-    this.userData.ID = idU;
+  
   }
 }
