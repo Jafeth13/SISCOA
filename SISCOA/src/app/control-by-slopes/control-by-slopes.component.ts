@@ -21,20 +21,11 @@ export class ControlBySlopesComponent implements AfterViewInit ,OnInit{
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-   
-
    this.rut();
-
-     
   }
 
   rut(){
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      console.log(data);
-      this.userData = data;
-    });
-
     this.rest.getControlDaySlopes(idU).subscribe((pos)=>{
       this.dataSource.data=pos
       });

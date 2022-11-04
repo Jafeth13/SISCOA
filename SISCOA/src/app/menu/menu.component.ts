@@ -15,27 +15,13 @@ export class MenuComponent implements OnInit {
     public auth: AuthService,
     public restUser: ServiceUserService
   ) {
-    this.rut();
   }
-  userData: any;
   ngOnInit(): void {
-    this.rut();
-    this.obtener_localStorage()
 
 
   }
-  rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser
-      .get(idU,idU)
-      .subscribe((data: {}) => {
-        this.userData = data;
-      });
-  }
+  
 
 
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
+  
 }

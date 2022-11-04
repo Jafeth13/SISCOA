@@ -153,11 +153,6 @@ this.obtener_localStorage();
 
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;
-      
-    });
-
     this.rest.officeList(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });

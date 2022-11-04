@@ -61,9 +61,6 @@ export class ControlRegisterComponent implements OnInit {
   }
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
     this.restPeriod.periodList(idU).subscribe((pos) => {
       this.dataPeriod = pos;
     });

@@ -24,7 +24,7 @@ export class PermissionRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rut();
+
   }
 
   add() {
@@ -45,12 +45,7 @@ export class PermissionRegisterComponent implements OnInit {
     );
   }
 
-  rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
-  }
+  
   back() {
     this.router.navigate(['/permissionList']);
   }

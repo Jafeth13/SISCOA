@@ -23,9 +23,7 @@ userData:any;
   }
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;    
-    });
+    
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       this.periodDataDelete = data;
     });

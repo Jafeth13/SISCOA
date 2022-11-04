@@ -60,9 +60,7 @@ export class UserRegisterComponent implements OnInit {
   }
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userDataLog = data;
-    });
+   
     this.rest2.officeList(idU).subscribe((data = {}) => {
       this.dataOffice = data;
     });

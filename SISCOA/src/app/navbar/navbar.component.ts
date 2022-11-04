@@ -54,11 +54,10 @@ export class NavbarComponent implements OnInit {
 
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
+    let nameU = localStorage.getItem('nombreUsuario');
+    let apellidoU = localStorage.getItem('apellido'); 
       this.email =
-        this.userData.TC_Nombre + ' ' + this.userData.TC_PrimerApellido;
-    });
+        nameU + ' ' + apellidoU;
   }
 
   obtener_localStorage() {

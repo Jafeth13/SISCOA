@@ -32,8 +32,7 @@ export class OfficeRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rut();
-    this.obtener_localStorage()
+   
     this.getStatus();
    
   }
@@ -62,15 +61,5 @@ export class OfficeRegisterComponent implements OnInit {
     });
   }
 
-  rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
-  }
 
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
 }

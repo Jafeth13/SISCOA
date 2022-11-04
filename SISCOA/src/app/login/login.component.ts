@@ -18,7 +18,13 @@ export class LoginComponent implements OnInit {
     TC_Identificacion: "",
     TV_Contrasenna: "",
     TC_Correo: "" 
-}  
+} 
+@Input()user={
+  "TC_Identificacion": "",
+  "TC_Nombre": "",
+  "TC_PrimerApellido": "",
+  "TC_SegundoApellido": "",
+} 
  name:any;
 constructor(private fb: FormBuilder,public restUser:ServiceUserService,private route:ActivatedRoute,private router:Router,private auth:AuthService) {
   this.obtener_localStorage()
@@ -54,6 +60,8 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       this.router.navigate(["/controlMenu"]);
       this.router.navigate(["/navbar"]);
       this.userData.ID =  this.ID;
+      this.user.TC_Nombre=data.TC_Nombre;
+      this.user.TC_PrimerApellido=data.TC_PrimerApellido;
       this.grabarLocalstorage();
     
       Toast.fire({
@@ -82,6 +90,8 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
    };
   
   localStorage.setItem("idUsuario",this.ID+"")
+  localStorage.setItem("nombreUsuario",this.user.TC_Nombre)
+  localStorage.setItem("apellido",this.user.TC_PrimerApellido)
 }
 
 obtener_localStorage(){

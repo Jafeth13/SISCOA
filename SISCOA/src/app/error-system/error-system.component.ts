@@ -37,9 +37,6 @@ export class ErrorSystemComponent implements AfterViewInit, OnInit {
 
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
     this.rest.List(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
 import { ServicesOfficeService } from '../services-office.service';
 import { ServiceUserService } from '../service-user.service';
@@ -19,17 +18,7 @@ export class MenuControlComponent implements OnInit {
   ) {}
   userData: any;
   ngOnInit(): void {
-    this.rut();
-  }
-  rut() {
-    let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
+
   }
 
-  obtener_localStorage() {
-    let idU = localStorage.getItem('idUsuario');
-    this.userData.ID = idU;
-  }
 }

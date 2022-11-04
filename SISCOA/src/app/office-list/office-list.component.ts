@@ -42,12 +42,7 @@ ngOnInit(): void {
   }
 
   rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser
-      .get(idU,idU)
-      .subscribe((data: {}) => {
-        this.userData = data;
-      });  
+    let idU =  localStorage.getItem("idUsuario") ; 
       this.rest.officeList(idU).subscribe((pos)=>{
       console.log(pos);
       this.dataSource.data=pos

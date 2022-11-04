@@ -34,7 +34,7 @@ export class PeriodRegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.rut()
+    
   }
   add() {
     var date;
@@ -79,12 +79,6 @@ export class PeriodRegisterComponent implements OnInit {
   selectHour2() {
     this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
   }
-  rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;
-    });
-  }
-
+  
 
 }

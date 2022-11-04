@@ -35,11 +35,6 @@ this.obtener_localStorage();
 
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-      this.userData = data;
-      
-    });
-
     this.rest.List(idU).subscribe((pos)=>{
       this.dataSource.data=pos
       });
@@ -48,7 +43,6 @@ this.obtener_localStorage();
 
   obtener_localStorage(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
     }
 
 }

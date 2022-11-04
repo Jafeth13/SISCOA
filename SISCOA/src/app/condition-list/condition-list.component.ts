@@ -36,9 +36,6 @@ export class ConditionListComponent implements AfterViewInit,OnInit {
  
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-    }); 
         this.rest.conditionalList(idU).subscribe((pos)=>{
     this.dataSource.data=pos
     });

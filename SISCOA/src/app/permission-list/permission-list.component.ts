@@ -36,9 +36,6 @@ export class PermissionListComponent implements OnInit,AfterViewInit {
 
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-    }); 
       this.rest.permisionList(idU).subscribe((pos)=>{
       this.dataSource.data=pos
       });

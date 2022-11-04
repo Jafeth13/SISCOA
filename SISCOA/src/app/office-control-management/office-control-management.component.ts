@@ -133,9 +133,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
 
    rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-    this.restUser.get(idU,idU).subscribe((data: {}) => {
-    });
-
+    
     this.rest.officeList(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });

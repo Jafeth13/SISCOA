@@ -53,9 +53,7 @@ dataWithDay:any;
 dataWithSlopes:any;
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;
-    console.log(idU)
     this.restUser.get(idU,idU).subscribe((data: {}) => {
-      console.log(data);
       this.userData = data;
       
     });
