@@ -44,14 +44,13 @@ ngOnInit(): void {
   rut() {
     let idU =  localStorage.getItem("idUsuario") ; 
       this.rest.officeList(idU).subscribe((pos)=>{
-      console.log(pos);
       this.dataSource.data=pos
       });
   }
   
   obtener_localStorage(){
     let idU =  localStorage.getItem("idUsuario") ; 
-    this.userData.ID=idU   
+ 
     }
 
 }
