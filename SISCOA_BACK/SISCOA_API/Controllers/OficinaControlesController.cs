@@ -68,13 +68,13 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }*/
             var entities = await service.GetDataGraphics_ControlsByStates();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener datos de graficos",
-                TC_Accion = "GetDataGraphics_ControlsByStates",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            //await activity.Insert(new TSISCOA_Actividad
+            //{
+            //    TC_Description = "Obtener datos de graficos",
+            //    TC_Accion = "GetDataGraphics_ControlsByStates",
+            //    TF_FechaAccion = DateTime.Now,
+            //    FK_ID_UsuarioActivo = IDuserLogged
+            //});
             if (entities == null)
                 return NotFound();
 
@@ -117,13 +117,13 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }*/
             var entities = await service.GetDataGraphicsTable_ControlsSlopes();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener los datos de los controles que estan pendientes",
-                TC_Accion = "GetDataGraphicsTable_ControlsBySlopes",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            //await activity.Insert(new TSISCOA_Actividad
+            //{
+            //    TC_Description = "Obtener los datos de los controles que estan pendientes",
+            //    TC_Accion = "GetDataGraphicsTable_ControlsBySlopes",
+            //    TF_FechaAccion = DateTime.Now,
+            //    FK_ID_UsuarioActivo = IDuserLogged
+            //});
             if (entities == null)
                 return NotFound();
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
@@ -166,13 +166,13 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }*/
             var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener los datos de los controles que tienen dias extra",
-                TC_Accion = "GetDataGraphicsTable_ControlsWithExtraDays",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            //await activity.Insert(new TSISCOA_Actividad
+            //{
+            //    TC_Description = "Obtener los datos de los controles que tienen dias extra",
+            //    TC_Accion = "GetDataGraphicsTable_ControlsWithExtraDays",
+            //    TF_FechaAccion = DateTime.Now,
+            //    FK_ID_UsuarioActivo = IDuserLogged
+            //});
             if (entities == null)
                 return NotFound();
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));

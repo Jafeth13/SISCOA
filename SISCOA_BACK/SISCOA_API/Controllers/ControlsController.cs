@@ -67,13 +67,13 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }
             var entities = await service.GetById(id);
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener un control por su id: "+ id,
-                TC_Accion = "GetById",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            //await activity.Insert(new TSISCOA_Actividad
+            //{
+            //    TC_Description = "Obtener un control por su id: "+ id,
+            //    TC_Accion = "GetById",
+            //    TF_FechaAccion = DateTime.Now,
+            //    FK_ID_UsuarioActivo = IDuserLogged
+            //});
 
             if (entities == null) {
                 return NotFound();
@@ -103,13 +103,13 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }
             var entities = await service.GetControlesByOficina(id);
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener los controles de la oficina: " + id,
-                TC_Accion = "GetControlesByOficina",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
+            //await activity.Insert(new TSISCOA_Actividad
+            //{
+            //    TC_Description = "Obtener los controles de la oficina: " + id,
+            //    TC_Accion = "GetControlesByOficina",
+            //    TF_FechaAccion = DateTime.Now,
+            //    FK_ID_UsuarioActivo = IDuserLogged
+            //});
             if (entities == null)
                 return NotFound();
 
