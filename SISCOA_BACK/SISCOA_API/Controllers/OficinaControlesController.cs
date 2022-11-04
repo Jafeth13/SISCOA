@@ -198,13 +198,6 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }
             var entities = await service.GetOfficeControlByIdOffice(id);
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener los controles de una oficina",
-                TC_Accion = "GetOfficeControlByIdOffice",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
             if (entities == null)
                 return NotFound();
 
