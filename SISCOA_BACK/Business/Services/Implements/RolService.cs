@@ -12,7 +12,7 @@ namespace Services.Services.Implements
         private readonly IRolRepository rolRepository;
         public RolService() : base(_Repository)
         {
-            this.rolRepository = _Repository;
+            this.rolRepository = new RolRepository(SISCOA_Context.Create());
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {

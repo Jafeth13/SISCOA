@@ -77,7 +77,7 @@ namespace SISCOA_API.Controllers
             var entities = await service.GetDataGraphics_ControlsByStates();
             await activity.Insert(new TSISCOA_Actividad
             {
-                TC_Description = "Obtener la cantidad de controles en cada uno de los estados",
+                TC_Description = "Obtener datos de graficos",
                 TC_Accion = "GetDataGraphics_ControlsByStates",
                 TF_FechaAccion = DateTime.Now,
                 FK_ID_UsuarioActivo = IDuserLogged
@@ -103,13 +103,6 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }*/
             var entities = await service.GetDataGraphics_ControlsSlopes();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener la cantidad de controles que estan pendientes distribuidos por periodo",
-                TC_Accion = "GetDataGraphics_ControlsBySlopes",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
             if (entities == null)
                 return NotFound();
 
@@ -159,13 +152,6 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }*/
             var entities = await service.GetDataGraphics_ControlsWithExtraDays();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener la cantidad de controles que estan con dias extra",
-                TC_Accion = "GetDataGraphics_ControlsWithExtraDays",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
             if (entities == null)
                 return NotFound();
 

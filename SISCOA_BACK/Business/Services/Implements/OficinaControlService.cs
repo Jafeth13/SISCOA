@@ -17,7 +17,7 @@ namespace Services.Services.Implements
         private readonly IOficinaControlRepository oficinaControlRepository;
         public OficinaControlService() : base(_Repository)
         {
-            this.oficinaControlRepository = _Repository;
+            this.oficinaControlRepository = new OficinaControlRepository(SISCOA_Context.Create());
         }
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
         {

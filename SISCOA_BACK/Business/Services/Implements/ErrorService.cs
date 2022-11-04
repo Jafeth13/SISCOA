@@ -11,7 +11,7 @@ namespace Services.Services.Implements
         private readonly IErrorRepository errorRepository;
         public ErrorService() : base(_Repository)
         {
-            this.errorRepository = _Repository;
+            this.errorRepository = new ErrorRepository(SISCOA_Context.Create());
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Services.Services.Implements
         private readonly IPermisoRepository permisoRepository;
         public PermisoService() : base(_Repository)
         {
-            this.permisoRepository = _Repository;
+            this.permisoRepository = new PermisoRepository(SISCOA_Context.Create());
         }
         public async Task<bool> DeletedCheckOnEntity(int id)
         {
