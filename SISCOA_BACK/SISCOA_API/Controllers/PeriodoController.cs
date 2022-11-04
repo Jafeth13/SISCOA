@@ -44,13 +44,6 @@ namespace SISCOA_API.Controllers
                 return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
             }
             var entities = await service.GetAll();
-            await activity.Insert(new TSISCOA_Actividad
-            {
-                TC_Description = "Obtener todos los periodos",
-                TC_Accion = "GetAll",
-                TF_FechaAccion = DateTime.Now,
-                FK_ID_UsuarioActivo = IDuserLogged
-            });
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Periodo_DTO>(x));
 
             return Ok(DTO);
