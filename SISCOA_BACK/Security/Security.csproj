@@ -55,10 +55,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\Implements\PrivilegesModule.cs" />
+    <Compile Include="Security\IGenericService.cs" />
+    <Compile Include="Security\Implements\GenericService.cs" />
+    <Compile Include="Security\Implements\PermisoService.cs" />
+    <Compile Include="Security\Implements\RolPermisoService.cs" />
+    <Compile Include="Security\Implements\RolService.cs" />
     <Compile Include="Security\Implements\SessionModule.cs" />
-    <Compile Include="Security\IPrivilegesModule.cs" />
+    <Compile Include="Security\Implements\UsuarioService.cs" />
+    <Compile Include="Security\IPermisoService.cs" />
+    <Compile Include="Security\IRolPermisoService.cs" />
+    <Compile Include="Security\IRolService.cs" />
     <Compile Include="Security\ISessionModule.cs" />
+    <Compile Include="Security\IUsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

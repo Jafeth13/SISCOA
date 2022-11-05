@@ -22,7 +22,6 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly ErrorService service = new ErrorService();
         private readonly ActividadService activity = new ActividadService();
-        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -40,18 +39,7 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Error_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Errores"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetAll();
-            //await activity.Insert(new TSISCOA_Actividad
-            //{
-            //    TC_Description = "Obtener todos los errores",
-            //    TC_Accion = "GetAll",
-            //    TF_FechaAccion = DateTime.Now,
-            //    FK_ID_UsuarioActivo = IDuserLogged
-            //});
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Error_DTO>(x));
 
             return Ok(DTO);
