@@ -60,6 +60,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
+    this.dataSourceControl.paginator = this.paginator;
+
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
@@ -87,6 +89,11 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilter2(event: Event) {
+    const filterValue2 = (event.target as HTMLInputElement).value;
+    this.dataSourceControl.filter = filterValue2.trim().toLowerCase();
   }
   back() {
     this.router.navigate(['/controlMenu']);

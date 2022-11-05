@@ -75,7 +75,17 @@
       </mat-step>
       <mat-step>
           <ng-template matStepLabel>Lista de controles</ng-template>
-
+          <div class="filtro">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Busqueda</mat-label>
+              <input
+                matInput
+                placeholder="Ingresa datos"
+                (keyup)="applyFilter2($event)"
+              />
+            </mat-form-field>
+          </div>
+          
           <div class="mat-elevation-z8">  
           <input class="nameOffice" [(ngModel)]="name.nameOff"  disabled>
 
