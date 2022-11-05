@@ -80,6 +80,10 @@ import { ControlOficeNewComponent } from './control-ofice-new/control-ofice-new.
 import { CheckSupervisorComponent } from './check-supervisor/check-supervisor.component';
 import { ExtraDaySupComponent } from './extra-day-sup/extra-day-sup.component';
 import { ControlBySlopSupComponent } from './control-by-slop-sup/control-by-slop-sup.component';
+import { ControlMenuSupComponent } from './control-menu-sup/control-menu-sup.component';
+import { AddControlSupComponent } from './add-control-sup/add-control-sup.component';
+import { OfficeManagmentSupComponent } from './office-managment-sup/office-managment-sup.component';
+import { ControlOfficeSupComponent } from './control-office-sup/control-office-sup.component';
 
 
 const appRoutes: Routes = [
@@ -314,6 +318,23 @@ const appRoutes: Routes = [
     path: 'BySlopSup',
     component: ControlBySlopSupComponent,
     data: { title: 'Completo'}, 
+  },{
+    path: 'controlMenuSup',
+    component: ControlMenuSupComponent,
+    data: { title: 'Completo'}, 
+  }
+  ,{
+    path: 'addControlSup',
+    component: AddControlSupComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'officeManagmentSup',
+    component: OfficeManagmentSupComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'controlOfficeSup',
+    component: ControlOfficeSupComponent,
+    data: { title: 'Completo'}, 
   }
 ];
 
@@ -377,7 +398,11 @@ const appRoutes: Routes = [
     ControlOficeNewComponent,
     CheckSupervisorComponent,
     ExtraDaySupComponent,
-    ControlBySlopSupComponent
+    ControlBySlopSupComponent,
+    ControlMenuSupComponent,
+    AddControlSupComponent,
+    OfficeManagmentSupComponent,
+    ControlOfficeSupComponent
     
   ],
   imports: [
