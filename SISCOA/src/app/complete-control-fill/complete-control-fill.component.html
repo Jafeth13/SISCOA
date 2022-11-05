@@ -7,13 +7,13 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form *ngIf="controlDataDelete" action="" id="userRegister-entry-form">
                     <h2>Completa el control</h2>
                     <input   type="text"  hidden>
 
-                    <input   [(ngModel)]="controlDataDelete.TC_Nombre"   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_Nombre"   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <input   [(ngModel)]="controlDataDelete.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
                     <select [(ngModel)]="controlDataDelete.TSISCOA_Periodo.ID"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                         <option value=0 selected>Periodo</option>     
@@ -21,28 +21,19 @@
        
                     </select>
 
-                    <select  [(ngModel)]="controlDataDelete.TSISCOA_Estado.TC_Nombre"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
+                    <select  [(ngModel)]="controlDataDelete.TSISCOA_Estado.ID"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
                         <option value=0 selected>Estado</option>   
                         <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
                     </select>
 
                     <textarea   type="TEXT" autocomplete="off" name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left" placeholder="Comentario" required=""></textarea>
 
-                    <div class="radio">
-                        <label>Notificacion al Correo?</label>
-                    <br>
-                    <br>
-                    
-                        <input [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador"  label="Si" type="radio" id="male" name="notification" value=true checked>
-                        <input  [(ngModel)]="controlDataDelete.TB_NotificacionCorreoAColaborador" label="No" type="radio" id="female" name="notification" value=false >
-                    </div>
-
 
                     <p class="parrafo"> Documentacion</p>
                     <input class="form-control rounded-left" type="file" name="fds" placeholder="Documento">
 
                     <button class="submit-btn form-control" >Completar</button>
-                    <button class="submit-btn form-control" routerLink="/completeControl">Cancelar</button>
+                    <button class="submit-btn form-control" routerLink="/controlOfice">Cancelar</button>
 
                 </form>
 

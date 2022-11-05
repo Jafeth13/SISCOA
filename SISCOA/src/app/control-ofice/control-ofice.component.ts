@@ -35,6 +35,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
   idP: number = 1;
   nc = {
     ncd: 0,
+    name:'',
   };
   ngOnInit(): void {
     this.rut();
@@ -45,6 +46,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
     this.restUser.get(idU, idU).subscribe((data: {}) => {
       this.userData = data;
       this.nc.ncd = this.userData.TSISCOA_Oficina.ID;
+      this.nc.name=this.userData.TSISCOA_Oficina.TC_Nombre;
       this.rest.getControl(this.nc.ncd, idU).subscribe((pos) => {
         this.dataSource.data = pos;
       });

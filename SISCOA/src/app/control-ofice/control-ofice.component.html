@@ -9,7 +9,7 @@
       <br />
       <br />
       <br />
-      <h1 class="section-heading text-uppercase">Controles</h1>
+      <h1 class="section-heading text-uppercase">Controles de  {{nc.name}}</h1>
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Busqueda</mat-label>
@@ -68,11 +68,15 @@
               <div class="example-button-container">
                 <button mat-fab color="primary" routerLink="/seeControlFull/{{element.ID}}" aria-label="Example icon button with a delete icon">
                     <mat-icon>search</mat-icon>     
-                </button> 
+                </button>
+                <button mat-fab color="warn" routerLink="/completeControlFile/{{element.ID}}" aria-label="Example icon button with a delete icon">
+                  <mat-icon>assignment turned in icon</mat-icon>     
+              </button>  
               </div>
             </div>
           </td>
         </ng-container>
+        
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

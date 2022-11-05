@@ -72,6 +72,8 @@ import { RolSeeComponent } from './rol-see/rol-see.component';
 import { ControlBySlopesComponent } from './control-by-slopes/control-by-slopes.component';
 import { SeeControlFullComponent } from './see-control-full/see-control-full.component';
 import { GraphicByStatusComponent } from './graphic-by-status/graphic-by-status.component';
+import { NatvarSupervisoresComponent } from './natvar-supervisores/natvar-supervisores.component';
+import { MenuSupervisorComponent } from './menu-supervisor/menu-supervisor.component';
 
 
 const appRoutes: Routes = [
@@ -239,6 +241,14 @@ const appRoutes: Routes = [
     component: MenuConfigurationComponent,
     data: { title: 'Menu configuracion'}, 
   },{
+    path: 'menuSupervisor',
+    component: MenuSupervisorComponent,
+    data: { title: 'Menu '}, 
+  },{
+    path: 'natvarSupervisor',
+    component: NatvarSupervisoresComponent,
+    data: { title: 'Menu '}, 
+  },{
     path: 'actionUser',
     component: ActionUserComponent,
     data: { title: 'Acciones'}, 
@@ -329,7 +339,9 @@ const appRoutes: Routes = [
     RolSeeComponent,
     ControlBySlopesComponent,
     SeeControlFullComponent,
-    GraphicByStatusComponent
+    GraphicByStatusComponent,
+    NatvarSupervisoresComponent,
+    MenuSupervisorComponent
     
   ],
   imports: [

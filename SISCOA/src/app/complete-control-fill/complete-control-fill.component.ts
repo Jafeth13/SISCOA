@@ -7,30 +7,41 @@ import { ServiceConditionService } from '../service-condition.service';
 @Component({
   selector: 'app-complete-control-fill',
   templateUrl: './complete-control-fill.component.html',
-  styleUrls: ['./complete-control-fill.component.css']
+  styleUrls: ['./complete-control-fill.component.css'],
 })
 export class CompleteControlFillComponent implements OnInit {
-  dataPeriod:any;
-  dataConditional:any;
-  @Input()controlDataDelete:any
-  constructor(public restControl:ServicesControllersService,public restPeriod:ServicesPeriodService,
-   
-    public restConditional:ServiceConditionService,private route:ActivatedRoute,private router:Router) { } 
+  dataPeriod: any;
+  dataConditional: any;
+  @Input() controlDataDelete: any;
+
+  constructor(
+    public restControl: ServicesControllersService,
+    public restPeriod: ServicesPeriodService,
+    public rest: ServicesControllersService,
+
+    public restConditional: ServiceConditionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.rut();
-    this.restPeriod.periodList(this.route.snapshot.params['ID']).subscribe((pos)=>{
-      this.dataPeriod=pos
-      });
-      this.restConditional.conditionalList(this.route.snapshot.params['ID']).subscribe((pos)=>{
-        this.dataConditional=pos
-        });
   }
 
-  rut(){
-    this.restControl.get(this.route.snapshot.params['ID'],this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      this.controlDataDelete = data;
+  rut() {
+    let idU = localStorage.getItem('idUsuario');
+
+    this.rest
+      .getControlId(this.route.snapshot.params['ID'], idU)
+      .subscribe((pos) => {
+        this.controlDataDelete = pos;
+        console.log(pos)
+      });
+
+    this.restPeriod.periodList(idU).subscribe((pos) => {
+      this.dataPeriod = pos;
+    });
+    this.restConditional.conditionalList(idU).subscribe((pos) => {
+      this.dataConditional = pos;
     });
   }
 }
-
-

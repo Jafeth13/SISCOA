@@ -31,7 +31,9 @@ export class ServicesControllersService {
   getControl(id:any,idUser:any):Observable<any>{
     return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
-
+  getControlId(id:any,idUser:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControles/'+id+'?IDuserLogged='+idUser, httpOptions);   
+  }
   
   get(id:any,idUser:any):Observable<any>{
     return  this.http.get(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions);   

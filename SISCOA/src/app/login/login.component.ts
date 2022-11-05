@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   "TC_Nombre": "",
   "TC_PrimerApellido": "",
   "TC_SegundoApellido": "",
+  "role":0
 } 
  name:any;
 constructor(private fb: FormBuilder,public restUser:ServiceUserService,private route:ActivatedRoute,private router:Router,private auth:AuthService) {
@@ -56,12 +57,20 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
 
 
     this.auth.login(this.loginForm.value).subscribe((data={})=>{
-      this.ID=data.ID;
-      this.router.navigate(["/controlMenu"]);
-      this.router.navigate(["/navbar"]);
+      this.ID=data.ID;  
+      this.user.role=data.TSISCOA_Rol.ID;
       this.userData.ID =  this.ID;
       this.user.TC_Nombre=data.TC_Nombre;
       this.user.TC_PrimerApellido=data.TC_PrimerApellido;
+      let idRole =  localStorage.getItem("role") ;
+      if(this.user.role==1){
+      this.router.navigate(["/controlMenu"]);
+      this.router.navigate(["/navbar"]);
+    }
+    if(this.user.role==5){
+      this.router.navigate(["/natvarSupervisor"]);
+      this.router.navigate(["/menuSupervisor"]);
+    }
       this.grabarLocalstorage();
     
       Toast.fire({
@@ -92,6 +101,7 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
   localStorage.setItem("idUsuario",this.ID+"")
   localStorage.setItem("nombreUsuario",this.user.TC_Nombre)
   localStorage.setItem("apellido",this.user.TC_PrimerApellido)
+  localStorage.setItem("role",this.user.role+"")
 }
 
 obtener_localStorage(){
