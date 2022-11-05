@@ -13797,3 +13797,10 @@ table {
 .nc{
     color:#cca000;
 }
+
+
+.filtro{
+    margin: 0 auto;
+    
+    text-align: center !important;
+}
