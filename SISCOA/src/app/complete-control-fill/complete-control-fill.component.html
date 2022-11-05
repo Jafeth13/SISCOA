@@ -15,24 +15,24 @@
 
                     <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
 
-                    <select [(ngModel)]="controlDataDelete.TSISCOA_Periodo.ID"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                    <select [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                         <option value=0 selected>Periodo</option>     
                         <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
        
                     </select>
 
-                    <select  [(ngModel)]="controlDataDelete.TSISCOA_Estado.ID"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
+                    <select  [(ngModel)]="controlDataDelete.FK_TN_ESTADO_SISCOA_OficinaControl"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
                         <option value=0 selected>Estado</option>   
                         <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
                     </select>
 
-                    <textarea   type="TEXT" autocomplete="off" name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left" placeholder="Comentario" required=""></textarea>
+                    <textarea   [(ngModel)]="controlDataDelete.TC_Comentario"  type="TEXT" autocomplete="off" name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left" placeholder="Comentario" required=""></textarea>
 
 
                     <p class="parrafo"> Documentacion</p>
                     <input class="form-control rounded-left" type="file" name="fds" placeholder="Documento">
 
-                    <button class="submit-btn form-control" >Completar</button>
+                    <button class="submit-btn form-control" (click)="add()" >Completar</button>
                     <button class="submit-btn form-control" routerLink="/controlOfice">Cancelar</button>
 
                 </form>

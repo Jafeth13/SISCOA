@@ -74,6 +74,12 @@ import { SeeControlFullComponent } from './see-control-full/see-control-full.com
 import { GraphicByStatusComponent } from './graphic-by-status/graphic-by-status.component';
 import { NatvarSupervisoresComponent } from './natvar-supervisores/natvar-supervisores.component';
 import { MenuSupervisorComponent } from './menu-supervisor/menu-supervisor.component';
+import { MenuOficinasComponent } from './menu-oficinas/menu-oficinas.component';
+import { NatvarOficinasComponent } from './natvar-oficinas/natvar-oficinas.component';
+import { ControlOficeNewComponent } from './control-ofice-new/control-ofice-new.component';
+import { CheckSupervisorComponent } from './check-supervisor/check-supervisor.component';
+import { ExtraDaySupComponent } from './extra-day-sup/extra-day-sup.component';
+import { ControlBySlopSupComponent } from './control-by-slop-sup/control-by-slop-sup.component';
 
 
 const appRoutes: Routes = [
@@ -137,6 +143,14 @@ const appRoutes: Routes = [
     component: MenuPrincipalComponent,
     data: { title: 'Menu'}, 
   },{
+    path: 'menuOficinas',
+    component: MenuOficinasComponent,
+    data: { title: 'Menu'}, 
+  },{
+    path: 'natvarOficinas',
+    component: NatvarOficinasComponent,
+    data: { title: 'Menu'}, 
+  },{
     path: 'check',
     component: CheckStatusComponent,
     data: { title: 'check'}, 
@@ -149,7 +163,7 @@ const appRoutes: Routes = [
     component: ControlOficeComponent,
     data: { title: 'Control office'}, 
   },{
-    path: 'completeControl',
+    path: 'completeControl/:ID',
     component: CompleteControlComponent,
     data: { title: 'Completar control'}, 
   },{
@@ -284,6 +298,22 @@ const appRoutes: Routes = [
     path: 'seeControlFull/:ID',
     component: SeeControlFullComponent,
     data: { title: 'Completo'}, 
+  },{
+    path: 'controloficesub',
+    component: ControlOficeNewComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'checkSup',
+    component: CheckSupervisorComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'controlExtraDay',
+    component: ExtraDaySupComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'BySlopSup',
+    component: ControlBySlopSupComponent,
+    data: { title: 'Completo'}, 
   }
 ];
 
@@ -341,7 +371,13 @@ const appRoutes: Routes = [
     SeeControlFullComponent,
     GraphicByStatusComponent,
     NatvarSupervisoresComponent,
-    MenuSupervisorComponent
+    MenuSupervisorComponent,
+    MenuOficinasComponent,
+    NatvarOficinasComponent,
+    ControlOficeNewComponent,
+    CheckSupervisorComponent,
+    ExtraDaySupComponent,
+    ControlBySlopSupComponent
     
   ],
   imports: [

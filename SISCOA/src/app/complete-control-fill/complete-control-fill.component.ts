@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServicesPeriodService } from '../services-period.service';
 import { ServiceConditionService } from '../service-condition.service';
+import { OfficeControlServicesService } from '../office-control-services.service';
 @Component({
   selector: 'app-complete-control-fill',
   templateUrl: './complete-control-fill.component.html',
@@ -18,6 +19,7 @@ export class CompleteControlFillComponent implements OnInit {
     public restControl: ServicesControllersService,
     public restPeriod: ServicesPeriodService,
     public rest: ServicesControllersService,
+    public restOfficeControl: OfficeControlServicesService,
 
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
@@ -43,5 +45,27 @@ export class CompleteControlFillComponent implements OnInit {
     this.restConditional.conditionalList(idU).subscribe((pos) => {
       this.dataConditional = pos;
     });
+  }
+
+  add(){
+    let idU = localStorage.getItem("idUsuario");
+
+    this.restOfficeControl.update(this.controlDataDelete.ID,this.controlDataDelete, idU).subscribe(
+      (result) => {
+        Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+       this.back()
+  }
+      ,
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+      }
+    );
+  }
+  back(){
+    this.router.navigate(['/controlOfice']);
   }
 }

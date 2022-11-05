@@ -66,10 +66,15 @@ constructor(private fb: FormBuilder,public restUser:ServiceUserService,private r
       if(this.user.role==1){
       this.router.navigate(["/controlMenu"]);
       this.router.navigate(["/navbar"]);
-    }
-    if(this.user.role==5){
+      }
+      if(this.user.role==2){
       this.router.navigate(["/natvarSupervisor"]);
       this.router.navigate(["/menuSupervisor"]);
+      }
+    
+    if(this.user.role==5){
+      this.router.navigate(["/natvarOficinas"]);
+      this.router.navigate(["/menuOficinas"]);
     }
       this.grabarLocalstorage();
     

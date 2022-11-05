@@ -1,83 +1,49 @@
-<app-navbar-login> </app-navbar-login>
+<app-natvar-oficinas> </app-natvar-oficinas>
 
-<div class="container">
-    <div class="text-center">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <h1 class="section-heading text-uppercase">Controles </h1>
+<section class="page-section" id="adminRegister">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <br>
+            <br>
+            <br>
+            <div class="entry-formRate">
+                <form *ngIf="controlDataDelete" action="" id="userRegister-entry-form">
+                    <h2>Completa el control</h2>
+                    <input   type="text"  hidden>
+
+                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_Nombre"   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+
+                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+
+                    <select [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                        <option value=0 selected>Periodo</option>     
+                        <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
        
-      
-        
-       
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Busqueda</mat-label>
-                <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)">
-              </mat-form-field>
-        
+                    </select>
+
+                    <select  [(ngModel)]="controlDataDelete.FK_TN_ESTADO_SISCOA_OficinaControl"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
+                        <option value=0 selected>Estado</option>   
+                        <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
+                    </select>
+
+                    <textarea   [(ngModel)]="controlDataDelete.TC_Comentario"  type="TEXT" autocomplete="off" name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left" placeholder="Comentario" required=""></textarea>
+
+
+                    <p class="parrafo"> Documentacion</p>
+                    <input class="form-control rounded-left" type="file" name="fds" placeholder="Documento">
+
+                    <button class="submit-btn form-control" (click)="add()" >Completar</button>
+                    <button class="submit-btn form-control" routerLink="/controloficesub">Cancelar</button>
+
+                </form>
+
             </div>
+        </div>
+        
+    </div>
+    <div class="example-button-container">
       
-      <div class="centrarTable">
-    
-     
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-  
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef><b> Nombre</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_Nombre}} </td>
-      </ng-container>
-  
-      <!-- Descripcion Column -->
-      <ng-container matColumnDef="Descripcion">
-        <th mat-header-cell *matHeaderCellDef><b> Descripcion</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TC_DescriptionDocumentacionEvidencia}} </td>
-      </ng-container>
-  
-      <!-- Period Column -->
-       <ng-container matColumnDef="Period">
-        <th mat-header-cell *matHeaderCellDef><b> Periodo</b> </th>
-        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Periodo.TC_Nombre}} </td>
-      </ng-container>
+        </div>
+</section>
 
-   <!-- status Column -->
-   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Estado </b>  </th>
-    <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Estado.TC_Nombre}} </td>
-  </ng-container>
-     <!-- role Column -->
-     <ng-container matColumnDef="notification">
-        <th mat-header-cell *matHeaderCellDef><b>Notificacion</b></th>
-        <td mat-cell *matCellDef="let element"> {{element.TB_NotificacionCorreoAColaborador}} </td>
-      </ng-container>
-      <!-- action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef><b>Action</b> </th>
-        <td mat-cell *matCellDef="let element">   <div class="example-button-row">
-            <div class="example-button-container">
-               <button mat-fab color="primary" routerLink="/completeControlFile/{{element.ID}}" aria-label="Example icon button with a delete icon">
-                    <mat-icon>assignment</mat-icon>     
-                </button>  
-            
-               
-            </div>    
-             
-          </div> </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons 
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
-  </div>
-</div>
+

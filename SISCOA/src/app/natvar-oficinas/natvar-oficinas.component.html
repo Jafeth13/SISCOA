@@ -14,16 +14,9 @@
                 <button id="iconos" class="navButton">
                     <mat-icon><mat-icon> bar_chart</mat-icon></mat-icon>  
                 </button> 
-                <li class="nav-item"><a  routerLink="/checkSup" class="nav-link" id="bookingNav">Graficos</a></li>
-                <button id="iconoDs" class="navButton">
-                    <mat-icon><mat-icon> chrome_reader_mode</mat-icon></mat-icon>  
-                </button> 
-                        
-                <li class="nav-item">  <a routerLink="/controlMenu" class="nav-link">Controles</a></li>
-            
-                <button id="iconoDs" class="navButton">
-                    <mat-icon><mat-icon>  exit_to_app</mat-icon></mat-icon>  
-                </button>  
+                <li class="nav-item"><a  routerLink="/controloficesub" class="nav-link" id="bookingNav">Oficinas</a></li>
+                
+                   
                 <li class="nav-item">   <a *ngIf="auth.isLoggedIn$ | async" (click)="logout()" id="logoutId" class="nav-link">
                     Cerrar sesion
                 </a></li>
