@@ -153,11 +153,5 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     this.rest2.officeList(idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
     });
-
-    this.restUser.get(idU,idU).subscribe((data) => {
-      this.userData=data;
-    });
-
-
   }
 }
