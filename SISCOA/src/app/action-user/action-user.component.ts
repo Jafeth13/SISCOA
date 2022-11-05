@@ -13,7 +13,7 @@ import { id } from '@swimlane/ngx-charts';
   styleUrls: ['./action-user.component.css']
 })
 export class ActionUserComponent implements AfterViewInit,OnInit {
-  displayedColumns: string[] = ['description','actionSys', 'date','user','action'];
+  displayedColumns: string[] = ['description','actionSys', 'date','user'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator :any = MatPaginator;

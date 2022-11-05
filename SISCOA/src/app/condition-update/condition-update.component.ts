@@ -30,8 +30,8 @@ userData:any;
     this.rest.update(this.statusDataupdate,this.route.snapshot.params['ID'],idU).subscribe((result) => {
    
       Swal.fire(
-        'Good job!',
-        'estado sucessfully updated!',
+        'Buen trabajo!',
+        'EL estado se actualizo!',
         'success'
       ) 
       this.router.navigate(['/conditionList']);    

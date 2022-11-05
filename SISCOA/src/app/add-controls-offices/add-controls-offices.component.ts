@@ -94,7 +94,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   };
 
   darOfice(id: any, name: any) {
-    let idU = localStorage.getItem("idUsuario");
+    let idU =  localStorage.getItem("idUsuario") ;
 
     this.office = id;
     this.rest2.getControl(this.office, idU).subscribe((pos) => {
@@ -112,8 +112,10 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
 
     this.restOfficeControl.add(this.officeControl, idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
-      },
+        Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+       this.back()
+  }
+      ,
       (err) => {
         Swal.fire({
           icon: 'error',
@@ -127,7 +129,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     let idU = localStorage.getItem("idUsuario");
 
     this.control = id;
-    this.form.name = name2;
+    this.form.name=name2;
     //this.addControlOffice();
     this.ngOnInit();
 
@@ -150,6 +152,10 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     });
     this.rest2.officeList(idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
+    });
+
+    this.restUser.get(idU,idU).subscribe((data) => {
+      this.userData=data;
     });
 
 
