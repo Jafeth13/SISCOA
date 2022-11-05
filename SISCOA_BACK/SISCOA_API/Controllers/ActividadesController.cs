@@ -22,7 +22,6 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly ActividadService service = new ActividadService();
         private readonly ActividadService activity = new ActividadService();
-        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -40,10 +39,6 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Actividad_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Actividades")) 
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetAll();
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Actividad_DTO>(x));
 

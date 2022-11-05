@@ -21,7 +21,6 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly EstadoService service = new EstadoService();
         private readonly ActividadService activity = new ActividadService();
-        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,10 +38,6 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Estado_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetAll();
             var DTO = entities.Select(x => _mapper.Map<TSISCOA_Estado_DTO>(x));
 
@@ -62,18 +57,7 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Estado_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetById(id);
-            //await activity.Insert(new TSISCOA_Actividad
-            //{
-            //    TC_Description = "Obtener estado por id: "+id,
-            //    TC_Accion = "GetById",
-            //    TF_FechaAccion = DateTime.Now,
-            //    FK_ID_UsuarioActivo = IDuserLogged
-            //});
             if (entities == null)
                 return NotFound();
 
@@ -93,10 +77,6 @@ namespace SISCOA_API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(TSISCOA_Estado_DTO DTO, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -130,10 +110,6 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Estado_DTO))]
         public async Task<IHttpActionResult> Put(TSISCOA_Estado_DTO DTO, int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -170,10 +146,6 @@ namespace SISCOA_API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede gestionar Catalogos"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var flag = await service.GetById(id);
             if (flag == null)
                 return NotFound();

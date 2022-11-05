@@ -21,7 +21,6 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly ControlService service = new ControlService();
         private readonly ActividadService activity = new ActividadService();
-        private readonly PrivilegesModule permission = new PrivilegesModule();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -39,10 +38,6 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            //if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
-            //{
-            //    return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            //}
             var entities = await service.GetAll();
             var DTO = _mapper.Map<List<TSISCOA_Control_DTO>>(entities);
 
@@ -62,18 +57,7 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Control_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetById(id);
-            //await activity.Insert(new TSISCOA_Actividad
-            //{
-            //    TC_Description = "Obtener un control por su id: "+ id,
-            //    TC_Accion = "GetById",
-            //    TF_FechaAccion = DateTime.Now,
-            //    FK_ID_UsuarioActivo = IDuserLogged
-            //});
 
             if (entities == null) {
                 return NotFound();
@@ -98,18 +82,7 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
         public async Task<IHttpActionResult> GetControlesByOficina(int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var entities = await service.GetControlesByOficina(id);
-            //await activity.Insert(new TSISCOA_Actividad
-            //{
-            //    TC_Description = "Obtener los controles de la oficina: " + id,
-            //    TC_Accion = "GetControlesByOficina",
-            //    TF_FechaAccion = DateTime.Now,
-            //    FK_ID_UsuarioActivo = IDuserLogged
-            //});
             if (entities == null)
                 return NotFound();
 
@@ -129,10 +102,6 @@ namespace SISCOA_API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(TSISCOA_Control_DTO DTO, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede crear Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             if (DTO is null)
             {
                 throw new ArgumentNullException(nameof(DTO));
@@ -171,10 +140,6 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Control_DTO))]
         public async Task<IHttpActionResult> Put(TSISCOA_Control_DTO DTO, int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede actualizar Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -211,10 +176,6 @@ namespace SISCOA_API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede eliminar Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
             var flag = await service.GetById(id);
             if (flag == null)
                 return NotFound();

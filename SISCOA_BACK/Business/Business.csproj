@@ -103,21 +103,13 @@
     <Compile Include="Services\Implements\OficinaControlService.cs" />
     <Compile Include="Services\Implements\OficinaService.cs" />
     <Compile Include="Services\Implements\PeriodoService.cs" />
-    <Compile Include="Services\Implements\PermisoService.cs" />
-    <Compile Include="Services\Implements\RolPermisoService.cs" />
-    <Compile Include="Services\Implements\RolService.cs" />
     <Compile Include="Services\Implements\ActividadService.cs" />
     <Compile Include="Services\Implements\ErrorService.cs" />
-    <Compile Include="Services\Implements\UsuarioService.cs" />
     <Compile Include="Services\IOficinaControlService.cs" />
     <Compile Include="Services\IOficinaService.cs" />
     <Compile Include="Services\IPeriodoService.cs" />
-    <Compile Include="Services\IPermisoService.cs" />
-    <Compile Include="Services\IRolPermisoService.cs" />
-    <Compile Include="Services\IRolService.cs" />
     <Compile Include="Services\IActividadService.cs" />
     <Compile Include="Services\IErrorService.cs" />
-    <Compile Include="Services\IUsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
