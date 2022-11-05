@@ -7,6 +7,17 @@
         <form [formGroup]="firstFormGroup">
 
         <ng-template matStepLabel>Seleciona la oficina</ng-template>
+
+          <div class="filtro">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Busqueda</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa datos"
+            (keyup)="applyFilter($event)"
+          />
+        </mat-form-field>
+      </div>
         <table mat-table [dataSource]="dataSource">
 
           <!-- Name Column -->
