@@ -84,6 +84,8 @@ import { ControlMenuSupComponent } from './control-menu-sup/control-menu-sup.com
 import { AddControlSupComponent } from './add-control-sup/add-control-sup.component';
 import { OfficeManagmentSupComponent } from './office-managment-sup/office-managment-sup.component';
 import { ControlOfficeSupComponent } from './control-office-sup/control-office-sup.component';
+import { CompleteControlSupComponent } from './complete-control-sup/complete-control-sup.component';
+import { csvParse } from 'd3';
 
 
 const appRoutes: Routes = [
@@ -335,6 +337,10 @@ const appRoutes: Routes = [
     path: 'controlOfficeSup',
     component: ControlOfficeSupComponent,
     data: { title: 'Completo'}, 
+  },{
+    path: 'completeControlSub/:ID',
+    component: CompleteControlSupComponent,
+    data: { title: 'Completo'}, 
   }
 ];
 
@@ -402,7 +408,8 @@ const appRoutes: Routes = [
     ControlMenuSupComponent,
     AddControlSupComponent,
     OfficeManagmentSupComponent,
-    ControlOfficeSupComponent
+    ControlOfficeSupComponent,
+    CompleteControlSupComponent
     
   ],
   imports: [
