@@ -31,7 +31,7 @@ export class ConditionRegisterComponent implements OnInit {
 
     this.rest.add(this.estado, idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+        Swal.fire('Buen trabajo!', 'Estado agregado exitosamente!', 'success');
         this.router.navigate(['/conditionList']);
       },
       (err) => {

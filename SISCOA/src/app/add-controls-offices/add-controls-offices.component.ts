@@ -95,6 +95,7 @@ this.obtener_localStorage();
   };
 
   darOfice(id: any, name: any) {
+    
     let idU =  localStorage.getItem("idUsuario") ;
 
     this.office = id;
@@ -113,8 +114,10 @@ this.obtener_localStorage();
     
     this.restOfficeControl.add(this.officeControl,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
-      },
+        Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+       this.back()
+  }
+      ,
       (err) => {
         Swal.fire({
           icon: 'error',
@@ -129,7 +132,6 @@ this.obtener_localStorage();
 
     this.control = id;
     this.form.name=name2;
-    //this.addControlOffice();
     this.ngOnInit();
 
     this.restPeriod.periodList(idU).subscribe((pos) => {
@@ -152,11 +154,5 @@ this.obtener_localStorage();
     this.rest2.officeList(idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
     });
-
-    this.restUser.get(idU,idU).subscribe((data) => {
-      this.userData=data;
-    });
-
-
   }
 }
