@@ -39,10 +39,10 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
-            {
-                return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
-            }
+            //if (!await permission.VerifyPrivilegesRolUser(IDuserLogged, "Puede consultar Registros"))
+            //{
+            //    return Content(HttpStatusCode.Unauthorized, "No tienes permisos para realizar esta acción");
+            //}
             var entities = await service.GetAll();
             var DTO = _mapper.Map<List<TSISCOA_Control_DTO>>(entities);
 

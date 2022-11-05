@@ -22,12 +22,12 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     firstCtrl: ['', Validators.required],
   });
 
-form={
-  "name":''
-}
+  form = {
+    "name": ''
+  }
 
   displayedColumns: string[] = ['name', 'code', 'institution', 'action'];
-   displayedxColumns: string[] = [
+  displayedxColumns: string[] = [
     'name',
     'Descripcion',
     'notification',
@@ -59,24 +59,23 @@ form={
     private route: ActivatedRoute,
     private router: Router,
     private _formBuilder: FormBuilder,
-    public restPeriod:ServicesPeriodService,
-    public restConditional:ServiceConditionService
+    public restPeriod: ServicesPeriodService,
+    public restConditional: ServiceConditionService
 
-  ) {}
-userData:any
-  dataPeriod:any
-dataConditional:any
+  ) { }
+  dataPeriod: any
+  dataConditional: any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  ngOnInit(): void { 
-this.rut();
-this.obtener_localStorage();
+  ngOnInit(): void {
+    this.rut();
+    this.obtener_localStorage();
   }
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
- 
-    }
+  obtener_localStorage() {
+    let idU = localStorage.getItem("idUsuario");
+
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -89,17 +88,16 @@ this.obtener_localStorage();
     "FK_TN_OFICINA_SISCOA_OficinaControl": 0,
     "FK_TN_ESTADO_SISCOA_OficinaControl": 0,
     "FK_TN_PERIODO_SISCOA_OficinaControl": 0,
-    "TF_FechaFin_DiasExtra": 
-                             "0001-01-01T00:00:00.000Z",
-    "TSISCOA_Control": null,   "TSISCOA_Oficina": null,   "TSISCOA_Estado": null,   "TSISCOA_Periodo": null 
+    "TF_FechaFin_DiasExtra":
+      "0001-01-01T00:00:00.000Z",
+    "TSISCOA_Control": null, "TSISCOA_Oficina": null, "TSISCOA_Estado": null, "TSISCOA_Periodo": null
   };
 
   darOfice(id: any, name: any) {
-    
     let idU =  localStorage.getItem("idUsuario") ;
 
     this.office = id;
-    this.rest2.getControl(this.office,idU).subscribe((pos) => {
+    this.rest2.getControl(this.office, idU).subscribe((pos) => {
       this.dataSourceControlOffice.data = pos;
     });
     this.control = id;
@@ -107,12 +105,12 @@ this.obtener_localStorage();
   }
 
   addControlOffice() {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
     this.officeControl.FK_TN_OFICINA_SISCOA_OficinaControl = this.office;
     this.officeControl.FK_TN_CONTROL_SISCOA_OficinaControl = this.control;
-    
-    this.restOfficeControl.add(this.officeControl,idU).subscribe(
+
+    this.restOfficeControl.add(this.officeControl, idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'Control completado!', 'success');
        this.back()
@@ -127,11 +125,12 @@ this.obtener_localStorage();
       }
     );
   }
-  dar(id: any,name2 :any) {
-    let idU =  localStorage.getItem("idUsuario") ;
+  dar(id: any, name2: any) {
+    let idU = localStorage.getItem("idUsuario");
 
     this.control = id;
     this.form.name=name2;
+    //this.addControlOffice();
     this.ngOnInit();
 
     this.restPeriod.periodList(idU).subscribe((pos) => {
@@ -146,8 +145,8 @@ this.obtener_localStorage();
     this.router.navigate(['/controlMenu']);
   }
 
-  rut(){
-    let idU =  localStorage.getItem("idUsuario") ;
+  rut() {
+    let idU = localStorage.getItem("idUsuario");
     this.rest.officeList(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
