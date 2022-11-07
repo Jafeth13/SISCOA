@@ -26,8 +26,6 @@ userData:any
   officeDataDelete: any;
   rut() {
     let idU =  localStorage.getItem("idUsuario") ;  
-   
-
     this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
       this.officeDataDelete = data;
     });
@@ -38,8 +36,8 @@ userData:any
     let idU =  localStorage.getItem("idUsuario") ;
 
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -50,7 +48,7 @@ userData:any
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((data) => {
           this.router.navigate(['/officeList']);
         });
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        Swal.fire('Eliminado!', 'Su archivo ha sido eliminado.', 'success');
       }
     });
   }

@@ -27,7 +27,6 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-   
     this.rut();
   }
 

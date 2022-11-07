@@ -11,13 +11,14 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class ControlDeleteComponent implements OnInit {
   @Input() controlDataDelete: any;
+  userData:any;
   constructor(
     public rest: ServicesControllersService,
     private route: ActivatedRoute,
     private router: Router,
     public restUser: ServiceUserService 
   ) {}
-userData:any;
+
   ngOnInit(): void {
     this.rut();
   }

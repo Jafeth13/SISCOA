@@ -36,13 +36,13 @@ export class RolDeleteComponent implements OnInit {
   delete() {
     let idU = localStorage.getItem('idUsuario');
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'si, eliminalo!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.rest
@@ -50,7 +50,7 @@ export class RolDeleteComponent implements OnInit {
           .subscribe((data) => {
             this.back();
           });
-        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        Swal.fire('Eliminado!', 'Su archivo ha sido eliminado.', 'success');
       }
     });
   }

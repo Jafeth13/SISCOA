@@ -54,7 +54,6 @@ dataWithSlopes:any;
       this.officeControl
         .List(idU)
         .subscribe((data: {}) => {
-         // this.userData = data;
          this.datosprueba=data
         });
     

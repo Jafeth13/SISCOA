@@ -5,7 +5,6 @@ import { ServicesControllersService } from '../services-controllers.service';
 import { ServicesPeriodService } from '../services-period.service';
 import { ServiceConditionService } from '../service-condition.service';
 import { ServiceUserService } from '../service-user.service';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-control-update',
@@ -53,7 +52,7 @@ userData:any
       .update(this.controlDataDelete,this.controlDataDelete.ID,idU)
       .subscribe(
         (data) => {
-          Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
+          Swal.fire('Buen trabajo!', 'EL control fue actualizado!', 'success');
           this.router.navigate(['/listControl']);
         },
         (err) => {

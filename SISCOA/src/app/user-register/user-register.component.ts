@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { ServicesRolService } from '../services-rol.service';
 import { ServicesOfficeService } from '../services-office.service';
 import { ServiceUserService } from '../service-user.service';
-import { id } from '@swimlane/ngx-charts';
+
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.component.html',
@@ -46,7 +46,7 @@ export class UserRegisterComponent implements OnInit {
     let idU =  localStorage.getItem("idUsuario") ;
     this.restUser.add(this.userData,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'User added sucessfully!', 'success');
+        Swal.fire('Buen trabajo!', 'Un usuario fue registrado con exito!', 'success');
         this.router.navigate(['/listUser']);
       },
       (err) => {
@@ -60,7 +60,6 @@ export class UserRegisterComponent implements OnInit {
   }
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-   
     this.rest2.officeList(idU).subscribe((data = {}) => {
       this.dataOffice = data;
     });

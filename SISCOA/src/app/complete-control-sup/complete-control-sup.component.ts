@@ -8,7 +8,7 @@ import { OfficeControlServicesService } from '../office-control-services.service
 @Component({
   selector: 'app-complete-control-sup',
   templateUrl: './complete-control-sup.component.html',
-  styleUrls: ['./complete-control-sup.component.css']
+  styleUrls: ['./complete-control-sup.component.css'],
 })
 export class CompleteControlSupComponent implements OnInit {
   dataPeriod: any;
@@ -20,7 +20,6 @@ export class CompleteControlSupComponent implements OnInit {
     public restPeriod: ServicesPeriodService,
     public rest: ServicesControllersService,
     public restOfficeControl: OfficeControlServicesService,
-
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router
@@ -36,7 +35,7 @@ export class CompleteControlSupComponent implements OnInit {
       .getControlId(this.route.snapshot.params['ID'], idU)
       .subscribe((pos) => {
         this.controlDataDelete = pos;
-        console.log(pos)
+        console.log(pos);
       });
 
     this.restPeriod.periodList(idU).subscribe((pos) => {
@@ -47,25 +46,26 @@ export class CompleteControlSupComponent implements OnInit {
     });
   }
 
-  add(){
-    let idU = localStorage.getItem("idUsuario");
+  add() {
+    let idU = localStorage.getItem('idUsuario');
 
-    this.restOfficeControl.update(this.controlDataDelete.ID,this.controlDataDelete, idU).subscribe(
-      (result) => {
-        Swal.fire('Buen trabajo!', 'Control completado!', 'success');
-       this.back()
+    this.restOfficeControl
+      .update(this.controlDataDelete.ID, this.controlDataDelete, idU)
+      .subscribe(
+        (result) => {
+          Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+          this.back();
+        },
+        (err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          });
+        }
+      );
   }
-      ,
-      (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-        });
-      }
-    );
-  }
-  back(){
+  back() {
     this.router.navigate(['/controlOfficeSup']);
   }
 }

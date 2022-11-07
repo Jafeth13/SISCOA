@@ -40,7 +40,7 @@ export class NatvarOficinasComponent implements OnInit {
 
     Toast.fire({
       icon: 'success',
-      title: 'Signed out successfully',
+      title: 'Salió con éxito!',
     });
 
     this.router.navigate(['/']);

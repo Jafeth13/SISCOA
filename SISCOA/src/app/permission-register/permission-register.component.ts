@@ -32,7 +32,7 @@ export class PermissionRegisterComponent implements OnInit {
 
     this.rest.add(this.permisionData,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success'); 
+        Swal.fire('Buen trabajo!', 'Permiso registrado!', 'success'); 
         this.router.navigate(['/permissionList']);   
       },
       (err) => {

@@ -5,13 +5,14 @@ import { ServicesPeriodService } from '../services-period.service';
 import * as moment from 'moment';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ServiceUserService } from '../service-user.service';
-import { id } from '@swimlane/ngx-charts';
+
 @Component({
   selector: 'app-period-update',
   templateUrl: './period-update.component.html',
   styleUrls: ['./period-update.component.css'],
 })
 export class PeriodUpdateComponent implements OnInit {
+  //variables
   date: any;
   hour: any;
   date2: any;
@@ -58,7 +59,7 @@ export class PeriodUpdateComponent implements OnInit {
       .update(this.periodDataupdate, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
-          Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
+          Swal.fire('Buen trabajo!', 'Periodo actualizado con exito!', 'success');
           this.router.navigate(['/periodList']);
 
         },

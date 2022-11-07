@@ -37,7 +37,7 @@ export class PermissionUpdateComponent implements OnInit {
       .update(this.roleDataupdate, this.route.snapshot.params['ID'], idU)
       .subscribe(
         (result) => {
-          Swal.fire('Good job!', 'role sucessfully updated!', 'success');
+          Swal.fire('Buen trabajo!', 'Permiso actualizado!', 'success');
           this.router.navigate(['/permissionList']);
         },
         (err) => {

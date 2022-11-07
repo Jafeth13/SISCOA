@@ -151,7 +151,7 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     this.rest.officeList(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
-    this.rest2.officeList(idU).subscribe((pos) => {
+    this.rest2.listControl(idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
     });
   }

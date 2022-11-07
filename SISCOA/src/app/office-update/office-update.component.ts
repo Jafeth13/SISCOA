@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicesOfficeService } from '../services-office.service';
 import Swal from 'sweetalert2';
-import { getLocaleDateFormat } from '@angular/common';
 import { ServiceUserService } from '../service-user.service';
 @Component({
   selector: 'app-office-update',
@@ -37,7 +36,7 @@ userData:any
       .update(this.officeDataupdate, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
-          Swal.fire('Good job!', 'estado sucessfully updated!', 'success');
+          Swal.fire('Buen trabajo!', 'Oficina actualizada!', 'success');
           this.router.navigate(['/officeList']);
         },
         (err) => {

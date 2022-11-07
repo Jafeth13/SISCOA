@@ -52,7 +52,7 @@ export class PeriodRegisterComponent implements OnInit {
     this.period.TF_FechaFin = this.enddate;
     this.rest.add(this.period,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+        Swal.fire('Buen trabajo!', 'Periodo registrado!', 'success');
         this.router.navigate(['/periodList']);
       },
       (err) => {

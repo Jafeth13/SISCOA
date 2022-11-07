@@ -9,7 +9,7 @@ import { ServiceUserService } from '../service-user.service';
   styleUrls: ['./office-see.component.css'],
 })
 export class OfficeSeeComponent implements OnInit {
-  userData:any
+  userData: any;
   constructor(
     private fb: FormBuilder,
     public rest: ServicesOfficeService,
@@ -18,24 +18,22 @@ export class OfficeSeeComponent implements OnInit {
     public restUser: ServiceUserService
   ) {}
 
-  ngOnInit(): void {  
-   
+  ngOnInit(): void {
     this.rut();
-    this.obtener_localStorage()
+    this.obtener_localStorage();
   }
   officeDataDelete: any;
   rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      this.officeDataDelete = data;
-    });
-    
+    let idU = localStorage.getItem('idUsuario');
+    this.rest
+      .get(this.route.snapshot.params['ID'], idU)
+      .subscribe((data: {}) => {
+        this.officeDataDelete = data;
+      });
   }
 
-  
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
-    
+  obtener_localStorage() {
+    let idU = localStorage.getItem('idUsuario');
+    this.userData.ID = idU;
+  }
 }

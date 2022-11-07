@@ -20,7 +20,6 @@ export class CompleteControlFillComponent implements OnInit {
     public restPeriod: ServicesPeriodService,
     public rest: ServicesControllersService,
     public restOfficeControl: OfficeControlServicesService,
-
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router

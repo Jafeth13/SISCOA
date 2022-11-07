@@ -14,8 +14,8 @@ export class UserUpdateComponent implements OnInit {
   userData2:any;
   constructor(
     public restUser: ServiceUserService,
-    public rest: ServicesRolService,
-    public rest2: ServicesOfficeService,
+    public restRol: ServicesRolService,
+    public restOffice: ServicesOfficeService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -28,24 +28,22 @@ export class UserUpdateComponent implements OnInit {
  
   rut(){
     let idU =  localStorage.getItem("idUsuario") ;
-
-
+    
    this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
      this.userData = data;
    });
 
-   this.rest2.officeList(idU).subscribe((data={})=>{
+   this.restOffice.officeList(idU).subscribe((data={})=>{
      this.dataOffice=data
      });
 
-     this.rest.rolList(idU).subscribe((pos)=>{
+     this.restRol.rolList(idU).subscribe((pos)=>{
        this.roleData=pos
        });
        this.dataOffice=[];
-       this.rest2.officeList(idU).subscribe((data={})=>{
+       this.restOffice.officeList(idU).subscribe((data={})=>{
          this.dataOffice=data
          });
-  
  }
 
   Update() {
@@ -54,7 +52,7 @@ export class UserUpdateComponent implements OnInit {
       .update(this.userData, this.route.snapshot.params['ID'],idU)
       .subscribe(
         (result) => {
-          Swal.fire('Good job!', 'User added sucessfully!', 'success');
+          Swal.fire('Buen trabajo!', 'El usuario fue actualizado!', 'success');
           this.router.navigate(['/listUser']);
         },
         (err) => {

@@ -5,50 +5,62 @@ const endpoint = 'https://localhost:44353/api/';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'Bearer'
-  })
+    Authorization: 'Bearer',
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServicesRolService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   rolList(id: any): Observable<any> {
-
     return this.http.get(endpoint + 'Roles?IDuserLogged=' + id, httpOptions);
-
   }
 
   get(id: any, idUser: any): Observable<any> {
-    return this.http.get(endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser, httpOptions);
-  }
-
-  delete(id: any, idUser: any): Observable<any> {
-    return this.http.delete(endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser, httpOptions);
-  }
-
-
-  add(roles: any, id: any) {
-    return this.http.post(endpoint + 'Roles?IDuserLogged=' + id, roles, httpOptions);
-  }
-
-  update(role: any, id: number, idUser: any): Observable<any> {
-    return this.http.put(endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser, role, httpOptions).pipe(
-      catchError(this.handleError('deleteRateType'))
+    return this.http.get(
+      endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser,
+      httpOptions
     );
   }
 
+  delete(id: any, idUser: any): Observable<any> {
+    return this.http.delete(
+      endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser,
+      httpOptions
+    );
+  }
+
+  add(roles: any, id: any) {
+    return this.http.post(
+      endpoint + 'Roles?IDuserLogged=' + id,
+      roles,
+      httpOptions
+    );
+  }
+
+  update(role: any, id: number, idUser: any): Observable<any> {
+    return this.http
+      .put(
+        endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser,
+        role,
+        httpOptions
+      )
+      .pipe(catchError(this.handleError('deleteRoles')));
+  }
 
   rolPermision(roles: any, id: any) {
-    return this.http.post(endpoint + 'RolPermisos?IDuserLogged=' + id, roles, httpOptions);
+    return this.http.post(
+      endpoint + 'RolPermisos?IDuserLogged=' + id,
+      roles,
+      httpOptions
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -59,5 +71,4 @@ export class ServicesRolService {
       return of(result as T);
     };
   }
-
 }

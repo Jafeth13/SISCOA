@@ -22,9 +22,7 @@ export class ConditionRegisterComponent implements OnInit {
     TC_Nombre: '',
   };
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   userData: any;
   add() {
     let idU = localStorage.getItem('idUsuario');
@@ -43,6 +41,4 @@ export class ConditionRegisterComponent implements OnInit {
       }
     );
   }
-
-  
 }

@@ -42,7 +42,7 @@ export class ControlListComponent implements AfterViewInit, OnInit {
   }
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.rest.officeList(idU).subscribe((pos) => {
+    this.rest.listControl(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
   }

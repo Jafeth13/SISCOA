@@ -25,15 +25,12 @@ export class RolRegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
- 
-  
-
   add() {
     let idU =  localStorage.getItem("idUsuario") ;
 
     this.rest.add(this.roleData,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'Estado added sucessfully!', 'success');
+        Swal.fire('Buen trabajo!', 'El rol fue registrado con exito!', 'success');
         this.back();
       },
       (err) => {

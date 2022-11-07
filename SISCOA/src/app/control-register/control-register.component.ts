@@ -13,11 +13,11 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class ControlRegisterComponent implements OnInit {
   userData: any;
+  temp: any;
   constructor(
     public restUser: ServiceUserService,
     public restControl: ServicesControllersService,
     public restPeriod: ServicesPeriodService,
-
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router
@@ -33,7 +33,7 @@ export class ControlRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.rut();
   }
-  temp: any;
+  
   add() {
     let idU = localStorage.getItem('idUsuario');
     this.temp = this.controlData.TB_NotificacionCorreoAColaborador;
@@ -46,7 +46,7 @@ export class ControlRegisterComponent implements OnInit {
 
     this.restControl.add(this.controlData, idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'User added sucessfully!', 'success');
+        Swal.fire('Buen trabajo!', 'El control fue registrado!', 'success');
         this.back();
       },
       (err) => {

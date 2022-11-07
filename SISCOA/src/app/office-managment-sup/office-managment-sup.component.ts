@@ -120,7 +120,7 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
 
     this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate,idU).subscribe(
       (result) => {
-        Swal.fire('Good job!', 'UPDATE sucessfully!', 'success'); 
+        Swal.fire('Buen trabajo!', 'El proceso fue exitoso!', 'success'); 
         this.router.navigate(['/controlMenu']);
       }
      

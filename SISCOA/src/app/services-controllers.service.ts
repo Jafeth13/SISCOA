@@ -14,7 +14,7 @@ const httpOptions = {
 export class ServicesControllersService {
   constructor(private http: HttpClient) { }
 
-  officeList(id:any):Observable<any>{
+  listControl(id:any):Observable<any>{
 
     return  this.http.get('https://localhost:44353/api/Controls?IDuserLogged='+id,httpOptions);
     
@@ -50,13 +50,13 @@ export class ServicesControllersService {
 
   delete(id: number,idUser:any): Observable<any>{
     return this.http.delete(endpoint+'Controls/'+id+'?IDuserLogged='+idUser, httpOptions).pipe(
-      catchError(this.handleError('deleteRateType'))
+      catchError(this.handleError('deleteControl'))
     );
   }
 
   update(Controls: any,id:number,idU:any): Observable<any>{
     return this.http.put(endpoint+'Controls/'+id+'?IDuserLogged='+idU,Controls, httpOptions).pipe(
-      catchError(this.handleError('deleteRateType'))
+      catchError(this.handleError('updateControl'))
     );
   }
 

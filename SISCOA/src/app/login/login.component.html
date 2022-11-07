@@ -1,30 +1,71 @@
-
-<app-navbar-login ></app-navbar-login>  
+<app-navbar-login></app-navbar-login>
 <div class="text-center">
+  <section class="page-section" id="ParkingLots">
+    <div class="container">
+      <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+        <img class="img-fluid" src="assets/logo.png" alt="..." />
 
+        <div class="margin">
+          <form
+            [formGroup]="loginForm"
+            (ngSubmit)="logIn()"
+            #formDir="ngForm"
+            id="user-form"
+            class="login-form"
+          >
+            <br />
+            <div class="identification">
+              <label class="lab" for="TC_Identificacion">
+                <a id="iconos" class="navButton">
+                  <mat-icon><mat-icon> account_circle</mat-icon></mat-icon>
+                </a>
 
-            <section class="page-section" id="ParkingLots">
-                <div class="container">
-                    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-                        <img class="img-fluid" src="assets/logo.png" alt="..." />
-            
-                            <div class="margin" >                             
-                           
-                                <form [formGroup]="loginForm" (ngSubmit)="logIn()" #formDir="ngForm" id="user-form" class="login-form">
-                                    <div class="form-group">
-        
-                                        <input formControlName="TC_Identificacion" type="text" autocomplete="off" name="emailLogin" id="emailLogin" class="form-control rounded-left" placeholder="Identificacion" required="true">
-        
-                                        <input formControlName="TV_Contrasenna" type="password" autocomplete="off" name="passwordLogin" id="passwordLogin" class="form-control rounded-left" placeholder="Contraseña" required="true">
-        
-                                        <button class="form-control btn btn-primary rounded submit px-3" type="submit">Ingresar</button>
-                                    </div>
-                                </form>
+                <input
+                  formControlName="TC_Identificacion"
+                  id="TC_Identificacion"
+                  type="text"
+                  autocomplete="off"
+                  name="emailLogin"
+                  id="TC_Identificacion"
+                  class="inputI"
+                  placeholder="Identificacion"
+                  required="true"
+                />
+              </label>
+            </div>
 
-                            </div>        
-                    
-                    </div>
-                </div>
-            </section>
+            <br />
 
+            <div class="identification">
+              <label class="lab" for="passwordLogin">
+              <a id="iconos" class="navButton">
+                <mat-icon><mat-icon> lock</mat-icon></mat-icon>
+              </a>
+              <input
+                formControlName="TV_Contrasenna"
+                [type]="changeType ? 'password' : 'text'"
+                autocomplete="off"
+                name="passwordLogin"
+                id="passwordLogin"
+                class="inputI"
+                placeholder="Contraseña"
+                required="true"
+              />
+              <span class="eyeicon" (click)="viewpass()"
+                ><i [ngClass]="visible ? 'fa fa-eye' : 'fa fa-eye-slash'"> </i
+              ></span>
+
+              </label>
+            </div>
+            <button
+              class="form-control btn btn-primary rounded submit px-3"
+              type="submit"
+            >
+              Ingresar
+            </button>
+          </form>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
