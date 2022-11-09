@@ -132,11 +132,13 @@
   <ItemGroup>
     <Compile Include="Data\SISCOA_Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IArchivoRepository.cs" />
     <Compile Include="Repositories\IControlRepository.cs" />
     <Compile Include="Repositories\IActividadRepository.cs" />
     <Compile Include="Repositories\IErrorRepository.cs" />
     <Compile Include="Repositories\IEstadoRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
+    <Compile Include="Repositories\Implements\ArchivoRepository.cs" />
     <Compile Include="Repositories\Implements\ControlRepository.cs" />
     <Compile Include="Repositories\Implements\ActividadRepository.cs" />
     <Compile Include="Repositories\Implements\ErrorRepository.cs" />

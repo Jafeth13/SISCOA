@@ -23,6 +23,7 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly OficinaControlService service = new OficinaControlService();
         private readonly ActividadService activity = new ActividadService();
+        private readonly ArchivoService fileService = new ArchivoService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -154,36 +155,6 @@ namespace SISCOA_API.Controllers
             return Ok(entities);
         }
         /// <summary>
-        /// Completar control
-        /// </summary>
-        /// <param name="files">Lista de documentos</param>
-        /// <param name="id">El id de controlOficina para completar control</param>
-        /// <returns>Registro insertado</returns>
-        /// <response code="200">OK. Devuelve la lista de los registros</response>
-        /// <response code="400">BadRequest. Consulta erronea</response>
-        /// <response code="500">InternalServerError. Error con el servidor</response>
-        [Route("api/OficinaControl/CompleteOfficeControl/{id}")]
-        [HttpPut]
-        public IHttpActionResult CompleteOfficeControl(IFormFile files, int id)
-        {
-            /*int count = 1;
-            if (files != null)
-            {
-                foreach (var file in files)
-                {
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                        //path combine
-                        var path = Path.Combine(HttpContext.Current.Server.MapPath("~/Uploads/"), fileName);
-                        file.SaveAs(path);
-                        count++;
-                    }
-                }
-            }*/
-            return Ok();
-        }
-        /// <summary>
         /// Obtiene un registro por su id
         /// </summary>
         /// <remark>
@@ -236,7 +207,7 @@ namespace SISCOA_API.Controllers
             catch (Exception ex) { return InternalServerError(ex); }
         }
         /// <summary>
-        /// Actualiza un registro
+        /// Actualiza un registro/completar control
         /// </summary>
         /// <param name="DTO">El objeto JSON del registro</param>
         /// <param name="id">Id del registro que quiere modificar</param>
@@ -264,9 +235,25 @@ namespace SISCOA_API.Controllers
             {
                 var entities = _mapper.Map<TSISCOA_OficinaControl>(DTO);
                 entities = await service.Update(entities);
+
+                var files = DTO.Archivos;
+                for (int i = 0; i < files.Count(); i++)
+                {
+
+                    var file = files.ElementAt(i);
+                    var fileEntity = new TSISCOA_Archivo
+                    {
+                        ID = file.ID,
+                        TC_Nombre = file.TC_Nombre,
+                        TC_Datos = file.TC_Datos,
+                        FK_TN_OficinaControl_SISCOA_Archivo = entities.ID
+                    };
+                    await fileService.Insert(fileEntity);
+                }
+                
                 await activity.Insert(new TSISCOA_Actividad
                 {
-                    TC_Description = "Actualizar un relacion entre control y oficina",
+                    TC_Description = "Actualizar relacion entre control y oficina/completar control",
                     TC_Accion = "Put",
                     TF_FechaAccion = DateTime.Now,
                     FK_ID_UsuarioActivo = IDuserLogged

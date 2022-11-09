@@ -129,9 +129,7 @@ CREATE TABLE CONTROL.TSISCOA_Archivo
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
 	TC_Nombre VARCHAR(100),
-	TC_Extension VARCHAR(10),
-	TD_Tamano FLOAT,
-	TC_UbicacionArchivo VARCHAR(255),
+	TC_Datos VARCHAR(MAX),
 	FK_TN_OficinaControl_SISCOA_Archivo INT,
 	FOREIGN KEY (FK_TN_OficinaControl_SISCOA_Archivo) REFERENCES [CONTROL].[TSISCOA_OficinaControl](ID)
 )

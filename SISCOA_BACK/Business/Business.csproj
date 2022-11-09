@@ -94,9 +94,11 @@
     <Compile Include="DTOs\TSISCOA_UsuarioLogIn_DTO.cs" />
     <Compile Include="DTOs\TSISCOA_Usuario_DTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IArchivoService.cs" />
     <Compile Include="Services\IControlService.cs" />
     <Compile Include="Services\IEstadoService.cs" />
     <Compile Include="Services\IGenericService.cs" />
+    <Compile Include="Services\Implements\ArchivoService.cs" />
     <Compile Include="Services\Implements\ControlService.cs" />
     <Compile Include="Services\Implements\EstadoService.cs" />
     <Compile Include="Services\Implements\GenericService.cs" />
