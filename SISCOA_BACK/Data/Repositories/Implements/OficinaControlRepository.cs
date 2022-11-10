@@ -19,6 +19,21 @@ namespace Repositories.Repositories.Implements
         {
             this.siscoa_context = siscoa_context;
         }
+        public new async Task<IEnumerable<TSISCOA_OficinaControl>> GetAll()
+        {
+            var list = await siscoa_context.OficinaControles.ToListAsync();
+            foreach (var item in list)
+            {
+                item.Archivos = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == item.ID).ToListAsync();
+            }
+            return list;
+        }
+        public new async Task<TSISCOA_OficinaControl> GetById(int id)
+        {      
+            var item = await siscoa_context.OficinaControles.FindAsync(id);
+            item.Archivos = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == item.ID).ToListAsync();
+            return item;
+        }
 
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
         {

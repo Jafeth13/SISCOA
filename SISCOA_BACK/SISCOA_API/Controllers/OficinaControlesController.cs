@@ -173,7 +173,6 @@ namespace SISCOA_API.Controllers
                 return NotFound();
 
             var DTO = _mapper.Map<TSISCOA_OficinaControl_DTO>(entities);
-
             return Ok(DTO);
         }
         /// <summary>

@@ -19,7 +19,7 @@ namespace Business.DTOs
         public int FK_TN_PERIODO_SISCOA_OficinaControl { get; set; }
         public DateTime TF_FechaFin_DiasExtra { get; set; }
         public String TC_Comentario { get; set; }
-        public List<TSISCOA_Archivo_DTO> Archivos { get; set; }
+        public IEnumerable<TSISCOA_Archivo_DTO> Archivos { get; set; }
         public virtual TSISCOA_Control TSISCOA_Control { get; set; }
         public virtual TSISCOA_Oficina TSISCOA_Oficina { get; set; }
         public virtual TSISCOA_Estado TSISCOA_Estado { get; set; }
