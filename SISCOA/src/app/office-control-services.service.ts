@@ -33,11 +33,15 @@ export class OfficeControlServicesService {
   }
 
   update(id: any, officeControl: any, idUser: any) {
-    console.log(officeControl);
-
     return this.http.put(
       endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idUser,
       officeControl,
+      httpOptions
+    );
+  }
+  getBiId(id: any, idU: any): Observable<any> {
+    return this.http.get(
+      endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idU,
       httpOptions
     );
   }

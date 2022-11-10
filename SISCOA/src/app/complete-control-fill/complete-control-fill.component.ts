@@ -48,25 +48,33 @@ export class CompleteControlFillComponent implements OnInit {
       this.dataConditional = pos;
     });
   }
-
+  verification: any
   add() {
     let idU = localStorage.getItem('idUsuario');
 
-    this.restOfficeControl
-      .update(this.controlDataDelete.ID, this.controlDataDelete, idU)
-      .subscribe(
-        (result) => {
-          Swal.fire('Buen trabajo!', 'Control completado!', 'success');
-          this.back();
-        },
-        (err) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong!',
-          });
-        }
-      );
+    if (this.verification == true && this.controlDataDelete.Archivos.length != 0) {
+      this.restOfficeControl
+        .update(this.controlDataDelete.ID, this.controlDataDelete, idU)
+        .subscribe(
+          (result) => {
+            Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+            this.back();
+          },
+          (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            });
+          }
+        );
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Es necesario un archivo PDF!',
+      });
+    }
   }
   back() {
     this.router.navigate(['/controlOfice']);
@@ -74,18 +82,23 @@ export class CompleteControlFillComponent implements OnInit {
   private fileTemp: any;
   getFile($event: any) {
     this.fileTemp = $event.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(this.fileTemp);
-    reader.onload = (_event) => {
-      this.controlDataDelete.Archivos = [
-        {
-          "ID": 0,
-          "TC_Nombre": this.fileTemp.name,
-          "TC_Datos": reader.result,
-          "FK_TN_OficinaControl_SISCOA_Archivo": this.controlDataDelete.ID
-        }
-      ];
-    };
+    if (this.fileTemp.type == 'application/pdf') {
+      var reader = new FileReader();
+      reader.readAsDataURL(this.fileTemp);
+      reader.onload = (_event) => {
+        this.controlDataDelete.Archivos = [
+          {
+            "ID": 0,
+            "TC_Nombre": this.fileTemp.name,
+            "TC_Datos": reader.result,
+            "FK_TN_OficinaControl_SISCOA_Archivo": this.controlDataDelete.ID
+          }
+        ];
+      };
+      this.verification = true;
+    } else {
+      this.verification = false;
+    }
   }
 
 }
