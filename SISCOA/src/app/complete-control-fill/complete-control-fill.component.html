@@ -30,7 +30,7 @@
 
 
                     <p class="parrafo"> Documentacion</p>
-                    <input class="form-control rounded-left" type="file" name="fds" placeholder="Documento">
+                    <input class="form-control rounded-left" (change)="getFile($event)" type="file" name="fds" placeholder="Documento">
 
                     <button class="submit-btn form-control" (click)="add()" >Completar</button>
                     <button class="submit-btn form-control" routerLink="/controlOfice">Cancelar</button>
