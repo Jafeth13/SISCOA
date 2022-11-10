@@ -6,6 +6,7 @@ import { ServicesPeriodService } from '../services-period.service';
 import { ServiceConditionService } from '../service-condition.service';
 import { OfficeControlServicesService } from '../office-control-services.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-complete-control-fill',
@@ -26,7 +27,7 @@ export class CompleteControlFillComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private sanitizer: DomSanitizer
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.rut();
   }
@@ -38,7 +39,6 @@ export class CompleteControlFillComponent implements OnInit {
       .getControlId(this.route.snapshot.params['ID'], idU)
       .subscribe((pos) => {
         this.controlDataDelete = pos;
-        console.log(pos);
       });
 
     this.restPeriod.periodList(idU).subscribe((pos) => {
@@ -51,11 +51,7 @@ export class CompleteControlFillComponent implements OnInit {
 
   add() {
     let idU = localStorage.getItem('idUsuario');
-    const body = new FormData();
-   
-    
-   
-    console.log(this.controlDataDelete);
+
     this.restOfficeControl
       .update(this.controlDataDelete.ID, this.controlDataDelete, idU)
       .subscribe(
@@ -77,28 +73,19 @@ export class CompleteControlFillComponent implements OnInit {
   }
   private fileTemp: any;
   getFile($event: any) {
-    const [file] = $event.target.files;
-    this.controlDataDelete.Archivos.TC_Nombre = this.fileTemp.fileName;
-    this.controlDataDelete.Archivos.FK_TN_OficinaControl_SISCOA_Archivo =this.controlDataDelete.ID;
-    this.controlDataDelete.Archivos.TC_Datos=this.getBase64(file);
-    console.log(this.controlDataDelete)
-    this.fileTemp = {
-      fileRaw: file,
-      fileName: file.name,
+    this.fileTemp = $event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileTemp);
+    reader.onload = (_event) => {
+      this.controlDataDelete.Archivos = [
+        {
+          "ID": 0,
+          "TC_Nombre": this.fileTemp.name,
+          "TC_Datos": reader.result,
+          "FK_TN_OficinaControl_SISCOA_Archivo": this.controlDataDelete.ID
+        }
+      ];
     };
   }
-  doc:any
-   getBase64(file:any) {
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-     
-      return reader.result;
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
- }
-
 
 }

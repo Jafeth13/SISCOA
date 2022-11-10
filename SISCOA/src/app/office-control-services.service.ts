@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class OfficeControlServicesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   delete(id: number, idUser: any): Observable<any> {
     return this.http
@@ -33,6 +33,8 @@ export class OfficeControlServicesService {
   }
 
   update(id: any, officeControl: any, idUser: any) {
+    console.log(officeControl);
+
     return this.http.put(
       endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idUser,
       officeControl,
@@ -43,8 +45,8 @@ export class OfficeControlServicesService {
   List(id: any): Observable<any> {
     return this.http.get(
       endpoint +
-        'OficinaControl/GetDataGraphics_ControlsByStates?IDuserLogged=' +
-        id,
+      'OficinaControl/GetDataGraphics_ControlsByStates?IDuserLogged=' +
+      id,
       httpOptions
     );
   }
@@ -52,8 +54,8 @@ export class OfficeControlServicesService {
   ListControlsWithExtraDays(id: any): Observable<any> {
     return this.http.get(
       endpoint +
-        'OficinaControl/GetDataGraphics_ControlsWithExtraDays?IDuserLogged=' +
-        id,
+      'OficinaControl/GetDataGraphics_ControlsWithExtraDays?IDuserLogged=' +
+      id,
       httpOptions
     );
   }
@@ -61,8 +63,8 @@ export class OfficeControlServicesService {
   ListBySlopes(id: any): Observable<any> {
     return this.http.get(
       endpoint +
-        'OficinaControl/GetDataGraphics_ControlsBySlopes?IDuserLogged=' +
-        id,
+      'OficinaControl/GetDataGraphics_ControlsBySlopes?IDuserLogged=' +
+      id,
       httpOptions
     );
   }
