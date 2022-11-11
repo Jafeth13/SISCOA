@@ -10,7 +10,7 @@
         <form action="" id="userRegister-entry-form">
           <h2>Registrar</h2>
           <input type="text" hidden />
-
+  
           <input
             [(ngModel)]="period.TC_Nombre"
             type="text"
@@ -58,8 +58,8 @@
               id="date2"
               matInput
               [matDatepicker]="picker2"
-              (dateInput)="selectDate('input', $event)"
-              (dateChange)="selectDate('change', $event)"
+              (dateInput)="selectDate2('input', $event)"
+              (dateChange)="selectDate2('change', $event)"
               formControlName="firstCtrl"
               required
             />
