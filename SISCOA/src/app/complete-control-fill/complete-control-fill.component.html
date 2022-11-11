@@ -49,9 +49,11 @@
                         </div>
 
 
-                        <p class="parrafo">Documentacion</p>
-                        <input class="form-control rounded-left" (change)="getFile($event)" type="file" name="fds"
-                            placeholder="Documento PDF">
+                        <div>
+                            <label for="fileInput">Documentacion</label>
+                            <input class="form-control rounded-left" (change)="getFile($event)" type="file" name="fds"
+                                placeholder="Documento PDF" id="fileInput">
+                        </div>
 
                         <div class="d-flex">
                             <button class="submit-btn form-control" (click)="add()">Completar</button>
