@@ -12601,10 +12601,10 @@ input, button,
         }
 
 .entry-formRate {
-    background: #000;
-    border-radius: 15%;
+    background: #000;  
     text-align: center;
     padding: 4em;
+    border-radius: 25px;
 }
 
 .entry-form-vehicle {
@@ -13383,4 +13383,9 @@ nav ul li {
     height: 56px;
     padding: 0;
     flex-shrink: 0;
+}
+
+label {
+    display: flex;
+    color: #ffc800;
 }
