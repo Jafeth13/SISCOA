@@ -22,6 +22,7 @@ namespace SISCOA_API.Controllers
         private readonly UsuarioService service = new UsuarioService();
         private readonly SessionModule session = new SessionModule();
         private readonly ActividadService activity = new ActividadService();
+        private readonly ErrorService error = new ErrorService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -65,7 +66,9 @@ namespace SISCOA_API.Controllers
                     return Ok(entities);
                 }
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene todos los registros
@@ -77,10 +80,24 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Usuario_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            var entities = await service.GetAll();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Usuario_DTO>(x));
+            try
+            {
+                var entities = await service.GetAll();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_Usuario_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetAll Usuarios",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene un registro por su id
@@ -96,13 +113,27 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Usuario_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            var entities = await service.GetById(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetById(id);
+                if (entities == null)
+                    return NotFound();
 
-            var DTO = _mapper.Map<TSISCOA_Usuario_DTO>(entities);
+                var DTO = _mapper.Map<TSISCOA_Usuario_DTO>(entities);
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetById Usuarios",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Crea un registro
@@ -138,7 +169,16 @@ namespace SISCOA_API.Controllers
                     return Content(HttpStatusCode.BadRequest, "Consideraciones: El usuario ya existe, Contrasena/Identificacion menor a 8 caracteres");
                 }
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Post Usuarios",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Actualiza un registro
@@ -178,7 +218,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(DTO);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Put Usuarios",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Elimina un registro
@@ -207,7 +256,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok();
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Delete Usuarios",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
     }
 }

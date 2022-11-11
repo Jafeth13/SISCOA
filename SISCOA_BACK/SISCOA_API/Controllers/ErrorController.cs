@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Business.DTOs;
 using Entities.Models;
-using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -39,10 +36,24 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Error_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            var entities = await service.GetAll();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Error_DTO>(x));
+            try
+            {
+                var entities = await service.GetAll();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_Error_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await service.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetAll Errores",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Crea un registro

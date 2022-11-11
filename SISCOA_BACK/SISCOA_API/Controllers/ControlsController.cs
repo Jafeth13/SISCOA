@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Business.DTOs;
 using Entities.Models;
-using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -21,6 +19,7 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly ControlService service = new ControlService();
         private readonly ActividadService activity = new ActividadService();
+        private readonly ErrorService error = new ErrorService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -38,10 +37,24 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            var entities = await service.GetAll();
-            var DTO = _mapper.Map<List<TSISCOA_Control_DTO>>(entities);
+            try
+            {
+                var entities = await service.GetAll();
+                var DTO = _mapper.Map<List<TSISCOA_Control_DTO>>(entities);
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetAll Controles",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene un registro por su id
@@ -57,15 +70,30 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Control_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            var entities = await service.GetById(id);
+            try
+            {
+                var entities = await service.GetById(id);
 
-            if (entities == null) {
-                return NotFound();
+                if (entities == null)
+                {
+                    return NotFound();
+                }
+
+                var DTO = _mapper.Map<TSISCOA_Control_DTO>(entities);
+
+                return Ok(DTO);
             }
-
-            var DTO = _mapper.Map<TSISCOA_Control_DTO>(entities);
-
-            return Ok(DTO);
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetById Control",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene todos los controles que tiene la oficina ingresada
@@ -82,13 +110,27 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Control_DTO>))]
         public async Task<IHttpActionResult> GetControlesByOficina(int id, int IDuserLogged)
         {
-            var entities = await service.GetControlesByOficina(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetControlesByOficina(id);
+                if (entities == null)
+                    return NotFound();
 
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Control_DTO>(x));
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_Control_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetControlesByOficina control",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Crea un registro
@@ -123,7 +165,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Post Control",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Actualiza un registro
@@ -163,7 +214,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Put Control",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Elimina un registro
@@ -197,7 +257,16 @@ namespace SISCOA_API.Controllers
                 }
                 return Ok();
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Delete Control",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
     }
 }

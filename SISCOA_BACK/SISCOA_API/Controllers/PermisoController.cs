@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Business.DTOs;
 using Entities.Models;
-using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -21,6 +19,7 @@ namespace SISCOA_API.Controllers
         private IMapper _mapper;
         private readonly PermisoService service = new PermisoService();
         private readonly ActividadService activity = new ActividadService();
+        private readonly ErrorService error = new ErrorService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -38,10 +37,24 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Permiso_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            var entities = await service.GetAll();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Permiso_DTO>(x));
+            try
+            {
+                var entities = await service.GetAll();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_Permiso_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetAll Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene un registro por su id
@@ -57,13 +70,27 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_Permiso_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            var entities = await service.GetById(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetById(id);
+                if (entities == null)
+                    return NotFound();
 
-            var DTO = _mapper.Map<TSISCOA_Permiso_DTO>(entities);
+                var DTO = _mapper.Map<TSISCOA_Permiso_DTO>(entities);
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetById Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene todos los permisos que tiene el rol ingresado
@@ -80,13 +107,27 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_Permiso_DTO>))]
         public async Task<IHttpActionResult> GetPermisosByRol(int id, int IDuserLogged)
         {
-            var entities = await service.GetPermisosByRol(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetPermisosByRol(id);
+                if (entities == null)
+                    return NotFound();
 
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_Permiso_DTO>(x));
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_Permiso_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetPermisosByRol Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Crea un registro
@@ -116,7 +157,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Post Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Actualiza un registro
@@ -156,7 +206,16 @@ namespace SISCOA_API.Controllers
                 entities = await service.Update(entities);
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Put Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Elimina un registro
@@ -192,7 +251,16 @@ namespace SISCOA_API.Controllers
                 }
                 return Ok();
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Delete Permisos",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
     }
 }

@@ -2,13 +2,10 @@
 using Business.DTOs;
 using Entities.Models;
 using Entities.Util;
-using Microsoft.AspNetCore.Http;
-using Security.Security.Implements;
 using Services.Services.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -24,6 +21,7 @@ namespace SISCOA_API.Controllers
         private readonly OficinaControlService service = new OficinaControlService();
         private readonly ActividadService activity = new ActividadService();
         private readonly ArchivoService fileService = new ArchivoService();
+        private readonly ErrorService error = new ErrorService();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -41,12 +39,26 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetAll(int IDuserLogged)
         {
-            var entities = await service.GetAll();
-            if (entities == null)
-                return NotFound();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
+            try
+            {
+                var entities = await service.GetAll();
+                if (entities == null)
+                    return NotFound();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
 
-            return Ok(DTO);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetAll OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene la cantidad de controles en cada uno de los estados
@@ -59,11 +71,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsByStates(int IDuserLogged)
         {
-            var entities = await service.GetDataGraphics_ControlsByStates();
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetDataGraphics_ControlsByStates();
+                if (entities == null)
+                    return NotFound();
 
-            return Ok(entities);
+                return Ok(entities); 
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphics_ControlsByStates OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene la cantidad de controles que estan pendientes distribuidos por periodo
@@ -76,11 +102,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsBySlopes(int IDuserLogged)
         {
-            var entities = await service.GetDataGraphics_ControlsSlopes();
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetDataGraphics_ControlsSlopes();
+                if (entities == null)
+                    return NotFound();
 
-            return Ok(entities);
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphics_ControlsBySlopes OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene los datos de los controles que estan pendientes
@@ -93,11 +133,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsBySlopes(int IDuserLogged)
         {
-            var entities = await service.GetDataGraphicsTable_ControlsSlopes();
-            if (entities == null)
-                return NotFound();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
-            return Ok(DTO);
+            try
+            {
+                var entities = await service.GetDataGraphicsTable_ControlsSlopes();
+                if (entities == null)
+                    return NotFound();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphicsTable_ControlsBySlopes OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene la cantidad de controles que estan con dias extra
@@ -110,11 +164,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
         public async Task<IHttpActionResult> GetDataGraphics_ControlsWithExtraDays(int IDuserLogged)
         {
-            var entities = await service.GetDataGraphics_ControlsWithExtraDays();
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetDataGraphics_ControlsWithExtraDays();
+                if (entities == null)
+                    return NotFound();
 
-            return Ok(entities);
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphics_ControlsWithExtraDays OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene los datos de los controles que tienen dias extra
@@ -127,11 +195,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(IEnumerable<TSISCOA_OficinaControl_DTO>))]
         public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsWithExtraDays(int IDuserLogged)
         {
-            var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
-            if (entities == null)
-                return NotFound();
-            var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
-            return Ok(DTO);
+            try
+            {
+                var entities = await service.GetDataGraphicsTable_ControlsWithExtraDays();
+                if (entities == null)
+                    return NotFound();
+                var DTO = entities.Select(x => _mapper.Map<TSISCOA_OficinaControl_DTO>(x));
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphicsTable_ControlsWithExtraDays OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene los controles de una oficina
@@ -148,11 +230,25 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
         public async Task<IHttpActionResult> GetOfficeControlByIdOffice(int id, int IDuserLogged)
         {
-            var entities = await service.GetOfficeControlByIdOffice(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetOfficeControlByIdOffice(id);
+                if (entities == null)
+                    return NotFound();
 
-            return Ok(entities);
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetOfficeControlByIdOffice OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Obtiene un registro por su id
@@ -168,12 +264,26 @@ namespace SISCOA_API.Controllers
         [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
         public async Task<IHttpActionResult> GetById(int id, int IDuserLogged)
         {
-            var entities = await service.GetById(id);
-            if (entities == null)
-                return NotFound();
+            try
+            {
+                var entities = await service.GetById(id);
+                if (entities == null)
+                    return NotFound();
 
-            var DTO = _mapper.Map<TSISCOA_OficinaControl_DTO>(entities);
-            return Ok(DTO);
+                var DTO = _mapper.Map<TSISCOA_OficinaControl_DTO>(entities);
+                return Ok(DTO);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetById OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Crea un registro
@@ -203,7 +313,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Post OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Actualiza un registro/completar control
@@ -259,7 +378,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok(entities);
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Put OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
         /// <summary>
         /// Elimina un registro
@@ -288,7 +416,16 @@ namespace SISCOA_API.Controllers
                 });
                 return Ok();
             }
-            catch (Exception ex) { return InternalServerError(ex); }
+            catch (Exception ex) {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "Delete OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
         }
     }
 }
