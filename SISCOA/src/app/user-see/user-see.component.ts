@@ -23,7 +23,6 @@ export class UserSeeComponent implements OnInit {
   dataOffice: any;
   ngOnInit(): void {
     this.rut();
-    this.obtener_localStorage();
   }
 
   rut() {
@@ -54,8 +53,5 @@ export class UserSeeComponent implements OnInit {
     });
   }
 
-  obtener_localStorage() {
-    let idU = localStorage.getItem('idUsuario');
-    this.userData.ID = idU;
-  }
+ 
 }
