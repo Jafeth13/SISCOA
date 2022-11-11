@@ -1,0 +1,14 @@
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\Entities.dll.config
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\Entities.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\Entities.pdb
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\AutoMapper.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\EntityFramework.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\AutoMapper.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\EntityFramework.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\obj\Release\Entities.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\obj\Release\Entities.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\obj\Release\Entities.csproj.CopyComplete
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\obj\Release\Entities.dll
+C:\Users\mario\Desktop\Universidad\Proyectos\SISCOA\SISCOA_BACK\Entities\obj\Release\Entities.pdb
