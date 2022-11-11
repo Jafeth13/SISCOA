@@ -2,52 +2,95 @@
 
 <section class="page-section" id="adminRegister">
     <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+        <div class="col-md-offset-1 col-md-8 col-sm-8" id="log">
             <br>
             <br>
             <br>
             <div class="entry-formRate">
                 <form action="" id="userRegister-entry-form">
-                    <h2>Registra</h2>
-                    <input   type="text"  hidden>
+                    <div class="m-2">
+                        <h2>Registrar nuevo usuario</h2>
+                        <div class="mt-4">
+                            <input type="text" hidden>
 
-                    <input type="text" autocomplete="off" name="idRateTypeUpdate" id="idRateTypeUpdate" hidden>
+                            <input type="text" autocomplete="off" name="idRateTypeUpdate" id="idRateTypeUpdate" hidden>
 
-                    <input [(ngModel)]="userData.TC_Identificacion" type="text" autocomplete="off" name="name_Identification" id="identification" class="form-control rounded-left" placeholder="Identificacion" required="">
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <label for="identification">Identificacion</label>
+                                    <input [(ngModel)]="userData.TC_Identificacion" type="text" autocomplete="off"
+                                        name="name_Identification" id="identification" class="form-control rounded-left"
+                                        placeholder="Identificacion" required="">
+                                </div>
+                                <div>
+                                    <label for="name_Admin">Nombre</label>
+                                    <input [(ngModel)]="userData.TC_Nombre" type="text" autocomplete="off"
+                                        name="name_Admin" id="name_Admin" class="form-control rounded-left"
+                                        placeholder="Nombre" required="">
+                                </div>
+                            </div>
 
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <label for="lastName_Admin">Primer Apellido</label>
+                                    <input [(ngModel)]="userData.TC_PrimerApellido" type="text" autocomplete="off"
+                                        name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left"
+                                        placeholder="Primer apellido" required="">
+                                </div>
 
-                    <input [(ngModel)]="userData.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                                <div>
+                                    <label for="lastName_Admin">Segundo Apellido</label>
+                                    <input [(ngModel)]="userData.TC_SegundoApellido" type="text" autocomplete="off"
+                                        name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left"
+                                        placeholder="Segundo apellido" required="">
+                                </div>
+                            </div>
 
-                    <input [(ngModel)]="userData.TC_PrimerApellido" type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Primer apellido" required="">
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <label for="email_Admin">Email</label>
+                                    <input [(ngModel)]="userData.TC_Correo" type="email" autocomplete="off"
+                                        name="email_Admin" id="email_Admin" class="form-control rounded-left"
+                                        placeholder="Correo electronico" required="">
+                                </div>
 
-                    <input [(ngModel)]="userData.TC_SegundoApellido" type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="Segundo apellido" required="">
+                                <div>
+                                    <label for="password_Admin">Contraseña</label>
+                                    <input [(ngModel)]="userData.TV_Contrasenna" type="password" autocomplete="off"
+                                        name="password_Admin" id="password_Admin" class="form-control rounded-left"
+                                        placeholder="Contraseña" required="">
+                                </div>
+                            </div>
 
-                    <input [(ngModel)]="userData.TC_Correo" type="email" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Correo electronico" required="">
+                            <div class="d-flex justify-content-around">
+                                <select [(ngModel)]="userData.FK_SISCOA_Oficina_SISCOA_Usuario"
+                                    class="form-control rounded-left w-25" name="role_Admin2" id="role_Admin2">
+                                    <option value=0 selected>Seleciona una oficina</option>
+                                    <option [value]="s.ID" *ngFor="let s of dataOffice">{{s.TC_Nombre}}</option>
+                                </select>
 
-                    <input [(ngModel)]="userData.TV_Contrasenna" type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Contraseña" required="">
+                                <select [(ngModel)]="userData.FK_SISCOA_Rol_SISCOA_Usuario"
+                                    class="form-control rounded-left w-25" name="ghf" id="fgh">
+                                    <option value=0 selected>Seleciona un rol</option>
+                                    <option [value]="item.ID" *ngFor="let item of roleData">{{item.TC_Nombre}}</option>
+                                </select>
+                            </div>
 
-                    <select   [(ngModel)]="userData.FK_SISCOA_Oficina_SISCOA_Usuario"   class="form-control rounded-left" name="role_Admin2" id="role_Admin2">
-                        <option value=0 selected>Seleciona una oficina</option>
-                        <option [value]="s.ID" *ngFor="let s of dataOffice">{{s.TC_Nombre}}</option>
-                    </select>
-                    
-                    <select  [(ngModel)]="userData.FK_SISCOA_Rol_SISCOA_Usuario" class="form-control rounded-left" name="ghf" id="fgh">
-                        <option value=0 selected>Seleciona un rol</option>
-                        <option [value]="item.ID" *ngFor="let item of roleData">{{item.TC_Nombre}}</option>
-                    </select>
-                  
-                    <button class="submit-btn form-control" (click)="add();">Añadir</button>
+                            <div class="d-flex justify-content-around">
+                                <button class="submit-btn form-control" (click)="add();">Añadir</button>
 
-                    <button routerLink="/listUser" class="submit-btn form-control" >Cancelar</button>
+                                <button routerLink="/listUser" class="submit-btn form-control">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
             </div>
         </div>
-        
+
     </div>
 
     <div class="example-button-container">
-      
-        </div>
-</section>
 
+    </div>
+</section>
