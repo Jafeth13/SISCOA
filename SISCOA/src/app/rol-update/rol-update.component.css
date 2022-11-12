@@ -12602,7 +12602,7 @@ input, button,
 
 .entry-formRate {
     background: #000;
-    border-radius: 15%;
+    border-radius: 25px;
     text-align: center;
     padding: 4em;
 }

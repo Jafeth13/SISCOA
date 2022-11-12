@@ -1,30 +1,38 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
-                    <h2>Registrar</h2>
-                   
+  <div class="container">
+    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form action="" id="userRegister-entry-form">
+          <h2>Registrar estado</h2>
+<br>
+          <label for="name">Nombre</label>
+          <input
+            [(ngModel)]="estado.TC_Nombre"
+            type="text"
+            autocomplete="off"
+            name="name"
+            id="name"
+            class="form-control rounded-left"
+            placeholder="Nombre"
+            required=""
+          />
+          <div class="d-flex justify-content-around">
+            <button class="submit-btn form-control" (click)="add()">
+              Registrar
+            </button>
 
-                    <input  [(ngModel)]="estado.TC_Nombre" type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
-
-                    
-                    <button class="submit-btn form-control" (click)="add()">Registrar</button>
-
-                    <button routerLink="/conditionList" class="submit-btn form-control" >Cancelar</button>
-                    
-                </form>
-
-            </div>
-        </div>
-         
+            <button routerLink="/conditionList" class="submit-btn form-control">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>

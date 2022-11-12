@@ -1,29 +1,42 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form *ngIf="periodDataDelete" action="" id="userRegister-entry-form">
-                    <h2>Eliminar</h2>
-                    <input   type="text"  hidden>
+  <div class="container">
+    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form *ngIf="periodDataDelete" action="" id="userRegister-entry-form">
+          <h2>Eliminar permiso</h2>
+          <br />
 
-                    <input  [(ngModel)]="periodDataDelete.TC_Nombre"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+          <label for="name">Nombre</label>
+          <input
+            [(ngModel)]="periodDataDelete.TC_Nombre"
+            type="text"
+            autocomplete="off"
+            name="name"
+            id="name"
+            class="form-control rounded-left"
+            placeholder="Nombre"
+            required=""
+          />
+          <div class="d-flex justify-content-around">
+            <button class="submit-btn form-control" (click)="delete()">
+              Eliminar
+            </button>
 
-                    <button class="submit-btn form-control" (click)="delete()">Eliminar</button>
-
-                    <button routerLink="/permissionList" class="submit-btn form-control" >Cancelar</button>
-                    
-                </form>
-
-            </div>
-        </div>
-         
+            <button
+              routerLink="/permissionList"
+              class="submit-btn form-control"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>
