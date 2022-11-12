@@ -1,29 +1,41 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form *ngIf="periodDataDelete"  action="" id="userRegister-entry-form">
-                    <h2>Eliminar</h2>
-                    <input   type="text"  hidden>
+  <div class="container">
+    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form *ngIf="periodDataDelete" action="" id="userRegister-entry-form">
+          <div class="m-2">
+            <h2>Eliminar periodo</h2>
+            <div class="mt-4">
+                <label for="name">Nombre</label>
+              <input
+                disabled
+                [(ngModel)]="periodDataDelete.TC_Nombre"
+                type="text"
+                autocomplete="off"
+                name="name"
+                id="name"
+                class="form-control rounded-left"
+                placeholder="Nombre"
+                required=""
+              />
 
-                    <input disabled [(ngModel)]="periodDataDelete.TC_Nombre" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+              <button class="submit-btn form-control" (click)="delete()">
+                Eliminar
+              </button>
 
-                    <button class="submit-btn form-control" (click)="delete()" >Eliminar</button>
-
-                    <button routerLink="/periodList" class="submit-btn form-control" >Cancelar</button>
-                    
-                </form>
-
+              <button routerLink="/periodList" class="submit-btn form-control">
+                Cancelar
+              </button>
             </div>
-        </div>
-        
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>

@@ -1,33 +1,76 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div  class="entry-formRate">
-                <form *ngIf="officeDataupdate" action="" id="userRegister-entry-form">
-                    <h2>Actualizar</h2>
-                    <input   type="text"  hidden>
+  <div class="container">
+    <div class="col-md-offset-1 col-md-6 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form *ngIf="officeDataupdate" action="" id="userRegister-entry-form">
+          <div class="m-2">
+            <h2>Actualizar oficina</h2>
+            <div class="mt-4">
+              <div class="d-flex justify-content-around">
+                <div>
+                  <label for="name_office">Nombre</label>
+                  <input
+                    [(ngModel)]="officeDataupdate.TC_Nombre"
+                    placeholder="Nombre"
+                    type="text"
+                    autocomplete="off"
+                    name="name_office"
+                    id="name_office"
+                    class="form-control rounded-left"
+                    required=""
+                  />
+                </div>
+                <div>
+                  <label for="office_code">Codigo</label>
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    name="office_code"
+                    id="office_code"
+                    class="form-control rounded-left"
+                    [(ngModel)]="officeDataupdate.TC_CodigoOficina"
+                    placeholder="Codigo"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="d-flex justify-content-around">
+                <div>
+                  <label for="office_institution">Institucion</label>
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    name="office_institution"
+                    id="office_institution"
+                    class="form-control rounded-left"
+                    [(ngModel)]="officeDataupdate.TC_Institucion"
+                    placeholder="Institucion"
+                    required=""
+                  />
+                </div>
+              </div>
+              <div class="d-flex justify-content-around">
+                <button class="submit-btn form-control" (click)="update()">
+                  Actualizar
+                </button>
 
-                    <input [(ngModel)]="officeDataupdate.TC_Nombre" placeholder="Nombre" type ="text" autocomplete="off" name="name_office" id="name_office" class="form-control rounded-left" required="">
-
-                    <input  type="text" autocomplete="off" name="office_code" id="office_code" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_CodigoOficina" placeholder="Codigo" required="">
-
-                    <input  type="text" autocomplete="off" name="office_institution" id="office_institution" class="form-control rounded-left" [(ngModel)]="officeDataupdate.TC_Institucion" placeholder="Institucion" required="">
-
-                    <button class="submit-btn form-control" (click)="update()" >Actualizar</button>
-
-                    <button routerLink="/officeList" class="submit-btn form-control" >Cancelar</button>
-                    
-                </form>
-
+                <button
+                  routerLink="/officeList"
+                  class="submit-btn form-control"
+                >
+                  Cancelar
+                </button>
+              </div>
             </div>
-        </div>
-        
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>

@@ -339,7 +339,8 @@ th {
 }
 
 label {
-    display: inline-block;
+    display: flex;
+    color: #ffc800;
 }
 
 button {
