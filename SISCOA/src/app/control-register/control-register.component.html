@@ -39,16 +39,15 @@
               />
             </div>
              </div>
-              <div class="radio">
-                <label class="notificaci">Notificacion al Correo?</label>
+              <div class="radio">          
                 <br />
+<label class="notificaci" for="yes">Notificacion al Correo</label><label  class="notificaci" for="no">Correo?</label>
                 <br />
-
                 <input
                   [(ngModel)]="controlData.TB_NotificacionCorreoAColaborador"
                   label="Si"
                   type="radio"
-                  id="male"
+                  id="yes"
                   name="notification"
                   value="si"
                   checked
@@ -57,7 +56,7 @@
                   [(ngModel)]="controlData.TB_NotificacionCorreoAColaborador"
                   label="No"
                   type="radio"
-                  id="female"
+                  id="no"
                   name="notification2"
                   value="no"
                   checked

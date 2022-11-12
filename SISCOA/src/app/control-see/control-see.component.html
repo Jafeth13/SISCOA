@@ -1,31 +1,56 @@
 <app-navbar> </app-navbar>
 
 <section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
-                <form action="" *ngIf="controlData" id="userRegister-entry-form">
-                    <h2>Observar</h2>
-                    <input   type="text"  hidden>
-
-                    <input  [(ngModel)]="controlData.TC_Nombre" disabled type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
-
-                    <input disabled  [(ngModel)]="controlData.TC_DescriptionDocumentacionEvidencia" type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
-                    
-                    <button routerLink="/listControl" class="submit-btn form-control" >Volver</button>
-                </form>
-
+  <div class="container">
+    <div class="col-md-offset-1 col-md-6 col-sm-12" id="log">
+      <br />
+      <br />
+      <br />
+      <div class="entry-formRate">
+        <form action="" *ngIf="controlData" id="userRegister-entry-form">
+          <div class="m-2">
+            <h2>Observar</h2>
+            <div class="mt-4">
+              <div class="d-flex justify-content-around">
+                <div>
+                    <label for="name">Nombre</label>
+                  <input
+                    [(ngModel)]="controlData.TC_Nombre"
+                    disabled
+                    type="text"
+                    autocomplete="off"
+                    name="name"
+                    id="name"
+                    class="form-control rounded-left"
+                    placeholder="Nombre"
+                    required=""
+                  />
+                </div>
+                <div>
+                    <label for="Descripcion">Descripcion</label>
+                  <input
+                    disabled
+                    [(ngModel)]="
+                      controlData.TC_DescriptionDocumentacionEvidencia
+                    "
+                    type="text"
+                    autocomplete="off"
+                    name="Descripcion"
+                    id="Descripcion"
+                    class="form-control rounded-left"
+                    placeholder="Descripcion"
+                    required=""
+                  />
+                </div>
+              </div>
+              <button routerLink="/listControl" class="submit-btn form-control">
+                Volver
+              </button>
             </div>
-        </div>
-        
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="example-button-container">
-      
-        </div>
+  </div>
+  <div class="example-button-container"></div>
 </section>
-
-
-
