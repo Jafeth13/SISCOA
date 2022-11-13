@@ -51,7 +51,7 @@ export class UserDeleteComponent implements OnInit {
 
     this.restUser.delete(this.route.snapshot.params['ID'], idU).subscribe(
       (result) => {
-        Swal.fire('Buen trabajo!', 'Un usuario fue eliminado!', 'success');
+        Swal.fire('Buen trabajo!', 'Usuario eliminado correctamente!', 'success');
         this.router.navigate(['/listUser']);
       },
       (err) => {

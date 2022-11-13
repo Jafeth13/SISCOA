@@ -36,7 +36,7 @@ export class PeriodDeleteComponent implements OnInit {
       (result) => {
         this.router.navigate(['/periodList']);
 
-        Swal.fire('Buen trabajo!', 'Periodo eliminado!', 'success');
+        Swal.fire('Buen trabajo!', 'Periodo eliminado correctamente!', 'success');
       },
       (err) => {
         Swal.fire({

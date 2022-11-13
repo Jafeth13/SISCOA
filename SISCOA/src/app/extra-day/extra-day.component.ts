@@ -16,7 +16,6 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
     'Descripcion',
     'Period',
     'status',
-    'notification',
     'action',
   ];
   dataSource = new MatTableDataSource();
