@@ -7,32 +7,37 @@
       <br />
       <br />
       <div class="entry-formRate">
-        <form id="userRegister-entry-form">
+        <form 
+        [formGroup]="officeForm"
+        (ngSubmit)="add()"
+        id="officeRegister-entry-form">
           <div class="m-2">
             <h2>Registar oficina</h2>
             <div class="mt-4">
               <div class="d-flex justify-content-around">
                 <div>
-                    <label for="name_office">Nombre</label>
+                    <label for="TC_Nombre">Nombre</label>
                   <input
+                  formControlName="TC_Nombre"
                     [(ngModel)]="officeData.TC_Nombre"
                     type="text"
                     autocomplete="off"
                     name="name_office"
-                    id="name_office"
+                    id="TC_Nombre"
                     class="form-control rounded-left"
                     placeholder="Nombre"
                     required=""
                   />
                 </div>
                 <div>
-                    <label for="code_office">Codigo</label>
+                    <label for="TC_CodigoOficina">Codigo</label>
                   <input
+                  formControlName="TC_CodigoOficina"
                     [(ngModel)]="officeData.TC_CodigoOficina"
                     type="text"
                     autocomplete="off"
-                    name="code_office"
-                    id="code_office"
+                    name="TC_CodigoOficina"
+                    id="TC_CodigoOficina"
                     class="form-control rounded-left"
                     placeholder="Codigo"
                     required=""
@@ -41,13 +46,14 @@
               </div>
               <div class="d-flex justify-content-around">
               <div>  
-                <label for="office_institution">Institucion</label>
+                <label for="TC_Institucion">Institucion</label>
               <input
+              formControlName="TC_Institucion"
                 [(ngModel)]="officeData.TC_Institucion"
                 type="text"
                 autocomplete="off"
-                name="office_institution"
-                id="office_institution"
+                name="TC_Institucion"
+                id="TC_Institucion"
                 class="form-control rounded-left"
                 placeholder="Institucion"
                 required=""
@@ -58,7 +64,7 @@
               <button
                 class="submit-btn form-control"
                 type="submit"
-                (click)="add()"
+                
               >
                 Añadir
               </button>
