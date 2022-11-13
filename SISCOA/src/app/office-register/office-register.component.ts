@@ -46,6 +46,8 @@ export class OfficeRegisterComponent implements OnInit {
 
   add() {
     let idU =  localStorage.getItem("idUsuario") ;
+
+
     console.log(this.officeForm.value)
     this.rest.add(this.officeForm.value,idU).subscribe(
       (result) => {
@@ -57,7 +59,7 @@ export class OfficeRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Ocurrio un error!',
         });
       }
     );
@@ -65,8 +67,13 @@ export class OfficeRegisterComponent implements OnInit {
 
   
   
-
+errorL:any;
  
-
+validar()
+{
+ if( this.officeForm.invalid){
+  this.errorL="Ingresa todos los datos correctamente,por favor"
+ }
+}
 
 }

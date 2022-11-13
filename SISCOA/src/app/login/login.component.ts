@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
 
         Toast.fire({
           icon: 'success',
-          title: 'Iniciado sesión con éxito',
+          title: 'Inicio de sesión exitoso',
         });
       },
       (error) => {
