@@ -52,6 +52,7 @@ export class CompleteControlFillComponent implements OnInit {
   add() {
     let idU = localStorage.getItem('idUsuario');
 
+    this.controlDataDelete.FK_TN_ESTADO_SISCOA_OficinaControl=2;
     if (this.verification == true && this.controlDataDelete.Archivos.length != 0) {
       this.restOfficeControl
         .update(this.controlDataDelete.ID, this.controlDataDelete, idU)

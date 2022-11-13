@@ -5,7 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ServicesPeriodService } from '../services-period.service';
 import { ServiceUserService } from '../service-user.service';
-
+import * as moment from 'moment';
+import { NgForOf } from '@angular/common';
 @Component({
   selector: 'app-period-list',
   templateUrl: './period-list.component.html',
@@ -21,20 +22,24 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     private router: Router
   ) {}
   userData: any;
+  dateTest:any;
+  miCadena:any
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator; 
+    
   }
   ngOnInit(): void {
     this.rut();
+    
   }
-
+ 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
+  dateTest2:any;
   rut() {
     let idU = localStorage.getItem('idUsuario');
       this.rest.periodList(idU).subscribe((pos) => {

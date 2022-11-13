@@ -86,7 +86,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     "ID": 0,
     "FK_TN_CONTROL_SISCOA_OficinaControl": 0,
     "FK_TN_OFICINA_SISCOA_OficinaControl": 0,
-    "FK_TN_ESTADO_SISCOA_OficinaControl": 0,
+    "FK_TN_ESTADO_SISCOA_OficinaControl": 1,
     "TC_Comentario":"",
     "FK_TN_PERIODO_SISCOA_OficinaControl": 0,
     "TF_FechaFin_DiasExtra":
