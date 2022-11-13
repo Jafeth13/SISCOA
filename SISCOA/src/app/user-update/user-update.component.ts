@@ -11,7 +11,6 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserUpdateComponent implements OnInit {
   @Input() userData: any;
-  userData2: any;
   constructor(
     public restUser: ServiceUserService,
     public restRol: ServicesRolService,
