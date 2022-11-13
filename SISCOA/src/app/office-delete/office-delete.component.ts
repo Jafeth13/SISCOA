@@ -42,7 +42,7 @@ userData:any
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'si, eliminarlo!',
     }).then((result) => {
       if (result.isConfirmed) {
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((data) => {
