@@ -7,7 +7,7 @@ namespace Business.DTOs
     {
         public int ID { get; set; }
         [Required(ErrorMessage = "The field TC_Description is required")]
-        [StringLength(255)]
+        [StringLength(512)]
         public string TC_Description { get; set; }
         [Required(ErrorMessage = "The field TC_DescripTC_UltimaAcciontion is required")]
         [StringLength(100)]
