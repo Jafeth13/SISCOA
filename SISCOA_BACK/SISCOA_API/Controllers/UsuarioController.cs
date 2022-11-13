@@ -212,7 +212,7 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
-                entities = await service.Update(entities);
+                entities = await session.Update(entities);
                 await activity.Insert(new TSISCOA_Actividad
                 {
                     TC_Description = "Actualizar usuario: " + DTO.TC_Identificacion,
