@@ -27,11 +27,12 @@
                   />
                 </div>
                 <div>
-                    <label for="Descripcion">Descripcion</label>
-                  <input
-                    disabled
+                    
+                </div>
+              </div><label for="Descripcion">Descripcion</label>
+                    <textarea  disabled
                     [(ngModel)]="
-                      controlData.TC_DescriptionDocumentacionEvidencia
+                    controlData.TC_DescriptionDocumentacionEvidencia
                     "
                     type="text"
                     autocomplete="off"
@@ -39,10 +40,7 @@
                     id="Descripcion"
                     class="form-control rounded-left"
                     placeholder="Descripcion"
-                    required=""
-                  />
-                </div>
-              </div>
+                    required=""></textarea>
               <button routerLink="/listControl" class="submit-btn form-control">
                 Volver
               </button>
