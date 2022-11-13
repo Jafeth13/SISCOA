@@ -15,7 +15,6 @@ export class ControlListComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
     'Descripcion',
-    'notification',
     'action',
   ];
   dataSource = new MatTableDataSource();

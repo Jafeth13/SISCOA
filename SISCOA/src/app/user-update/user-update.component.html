@@ -8,7 +8,7 @@
       <br />
       <div class="entry-formRate">
         <form action="" id="userRegister-entry-form">
-          <div class="m-2">
+          <div  class="m-2">
             <h2>Actualizar el usuario</h2>
             <div class="mt-4">
               <div class="d-flex justify-content-around">
@@ -18,7 +18,7 @@
                     [(ngModel)]="userData.TC_Identificacion"
                     type="text"
                     autocomplete="off"
-                    name="name_Identification"
+                    name="identificationId"
                     id="identificationId"
                     class="form-control rounded-left"
                     placeholder="Identificacion"
@@ -104,7 +104,7 @@
                     name="oficina"
                     id="oficina"
                   >
-                    <option value="0" selected>Seleciona una oficina</option>
+                   
                     <option [value]="s.ID" *ngFor="let s of dataOffice">
                       {{ s.TC_Nombre }}
                     </option>
@@ -118,7 +118,7 @@
                     name="Rol"
                     id="Rol"
                   >
-                    <option value="0" selected>Seleciona un rol</option>
+                    
                     <option [value]="item.ID" *ngFor="let item of roleData">
                       {{ item.TC_Nombre }}
                     </option>

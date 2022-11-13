@@ -28,7 +28,7 @@ export class ControlRegisterComponent implements OnInit {
     ID: 0,
     TC_Nombre: '',
     TC_DescriptionDocumentacionEvidencia: '',
-    TB_NotificacionCorreoAColaborador: true,
+    TB_NotificacionCorreoAColaborador: false,
   };
   ngOnInit(): void {
     this.rut();
@@ -36,13 +36,7 @@ export class ControlRegisterComponent implements OnInit {
 
   add() {
     let idU = localStorage.getItem('idUsuario');
-    this.temp = this.controlData.TB_NotificacionCorreoAColaborador;
-    if (this.temp == 'no') {
-      this.controlData.TB_NotificacionCorreoAColaborador = false;
-    } else {
-      if (this.temp == 'si')
-        this.controlData.TB_NotificacionCorreoAColaborador = true;
-    }
+   
 
     this.restControl.add(this.controlData, idU).subscribe(
       (result) => {
