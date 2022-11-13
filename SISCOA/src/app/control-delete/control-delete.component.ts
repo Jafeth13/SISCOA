@@ -48,7 +48,7 @@ export class ControlDeleteComponent implements OnInit {
           this.ngOnInit();
           this.router.navigate(['/listControl']);
         });
-        Swal.fire('Elimimado!', 'El control a sido eliminado.', 'success');
+        Swal.fire('Elimimado!', 'Control eliminado correctamente!', 'success');
       }
     });
   }
