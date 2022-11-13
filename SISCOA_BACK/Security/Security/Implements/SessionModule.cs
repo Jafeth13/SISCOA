@@ -37,6 +37,21 @@ namespace Security.Security.Implements
             return await usuarioRepository.Insert(usuario);
         }
 
+        public async Task<TSISCOA_Usuario> Update(TSISCOA_Usuario usuario)
+        {
+            var listUsers = await usuarioRepository.GetAll();
+            if (usuario.TV_Contrasenna.Length < 8 || usuario.TC_Identificacion.Length < 8)
+                return null;
+            foreach (var item in listUsers)
+            {
+                if (item.TC_Identificacion == usuario.TC_Identificacion) {
+                    if (item.TV_Contrasenna != usuario.TV_Contrasenna)
+                        usuario.TV_Contrasenna = GetSHA256(usuario.TV_Contrasenna);
+                }
+            }
+            return await usuarioRepository.Update(usuario);
+        }
+
         private string GetSHA256(string str)
         {
             SHA256 sha256 = SHA256Managed.Create();

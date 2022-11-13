@@ -197,6 +197,10 @@ namespace SISCOA_API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            if (DTO.FK_SISCOA_Oficina_SISCOA_Usuario <= 0 || DTO.FK_SISCOA_Rol_SISCOA_Usuario <= 0) 
+            {
+                return BadRequest("Office or Role required");
+            }
 
             if (DTO.ID != id)
                 return BadRequest("Object id does not match route id");
@@ -208,7 +212,7 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_Usuario>(DTO);
-                entities = await service.Update(entities);
+                entities = await session.Update(entities);
                 await activity.Insert(new TSISCOA_Actividad
                 {
                     TC_Description = "Actualizar usuario: " + DTO.TC_Identificacion,

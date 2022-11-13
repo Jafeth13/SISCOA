@@ -150,10 +150,10 @@ INSERT INTO [USUARIO].[TSISCOA_Usuario]
            ,[FK_SISCOA_Oficina_SISCOA_Usuario]
            ,[FK_SISCOA_Rol_SISCOA_Usuario])
      VALUES
-			--User: 123, password: 123
-           ('123','User','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user123@gmail.com',1,1),
-           --User2:111, password: 123
-		   ('111','User2','Apellido1','Apellido2','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','user111@gmail.com',1,5)
+			--User: 12123456783, password: 12345678
+           ('12123456783','Nombre','Apellido1','Apellido2','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','nombreapellido@gmail.com',1,1),
+           --User2:11112222, password: 12345678
+		   ('11112222','Persona2','Apellido1','Apellido2','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','nombre2apellido2@gmail.com',1,5)
 GO
 --SELECT * FROM [USUARIO].[TSISCOA_Usuario]
 GO

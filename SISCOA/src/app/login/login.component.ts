@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Malas credenciales',
+          text: 'Credenciales incorrectas',
         });
         this.loginForm = this.fb.group({
           TC_Identificacion: ['', [Validators.required]],
