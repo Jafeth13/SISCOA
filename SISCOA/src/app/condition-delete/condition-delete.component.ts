@@ -16,7 +16,7 @@ export class ConditionDeleteComponent implements OnInit {
     public rest: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.rut();
@@ -50,7 +50,7 @@ export class ConditionDeleteComponent implements OnInit {
           .subscribe((data) => {
             this.router.navigate(['/conditionList']);
           });
-        Swal.fire('Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+        Swal.fire('Eliminado!', 'Estado eliminado correctamente.', 'success');
       }
     });
   }

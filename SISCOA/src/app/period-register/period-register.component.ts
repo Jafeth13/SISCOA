@@ -59,7 +59,7 @@ export class PeriodRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al registrar el periodo!',
         });
       }
     );

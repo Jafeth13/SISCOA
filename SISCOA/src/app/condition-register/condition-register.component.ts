@@ -15,14 +15,14 @@ export class ConditionRegisterComponent implements OnInit {
     public rest: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   @Input() estado = {
     ID: 0,
     TC_Nombre: '',
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   userData: any;
   add() {
     let idU = localStorage.getItem('idUsuario');
@@ -36,7 +36,7 @@ export class ConditionRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al registrar estado!',
         });
       }
     );
