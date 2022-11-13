@@ -197,6 +197,10 @@ namespace SISCOA_API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            if (DTO.FK_SISCOA_Oficina_SISCOA_Usuario <= 0 || DTO.FK_SISCOA_Rol_SISCOA_Usuario <= 0) 
+            {
+                return BadRequest("Office or Role required");
+            }
 
             if (DTO.ID != id)
                 return BadRequest("Object id does not match route id");

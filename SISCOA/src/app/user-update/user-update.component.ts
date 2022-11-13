@@ -11,45 +11,45 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class UserUpdateComponent implements OnInit {
   @Input() userData: any;
-  userData2:any;
+  userData2: any;
   constructor(
     public restUser: ServiceUserService,
     public restRol: ServicesRolService,
     public restOffice: ServicesOfficeService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
   roleData: any;
   dataOffice: any;
   ngOnInit(): void {
     this.rut();
   }
 
- 
-  rut(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    
-   this.restUser.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-     this.userData = data;
-   });
 
-   this.restOffice.officeList(idU).subscribe((data={})=>{
-     this.dataOffice=data
-     });
+  rut() {
+    let idU = localStorage.getItem("idUsuario");
 
-     this.restRol.rolList(idU).subscribe((pos)=>{
-       this.roleData=pos
-       });
-       this.dataOffice=[];
-       this.restOffice.officeList(idU).subscribe((data={})=>{
-         this.dataOffice=data
-         });
- }
+    this.restUser.get(this.route.snapshot.params['ID'], idU).subscribe((data: {}) => {
+      this.userData = data;
+    });
+
+    this.restOffice.officeList(idU).subscribe((data = {}) => {
+      this.dataOffice = data
+    });
+
+    this.restRol.rolList(idU).subscribe((pos) => {
+      this.roleData = pos
+    });
+    this.dataOffice = [];
+    this.restOffice.officeList(idU).subscribe((data = {}) => {
+      this.dataOffice = data
+    });
+  }
 
   Update() {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
     this.restUser
-      .update(this.userData, this.route.snapshot.params['ID'],idU)
+      .update(this.userData, this.route.snapshot.params['ID'], idU)
       .subscribe(
         (result) => {
           Swal.fire('Buen trabajo!', 'El usuario fue actualizado!', 'success');
@@ -59,15 +59,15 @@ export class UserUpdateComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Error al actualizar!',
           });
         }
       );
   }
 
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
+  obtener_localStorage() {
+    let idU = localStorage.getItem("idUsuario");
+    this.userData.ID = idU
+  }
 
 }

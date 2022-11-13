@@ -58,7 +58,7 @@ export class UserDeleteComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al eliminar usuario!',
         });
       }
     );

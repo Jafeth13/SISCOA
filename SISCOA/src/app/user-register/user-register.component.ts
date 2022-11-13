@@ -53,7 +53,7 @@ export class UserRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Verifique los datos!',
         });
       }
     );
