@@ -150,8 +150,8 @@ INSERT INTO [USUARIO].[TSISCOA_Usuario]
            ,[FK_SISCOA_Oficina_SISCOA_Usuario]
            ,[FK_SISCOA_Rol_SISCOA_Usuario])
      VALUES
-			--User: 12123456783, password: 12345678
-           ('12123456783','Nombre','Apellido1','Apellido2','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','nombreapellido@gmail.com',1,1),
+			--User: 12345678, password: 12345678
+           ('12345678','Nombre','Apellido1','Apellido2','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','nombreapellido@gmail.com',1,1),
            --User2:11112222, password: 12345678
 		   ('11112222','Persona2','Apellido1','Apellido2','ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f','nombre2apellido2@gmail.com',1,5)
 GO
