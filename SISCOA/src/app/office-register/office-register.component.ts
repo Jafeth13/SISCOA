@@ -13,7 +13,8 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class OfficeRegisterComponent implements OnInit {
   errorMessage: any;
-  userData:any
+  userData:any;
+  officeForm: FormGroup;
   @Input() officeData = {
     ID: 0,
     TC_CodigoOficina: '',
@@ -29,19 +30,27 @@ export class OfficeRegisterComponent implements OnInit {
     private router: Router,
     public restUser: ServiceUserService
 
-  ) {}
+  ) {
+    this.officeForm = this.fb.group({
+      TC_Institucion: ['', [Validators.required]],
+      TC_CodigoOficina: ['', [Validators.required]],
+      TC_Nombre: ['', [Validators.required]],
+      TB_EstadoActividad: true,
+    });
+  }
 
   ngOnInit(): void {
    
-    this.getStatus();
    
   }
 
   add() {
-    this.rest.add(this.officeData,this.userData.ID).subscribe(
+    let idU =  localStorage.getItem("idUsuario") ;
+    console.log(this.officeForm.value)
+    this.rest.add(this.officeForm.value,idU).subscribe(
       (result) => {
         this.router.navigate(['/officeList']);
-        Swal.fire('Buen trabajo!', 'Oficina ingresada exitosamente!');
+        Swal.fire('Buen trabajo!', 'Oficina ingresada exitosamente!','success');
         this.router.navigate(['/officeList']);
       },
       (err) => {
@@ -54,12 +63,10 @@ export class OfficeRegisterComponent implements OnInit {
     );
   }
 
-  status: any;
-  getStatus() {
-    this.rest.getStatus(this.route.snapshot.params['ID']).subscribe((data: {}) => {
-      this.status = data;
-    });
-  }
+  
+  
+
+ 
 
 
 }
