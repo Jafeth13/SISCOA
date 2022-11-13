@@ -28,22 +28,22 @@
                   />
                 </div>
                 <div>
-                    <label for="Descripcion">Descripcion</label>
-                  <input
-                    disabled
-                    [(ngModel)]="
-                      controlDataDelete.TC_DescriptionDocumentacionEvidencia
-                    "
-                    type="text"
-                    autocomplete="off"
-                    name="Descripcion"
-                    id="Descripcion"
-                    class="form-control rounded-left"
-                    placeholder="Descripcion"
-                    required=""
-                  />
+                  
+                  
                 </div>
-              </div>
+              </div>  <label for="Descripcion">Descripcion</label>
+                
+                  <textarea  disabled
+                  [(ngModel)]="
+                    controlDataDelete.TC_DescriptionDocumentacionEvidencia
+                  "
+                  type="text"
+                  autocomplete="off"
+                  name="Descripcion"
+                  id="Descripcion"
+                  class="form-control rounded-left"
+                  placeholder="Descripcion"
+                  required=""></textarea>
               <div class="d-flex justify-content-around">
               <button class="submit-btn form-control" (click)="delete()">
                 Eliminar
