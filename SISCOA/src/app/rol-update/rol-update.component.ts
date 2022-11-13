@@ -64,7 +64,7 @@ export class RolUpdateComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al actualizar rol!',
         });
       }
     );

@@ -50,7 +50,7 @@ export class RolDeleteComponent implements OnInit {
           .subscribe((data) => {
             this.back();
           });
-        Swal.fire('Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+        Swal.fire('Eliminado!', 'Rol eliminado correctamente.', 'success');
       }
     });
   }

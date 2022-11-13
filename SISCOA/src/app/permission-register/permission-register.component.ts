@@ -39,7 +39,7 @@ export class PermissionRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al registrar permiso!',
         });
       }
     );

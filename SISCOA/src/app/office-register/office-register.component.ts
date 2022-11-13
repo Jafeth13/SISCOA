@@ -13,7 +13,7 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class OfficeRegisterComponent implements OnInit {
   errorMessage: any;
-  userData:any;
+  userData: any;
   officeForm: FormGroup;
   @Input() officeData = {
     ID: 0,
@@ -40,40 +40,39 @@ export class OfficeRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
-   
+
+
   }
 
   add() {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
 
     console.log(this.officeForm.value)
-    this.rest.add(this.officeForm.value,idU).subscribe(
+    this.rest.add(this.officeForm.value, idU).subscribe(
       (result) => {
         this.router.navigate(['/officeList']);
-        Swal.fire('Buen trabajo!', 'Oficina ingresada exitosamente!','success');
+        Swal.fire('Buen trabajo!', 'Oficina ingresada exitosamente!', 'success');
         this.router.navigate(['/officeList']);
       },
       (err) => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Ocurrio un error!',
+          text: 'Error al registrar oficina!',
         });
       }
     );
   }
 
-  
-  
-errorL:any;
- 
-validar()
-{
- if( this.officeForm.invalid){
-  this.errorL="Ingresa todos los datos correctamente,por favor"
- }
-}
+
+
+  errorL: any;
+
+  validar() {
+    if (this.officeForm.invalid) {
+      this.errorL = "Ingresa todos los datos correctamente,por favor"
+    }
+  }
 
 }

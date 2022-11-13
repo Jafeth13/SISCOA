@@ -113,7 +113,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
 
     this.restOfficeControl.add(this.officeControl, idU).subscribe(
       (result) => {
-        Swal.fire('Buen trabajo!', 'Control completado!', 'success');
+        Swal.fire('Buen trabajo!', 'Control agregado!', 'success');
        this.back()
   }
       ,
@@ -121,7 +121,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'No se pudo agregar el control!',
         });
       }
     );

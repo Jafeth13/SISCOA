@@ -48,7 +48,7 @@ userData:any
         this.rest.delete(this.route.snapshot.params['ID'],idU).subscribe((data) => {
           this.router.navigate(['/officeList']);
         });
-        Swal.fire('Eliminado!', 'Su archivo ha sido eliminado.', 'success');
+        Swal.fire('Eliminado!', 'Oficina eliminada correctamente.', 'success');
       }
     });
   }
