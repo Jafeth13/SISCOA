@@ -22,8 +22,7 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     private router: Router
   ) {}
   userData: any;
-  dateTest:any;
-  miCadena:any
+  
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
   ngAfterViewInit() {
@@ -31,15 +30,14 @@ export class PeriodListComponent implements AfterViewInit, OnInit {
     
   }
   ngOnInit(): void {
-    this.rut();
-    
+    this.rut();  
   }
  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  dateTest2:any;
+ 
   rut() {
     let idU = localStorage.getItem('idUsuario');
       this.rest.periodList(idU).subscribe((pos) => {
