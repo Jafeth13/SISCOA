@@ -75,8 +75,9 @@ export class LoginComponent implements OnInit {
         this.user.TC_PrimerApellido = data.TC_PrimerApellido;
         let idRole = localStorage.getItem('role');
         if (this.user.role == 1) {
-          this.router.navigate(['/controlMenu']);
           this.router.navigate(['/navbar']);
+          this.router.navigate(['/controlMenu']);
+          
         }
         if (this.user.role == 2) {
           this.router.navigate(['/natvarSupervisor']);

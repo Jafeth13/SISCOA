@@ -9,6 +9,11 @@
     width: fit-content;
     height:auto;
 }
+.img-fluid {
+    top: 50%;
+    max-width: 100%;
+    height: auto;
+}
 
 .wrapperButton2{
     position: absolute;
@@ -152,3 +157,4 @@
 .myB:hover span{
     animation-play-state: paused;
 }
+
