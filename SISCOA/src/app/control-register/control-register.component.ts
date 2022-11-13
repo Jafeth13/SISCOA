@@ -21,7 +21,7 @@ export class ControlRegisterComponent implements OnInit {
     public restConditional: ServiceConditionService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
   dataPeriod: any;
   dataConditional: any;
   @Input() controlData = {
@@ -33,7 +33,7 @@ export class ControlRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.rut();
   }
-  
+
   add() {
     let idU = localStorage.getItem('idUsuario');
     this.temp = this.controlData.TB_NotificacionCorreoAColaborador;
@@ -53,7 +53,7 @@ export class ControlRegisterComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al registrar el control!',
         });
         console.log(err);
       }
