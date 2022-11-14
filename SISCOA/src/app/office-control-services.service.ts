@@ -55,6 +55,13 @@ export class OfficeControlServicesService {
     );
   }
 
+  deleteOfficeControl(id: any, idUser: any){
+    return this.http.delete(
+      endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idUser,
+      httpOptions
+    );
+  }
+
   ListControlsWithExtraDays(id: any): Observable<any> {
     return this.http.get(
       endpoint +

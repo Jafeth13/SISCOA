@@ -13,10 +13,11 @@ import { ServiceUserService } from '../service-user.service';
 export class ControlBySlopesComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
-    'Descripcion',
+    'Descripcion'
+    ,'office',
     'Period',
+    
     'status',
-    'notification',
     'action',
   ];
   dataSource = new MatTableDataSource();

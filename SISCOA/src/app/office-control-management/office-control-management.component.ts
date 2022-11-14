@@ -39,7 +39,6 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     'Descripcion',
     'Period',
     'status',
-    'notification',
     'action',
   ];
   controlDataupdate: any;
@@ -167,5 +166,26 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     link.href = source;
     link.download = `${fileName}.pdf`;
     link.click();
+  }
+
+  delete(id:any){
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminarlo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.officeControl.deleteOfficeControl(id,idU).subscribe((data) => {
+          this.router.navigate(['/controlMenu']);
+        });
+        Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');
+      }
+    });
   }
 }
