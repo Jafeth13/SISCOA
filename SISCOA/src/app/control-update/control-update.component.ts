@@ -14,7 +14,7 @@ import { ServiceUserService } from '../service-user.service';
 export class ControlUpdateComponent implements OnInit {
   dataPeriod: any;
   dataConditional: any;
-  @Input() controlDataDelete: any;
+  @Input() controlDataUpdate: any;
   constructor(
     public restControl: ServicesControllersService,
     public restPeriod: ServicesPeriodService,
@@ -32,7 +32,7 @@ userData:any
     this.restControl
       .get(this.route.snapshot.params['ID'],idU)
       .subscribe((data: {}) => {
-        this.controlDataDelete = data;
+        this.controlDataUpdate = data;
       });
 
 
@@ -41,15 +41,8 @@ userData:any
   update() {
     let idU =  localStorage.getItem("idUsuario") ;
 
-    this.temp=this.controlDataDelete.TB_NotificacionCorreoAColaborador
-    if(this.temp=='no'){
-      this.controlDataDelete.TB_NotificacionCorreoAColaborador=false
-    }else{
-      if(this.temp=='si')
-      this.controlDataDelete.TB_NotificacionCorreoAColaborador=true
-    }
     this.restControl
-      .update(this.controlDataDelete,this.controlDataDelete.ID,idU)
+      .update(this.controlDataUpdate,this.controlDataUpdate.ID,idU)
       .subscribe(
         (data) => {
           Swal.fire('Buen trabajo!', 'EL control fue actualizado!', 'success');
@@ -63,5 +56,16 @@ userData:any
           });
         }
       );
+  }
+  valitation(){
+    if (this.controlDataUpdate.TC_Nombre.length==0||this.controlDataUpdate.TC_DescriptionDocumentacionEvidencia.length==0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.update();
+    }
   }
 }
