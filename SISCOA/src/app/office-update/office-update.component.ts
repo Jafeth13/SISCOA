@@ -9,14 +9,16 @@ import { ServiceUserService } from '../service-user.service';
   templateUrl: './office-update.component.html',
   styleUrls: ['./office-update.component.css'],
 })
+
 export class OfficeUpdateComponent implements OnInit {
+
   constructor(
     public restUser: ServiceUserService,
     private fb: FormBuilder,
     public rest: ServicesOfficeService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 userData:any
   ngOnInit(): void {
     this.rut();
@@ -32,6 +34,7 @@ userData:any
 
   update() {
     let idU =  localStorage.getItem("idUsuario") ;
+
     this.rest
       .update(this.officeDataupdate, this.route.snapshot.params['ID'],idU)
       .subscribe(
@@ -43,12 +46,24 @@ userData:any
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Ocurrio un error valide los datos!',
           });
         }
       );
   }
-
+  
+  errorL: any;
+  valitation() {
+    if (this.officeDataupdate.TC_Nombre.length==0||this.officeDataupdate.TC_Nombre.TC_Institucion==0||this.officeDataupdate.TC_CodigoOficina==0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.update();
+    }
+  }
 
 
   obtener_localStorage(){

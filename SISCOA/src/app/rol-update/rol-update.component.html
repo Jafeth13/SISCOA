@@ -12,7 +12,7 @@
 
                     <input [(ngModel)]="roleDataupdate.TC_Nombre" type="text" autocomplete="off" name="name_role" id="name_role" class="form-control rounded-left" placeholder="Nombre" required="">
 
-                    <select [(ngModel)]="num" type="number"   class="form-control rounded-left" name="pegriod" id="pergiod">
+                      <select [(ngModel)]="num" type="number"   class="form-control rounded-left" name="pegriod" id="pergiod">
                         <option value=0 selected>Permiso</option>   
                         <option [value]="s.ID" *ngFor="let s of dataPermision">{{s.TC_Nombre}}</option>
                   
