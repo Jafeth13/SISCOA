@@ -69,4 +69,21 @@ export class UserUpdateComponent implements OnInit {
    
   }
 
+  valitation(){
+    console.log(this.userData)
+    this.userData.TSISCOA_Oficina= null,
+    this.userData.TSISCOA_Rol= null
+    if (this.userData.TC_Nombre.length==0||this.userData.TC_PrimerApellido.length==0
+      ||this.userData.TC_SegundoApellido.length==0||this.userData.TC_Correo.length==0||
+      this.userData.TV_Contrasenna.length==0||this.userData.FK_SISCOA_Rol_SISCOA_Usuario.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.Update();
+    }
+  }
+
 }
