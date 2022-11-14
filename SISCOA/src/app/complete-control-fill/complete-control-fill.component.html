@@ -13,20 +13,20 @@
                             <label for="identification_Admin">Nombre del control</label>
                             <input [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_Nombre" type="text"
                                 autocomplete="off" name="identification_Admin" id="identification_Admin"
-                                class="form-control rounded-left" placeholder="Nombre" required="">
+                                class="form-control rounded-left" placeholder="Nombre" required="" disabled="">
                         </div>
 
                         <div>
                             <label for="name_Admin">Descripcion del control</label>
                             <input [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"
                                 type="text" autocomplete="off" name="name_Admin" id="name_Admin"
-                                class="form-control rounded-left" placeholder="Descripcion" required="">
+                                class="form-control rounded-left" placeholder="Descripcion" required="" disabled="" >
                         </div>
 
                         <div class="d-flex justify-content-center align-content-center">
                             <div class="w-50 m-1">
                                 <label for="role_Admin2">Periodos</label>
-                                <select [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"
+                                <select disabled="" [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"
                                     class="form-control rounded-left" name="role_Admin" id="role_Admin2">
                                     <option value=0 selected>Periodo</option>
                                     <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>

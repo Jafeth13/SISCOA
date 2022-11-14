@@ -86,6 +86,9 @@ import { OfficeManagmentSupComponent } from './office-managment-sup/office-manag
 import { ControlOfficeSupComponent } from './control-office-sup/control-office-sup.component';
 import { CompleteControlSupComponent } from './complete-control-sup/complete-control-sup.component';
 import { csvParse } from 'd3';
+import { SeePeriodComponent } from './see-period/see-period.component';
+import { SeeConditionalComponent } from './see-conditional/see-conditional.component';
+import { SeePermisionComponent } from './see-permision/see-permision.component';
 
 
 const appRoutes: Routes = [
@@ -342,6 +345,20 @@ const appRoutes: Routes = [
     component: CompleteControlSupComponent,
     data: { title: 'Completo'}, 
   }
+  ,{
+    path: 'seePeriod/:ID',
+    component: SeePeriodComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'seeConditional/:ID',
+    component: SeeConditionalComponent,
+    data: { title: 'Completo'}, 
+  },{
+    path: 'seePermision/:ID',
+    component: SeePermisionComponent,
+    data: { title: 'Completo'}, 
+  },
+
 ];
 
 @NgModule({
@@ -409,7 +426,10 @@ const appRoutes: Routes = [
     AddControlSupComponent,
     OfficeManagmentSupComponent,
     ControlOfficeSupComponent,
-    CompleteControlSupComponent
+    CompleteControlSupComponent,
+    SeePeriodComponent,
+    SeeConditionalComponent,
+    SeePermisionComponent
     
   ],
   imports: [

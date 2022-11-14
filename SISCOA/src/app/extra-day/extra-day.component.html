@@ -43,6 +43,11 @@
         <th mat-header-cell *matHeaderCellDef><b> Periodo</b> </th>
         <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Periodo.TC_Nombre}} </td>
       </ng-container>
+      <!-- Oficina Column -->
+      <ng-container matColumnDef="office">
+        <th mat-header-cell *matHeaderCellDef><b> Oficina</b> </th>
+        <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Oficina.TC_Nombre}} </td>
+      </ng-container>
 
    <!-- status Column -->
    <ng-container matColumnDef="status">

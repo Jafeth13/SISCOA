@@ -13,7 +13,7 @@ import { ServiceUserService } from '../service-user.service';
 export class ExtraDayComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
-    'Descripcion',
+    'Descripcion','office',
     'Period',
     'status',
     'action',
