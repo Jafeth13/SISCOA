@@ -12962,10 +12962,11 @@ nav ul li {
 
   .eyeicon{
  position: relative;
- right:-130px;
- top: -30px;
- size: 10px;
- 
+ right:-325px;
+ top: -33px;
+cursor: pointer;
+width:65px;
+        height:23px;
   }
 
   .lab{
