@@ -52,7 +52,7 @@ userData:any
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Error al actualizar control!',
           });
         }
       );
@@ -62,7 +62,7 @@ userData:any
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error,rellena la informacion solicitada!',
+        text: 'Error al actualizar control!',
       });
     }else{
      this.update();

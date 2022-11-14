@@ -46,7 +46,7 @@ userData:any
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Ocurrio un error valide los datos!',
+            text: 'Error al actualizar oficina!',
           });
         }
       );
@@ -54,11 +54,11 @@ userData:any
   
   errorL: any;
   valitation() {
-    if (this.officeDataupdate.TC_Nombre.length==0||this.officeDataupdate.TC_Nombre.TC_Institucion==0||this.officeDataupdate.TC_CodigoOficina==0) {
+    if (this.officeDataupdate.TC_Nombre.length==0||this.officeDataupdate.TC_Institucion==0||this.officeDataupdate.TC_CodigoOficina==0) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error,rellena la informacion solicitada!',
+        text: 'Error al actualizar oficina!',
       });
     }else{
      this.update();

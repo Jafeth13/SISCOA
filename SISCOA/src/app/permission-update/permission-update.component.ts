@@ -44,7 +44,7 @@ export class PermissionUpdateComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Error al actualizar permiso!',
           });
         }
       );
@@ -55,7 +55,7 @@ export class PermissionUpdateComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error,rellena la informacion solicitada!',
+        text: 'Error al actualizar permiso!',
       });
     }else{
      this.update();

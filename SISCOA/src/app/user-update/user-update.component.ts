@@ -70,7 +70,6 @@ export class UserUpdateComponent implements OnInit {
   }
 
   valitation(){
-    console.log(this.userData)
     this.userData.TSISCOA_Oficina= null,
     this.userData.TSISCOA_Rol= null
     if (this.userData.TC_Nombre.length==0||this.userData.TC_PrimerApellido.length==0
@@ -79,7 +78,7 @@ export class UserUpdateComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error,rellena la informacion solicitada!',
+        text: 'Error al actualizar el usuario!',
       });
     }else{
      this.Update();

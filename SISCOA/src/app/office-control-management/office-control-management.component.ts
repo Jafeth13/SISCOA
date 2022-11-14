@@ -128,7 +128,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
+          text: 'Error al cambiar controles de oficina!',
         });
       }
     );

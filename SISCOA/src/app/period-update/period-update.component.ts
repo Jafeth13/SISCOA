@@ -67,7 +67,7 @@ export class PeriodUpdateComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong!',
+            text: 'Error al actualizar el periodo!',
           });
         }
       );
@@ -93,7 +93,7 @@ export class PeriodUpdateComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Error,rellena la informacion solicitada!',
+        text: 'Error al actualizar el periodo!',
       });
     }else{
      this.update();
