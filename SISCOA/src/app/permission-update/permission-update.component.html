@@ -12,9 +12,9 @@
                     <br>
                     <label for="name">Nombre</label>
 
-                    <input [(ngModel)]="roleDataupdate.TC_Nombre"  type="text" autocomplete="off" name="name" id="name" class="form-control rounded-left" placeholder="Nombre" required="">
+                    <input [(ngModel)]="permisionDataupdate.TC_Nombre"  type="text" autocomplete="off" name="name" id="name" class="form-control rounded-left" placeholder="Nombre" required="">
                     <div class="d-flex justify-content-around">
-                    <button class="submit-btn form-control" (click)="update();" >Actualizar</button>
+                    <button class="submit-btn form-control" (click)="valitation();" >Actualizar</button>
 
                     <button routerLink="/permissionList" class="submit-btn form-control" >Cancelar</button>
                 </div>

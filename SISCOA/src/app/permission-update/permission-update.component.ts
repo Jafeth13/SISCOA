@@ -17,7 +17,7 @@ export class PermissionUpdateComponent implements OnInit {
     private router: Router,
     public restUser: ServiceUserService
   ) {}
-  @Input() roleDataupdate: any;
+  @Input() permisionDataupdate: any;
 
   ngOnInit(): void {
     this.rut();
@@ -27,14 +27,14 @@ export class PermissionUpdateComponent implements OnInit {
     this.rest
       .get(this.route.snapshot.params['ID'], idU)
       .subscribe((data: {}) => {
-        this.roleDataupdate = data;
+        this.permisionDataupdate = data;
       });
   }
 
   update() {
     let idU = localStorage.getItem('idUsuario');
     this.rest
-      .update(this.roleDataupdate, this.route.snapshot.params['ID'], idU)
+      .update(this.permisionDataupdate, this.route.snapshot.params['ID'], idU)
       .subscribe(
         (result) => {
           Swal.fire('Buen trabajo!', 'Permiso actualizado!', 'success');
@@ -48,5 +48,17 @@ export class PermissionUpdateComponent implements OnInit {
           });
         }
       );
+  }
+
+  valitation() {
+    if (this.permisionDataupdate.TC_Nombre.length==0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.update();
+    }
   }
 }
