@@ -48,4 +48,16 @@ export class ConditionUpdateComponent implements OnInit {
         }
       );
   }
+  valitation(){
+    if (this.statusDataupdate.TC_Nombre.length==0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.update();
+    }
+  }
+
 }

@@ -87,4 +87,16 @@ export class PeriodUpdateComponent implements OnInit {
   selectHour2() {
     this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
   }
+
+  valitation(){
+    if (this.periodDataupdate.TC_Nombre.length==0||this.periodDataupdate.TF_FechaInicio.length==0||this.periodDataupdate.TF_FechaFin.length==0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error,rellena la informacion solicitada!',
+      });
+    }else{
+     this.update();
+    }
+  }
 }
