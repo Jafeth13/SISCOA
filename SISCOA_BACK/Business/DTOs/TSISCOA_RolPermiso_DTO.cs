@@ -12,9 +12,7 @@ namespace Business.DTOs
         public int FK_SISCOA_Rol_SISCOA_RolPermiso { get; set; }
         [Required(ErrorMessage = "The field FK_SISCOA_Permiso_SISCOA_RolPermiso is required")]
         public int FK_SISCOA_Permiso_SISCOA_RolPermiso { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_Permiso is required")]
         public virtual TSISCOA_Permiso_DTO TSISCOA_Permiso { get; set; }
-        [Required(ErrorMessage = "The field TSISCOA_Rol is required")]
         public virtual TSISCOA_Rol_DTO TSISCOA_Rol { get; set; }
     }
 }
