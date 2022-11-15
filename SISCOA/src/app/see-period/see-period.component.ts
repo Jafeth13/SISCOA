@@ -11,19 +11,17 @@ export class SeePeriodComponent implements OnInit {
   constructor(  private route: ActivatedRoute,
     public rest: ServicesPeriodService,
     private router: Router,) { }
-periodData:any;temp:any
+periodData:any
+
+
+
+;temp:any
   ngOnInit(): void {
     let idU =  localStorage.getItem("idUsuario") ;
-    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      
-      this.periodData = data;
-    this.temp =this. periodData.TF_FechaInicio
-    this.temp.split("T",1)
-    this. periodData.TF_FechaInicio=this.temp
+    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {     
+      this.periodData = data;      
     });
-  }
-
-  
+  } 
   back() {
     this.router.navigate(['/periodList']);
   }

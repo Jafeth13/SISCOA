@@ -33,7 +33,7 @@ userData:any
       this.roleDataDelete = data;
     });
 
-    this.rest.rolList(idU).subscribe((pos) => {
+    this.rest.rolListPermision(this.route.snapshot.params['ID'],idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
 

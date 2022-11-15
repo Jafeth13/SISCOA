@@ -22,7 +22,6 @@ export class OfficeUpdateComponent implements OnInit {
 userData:any
   ngOnInit(): void {
     this.rut();
-    this.obtener_localStorage()
   }
   @Input() officeDataupdate: any;
   rut() {
@@ -66,8 +65,5 @@ userData:any
   }
 
 
-  obtener_localStorage(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    this.userData.ID=idU
-    }
+
 }

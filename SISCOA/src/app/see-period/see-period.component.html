@@ -7,19 +7,24 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form *ngIf="periodData" action="" id="userRegister-entry-form">
                     <div class="m-2">
-                        <h2>Observar</h2>
+                        <h2>Observar periodo</h2>
                         <div class="mt-4">
                     
                             <div>
                                 <label for="name">Nombre</label>
+                              
                 
                     <input [(ngModel)]="periodData.TC_Nombre"  type="text" autocomplete="off" name="name" id="name" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
-                    <label for="TF_FechaInicio">Fecha inicio del periodo</label>
-                    <input [(ngModel)]="periodData.TF_FechaInicio"  type="text" autocomplete="off" name="TF_FechaInicio"id="TF_FechaInicio" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
-                    <label for="TF_FechaFin">Fecha fin del periodo</label>
-                    <input [(ngModel)]="periodData.TF_FechaFin"  type="text" autocomplete="off" name="TF_FechaFin" id="TF_FechaFin" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
+                    <label >Fecha inicio del periodo</label>
+                    <br>
+                    <label >{{periodData.TF_FechaInicio.split("T",1)}}</label>
+                    <br>
+                    <label >Fecha fin del periodo</label>
+                    <br>  
+                    <label >{{periodData.TF_FechaFin.split("T",1)}}</label> 
+                   
                 </div>
                     <button (click)="back();" class="submit-btn form-control" >Volver</button>
                     

@@ -19,6 +19,13 @@ export class ServicesRolService {
     return this.http.get(endpoint + 'Roles?IDuserLogged=' + id, httpOptions);
   }
 
+  rolListPermision(id:any,idUser:any): Observable<any>{
+    return this.http.get(
+      endpoint + 'Controls/GetPermisosByRol/' + id + '?IDuserLogged=' + idUser,
+      httpOptions
+    );
+  }
+
   get(id: any, idUser: any): Observable<any> {
     return this.http.get(
       endpoint + 'Roles/' + id + '?IDuserLogged=' + idUser,
