@@ -49,6 +49,12 @@
         <td mat-cell *matCellDef="let element"> {{element.TSISCOA_Oficina.TC_Nombre}} </td>
       </ng-container>
 
+        <!-- Oficina Column -->
+        <ng-container matColumnDef="extra">
+          <th mat-header-cell *matHeaderCellDef><b> Nueva fecha</b> </th>
+          <td mat-cell *matCellDef="let element"> {{element.TF_FechaFin_DiasExtra.split("T",1)}} </td>
+        </ng-container>
+
    <!-- status Column -->
    <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef  class="pintar"><b> Estado </b>  </th>

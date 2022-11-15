@@ -14,9 +14,9 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
     'Descripcion','office',
-    'Period',
+    'Period','extra',
     'status',
-    'action',
+    'action', 
   ];
   dataSource = new MatTableDataSource();
 
