@@ -9,72 +9,37 @@
       <div class="entry-formRate">
         <form action="" *ngIf="dataSource" id="userRegister-entry-form">
           <div class="m-2">
-            <h2>Observar el control</h2>
+            <h2>Consultar control con dias extra</h2>
             <div class="mt-4">
-              <div class="d-flex justify-content-around">
+              <div class="">
                 <div>
-                    <label for="name">Nombre</label>
-                  <input
-                    [(ngModel)]="dataSource.TSISCOA_Control.TC_Nombre"
-                    disabled
-                    type="text"
-                    autocomplete="off"
-                    name="name"
-                    id="name"
-                    class="form-control rounded-left"
-                    placeholder="Nombre"
-                    required=""
-                  />
-                </div>
-                <div>
-                    <label for="Descripcion">Descripcion</label>
-                  <input
-                    disabled
-                    [(ngModel)]="
-                      dataSource.TSISCOA_Control
-                        .TC_DescriptionDocumentacionEvidencia
-                    "
-                    type="text"
-                    autocomplete="off"
-                    name="Descripcion"
-                    id="Descripcion"
-                    class="form-control rounded-left"
-                    placeholder="Descripcion"
-                    required=""
-                  />
+                  <label for="name">Nombre</label>
+                  <input [(ngModel)]="dataSource.TSISCOA_Control.TC_Nombre" disabled type="text" autocomplete="off"
+                    name="name" id="name" class="form-control rounded-left" placeholder="Nombre" required="" />
                 </div>
               </div>
-              <div class="d-flex justify-content-around">
+              <div>
+                <label for="Descripcion">Descripcion</label>
+                <input disabled [(ngModel)]="
+                  dataSource.TSISCOA_Control
+                    .TC_DescriptionDocumentacionEvidencia
+                " type="text" autocomplete="off" name="Descripcion" id="Descripcion" class="form-control rounded-left"
+                  placeholder="Descripcion" required="" />
+              </div>
+              <div class="d-flex justify-content-between">
                 <div>
-                    <label for="Periodo">Periodo</label>
-                    <input
-                      disabled
-                      [(ngModel)]="dataSource.TSISCOA_Periodo.TC_Nombre"
-                      type="text"
-                      autocomplete="off"
-                      name="Periodo"
-                      id="Periodo"
-                      class="form-control rounded-left"
-                      placeholder="Descripcion"
-                      required=""
-                    />
-                  </div>
+                  <label for="Periodo">Periodo</label>
+                  <input disabled [(ngModel)]="dataSource.TSISCOA_Periodo.TC_Nombre" type="text" autocomplete="off"
+                    name="Periodo" id="Periodo" class="form-control rounded-left" placeholder="Descripcion"
+                    required="" />
+                </div>
                 <div>
-                    <label for="Estado">Estado</label>
-                  <input
-                    disabled
-                    [(ngModel)]="dataSource.TSISCOA_Estado.TC_Nombre"
-                    type="text"
-                    autocomplete="off"
-                    name="Estado"
-                    id="Estado"
-                    class="form-control rounded-left"
-                    placeholder="Descripcion"
-                    required=""
-                  />
+                  <label for="Estado">Estado</label>
+                  <input disabled [(ngModel)]="dataSource.TSISCOA_Estado.TC_Nombre" type="text" autocomplete="off"
+                    name="Estado" id="Estado" class="form-control rounded-left" placeholder="Descripcion" required="" />
                 </div>
               </div>
-             
+
               <button routerLink="/check" class="submit-btn form-control">
                 Volver
               </button>

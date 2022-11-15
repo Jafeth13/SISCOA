@@ -9,34 +9,36 @@
             <div class="entry-formRate">
                 <form *ngIf="periodData" action="" id="userRegister-entry-form">
                     <div class="m-2">
-                        <h2>Observar periodo</h2>
+                        <h2>Consultar periodo</h2>
                         <div class="mt-4">
-                    
+
                             <div>
                                 <label for="name">Nombre</label>
-                              
-                
-                    <input [(ngModel)]="periodData.TC_Nombre"  type="text" autocomplete="off" name="name" id="name" class="form-control rounded-left" placeholder="Nombre" required="" disabled>
-                    <label >Fecha inicio del periodo</label>
-                    <br>
-                    <label >{{periodData.TF_FechaInicio.split("T",1)}}</label>
-                    <br>
-                    <label >Fecha fin del periodo</label>
-                    <br>  
-                    <label >{{periodData.TF_FechaFin.split("T",1)}}</label> 
-                   
-                </div>
-                    <button (click)="back();" class="submit-btn form-control" >Volver</button>
-                    
+
+
+                                <input [(ngModel)]="periodData.TC_Nombre" type="text" autocomplete="off" name="name"
+                                    id="name" class="form-control rounded-left" placeholder="Nombre" required=""
+                                    disabled>
+                                <label>Fecha inicio del periodo</label>
+                                <br>
+                                <label>{{periodData.TF_FechaInicio.split("T",1)}}</label>
+                                <br>
+                                <label>Fecha fin del periodo</label>
+                                <br>
+                                <label>{{periodData.TF_FechaFin.split("T",1)}}</label>
+
+                            </div>
+                            <button (click)="back();" class="submit-btn form-control">Volver</button>
+
                         </div>
                     </div>
                 </form>
 
             </div>
         </div>
-         
+
     </div>
     <div class="example-button-container">
-        
-        </div>
+
+    </div>
 </section>
