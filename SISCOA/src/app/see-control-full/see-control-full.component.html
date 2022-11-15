@@ -39,26 +39,18 @@
                     name="Estado" id="Estado" class="form-control rounded-left" placeholder="Descripcion" required="" />
                 </div>
               </div>
-              <div class="d-flex justify-content-around">
-              
-                <div>  <label for="oficina">Oficina</label>
-                  <input
-                    disabled
-                    [(ngModel)]="dataSource.TSISCOA_Oficina.TC_Nombre"
-                    type="text"
-                    autocomplete="off"
-                    name="oficina"
-                    id="oficina"
-                    class="form-control rounded-left"
-                    placeholder="Descripcion"
-                    required=""
-                  />
+              <div class="d-flex justify-content-between">
+
+                <div> <label for="oficina">Oficina</label>
+                  <input disabled [(ngModel)]="dataSource.TSISCOA_Oficina.TC_Nombre" type="text" autocomplete="off"
+                    name="oficina" id="oficina" class="form-control rounded-left" placeholder="Descripcion"
+                    required="" />
                 </div>
-                <div>  
-                  <label >Dias extras</label>
+                <div>
+                  <label>Dias extras</label>
                   <br>
-                  
-                <label>{{dataSource.TF_FechaFin_DiasExtra.split("T",1)}} </label>
+
+                  <label>{{dataSource.TF_FechaFin_DiasExtra.split("T",1)}} </label>
                 </div>
               </div>
               <button routerLink="/check" class="submit-btn form-control">

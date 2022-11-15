@@ -16,28 +16,27 @@ export class RolSeeComponent implements OnInit {
     public rest: ServicesRolService,
     private route: ActivatedRoute,
     private router: Router,
-    public restUser:ServiceUserService
-  ) {}
+    public restUser: ServiceUserService
+  ) { }
   displayedColumns: string[] = ['name', 'action'];
   dataSource = new MatTableDataSource();
-userData:any
+  userData: any
   ngOnInit(): void {
     this.rut();
   }
   roleDataDelete: any;
   rut() {
-    let idU =  localStorage.getItem("idUsuario") ;
-   
-    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
-      console.log(data);
+    let idU = localStorage.getItem("idUsuario");
+
+    this.rest.get(this.route.snapshot.params['ID'], idU).subscribe((data: {}) => {
       this.roleDataDelete = data;
     });
 
-    this.rest.rolListPermision(this.route.snapshot.params['ID'],idU).subscribe((pos) => {
+    this.rest.rolListPermision(this.route.snapshot.params['ID'], idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
 
-    
+
   }
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 
@@ -54,5 +53,5 @@ userData:any
   back() {
     this.router.navigate(['/rolList']);
   }
-  
+
 }
