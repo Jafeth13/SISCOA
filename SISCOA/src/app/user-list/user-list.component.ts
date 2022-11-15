@@ -25,7 +25,7 @@ export class UserListComponent implements AfterViewInit, OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public restUser: ServiceUserService
-  ) {}
+  ) { }
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 

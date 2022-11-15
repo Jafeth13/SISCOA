@@ -5,7 +5,7 @@ using Repositories.Repositories.Implements;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Services.Services.Implements
+namespace Security.Security.Implements
 {
     public class PermisoService : GenericService<TSISCOA_Permiso>, IPermisoService
     {

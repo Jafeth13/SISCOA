@@ -55,7 +55,7 @@ export class RolUpdateComponent implements OnInit {
 
     this.rolPermisionU.FK_SISCOA_Permiso_SISCOA_RolPermiso = this.num;
     this.rolPermisionU.FK_SISCOA_Rol_SISCOA_RolPermiso = this.roleDataupdate.ID;
-    console.log(this.rolPermisionU)
+
     this.rest.rolPermision(this.rolPermisionU, idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'El rol fue actualizado!', 'success');

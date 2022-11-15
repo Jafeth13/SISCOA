@@ -32,10 +32,6 @@ export class UserUpdateComponent implements OnInit {
       this.userData = data;
     });
 
-    this.restOffice.officeList(idU).subscribe((data = {}) => {
-      this.dataOffice = data
-    });
-
     this.restRol.rolList(idU).subscribe((pos) => {
       this.roleData = pos
     });
@@ -66,22 +62,22 @@ export class UserUpdateComponent implements OnInit {
 
   obtener_localStorage() {
     let idU = localStorage.getItem("idUsuario");
-   
+
   }
 
-  valitation(){
-    this.userData.TSISCOA_Oficina= null,
-    this.userData.TSISCOA_Rol= null
-    if (this.userData.TC_Nombre.length==0||this.userData.TC_PrimerApellido.length==0
-      ||this.userData.TC_SegundoApellido.length==0||this.userData.TC_Correo.length==0||
-      this.userData.TV_Contrasenna.length==0||this.userData.FK_SISCOA_Rol_SISCOA_Usuario.length==0){
+  valitation() {
+    this.userData.TSISCOA_Oficina = null,
+      this.userData.TSISCOA_Rol = null
+    if (this.userData.TC_Nombre.length == 0 || this.userData.TC_PrimerApellido.length == 0
+      || this.userData.TC_SegundoApellido.length == 0 || this.userData.TC_Correo.length == 0 ||
+      this.userData.TV_Contrasenna.length == 0 || this.userData.FK_SISCOA_Rol_SISCOA_Usuario.length == 0) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Error al actualizar el usuario!',
       });
-    }else{
-     this.Update();
+    } else {
+      this.Update();
     }
   }
 

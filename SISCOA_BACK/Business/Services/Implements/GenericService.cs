@@ -1,6 +1,4 @@
-﻿using Entities.Models;
-using Repositories.Repositories;
-using Repositories.Repositories.Implements;
+﻿using Repositories.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

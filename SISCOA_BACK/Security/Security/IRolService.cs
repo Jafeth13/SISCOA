@@ -1,8 +1,7 @@
 ﻿using Entities.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Services.Services
+namespace Security.Security
 {
     public interface IRolService : IGenericService<TSISCOA_Rol>
     {

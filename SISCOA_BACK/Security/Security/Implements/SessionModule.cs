@@ -39,16 +39,12 @@ namespace Security.Security.Implements
 
         public async Task<TSISCOA_Usuario> Update(TSISCOA_Usuario usuario)
         {
-            var listUsers = await usuarioRepository.GetAll();
+            var userDB = await usuarioRepository.GetById(usuario.ID);
             if (usuario.TV_Contrasenna.Length < 8 || usuario.TC_Identificacion.Length < 8)
                 return null;
-            foreach (var item in listUsers)
-            {
-                if (item.TC_Identificacion == usuario.TC_Identificacion) {
-                    if (item.TV_Contrasenna != usuario.TV_Contrasenna)
-                        usuario.TV_Contrasenna = GetSHA256(usuario.TV_Contrasenna);
-                }
-            }
+            if (userDB.TV_Contrasenna != usuario.TV_Contrasenna)
+                usuario.TV_Contrasenna = GetSHA256(usuario.TV_Contrasenna);
+
             return await usuarioRepository.Update(usuario);
         }
 

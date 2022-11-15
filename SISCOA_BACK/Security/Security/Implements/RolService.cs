@@ -4,7 +4,7 @@ using Repositories.Repositories;
 using Repositories.Repositories.Implements;
 using System.Threading.Tasks;
 
-namespace Services.Services.Implements
+namespace Security.Security.Implements
 {
     public class RolService : GenericService<TSISCOA_Rol>, IRolService
     {
