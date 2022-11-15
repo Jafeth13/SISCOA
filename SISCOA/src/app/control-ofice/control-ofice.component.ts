@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServiceUserService } from '../service-user.service';
+import { MatSort, Sort } from '@angular/material/sort';
 @Component({
   selector: 'app-control-ofice',
   templateUrl: './control-ofice.component.html',
@@ -19,7 +20,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
     'action',
   ];
   dataSource = new MatTableDataSource();
-
+  @ViewChild(MatSort) sort = new MatSort();
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   constructor(
     public restUser: ServiceUserService,
@@ -30,6 +31,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
   userData: any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   idP: number = 1;
   nc = {
@@ -38,6 +40,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
   };
   ngOnInit(): void {
     this.rut();
+    this.dataSource.sort = this.sort;
   }
 
   rut() {
@@ -51,13 +54,13 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
       });
     });
   }
-
-  back() {
-    this.router.navigate(['/controlMenu']);
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  back() {
+    this.router.navigate(['/controlMenu']);
+  }
+
+ 
 }
