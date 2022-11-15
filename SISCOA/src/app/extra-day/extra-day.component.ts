@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServiceUserService } from '../service-user.service';
+import { MatSort, Sort } from '@angular/material/sort';
 @Component({
   selector: 'app-extra-day',
   templateUrl: './extra-day.component.html',
@@ -19,7 +20,7 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
     'action', 
   ];
   dataSource = new MatTableDataSource();
-
+  @ViewChild(MatSort) sort = new MatSort();
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   constructor(
     public rest: ServicesControllersService,
@@ -30,9 +31,11 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
   userData: any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   ngOnInit(): void {
     this.rut();
+    this.dataSource.sort = this.sort;
   }
 
   rut() {
