@@ -40,7 +40,7 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
   };
   ngOnInit(): void {
     this.rut();
-    this.dataSource.sort = this.sort;
+    
   }
 
   rut() {

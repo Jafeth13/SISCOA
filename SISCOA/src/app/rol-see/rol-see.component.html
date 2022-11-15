@@ -7,7 +7,7 @@
             <br>
             <br>
             <div class="entry-formRate">
-                <form action="" id="userRegister-entry-form">
+                <form *ngIf="roleDataDelete" action="" id="userRegister-entry-form">
                     <div class="m-2">
                         <h2>Observar</h2>
                         <div class="mt-4">
@@ -38,7 +38,7 @@
         <br />
         <br />
     
-        <h3 class="section-heading text-uppercase">Permisos de {{roleDataDelete.TC_Nombre}} </h3>
+        <h3 class="section-heading text-uppercase">Permisos</h3>
     
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Busqueda</mat-label>
