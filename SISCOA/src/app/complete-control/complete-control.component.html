@@ -2,48 +2,66 @@
 
 <section class="page-section" id="adminRegister">
     <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-            <br>
-            <br>
-            <br>
-            <div class="entry-formRate">
+        <div class="col-md-offset-1 col-md-12 col-sm-8" id="log">
+            <div class="entry-formRate mt-5">
                 <form *ngIf="controlDataDelete" action="" id="userRegister-entry-form">
-                    <h2>Completa el control</h2>
-                    <input   type="text"  hidden>
+                    <div class="m-1 m-lg-5 p-lg-5">
+                        <h2>Completa el control</h2>
+                        <input type="text" hidden>
 
-                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_Nombre"   type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Nombre" required="">
+                        <div class="mt-3">
+                            <label for="identification_Admin">Nombre del control</label>
+                            <input [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_Nombre" type="text"
+                                autocomplete="off" name="identification_Admin" id="identification_Admin"
+                                class="form-control rounded-left" placeholder="Nombre" required="" disabled="">
+                        </div>
 
-                    <input   [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"  type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Descripcion" required="">
+                        <div>
+                            <label for="name_Admin">Descripcion del control</label>
+                            <input [(ngModel)]="controlDataDelete.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia"
+                                type="text" autocomplete="off" name="name_Admin" id="name_Admin"
+                                class="form-control rounded-left" placeholder="Descripcion" required="" disabled="" >
+                        </div>
 
-                    <select [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"   class="form-control rounded-left" name="role_Admin" id="role_Admin2">
-                        <option value=0 selected>Periodo</option>     
-                        <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
-       
-                    </select>
+                        <div class="d-flex justify-content-center align-content-center">
+                            <div class="w-50 m-1">
+                                <label for="role_Admin2">Periodos</label>
+                                <select disabled="" [(ngModel)]="controlDataDelete.FK_TN_PERIODO_SISCOA_OficinaControl"
+                                    class="form-control rounded-left" name="role_Admin" id="role_Admin2">
+                                    <option value=0 selected>Periodo</option>
+                                    <option [value]="s.ID" *ngFor="let s of dataPeriod">{{s.TC_Nombre}}</option>
+                                </select>
+                            </div>
+                        
+                        </div>
 
-                    <select  [(ngModel)]="controlDataDelete.FK_TN_ESTADO_SISCOA_OficinaControl"  class="form-control rounded-left" name="role_AdGFDmin" id="role_GFDAdmin2">
-                        <option value=0 selected>Estado</option>   
-                        <option [value]="s.ID" *ngFor="let s of dataConditional">{{s.TC_Nombre}}</option>
-                    </select>
+                        <div>
+                            <label for="name_jklAdmin">Comentarios</label>
+                            <textarea [(ngModel)]="controlDataDelete.TC_Comentario" type="TEXT" autocomplete="off"
+                                name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left"
+                                placeholder="Comentario" required=""></textarea>
+                        </div>
 
-                    <textarea   [(ngModel)]="controlDataDelete.TC_Comentario"  type="TEXT" autocomplete="off" name="name_Adlkmin" id="name_jklAdmin" class="form-control rounded-left" placeholder="Comentario" required=""></textarea>
 
+                        <div>
+                            <label for="fileInput">Documentacion</label>
+                            <input class="form-control rounded-left" (change)="getFile($event)" type="file" name="fds"
+                                placeholder="Documento PDF" id="fileInput">
+                        </div>
 
-                    <p class="parrafo"> Documentacion</p>
-                    <input class="form-control rounded-left" type="file" name="fds" placeholder="Documento">
-
-                    <button class="submit-btn form-control" (click)="add()" >Completar</button>
-                    <button class="submit-btn form-control" routerLink="/controloficesub">Cancelar</button>
+                        <div class="d-flex">
+                            <button class="submit-btn form-control" (click)="add()">Completar</button>
+                            <button class="submit-btn form-control" routerLink="/controloficesub">Cancelar</button>
+                        </div>
+                    </div>
 
                 </form>
 
             </div>
         </div>
-        
+
     </div>
     <div class="example-button-container">
-      
-        </div>
+
+    </div>
 </section>
-
-

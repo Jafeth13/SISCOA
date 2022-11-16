@@ -17,7 +17,7 @@ export class ControlOficeNewComponent implements OnInit {
     'Descripcion',
     'Period',
     'status',
-    'notification',
+
     'action',
   ];
   dataSource = new MatTableDataSource();

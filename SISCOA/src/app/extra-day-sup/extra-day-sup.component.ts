@@ -14,11 +14,11 @@ import { ServiceUserService } from '../service-user.service';
 export class ExtraDaySupComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
-    'Descripcion',
+    'Descripcion','office',
     'Period',
+    'extra',
     'status',
-    'notification',
-    'action',
+   
   ];
   dataSource = new MatTableDataSource();
 
