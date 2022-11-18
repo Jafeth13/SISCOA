@@ -16,7 +16,7 @@ export class ControlOfficeSupComponent implements AfterViewInit, OnInit {
     'Descripcion',
     'Period',
     'status',
-    'notification',
+
     'action',
   ];
   dataSource = new MatTableDataSource();

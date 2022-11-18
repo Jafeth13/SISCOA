@@ -37,7 +37,6 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     'Descripcion',
     'Period',
     'status',
-    'notification',
     'action',
   ];
   controlDataupdate: any;
@@ -54,8 +53,8 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private router: Router,
     private _formBuilder: FormBuilder,
-    public officeControl:OfficeControlServicesService
-  ) {}
+    public officeControl: OfficeControlServicesService
+  ) { }
 
   ngAfterViewInit() {
     this.dataSourceControl.paginator = this.paginator;
@@ -63,23 +62,21 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
-   this.rut();
+    this.rut();
   }
   update(id: number) {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
-    this.rest2.getControlFull(id,idU).subscribe((data: {}) => {
-      console.log(data);
+    this.rest2.getControlFull(id, idU).subscribe((data: {}) => {
       this.controlDataupdate = data;
     });
   }
   office: any;
   dar(id: any, name: any) {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
     this.office = id;
-    this.rest2.getControl(this.office,idU).subscribe((pos) => {
-      console.log(pos);
+    this.rest2.getControl(this.office, idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
     });
     this.name.nameOff = name;
@@ -104,41 +101,39 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
   selectHour() {
     this.hour = (<HTMLInputElement>document.getElementById('time')).value;
   }
-  extraDay(){
-    let idU =  localStorage.getItem("idUsuario") ;
+  extraDay() {
+    let idU = localStorage.getItem("idUsuario");
 
     var date;
     date = new Date();
-    date =  
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-    
-    this.startDate = this.date + 'T' + date+'Z';
+    date =
+      ('00' + date.getHours()).slice(-2) + ':' +
+      ('00' + date.getMinutes()).slice(-2) + ':' +
+      ('00' + date.getSeconds()).slice(-2);
+
+    this.startDate = this.date + 'T' + date + 'Z';
 
     this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
 
-    this.officeControl.update(this.controlDataupdate.ID,this.controlDataupdate,idU).subscribe(
+    this.officeControl.update(this.controlDataupdate.ID, this.controlDataupdate, idU).subscribe(
       (result) => {
-        Swal.fire('Buen trabajo!', 'El proceso fue exitoso!', 'success'); 
-        this.router.navigate(['/controlMenu']);
+        Swal.fire('Buen trabajo!', 'El proceso fue exitoso!', 'success');
+        this.router.navigate(['/controlMenuSup']);
       }
-     
+
       ,
       (err) => {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Something went wrong!',
-        });   
+          text: 'Error al cambiar controles de oficina!',
+        });
       }
     );
-   }
+  }
+  rut() {
+    let idU = localStorage.getItem("idUsuario");
 
-
-   rut(){
-    let idU =  localStorage.getItem("idUsuario") ;
-    
     this.rest.officeList(idU).subscribe((pos) => {
       this.dataSource.data = pos;
     });
@@ -146,9 +141,49 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     this.restPeriodic.periodList(idU).subscribe((pos) => {
       this.dataSourcePeriod = pos;
     });
+  }
+  download(id: any) {
+    let idU = localStorage.getItem("idUsuario");
+    this.officeControl.getBiId(id, idU).subscribe((data: any) => {
+      if (data.Archivos[0]) {
+        let base64String = data.Archivos[0].TC_Datos;
+        this.downloadPdf(base64String, data.Archivos[0].TC_Nombre);
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No hay archivos para descargar!',
+        });
+      }
+    });
+  }
 
-    
-   }
+  downloadPdf(base64String: any, fileName: any) {
+    const source = `${base64String}`;
+    const link = document.createElement("a");
+    link.href = source;
+    link.download = `${fileName}.pdf`;
+    link.click();
+  }
 
+  delete(id:any){
+    let idU =  localStorage.getItem("idUsuario") ;
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminarlo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.officeControl.deleteOfficeControl(id,idU).subscribe((data) => {
+          this.router.navigate(['/controlMenu']);
+        });
+        Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');
+      }
+    });
+  }
 }
-

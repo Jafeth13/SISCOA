@@ -1,103 +1,26 @@
+.containerGraphics {
+    margin-top: 13em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
-.grafico1{
+.graphic {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    line-height : 50px;
+    line-height: 50px;
     width: 300px;
-  margin: 30%;
-  padding: 10%;
-  margin: 0 auto;
-  position: absolute;right: 5%;
-  top: 0px;
 }
 
-.grafico2{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    line-height : 50px;
-    width: 300px;
-  margin: 30%;
-  padding: 10%;
-  margin: 0 auto;
-  position: absolute;top: 380px;
-}
-.grafico3{
-   
-    line-height : 50px;
-    width: 300px;
-  margin: 30%;
-  padding: 10%;
-  margin: 0 auto;
-  position: absolute;left:35;
+.wrapperButton {
+    margin-top: 4em;
 }
 
-.grafico4{
-    
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 11px;
-    line-height : 50px;
-    width: 300px;
-  margin: 30%;
-  padding: 10%;
-  position: absolute;right: 5%;
-  top: 380px;
-  margin: 0 auto;
-  
-  
-  
-}
-
-.wrapperButton{
-    position: absolute;
-    
-    top: 90%;
-    left:70%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-.wrapperButton2{
-    position: absolute;
-    
-    top: 90%;
-    left:60%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-
-.wrapperButton3{    
-    position: absolute;   
-    top: 90%;
-    left:60%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-
-.wrapperButton4{    
-    position: absolute;   
-    top: 90%;
-    left:70%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-.wrapperButton5{    
-    position: absolute;   
-    top: 90%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height:auto;
-}
-
-
-
-.myB{
-    width:200px;
-    height:90px;
+.myB {
+    width: 200px;
+    height: 110px;
     background: linear-gradient(to left top, #212529 50%, #212529 50%);
     border-style: none;
-    color:#fff;
+    color: #fff;
     font-size: 23px;
     letter-spacing: 3px;
     font-family: 'Lato';
@@ -105,100 +28,120 @@
     outline: none;
     cursor: pointer;
     position: relative;
-    padding: 0px;
     overflow: hidden;
     transition: all .5s;
-    box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
 }
-.myB span{
+
+.myB span {
     position: absolute;
     display: block;
 }
-.myB span:nth-child(1){
+
+.myB span:nth-child(1) {
     height: 3px;
-    width:200px;
-    top:0px;
-    left:-200px;
-    background: linear-gradient(to right, rgba(0,0,0,0), #f6e58d);
+    width: 200px;
+    top: 0px;
+    left: -200px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), #f6e58d);
     border-top-right-radius: 1px;
     border-bottom-right-radius: 1px;
     animation: span1 2s linear infinite;
     animation-delay: 1s;
 }
 
-@keyframes span1{
-    0%{
-        left:-200px
+@keyframes span1 {
+    0% {
+        left: -200px
     }
-    100%{
-        left:200px;
+
+    100% {
+        left: 200px;
     }
 }
-.myB span:nth-child(2){
+
+.myB span:nth-child(2) {
     height: 70px;
     width: 3px;
-    top:-70px;
-    right:0px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #f6e58d);
+    top: -70px;
+    right: 0px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #f6e58d);
     border-bottom-left-radius: 1px;
     border-bottom-right-radius: 1px;
     animation: span2 2s linear infinite;
     animation-delay: 2s;
 }
-@keyframes span2{
-    0%{
-        top:-70px;
+
+@keyframes span2 {
+    0% {
+        top: -70px;
     }
-    100%{
-        top:70px;
+
+    100% {
+        top: 70px;
     }
 }
-.myB span:nth-child(3){
-    height:3px;
-    width:200px;
-    right:-200px;
+
+.myB span:nth-child(3) {
+    height: 3px;
+    width: 200px;
+    right: -200px;
     bottom: 0px;
-    background: linear-gradient(to left, rgba(0,0,0,0), #f6e58d);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0), #f6e58d);
     border-top-left-radius: 1px;
     border-bottom-left-radius: 1px;
     animation: span3 2s linear infinite;
     animation-delay: 3s;
 }
-@keyframes span3{
-    0%{
-        right:-200px;
+
+@keyframes span3 {
+    0% {
+        right: -200px;
     }
-    100%{
+
+    100% {
         right: 200px;
     }
 }
 
-.myB span:nth-child(4){
-    height:70px;
-    width:3px;
-    bottom:-70px;
-    left:0px;
-    background: linear-gradient(to top, rgba(0,0,0,0), #f6e58d);
+.myB span:nth-child(4) {
+    height: 70px;
+    width: 3px;
+    bottom: -70px;
+    left: 0px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0), #f6e58d);
     border-top-right-radius: 1px;
     border-top-left-radius: 1px;
     animation: span4 2s linear infinite;
     animation-delay: 4s;
 }
-@keyframes span4{
-    0%{
+
+@keyframes span4 {
+    0% {
         bottom: -70px;
     }
-    100%{
-        bottom:70px;
+
+    100% {
+        bottom: 70px;
     }
 }
 
-.myB:hover{
+.myB:hover {
     transition: all .5s;
     transform: rotate(-3deg) scale(1.1);
-    box-shadow: 0px 3px 5px rgba(0,0,0,.4);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .4);
 }
-.myB:hover span{
+
+.myB:hover span {
     animation-play-state: paused;
 }
 
+@media screen and (max-width: 768px) {
+    .containerGraphics {
+        flex-direction: column;
+    }
+
+    .graphic {
+        margin-top: 2em;
+    }
+}

@@ -605,7 +605,8 @@ th {
 }
 
 label {
-    display: inline-block;
+    display: flex;
+    color: #ffc800;
 }
 
 button {
@@ -12868,7 +12869,7 @@ input, button,
 
 .entry-formRate {
     background: #000;
-    border-radius: 15%;
+    border-radius: 25px;
     text-align: center;
     padding: 4em;
 }
@@ -13803,4 +13804,15 @@ table {
     margin: 0 auto;
     
     text-align: center !important;
+}
+
+.title{
+    margin:0px auto;   
+    text-align:center;
+}
+.province{
+    font-family: georgia ;}
+    
+.labelFecha{
+    text-align:center;
 }
