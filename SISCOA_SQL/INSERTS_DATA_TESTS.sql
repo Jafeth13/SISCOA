@@ -13,9 +13,9 @@ GO
 INSERT INTO [CONTROL].[TSISCOA_Periodo]
 			([TC_Nombre], [TF_FechaInicio], [TF_FechaFin])
 		VALUES
-			('Noviembre', '2022-11-01', '2022-11-29'),
-			('Diciembre', '2022-12-01', '2022-12-29'),
-			('Enero', '2023-01-01', '2023-01-29')
+			('Diciembre', TRY_CONVERT(DATETIME, '01/12/2022',103), TRY_CONVERT(DATETIME, '29/12/2022',103)),
+			('Enero', TRY_CONVERT(DATETIME, '01/01/2022',103), TRY_CONVERT(DATETIME, '29/01/2022',103)),
+			('Febrero', TRY_CONVERT(DATETIME, '01/02/2022',103), TRY_CONVERT(DATETIME, '28/02/2022',103))
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Periodo]
 GO
@@ -50,11 +50,11 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ,[FK_TN_PERIODO_SISCOA_OficinaControl])
      VALUES
            ('',1,1,1,1),
-           ('',2,1,2,1),
-           ('',3,1,2,2),
-           ('',2,2,2,2),
+           ('',2,1,1,1),
+           ('',3,1,1,2),
+           ('',2,2,1,2),
            ('',3,3,1,1),
-           ('',1,4,2,2),
+           ('',1,4,1,2),
 		   ('',1,3,1,2)
 
 INSERT INTO [CONTROL].[TSISCOA_OficinaControl]

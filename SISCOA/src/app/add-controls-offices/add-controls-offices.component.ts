@@ -30,7 +30,6 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   displayedxColumns: string[] = [
     'name',
     'Descripcion',
-    'notification',
     'action',
   ];
   displayedColumnsOfice: string[] = [
@@ -38,7 +37,6 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     'Descripcion',
     'period',
     'status',
-    'notification',
     'action',
   ];
   dataSource = new MatTableDataSource();
@@ -87,7 +85,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     "FK_TN_CONTROL_SISCOA_OficinaControl": 0,
     "FK_TN_OFICINA_SISCOA_OficinaControl": 0,
     "FK_TN_ESTADO_SISCOA_OficinaControl": 1,
-    "TC_Comentario":"",
+    "TC_Comentario": "",
     "FK_TN_PERIODO_SISCOA_OficinaControl": 0,
     "TF_FechaFin_DiasExtra":
       "0001-01-01T00:00:00.000Z",
@@ -95,7 +93,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   };
 
   darOfice(id: any, name: any) {
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
     this.office = id;
     this.rest2.getControl(this.office, idU).subscribe((pos) => {
@@ -114,8 +112,8 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     this.restOfficeControl.add(this.officeControl, idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'Control agregado!', 'success');
-       this.back()
-  }
+        this.back()
+      }
       ,
       (err) => {
         Swal.fire({
@@ -130,7 +128,7 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     let idU = localStorage.getItem("idUsuario");
 
     this.control = id;
-    this.form.name=name2;
+    this.form.name = name2;
     //this.addControlOffice();
     this.ngOnInit();
 
