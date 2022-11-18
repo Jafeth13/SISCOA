@@ -32,7 +32,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
   dataSourceControl = new MatTableDataSource();
   dataSourcePeriod: any;
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild('paginator') paginator: any = MatPaginator;
+  @ViewChild('paginator2') paginator2: any = MatPaginator;
   displayedColumns: string[] = ['name', 'code', 'institution', 'action'];
   displayedxColumns: string[] = [
     'name',
@@ -59,9 +60,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    this.dataSourceControl.paginator = this.paginator;
-
     this.dataSource.paginator = this.paginator;
+    this.dataSourceControl.paginator = this.paginator2;
   }
   ngOnInit(): void {
     this.rut();
@@ -150,7 +150,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
       if (data.Archivos[0]) {
         let base64String = data.Archivos[0].TC_Datos;
         this.downloadPdf(base64String, data.Archivos[0].TC_Nombre);
-      }else{
+      } else {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -168,8 +168,8 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     link.click();
   }
 
-  delete(id:any){
-    let idU =  localStorage.getItem("idUsuario") ;
+  delete(id: any) {
+    let idU = localStorage.getItem("idUsuario");
 
     Swal.fire({
       title: 'Estas seguro?',
@@ -181,7 +181,7 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'si, eliminarlo!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.officeControl.deleteOfficeControl(id,idU).subscribe((data) => {
+        this.officeControl.deleteOfficeControl(id, idU).subscribe((data) => {
           this.router.navigate(['/controlMenu']);
         });
         Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');

@@ -299,6 +299,8 @@ namespace SISCOA_API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+            if (DTO.FK_TN_PERIODO_SISCOA_OficinaControl == 0)
+                return BadRequest("Object id does not match period id");
 
             try
             {

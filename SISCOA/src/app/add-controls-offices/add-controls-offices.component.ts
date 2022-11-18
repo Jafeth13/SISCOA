@@ -48,7 +48,9 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     nameOff: '',
     indication: 'Controles',
   };
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild('paginator') paginator: any = MatPaginator;
+  @ViewChild('paginator2') paginator2: any = MatPaginator;
+  @ViewChild('paginator3') paginator3: any = MatPaginator;
   constructor(
     public restUser: ServiceUserService,
     public restOfficeControl: OfficeControlServicesService,
@@ -65,6 +67,8 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
   dataConditional: any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSourceControl.paginator = this.paginator2;
+    this.dataSourceControlOffice.paginator = this.paginator3;
   }
   ngOnInit(): void {
     this.rut();
