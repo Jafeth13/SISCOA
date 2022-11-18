@@ -30,7 +30,7 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
   displayedxColumns: string[] = [
     'name',
     'Descripcion',
-    'notification',
+    
     'action',
   ];
   displayedColumnsOfice: string[] = [
@@ -38,7 +38,7 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     'Descripcion',
     'period',
     'status',
-    'notification',
+   
  
   ];
   dataSource = new MatTableDataSource();
@@ -50,7 +50,9 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     nameOff: '',
     indication: 'Controles',
   };
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild('paginator') paginator: any = MatPaginator;
+  @ViewChild('paginator2') paginator2: any = MatPaginator;
+  @ViewChild('paginator3') paginator3: any = MatPaginator;
   constructor(
     public restUser: ServiceUserService,
     public restOfficeControl: OfficeControlServicesService,
@@ -67,6 +69,8 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
   dataConditional: any
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSourceControl.paginator = this.paginator2;
+    this.dataSourceControlOffice.paginator = this.paginator3;
   }
   ngOnInit(): void {
     this.rut();
