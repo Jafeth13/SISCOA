@@ -30,7 +30,8 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
   dataSourceControl = new MatTableDataSource();
   dataSourcePeriod: any;
-  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  @ViewChild('paginator') paginator: any = MatPaginator;
+  @ViewChild('paginator2') paginator2: any = MatPaginator;
   displayedColumns: string[] = ['name', 'code', 'institution', 'action'];
   displayedxColumns: string[] = [
     'name',
@@ -57,7 +58,7 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    this.dataSourceControl.paginator = this.paginator;
+    this.dataSourceControl.paginator = this.paginator2;
 
     this.dataSource.paginator = this.paginator;
   }

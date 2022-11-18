@@ -81,12 +81,12 @@ export class LoginComponent implements OnInit {
         }
         if (this.user.role == 2||this.user.role ==3) {
           this.router.navigate(['/natvarSupervisor']);
-          this.router.navigate(['/menuSupervisor']);
+          this.router.navigate(['/controlMenuSup']);
         }
 
         if (this.user.role == 5||this.user.role == 4) {
           this.router.navigate(['/natvarOficinas']);
-          this.router.navigate(['/menuOficinas']);
+          this.router.navigate(['/controloficesub']);
         }
         this.grabarLocalstorage();
 
