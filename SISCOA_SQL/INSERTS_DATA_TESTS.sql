@@ -65,7 +65,7 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ,[FK_TN_PERIODO_SISCOA_OficinaControl]
 		   ,[TF_FechaFin_DiasExtra])
      VALUES
-		   ('',2,4,1,2,GETDATE())
+		   ('',2,4,1,1,TRY_CONVERT(DATETIME, '30/12/2022',103))
 GO
 /**
 SELECT * FROM [CONTROL].[TSISCOA_Control]
