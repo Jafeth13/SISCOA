@@ -91,9 +91,15 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     "FK_TN_ESTADO_SISCOA_OficinaControl": 1,
     "TC_Comentario": "",
     "FK_TN_PERIODO_SISCOA_OficinaControl": 0,
-    "TF_FechaFin_DiasExtra":
-      "0001-01-01T00:00:00.000Z",
-    "TSISCOA_Control": null, "TSISCOA_Oficina": null, "TSISCOA_Estado": null, "TSISCOA_Periodo": null
+    "TF_FechaInicio": "0001-01-01T00:00:00.000Z",
+    "TF_FechaFin": "2022-11-20T18:20:39.549Z",
+    "TF_FechaFin_DiasExtra":"0001-01-01T00:00:00.000Z",
+    "TN_DiasExtra": 0,
+    "Archivos":null,
+    "TSISCOA_Control": null,
+    "TSISCOA_Oficina": null, 
+    "TSISCOA_Estado": null,
+    "TSISCOA_Periodo": null
   };
 
   darOfice(id: any, name: any) {

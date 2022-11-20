@@ -89,6 +89,7 @@ import { csvParse } from 'd3';
 import { SeePeriodComponent } from './see-period/see-period.component';
 import { SeeConditionalComponent } from './see-conditional/see-conditional.component';
 import { SeePermisionComponent } from './see-permision/see-permision.component';
+import { TableByStatusComponent } from './table-by-status/table-by-status.component';
 
 
 const appRoutes: Routes = [
@@ -357,6 +358,10 @@ const appRoutes: Routes = [
     path: 'seePermision/:ID',
     component: SeePermisionComponent,
     data: { title: 'Completo'}, 
+  },{
+    path: 'tableByStatus',
+    component: TableByStatusComponent,
+    data: { title: 'Tabla'}, 
   },
 
 ];
@@ -429,7 +434,8 @@ const appRoutes: Routes = [
     CompleteControlSupComponent,
     SeePeriodComponent,
     SeeConditionalComponent,
-    SeePermisionComponent
+    SeePermisionComponent,
+    TableByStatusComponent
     
   ],
   imports: [
