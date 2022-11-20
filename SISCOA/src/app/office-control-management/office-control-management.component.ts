@@ -103,7 +103,7 @@ day={
 }
   extraDay() {
     let idU = localStorage.getItem("idUsuario");
-///console.log(this.controlDataupdate)
+//console.log(this.controlDataupdate.TN_DiasExtra)
 //this.controlDataupdate.TN_DiasExtra=7;
     this.officeControl.update(this.controlDataupdate.ID, this.controlDataupdate, idU).subscribe(
       (result) => {
