@@ -55,7 +55,6 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
 		   ,[TF_FechaFin])
      VALUES
            ('',1,1,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE())),
-           ('',2,1,1,2,GETDATE(),DATEADD(MONTH,2,GETDATE())),
            ('',3,1,1,3,GETDATE(),DATEADD(MONTH,3,GETDATE())),
            ('',2,2,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE())),
            ('',3,3,1,2,GETDATE(),DATEADD(MONTH,2,GETDATE())),
@@ -74,6 +73,19 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
 		   [TN_DiasExtra])
      VALUES
 		   ('',2,4,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE()),DATEADD(DAY,3,DATEADD(MONTH,1,GETDATE())),3)
+
+INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
+           ([TC_Comentario]
+           ,[FK_TN_CONTROL_SISCOA_OficinaControl]
+           ,[FK_TN_OFICINA_SISCOA_OficinaControl]
+           ,[FK_TN_ESTADO_SISCOA_OficinaControl]
+           ,[FK_TN_PERIODO_SISCOA_OficinaControl]
+		   ,[TF_FechaInicio]
+		   ,[TF_FechaFin]
+		   ,[TF_FechaFin_DiasExtra],
+		   [TN_DiasExtra])
+     VALUES
+		   ('',2,1,1,1, DATEADD(MONTH,-1,DATEADD(DAY,-3,GETDATE())), DATEADD(DAY,-3,GETDATE()),  DATEADD(DAY,-2,GETDATE()), 1)
 GO
 /**
 SELECT * FROM [CONTROL].[TSISCOA_Control]
