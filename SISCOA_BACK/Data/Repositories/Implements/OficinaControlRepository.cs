@@ -201,6 +201,12 @@ namespace Repositories.Repositories.Implements
 
         public async Task<TSISCOA_OficinaControl> RestoreOficinaControlById(TSISCOA_OficinaControl entity)
         {
+            var files = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == entity.ID).ToListAsync();
+            foreach (var item in files)
+            {
+                siscoa_context.Archivos.Remove(item);
+            }
+
             siscoa_context.OficinaControles.AddOrUpdate(entity);
             await siscoa_context.SaveChangesAsync();
             return entity;

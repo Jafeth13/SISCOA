@@ -21,7 +21,6 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
     'date2',
     'extra',
     'status',
-    'action', 
   ];
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort) sort = new MatSort();
@@ -31,7 +30,7 @@ export class ExtraDayComponent implements AfterViewInit, OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public restUser: ServiceUserService
-  ) {}
+  ) { }
   userData: any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

@@ -39,6 +39,13 @@ export class OfficeControlServicesService {
       httpOptions
     );
   }
+  restoreControl(control: any, id: any, idUser: any) {
+    return this.http.put(
+      endpoint + 'OficinaControl/RestoreOficinaControlById/' + id + '?IDuserLogged=' + idUser,
+      control,
+      httpOptions
+    );
+  }
   getBiId(id: any, idU: any): Observable<any> {
     return this.http.get(
       endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idU,
@@ -55,7 +62,7 @@ export class OfficeControlServicesService {
     );
   }
 
-  deleteOfficeControl(id: any, idUser: any){
+  deleteOfficeControl(id: any, idUser: any) {
     return this.http.delete(
       endpoint + 'OficinaControles/' + id + '?IDuserLogged=' + idUser,
       httpOptions

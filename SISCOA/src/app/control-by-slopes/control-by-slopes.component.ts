@@ -14,12 +14,11 @@ export class ControlBySlopesComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
     'Descripcion'
-    ,'office',
+    , 'office',
     'Period',
     'date1',
     'date2',
     'status',
-    'action',
   ];
   dataSource = new MatTableDataSource();
 
@@ -29,7 +28,7 @@ export class ControlBySlopesComponent implements AfterViewInit, OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public restUser: ServiceUserService
-  ) {}
+  ) { }
   userData: any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

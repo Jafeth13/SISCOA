@@ -98,13 +98,13 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   back() {
     this.router.navigate(['/controlMenu']);
   }
-day={
-  num:0
-}
+  day = {
+    num: 0
+  }
   extraDay() {
     let idU = localStorage.getItem("idUsuario");
-//console.log(this.controlDataupdate.TN_DiasExtra)
-//this.controlDataupdate.TN_DiasExtra=7;
+    //console.log(this.controlDataupdate.TN_DiasExtra)
+    //this.controlDataupdate.TN_DiasExtra=7;
     this.officeControl.update(this.controlDataupdate.ID, this.controlDataupdate, idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'El proceso fue exitoso!', 'success');
@@ -173,6 +173,46 @@ day={
           this.router.navigate(['/controlMenu']);
         });
         Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');
+      }
+    });
+  }
+  controlRestored: any;
+  control: any;
+  restore(id: any) {
+    let idU = localStorage.getItem("idUsuario");
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, restauralo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.rest2.getControlFull(id, idU).subscribe((data) => {
+          this.officeControl.restoreControl({
+            "ID": data.ID,
+            "FK_TN_CONTROL_SISCOA_OficinaControl": data.FK_TN_CONTROL_SISCOA_OficinaControl,
+            "FK_TN_OFICINA_SISCOA_OficinaControl": data.FK_TN_OFICINA_SISCOA_OficinaControl,
+            "FK_TN_ESTADO_SISCOA_OficinaControl": 1,
+            "TC_Comentario": "",
+            "FK_TN_PERIODO_SISCOA_OficinaControl": data.FK_TN_PERIODO_SISCOA_OficinaControl,
+            "TF_FechaInicio": "0001-01-01T00:00:00.000Z",
+            "TF_FechaFin": "0001-01-01T00:00:00.000Z",
+            "TF_FechaFin_DiasExtra": "0001-01-01T00:00:00.000Z",
+            "TN_DiasExtra": 0,
+            "Archivos": null,
+            "TSISCOA_Control": null,
+            "TSISCOA_Oficina": null,
+            "TSISCOA_Estado": null,
+            "TSISCOA_Periodo": null
+          }, id, idU).subscribe((data) => {
+            this.router.navigate(['/controlMenu']);
+          })
+        });
+        Swal.fire('Restaurado!', 'Control se a restaurado correctamente.', 'success');
       }
     });
   }

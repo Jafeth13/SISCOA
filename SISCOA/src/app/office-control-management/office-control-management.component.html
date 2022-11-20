@@ -151,6 +151,10 @@
                   aria-label="Example icon button with a delete icon">
                   <mat-icon>delete</mat-icon>
                 </button>
+                <button (click)="restore(element.ID)" mat-fab color="primary" mat-button
+                  aria-label="Example icon button with a restore icon">
+                  <mat-icon>restore_page</mat-icon>
+                </button>
               </div>
             </div>
           </td>
@@ -209,40 +213,40 @@
                       </textarea>
                     </div>
                     <div>
-                    <label for="estado">Estado</label>
-                    <input [(ngModel)]="controlDataupdate.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left"
-                      name="estado" id="estado" disabled="" />
-                  </div>
-                  </div>
-                  <div class="d-flex justify-content-around">
-                  
-                  <div class="nc">
-                    <div>
-                      <label for="day">Cantidad de dias extras</label>                  
-
-                      <select id="day" name="day" [(ngModel)]="controlDataupdate.TN_DiasExtra"
-                      class="form-control rounded-left w-100">
-                    
-                            <option value=1>1</option>
-                            <option value=2>2</option>
-                            <option value=3>3</option>
-                            <option value=4>4</option>
-                            <option value=5>5</option>
-                            <option value=6>6</option>
-                            <option value=7>7</option>
-                            <option value=8>8</option>
-                            <option value=9>9</option>
-                            <option value=10>10</option>    
-                        </select>
-                       
+                      <label for="estado">Estado</label>
+                      <input [(ngModel)]="controlDataupdate.TSISCOA_Estado.TC_Nombre" class="form-control rounded-left"
+                        name="estado" id="estado" disabled="" />
                     </div>
                   </div>
+                  <div class="d-flex justify-content-around">
+
+                    <div class="nc">
+                      <div>
+                        <label for="day">Cantidad de dias extras</label>
+
+                        <select id="day" name="day" [(ngModel)]="controlDataupdate.TN_DiasExtra"
+                          class="form-control rounded-left w-100">
+
+                          <option value=1>1</option>
+                          <option value=2>2</option>
+                          <option value=3>3</option>
+                          <option value=4>4</option>
+                          <option value=5>5</option>
+                          <option value=6>6</option>
+                          <option value=7>7</option>
+                          <option value=8>8</option>
+                          <option value=9>9</option>
+                          <option value=10>10</option>
+                        </select>
+
+                      </div>
+                    </div>
                   </div>
 
-                    <button class="submit-btn form-control" (click)="extraDay()">
-                      Brindar dias extras
-                    </button>
-                  
+                  <button class="submit-btn form-control" (click)="extraDay()">
+                    Brindar dias extras
+                  </button>
+
                 </div>
               </div>
             </form>

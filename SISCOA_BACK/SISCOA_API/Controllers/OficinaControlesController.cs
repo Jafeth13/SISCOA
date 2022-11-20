@@ -558,7 +558,7 @@ namespace SISCOA_API.Controllers
                     entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(12).AddDays(4);
                 }
 
-                entities = await service.Update(entities);
+                entities = await service.RestoreOficinaControlById(entities);
 
                 await activity.Insert(new TSISCOA_Actividad
                 {
