@@ -40,6 +40,7 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     'date1',
     'date2',
     'status',
+    'action',
    
  
   ];
@@ -159,6 +160,26 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     });
     this.rest2.listControl(idU).subscribe((pos) => {
       this.dataSourceControl.data = pos;
+    });
+  }
+  delete(id: any) {
+    let idU = localStorage.getItem("idUsuario");
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminarlo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.restOfficeControl.deleteOfficeControl(id, idU).subscribe((data) => {
+          this.router.navigate(['/controlMenuSup']);
+        });
+        Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');
+      }
     });
   }
 }

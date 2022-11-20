@@ -6,57 +6,43 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ServicesControllersService } from '../services-controllers.service';
 import { ServiceUserService } from '../service-user.service';
 @Component({
-  selector: 'app-control-office-sup',
-  templateUrl: './control-office-sup.component.html',
-  styleUrls: ['./control-office-sup.component.css']
+  selector: 'app-table-by-status-sup',
+  templateUrl: './table-by-status-sup.component.html',
+  styleUrls: ['./table-by-status-sup.component.css']
 })
-export class ControlOfficeSupComponent implements AfterViewInit, OnInit {
+export class TableByStatusSupComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
-    'Descripcion',
+    'Descripcion'
+    ,'office',
     'Period',
     'date1',
     'date2',
     'status',
-
-    'action',
+   
   ];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   constructor(
-    public restUser: ServiceUserService,
     public rest: ServicesControllersService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public restUser: ServiceUserService
   ) {}
   userData: any;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  idP: number = 1;
-  nc = {
-    ncd: 0,
-    name:'',
-  };
   ngOnInit(): void {
     this.rut();
   }
 
   rut() {
     let idU = localStorage.getItem('idUsuario');
-    this.restUser.get(idU, idU).subscribe((data: {}) => {
-      this.userData = data;
-      this.nc.ncd = this.userData.TSISCOA_Oficina.ID;
-      this.nc.name=this.userData.TSISCOA_Oficina.TC_Nombre;
-      this.rest.getControl(this.nc.ncd, idU).subscribe((pos) => {
-        this.dataSource.data = pos;
-      });
+    this.rest.getControlByStatus(idU).subscribe((pos) => {
+      this.dataSource.data = pos;
     });
-  }
-
-  back() {
-    this.router.navigate(['/controlMenuSup']);
   }
 
   applyFilter(event: Event) {
@@ -64,3 +50,4 @@ export class ControlOfficeSupComponent implements AfterViewInit, OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
+

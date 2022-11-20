@@ -37,6 +37,9 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     'name',
     'Descripcion',
     'Period',
+    'date1',
+    'date2',
+    'date3',
     'status',
     'action',
   ];
@@ -95,26 +98,10 @@ export class OfficeManagmentSupComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/controlMenuSup']);
   }
 
-  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date = moment(event.value).format('YYYY-MM-DD');
-  }
 
-  selectHour() {
-    this.hour = (<HTMLInputElement>document.getElementById('time')).value;
-  }
   extraDay() {
     let idU = localStorage.getItem("idUsuario");
 
-    var date;
-    date = new Date();
-    date =
-      ('00' + date.getHours()).slice(-2) + ':' +
-      ('00' + date.getMinutes()).slice(-2) + ':' +
-      ('00' + date.getSeconds()).slice(-2);
-
-    this.startDate = this.date + 'T' + date + 'Z';
-
-    this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
 
     this.officeControl.update(this.controlDataupdate.ID, this.controlDataupdate, idU).subscribe(
       (result) => {

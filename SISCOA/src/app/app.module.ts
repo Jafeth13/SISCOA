@@ -90,6 +90,7 @@ import { SeePeriodComponent } from './see-period/see-period.component';
 import { SeeConditionalComponent } from './see-conditional/see-conditional.component';
 import { SeePermisionComponent } from './see-permision/see-permision.component';
 import { TableByStatusComponent } from './table-by-status/table-by-status.component';
+import { TableByStatusSupComponent } from './table-by-status-sup/table-by-status-sup.component';
 
 
 const appRoutes: Routes = [
@@ -362,6 +363,10 @@ const appRoutes: Routes = [
     path: 'tableByStatus',
     component: TableByStatusComponent,
     data: { title: 'Tabla'}, 
+  },{
+    path: 'tableByStatusSup',
+    component: TableByStatusSupComponent,
+    data: { title: 'Tabla'}, 
   },
 
 ];
@@ -435,7 +440,8 @@ const appRoutes: Routes = [
     SeePeriodComponent,
     SeeConditionalComponent,
     SeePermisionComponent,
-    TableByStatusComponent
+    TableByStatusComponent,
+    TableByStatusSupComponent
     
   ],
   imports: [

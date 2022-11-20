@@ -1,4 +1,4 @@
-<app-natvar-supervisores> </app-natvar-supervisores>
+<app-natvar-supervisores></app-natvar-supervisores>
 <div class="container">
   <div class="text-center">
     <br />
@@ -8,7 +8,7 @@
     <br />
     <br />
 
-    <h1 class="section-heading text-uppercase">Controles pendientes por mes</h1>
+    <h1 class="section-heading text-uppercase">Controles atrasados</h1>
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Busqueda</mat-label>
@@ -38,7 +38,15 @@
             {{ element.TSISCOA_Control.TC_DescriptionDocumentacionEvidencia }}
           </td>
         </ng-container>
-
+   
+        <ng-container matColumnDef="office">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Oficina </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TSISCOA_Oficina.TC_Nombre }}
+          </td>
+        </ng-container>
         <!-- Period Column -->
         <ng-container matColumnDef="Period">
           <th mat-header-cell *matHeaderCellDef><b> Periodo</b></th>
@@ -46,6 +54,21 @@
             {{ element.TSISCOA_Periodo.TC_Nombre }}
           </td>
         </ng-container>
+       <!-- Period Column -->
+       <ng-container matColumnDef="date1">
+        <th mat-header-cell *matHeaderCellDef><b> Fecha de inicio</b></th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.TF_FechaInicio.split("T",1) }}
+        </td>
+      </ng-container>
+
+        <!-- Period Column -->
+        <ng-container matColumnDef="date2">
+            <th mat-header-cell *matHeaderCellDef><b> Fecha  fin</b></th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.TF_FechaFin.split("T",1)}}
+            </td>
+          </ng-container>
 
         <!-- status Column -->
         <ng-container matColumnDef="status">
@@ -56,32 +79,8 @@
             {{ element.TSISCOA_Estado.TC_Nombre }}
           </td>
         </ng-container>
-        <ng-container matColumnDef="office">
-          <th mat-header-cell *matHeaderCellDef class="pintar">
-            <b> Oficina </b>
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.TSISCOA_Oficina.TC_Nombre }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date1">
-          <th mat-header-cell *matHeaderCellDef class="pintar">
-            <b> Fecha inicio </b>
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.TF_FechaInicio.split("T",1) }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="date2">
-          <th mat-header-cell *matHeaderCellDef class="pintar">
-            <b> Fecha fin </b>
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.TF_FechaFin.split("T",1) }}
-          </td>
-        </ng-container>
+       
+      
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
@@ -99,3 +98,4 @@
     </div>
   </div>
 </div>
+
