@@ -48,5 +48,10 @@ namespace Services.Services.Implements
         {
             return await oficinaControlRepository.GetData_ControlsByStateLate();
         }
+
+        public async Task<TSISCOA_OficinaControl> RestoreOficinaControlById(TSISCOA_OficinaControl entity)
+        {
+            return await oficinaControlRepository.RestoreOficinaControlById(entity);
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace Services.Services
         Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsWithExtraDays();
         Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphicsTable_ControlsWithExtraDays();
         Task<IEnumerable<TSISCOA_OficinaControl>> GetOfficeControlByIdOffice(int id);
+        Task<TSISCOA_OficinaControl> RestoreOficinaControlById(TSISCOA_OficinaControl entity);
     }
 }
