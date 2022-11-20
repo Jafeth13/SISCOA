@@ -97,10 +97,10 @@ namespace SISCOA_API.Controllers
         /// <param name="IDuserLogged">Id del usuario loggeado</param>
         /// <returns>Lista de todos los registros</returns>
         /// <response code="200">OK. Devuelve la lista de los registros</response>
-        [Route("api/OficinaControl/GetDataGraphics_ControlsByStateLate")]
+        [Route("api/OficinaControl/GetDataGraphicsTable_ControlsByStateLate")]
         [HttpGet]
         [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
-        public async Task<IHttpActionResult> GetDataGraphics_ControlsByStateLate(int IDuserLogged)
+        public async Task<IHttpActionResult> GetDataGraphicsTable_ControlsByStateLate(int IDuserLogged)
         {
             try
             {
