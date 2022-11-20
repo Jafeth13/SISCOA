@@ -44,9 +44,9 @@ namespace Services.Services.Implements
             return await oficinaControlRepository.GetOfficeControlByIdOffice(id);
         }
 
-        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphics_ControlsByStateLate()
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetData_ControlsByStateLate()
         {
-            return await oficinaControlRepository.GetDataGraphics_ControlsByStateLate();
+            return await oficinaControlRepository.GetData_ControlsByStateLate();
         }
     }
 }

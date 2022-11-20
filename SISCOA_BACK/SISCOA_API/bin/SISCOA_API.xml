@@ -1087,7 +1087,7 @@
             <returns>Lista de todos los registros</returns>
             <response code="200">OK. Devuelve la lista de los registros</response>
         </member>
-        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetDataGraphics_ControlsByStateLate(System.Int32)">
+        <member name="M:SISCOA_API.Controllers.OficinaControlesController.GetData_ControlsByStateLate(System.Int32)">
             <summary>
             Obtiene los controles que estan atrasados
             </summary>

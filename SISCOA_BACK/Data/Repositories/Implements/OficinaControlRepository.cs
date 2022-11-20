@@ -121,7 +121,7 @@ namespace Repositories.Repositories.Implements
             return list;
         }
 
-        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphics_ControlsByStateLate()
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetData_ControlsByStateLate()
         {
             var listStates = await siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 3).ToListAsync();
             return listStates;
