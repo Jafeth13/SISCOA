@@ -39,6 +39,9 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
     'name',
     'Descripcion',
     'Period',
+    'date1',
+    'date2',
+    'date3',
     'status',
     'action',
   ];
@@ -95,28 +98,13 @@ export class OfficeControlManagementComponent implements OnInit, AfterViewInit {
   back() {
     this.router.navigate(['/controlMenu']);
   }
-
-  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date = moment(event.value).format('YYYY-MM-DD');
-  }
-
-  selectHour() {
-    this.hour = (<HTMLInputElement>document.getElementById('time')).value;
-  }
+day={
+  num:0
+}
   extraDay() {
     let idU = localStorage.getItem("idUsuario");
-
-    var date;
-    date = new Date();
-    date =
-      ('00' + date.getHours()).slice(-2) + ':' +
-      ('00' + date.getMinutes()).slice(-2) + ':' +
-      ('00' + date.getSeconds()).slice(-2);
-
-    this.startDate = this.date + 'T' + date + 'Z';
-
-    this.controlDataupdate.TF_FechaFin_DiasExtra = this.startDate;
-
+///console.log(this.controlDataupdate)
+//this.controlDataupdate.TN_DiasExtra=7;
     this.officeControl.update(this.controlDataupdate.ID, this.controlDataupdate, idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'El proceso fue exitoso!', 'success');

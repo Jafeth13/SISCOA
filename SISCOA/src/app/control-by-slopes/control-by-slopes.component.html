@@ -47,6 +47,24 @@
             {{ element.TSISCOA_Oficina.TC_Nombre }}
           </td>
         </ng-container>
+
+        <ng-container matColumnDef="date1">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Fecha inicio </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TF_FechaInicio.split("T",1) }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date2">
+          <th mat-header-cell *matHeaderCellDef class="pintar">
+            <b> Fecha fin </b>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.TF_FechaFin.split("T",1) }}
+          </td>
+        </ng-container>
         <!-- Period Column -->
         <ng-container matColumnDef="Period">
           <th mat-header-cell *matHeaderCellDef><b> Periodo</b></th>

@@ -16,6 +16,8 @@ export class ControlOficeComponent implements AfterViewInit, OnInit {
     'name',
     'Descripcion',
     'Period',
+    'date1',
+    'date2',
     'status',
     'action',
   ];

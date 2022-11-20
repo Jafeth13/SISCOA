@@ -29,7 +29,7 @@ export class ServicesControllersService {
   }
 
   getControlByStatus(id:any):Observable<any>{
-    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes?IDuserLogged='+id,httpOptions);
+    return  this.http.get(endpoint+'OficinaControl/GetData_ControlsByStateLate?IDuserLogged='+id,httpOptions);
   }
 
   getControl(id:any,idUser:any):Observable<any>{

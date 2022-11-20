@@ -37,6 +37,8 @@ export class AddControlSupComponent implements OnInit, AfterViewInit {
     'name',
     'Descripcion',
     'period',
+    'date1',
+    'date2',
     'status',
    
  
