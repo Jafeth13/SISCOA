@@ -496,6 +496,92 @@ namespace SISCOA_API.Controllers
             }
         }
         /// <summary>
+        /// Restablece el control
+        /// </summary>
+        /// <param name="DTO">El objeto JSON del registro</param>
+        /// <param name="id">Id del registro que quiere modificar</param>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
+        /// <returns>Registro modificado</returns>
+        /// <response code="200">OK. Devuelve el registro modificado</response>
+        /// <response code="400">BadRequest. Consulta erronea</response>
+        /// <response code="404">NotFound. No se encontro el registro</response>
+        /// <response code="500">InternalServerError. Error con el servidor</response>
+        [Route("api/OficinaControl/RestoreOficinaControlById/{id}")]
+        [HttpPut]
+        [ResponseType(typeof(TSISCOA_OficinaControl_DTO))]
+        public async Task<IHttpActionResult> RestoreOficinaControlById(TSISCOA_OficinaControl_DTO DTO, int id, int IDuserLogged)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            if (DTO.ID != id)
+                return BadRequest("Object id does not match route id");
+
+            var flag = await service.GetById(id);
+            if (flag == null)
+                return NotFound();
+
+            try
+            {
+                var entities = _mapper.Map<TSISCOA_OficinaControl>(DTO);
+
+                DateTime date = DateTime.Now;
+                entities.TF_FechaInicio = date;
+                //Periodo mensual
+                if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 1)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(4);
+                }
+                //Periodo bimensual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 2)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(2).AddDays(4);
+                }
+                //Periodo Trimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 3)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(3).AddDays(4);
+                }
+                //Periodo Cuatrimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 4)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(4).AddDays(4);
+                }
+                //Periodo Semestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 5)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(6).AddDays(4);
+                }
+                //Periodo Anual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 6)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(12).AddDays(4);
+                }
+
+                entities = await service.Update(entities);
+
+                await activity.Insert(new TSISCOA_Actividad
+                {
+                    TC_Description = "Restablece control de oficina",
+                    TC_Accion = "RestoreOficinaControlById",
+                    TF_FechaAccion = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "RestoreOficinaControlById OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
+        }
+        /// <summary>
         /// Elimina un registro
         /// </summary>
         /// <param name="id">Id del registro que quiere eliminar</param>
@@ -506,13 +592,13 @@ namespace SISCOA_API.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> Delete(int id, int IDuserLogged)
         {
-            var flag = await service.GetById(id);
-            if (flag == null)
-                return NotFound();
-
             try
             {
-                await service.Delete(id);           
+                var flag = await service.GetById(id);
+                if (flag == null)
+                    return NotFound();
+
+                await service.Delete(id);         
                 await activity.Insert(new TSISCOA_Actividad
                 {
                     TC_Description = "Eliminar un relacion entre control y oficina",

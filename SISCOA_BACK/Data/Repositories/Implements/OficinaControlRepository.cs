@@ -7,7 +7,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Repositories.Repositories.Implements
 {
@@ -82,24 +81,6 @@ namespace Repositories.Repositories.Implements
             item.TSISCOA_Estado = await siscoa_context.Estados.FindAsync(item.FK_TN_ESTADO_SISCOA_OficinaControl);
             item.Archivos = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == item.ID).ToListAsync();
             return item;
-        }
-
-        public new async Task Delete(int id)
-        {
-            var entity = await GetById(id);
-            var files = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == entity.ID).ToListAsync();
-
-            if (entity == null)
-                throw new Exception("The entity is null");
-
-            siscoa_context.OficinaControles.Remove(entity);
-            await siscoa_context.SaveChangesAsync();
-
-            foreach (var item in files)
-            {
-                siscoa_context.Archivos.Remove(item);
-                await siscoa_context.SaveChangesAsync();
-            }
         }
 
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
@@ -216,6 +197,30 @@ namespace Repositories.Repositories.Implements
         {
             var listStates = await siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 3).ToListAsync();
             return listStates;
+        }
+
+        public async Task<TSISCOA_OficinaControl> RestoreOficinaControlById(TSISCOA_OficinaControl entity)
+        {
+            siscoa_context.OficinaControles.AddOrUpdate(entity);
+            await siscoa_context.SaveChangesAsync();
+            return entity;
+        }
+
+        public new async Task Delete(int id)
+        {
+            var entity = await GetById(id);
+            var files = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == entity.ID).ToListAsync();
+
+            if (entity == null)
+                throw new Exception("The entity is null");
+
+            foreach (var item in files)
+            {
+                siscoa_context.Archivos.Remove(item);
+            }
+
+            siscoa_context.OficinaControles.Remove(entity);
+            await siscoa_context.SaveChangesAsync();
         }
     }
 }
