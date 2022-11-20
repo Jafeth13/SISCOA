@@ -28,6 +28,10 @@ export class ServicesControllersService {
     return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes?IDuserLogged='+id,httpOptions);
   }
 
+  getControlByStatus(id:any):Observable<any>{
+    return  this.http.get(endpoint+'OficinaControl/GetDataGraphicsTable_ControlsBySlopes?IDuserLogged='+id,httpOptions);
+  }
+
   getControl(id:any,idUser:any):Observable<any>{
     return  this.http.get(endpoint+'OficinaControl/GetOfficeControlByIdOffice/'+id+'?IDuserLogged='+idUser, httpOptions);   
   }
