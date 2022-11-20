@@ -37,19 +37,9 @@ export class PeriodRegisterComponent implements OnInit {
     
   }
   add() {
-    var date;
-    date = new Date();
-    date =  
-        ('00' + date.getHours()).slice(-2) + ':' + 
-        ('00' + date.getMinutes()).slice(-2) + ':' + 
-        ('00' + date.getSeconds()).slice(-2);
-    
-    this.startDate = this.date + 'T' + date+'Z';
-    this.enddate = this.date2 + 'T' + date+'Z';
     let idU =  localStorage.getItem("idUsuario") ;
 
-    this.period.TF_FechaInicio = this.startDate;
-    this.period.TF_FechaFin = this.enddate;
+
     this.rest.add(this.period,idU).subscribe(
       (result) => {
         Swal.fire('Buen trabajo!', 'Periodo registrado!', 'success');
@@ -64,21 +54,5 @@ export class PeriodRegisterComponent implements OnInit {
       }
     );
   }
-
-  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date = moment(event.value).format('YYYY-MM-DD');
-  }
-
-  selectHour() {
-    this.hour = (<HTMLInputElement>document.getElementById('time')).value;
-  }
-  selectDate2(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date2 = moment(event.value).format('YYYY-MM-DD');
-  }
-
-  selectHour2() {
-    this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
-  }
   
-
 }

@@ -25,53 +25,7 @@
                     required=""
                   />
                 </div>
-              </div>
-              <div class="nc">
-                <div>
-                  <br />
-                  <label for="date1">Elige la fecha de inicio</label>
-                  <br />
-                  <input
-                    class="nc"
-                    id="date1"
-                    matInput
-                    [matDatepicker]="picker"
-                    (dateInput)="selectDate('input', $event)"
-                    (dateChange)="selectDate('change', $event)"
-                 
-                    required
-                  />
-                  <br />
-                  <mat-hint class="nc">MM/DD/YYYY</mat-hint>
-                  <mat-datepicker-toggle
-                    matSuffix
-                    [for]="picker"
-                    class="nc"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </div>
-
-                <label for="date2">Elige la fecha de fin</label>
-                <br />
-                <input
-                  class="nc"
-                  id="date2"
-                  matInput
-                  [matDatepicker]="picker2"
-                  (dateInput)="selectDate2('input', $event)"
-                  (dateChange)="selectDate2('change', $event)"
-                
-                  required
-                />
-                <br />
-                <mat-hint class="nc">MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle
-                  matSuffix
-                  [for]="picker2"
-                  class="nc"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </div>
+              </div>           
               <div class="d-flex justify-content-around">
               <button class="submit-btn form-control" (click)="valitation()">
                 Actualizar

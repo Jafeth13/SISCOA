@@ -13,7 +13,7 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./period-list.component.css'],
 })
 export class PeriodListComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['name', 'start', 'end', 'action'];
+  displayedColumns: string[] = ['name', 'action'];
   dataSource = new MatTableDataSource();
   constructor(
     public restUser: ServiceUserService,

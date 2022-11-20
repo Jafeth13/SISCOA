@@ -13,50 +13,31 @@ import { ServiceUserService } from '../service-user.service';
 })
 export class PeriodUpdateComponent implements OnInit {
   //variables
-  date: any;
-  hour: any;
-  date2: any;
-  hour2: any;
-  startDate: any;
-  enddate: any;
-  userData:any
+  userData: any
   constructor(
     public restUser: ServiceUserService,
     public rest: ServicesPeriodService,
     private route: ActivatedRoute,
     private router: Router
-      ) {}
+  ) { }
   @Input() periodDataupdate: any;
 
   ngOnInit(): void {
     this.rut();
   }
-  rut() { 
-    let idU =  localStorage.getItem("idUsuario") ;
+  rut() {
+    let idU = localStorage.getItem("idUsuario");
 
-    this.rest.get(this.route.snapshot.params['ID'],idU).subscribe((data: {}) => {
+    this.rest.get(this.route.snapshot.params['ID'], idU).subscribe((data: {}) => {
       this.periodDataupdate = data;
     });
-   
+
   }
   update() {
-    var date;
-    date = new Date();
-    date =
-      ('00' + date.getHours()).slice(-2) +
-      ':' +
-      ('00' + date.getMinutes()).slice(-2) +
-      ':' +
-      ('00' + date.getSeconds()).slice(-2);
-
-    this.startDate = this.date + 'T' + date + 'Z';
-    this.enddate = this.date2 + 'T' + date + 'Z';
-    this.periodDataupdate.TF_FechaInicio = this.startDate;
-    this.periodDataupdate.TF_FechaFin = this.enddate;
-    let idU =  localStorage.getItem("idUsuario") ;
+    let idU = localStorage.getItem("idUsuario");
 
     this.rest
-      .update(this.periodDataupdate, this.route.snapshot.params['ID'],idU)
+      .update(this.periodDataupdate, this.route.snapshot.params['ID'], idU)
       .subscribe(
         (result) => {
           Swal.fire('Buen trabajo!', 'Periodo actualizado con exito!', 'success');
@@ -73,30 +54,15 @@ export class PeriodUpdateComponent implements OnInit {
       );
   }
 
-  selectDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date = moment(event.value).format('YYYY-MM-DD');
-  }
-
-  selectHour() {
-    this.hour = (<HTMLInputElement>document.getElementById('time')).value;
-  }
-  selectDate2(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.date2 = moment(event.value).format('YYYY-MM-DD');
-  }
-
-  selectHour2() {
-    this.hour2 = (<HTMLInputElement>document.getElementById('time')).value;
-  }
-
-  valitation(){
-    if (this.periodDataupdate.TC_Nombre.length==0||this.periodDataupdate.TF_FechaInicio.length==0||this.periodDataupdate.TF_FechaFin.length==0) {
+  valitation() {
+    if (this.periodDataupdate.TC_Nombre.length == 0) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Error al actualizar el periodo!',
       });
-    }else{
-     this.update();
+    } else {
+      this.update();
     }
   }
 }
