@@ -17,7 +17,8 @@ export class TableByStatusComponent implements AfterViewInit, OnInit {
     'Descripcion'
     ,'office',
     'Period',
-    
+    'date1',
+    'date2',
     'status',
     'action',
   ];

@@ -36,6 +36,8 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     'name',
     'Descripcion',
     'period',
+    'date1',
+    'date2',
     'status',
     'action',
   ];
@@ -60,7 +62,8 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     private router: Router,
     private _formBuilder: FormBuilder,
     public restPeriod: ServicesPeriodService,
-    public restConditional: ServiceConditionService
+    public restConditional: ServiceConditionService,
+    
 
   ) { }
   dataPeriod: any
@@ -147,6 +150,27 @@ export class AddControlsOfficesComponent implements OnInit, AfterViewInit {
     });
     this.restConditional.conditionalList(idU).subscribe((pos) => {
       this.dataConditional = pos;
+    });
+  }
+
+  delete(id: any) {
+    let idU = localStorage.getItem("idUsuario");
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "No podrás revertir esto.!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'si, eliminarlo!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.restOfficeControl.deleteOfficeControl(id, idU).subscribe((data) => {
+          this.router.navigate(['/controlMenu']);
+        });
+        Swal.fire('Eliminado!', 'Control eliminada correctamente.', 'success');
+      }
     });
   }
 

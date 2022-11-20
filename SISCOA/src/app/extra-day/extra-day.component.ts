@@ -14,8 +14,12 @@ import { MatSort, Sort } from '@angular/material/sort';
 export class ExtraDayComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'name',
-    'Descripcion','office',
-    'Period','extra',
+    'Descripcion',
+    'office',
+    'Period',
+    'date1',
+    'date2',
+    'extra',
     'status',
     'action', 
   ];

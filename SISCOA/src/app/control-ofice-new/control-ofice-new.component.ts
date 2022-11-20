@@ -16,6 +16,8 @@ export class ControlOficeNewComponent implements OnInit {
     'name',
     'Descripcion',
     'Period',
+    'date1',
+    'date2',
     'status',
 
     'action',

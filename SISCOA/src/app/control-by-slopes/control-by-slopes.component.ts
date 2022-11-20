@@ -16,7 +16,8 @@ export class ControlBySlopesComponent implements AfterViewInit, OnInit {
     'Descripcion'
     ,'office',
     'Period',
-    
+    'date1',
+    'date2',
     'status',
     'action',
   ];
