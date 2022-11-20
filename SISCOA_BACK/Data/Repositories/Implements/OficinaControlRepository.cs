@@ -4,6 +4,7 @@ using Entities.Util;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -19,6 +20,29 @@ namespace Repositories.Repositories.Implements
         }
         public new async Task<IEnumerable<TSISCOA_OficinaControl>> GetAll()
         {
+            //obtiene los controles pendientes
+            var verify = siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 1).ToList();
+            verify.ForEach(x => {
+                //Si tiene dias extra
+                if (x.TN_DiasExtra > 0)
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin_DiasExtra, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                else
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                siscoa_context.OficinaControles.AddOrUpdate(x);
+            });
+
+            siscoa_context.SaveChanges();
+
             var list = await siscoa_context.OficinaControles.ToListAsync();
             foreach (var item in list)
             {
@@ -27,7 +51,30 @@ namespace Repositories.Repositories.Implements
             return list;
         }
         public new async Task<TSISCOA_OficinaControl> GetById(int id)
-        {      
+        {
+            //obtiene los controles pendientes
+            var verify = siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 1).ToList();
+            verify.ForEach(x => {
+                //Si tiene dias extra
+                if (x.TN_DiasExtra > 0)
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin_DiasExtra, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                else
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                siscoa_context.OficinaControles.AddOrUpdate(x);
+            });
+
+            siscoa_context.SaveChanges();
+
             var item = await siscoa_context.OficinaControles.FindAsync(id);
             item.TSISCOA_Control = await siscoa_context.Controles.FindAsync(item.FK_TN_CONTROL_SISCOA_OficinaControl);
             item.TSISCOA_Periodo = await siscoa_context.Periodos.FindAsync(item.FK_TN_PERIODO_SISCOA_OficinaControl);
@@ -57,7 +104,28 @@ namespace Repositories.Repositories.Implements
 
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
         {
-            var updateDates = siscoa_context.OficinaControles.Where(x => x.TSISCOA_Estado.ID == 1).ToList();
+            //obtiene los controles pendientes
+            var verify = siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 1).ToList();
+            verify.ForEach(x => {
+                //Si tiene dias extra
+                if (x.TN_DiasExtra > 0)
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin_DiasExtra, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                else
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                siscoa_context.OficinaControles.AddOrUpdate(x);
+            });
+
+            siscoa_context.SaveChanges();
 
             var list = await siscoa_context.OficinaControles
                 .GroupBy(x => x.FK_TN_ESTADO_SISCOA_OficinaControl)
@@ -93,6 +161,29 @@ namespace Repositories.Repositories.Implements
 
         public async Task<IEnumerable<TSISCOA_OficinaControl>> GetOfficeControlByIdOffice(int id)
         {
+            //obtiene los controles pendientes
+            var verify = siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 1).ToList();
+            verify.ForEach(x => {
+                //Si tiene dias extra
+                if (x.TN_DiasExtra > 0)
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin_DiasExtra, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                else
+                {//verifica si esta atrasado
+                    if (DateTime.Compare(x.TF_FechaFin, DateTime.Now) < 0)
+                    {//cambia el estado a atrasado
+                        x.FK_TN_ESTADO_SISCOA_OficinaControl = 3;
+                    }
+                }
+                siscoa_context.OficinaControles.AddOrUpdate(x);
+            });
+
+            siscoa_context.SaveChanges();
+
             var list = await siscoa_context.OficinaControles
                 .Where(x => x.FK_TN_OFICINA_SISCOA_OficinaControl == id)
                 .ToListAsync();
