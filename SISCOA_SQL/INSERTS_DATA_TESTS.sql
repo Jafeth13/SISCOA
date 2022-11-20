@@ -11,11 +11,14 @@ GO
 --SELECT * FROM [CONTROL].[TSISCOA_Estado]
 GO
 INSERT INTO [CONTROL].[TSISCOA_Periodo]
-			([TC_Nombre], [TF_FechaInicio], [TF_FechaFin])
+			([TC_Nombre])
 		VALUES
-			('Diciembre', TRY_CONVERT(DATETIME, '01/12/2022',103), TRY_CONVERT(DATETIME, '29/12/2022',103)),
-			('Enero', TRY_CONVERT(DATETIME, '01/01/2022',103), TRY_CONVERT(DATETIME, '29/01/2022',103)),
-			('Febrero', TRY_CONVERT(DATETIME, '01/02/2022',103), TRY_CONVERT(DATETIME, '28/02/2022',103))
+			('Mensual'),
+			('Bimensual'),
+			('Trimestral'),
+			('Cuatrimestral'),
+			('Semestral'),
+			('Anual')
 GO
 --SELECT * FROM [CONTROL].[TSISCOA_Periodo]
 GO
@@ -47,15 +50,17 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ,[FK_TN_CONTROL_SISCOA_OficinaControl]
            ,[FK_TN_OFICINA_SISCOA_OficinaControl]
            ,[FK_TN_ESTADO_SISCOA_OficinaControl]
-           ,[FK_TN_PERIODO_SISCOA_OficinaControl])
+           ,[FK_TN_PERIODO_SISCOA_OficinaControl]
+		   ,[TF_FechaInicio]
+		   ,[TF_FechaFin])
      VALUES
-           ('',1,1,1,1),
-           ('',2,1,1,1),
-           ('',3,1,1,2),
-           ('',2,2,1,2),
-           ('',3,3,1,1),
-           ('',1,4,1,2),
-		   ('',1,3,1,2)
+           ('',1,1,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE())),
+           ('',2,1,1,2,GETDATE(),DATEADD(MONTH,2,GETDATE())),
+           ('',3,1,1,3,GETDATE(),DATEADD(MONTH,3,GETDATE())),
+           ('',2,2,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE())),
+           ('',3,3,1,2,GETDATE(),DATEADD(MONTH,2,GETDATE())),
+           ('',1,4,1,3,GETDATE(),DATEADD(MONTH,3,GETDATE())),
+		   ('',1,3,1,4,GETDATE(),DATEADD(MONTH,4,GETDATE()))
 
 INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ([TC_Comentario]
@@ -63,9 +68,12 @@ INSERT INTO [CONTROL].[TSISCOA_OficinaControl]
            ,[FK_TN_OFICINA_SISCOA_OficinaControl]
            ,[FK_TN_ESTADO_SISCOA_OficinaControl]
            ,[FK_TN_PERIODO_SISCOA_OficinaControl]
-		   ,[TF_FechaFin_DiasExtra])
+		   ,[TF_FechaInicio]
+		   ,[TF_FechaFin]
+		   ,[TF_FechaFin_DiasExtra],
+		   [TN_DiasExtra])
      VALUES
-		   ('',2,4,1,1,TRY_CONVERT(DATETIME, '30/12/2022',103))
+		   ('',2,4,1,1,GETDATE(),DATEADD(MONTH,1,GETDATE()),DATEADD(DAY,3,DATEADD(MONTH,1,GETDATE())),3)
 GO
 /**
 SELECT * FROM [CONTROL].[TSISCOA_Control]

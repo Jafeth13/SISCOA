@@ -1,14 +1,12 @@
 ﻿using Data.Data;
 using Entities.Models;
 using Entities.Util;
-using Microsoft.AspNetCore.Http;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Repositories.Repositories.Implements
 {
@@ -39,8 +37,28 @@ namespace Repositories.Repositories.Implements
             return item;
         }
 
+        public new async Task Delete(int id)
+        {
+            var entity = await GetById(id);
+            var files = await siscoa_context.Archivos.Where(x => x.FK_TN_OficinaControl_SISCOA_Archivo == entity.ID).ToListAsync();
+
+            if (entity == null)
+                throw new Exception("The entity is null");
+
+            siscoa_context.OficinaControles.Remove(entity);
+            await siscoa_context.SaveChangesAsync();
+
+            foreach (var item in files)
+            {
+                siscoa_context.Archivos.Remove(item);
+                await siscoa_context.SaveChangesAsync();
+            }
+        }
+
         public async Task<IEnumerable<TSISCOA_DataGraphics>> GetDataGraphics_ControlsByStates()
         {
+            var updateDates = siscoa_context.OficinaControles.Where(x => x.TSISCOA_Estado.ID == 1).ToList();
+
             var list = await siscoa_context.OficinaControles
                 .GroupBy(x => x.FK_TN_ESTADO_SISCOA_OficinaControl)
                 .Select(x => new TSISCOA_DataGraphics
@@ -101,6 +119,12 @@ namespace Repositories.Repositories.Implements
                 .Where(x => x.TF_FechaFin_DiasExtra != new DateTime(0001,01,01,00,00,00))
                 .ToListAsync();
             return list;
+        }
+
+        public async Task<IEnumerable<TSISCOA_OficinaControl>> GetDataGraphics_ControlsByStateLate()
+        {
+            var listStates = await siscoa_context.OficinaControles.Where(x => x.FK_TN_ESTADO_SISCOA_OficinaControl == 3).ToListAsync();
+            return listStates;
         }
     }
 }

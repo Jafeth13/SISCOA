@@ -9,10 +9,6 @@ namespace Business.DTOs
         [Required(ErrorMessage = "The field TC_Nombre is required")]
         [StringLength(50)]
         public string TC_Nombre { get; set; }
-        [Required(ErrorMessage = "The field TF_FechaInicio is required")]
-        public DateTime TF_FechaInicio { get; set; }
-        [Required(ErrorMessage = "The field TF_FechaFin is required")]
-        public DateTime TF_FechaFin { get; set; }
 
     }
 }

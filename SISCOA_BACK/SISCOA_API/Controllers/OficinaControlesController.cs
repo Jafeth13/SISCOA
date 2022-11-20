@@ -92,6 +92,37 @@ namespace SISCOA_API.Controllers
             }
         }
         /// <summary>
+        /// Obtiene los controles que estan atrasados
+        /// </summary>
+        /// <param name="IDuserLogged">Id del usuario loggeado</param>
+        /// <returns>Lista de todos los registros</returns>
+        /// <response code="200">OK. Devuelve la lista de los registros</response>
+        [Route("api/OficinaControl/GetDataGraphics_ControlsByStateLate")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<TSISCOA_DataGraphics>))]
+        public async Task<IHttpActionResult> GetDataGraphics_ControlsByStateLate(int IDuserLogged)
+        {
+            try
+            {
+                var entities = await service.GetDataGraphics_ControlsByStateLate();
+                if (entities == null)
+                    return NotFound();
+
+                return Ok(entities);
+            }
+            catch (Exception ex)
+            {
+                await error.Insert(new TSISCOA_Error
+                {
+                    TC_Description = ex.Message,
+                    TC_UltimaAccion = "GetDataGraphics_ControlsByStateLate OficinaControl",
+                    TF_FechaError = DateTime.Now,
+                    FK_ID_UsuarioActivo = IDuserLogged
+                });
+                return InternalServerError(ex);
+            }
+        }
+        /// <summary>
         /// Obtiene la cantidad de controles que estan pendientes distribuidos por periodo
         /// </summary>
         /// <param name="IDuserLogged">Id del usuario loggeado</param>
@@ -305,10 +336,44 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_OficinaControl>(DTO);
+                
+                DateTime date = DateTime.Now;
+                entities.TF_FechaInicio = date;
+                //Periodo mensual
+                if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 1)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month,1).AddMonths(1).AddDays(4);
+                }
+                //Periodo bimensual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 2)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(2).AddDays(4);
+                }
+                //Periodo Trimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 3)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(3).AddDays(4);
+                }
+                //Periodo Cuatrimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 4)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(4).AddDays(4);
+                }
+                //Periodo Semestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 5)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(6).AddDays(4);
+                }
+                //Periodo Anual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 6)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(12).AddDays(4);
+                }
+
                 entities = await service.Insert(entities);
                 await activity.Insert(new TSISCOA_Actividad
                 {
-                    TC_Description = "Crear un relacion entre control y oficina",
+                    TC_Description = "Crea una relacion entre control y oficina",
                     TC_Accion = "Post",
                     TF_FechaAccion = DateTime.Now,
                     FK_ID_UsuarioActivo = IDuserLogged
@@ -354,6 +419,45 @@ namespace SISCOA_API.Controllers
             try
             {
                 var entities = _mapper.Map<TSISCOA_OficinaControl>(DTO);
+
+                DateTime date = DateTime.Now;
+                entities.TF_FechaInicio = date;
+                //Periodo mensual
+                if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 1)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(4);
+                }
+                //Periodo bimensual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 2)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(2).AddDays(4);
+                }
+                //Periodo Trimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 3)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(3).AddDays(4);
+                }
+                //Periodo Cuatrimestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 4)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(4).AddDays(4);
+                }
+                //Periodo Semestral
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 5)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(6).AddDays(4);
+                }
+                //Periodo Anual
+                else if (entities.FK_TN_PERIODO_SISCOA_OficinaControl == 6)
+                {
+                    entities.TF_FechaFin = new DateTime(date.Year, date.Month, 1).AddMonths(12).AddDays(4);
+                }
+
+                if (entities.TN_DiasExtra > 0)
+                {
+                    entities.TF_FechaFin_DiasExtra = new DateTime(entities.TF_FechaFin.Year, entities.TF_FechaFin.Month, entities.TF_FechaFin.Day).AddDays(entities.TN_DiasExtra);
+                }
+
                 entities = await service.Update(entities);
 
                 var files = DTO.Archivos;
@@ -408,7 +512,7 @@ namespace SISCOA_API.Controllers
 
             try
             {
-                await service.Delete(id);
+                await service.Delete(id);           
                 await activity.Insert(new TSISCOA_Actividad
                 {
                     TC_Description = "Eliminar un relacion entre control y oficina",

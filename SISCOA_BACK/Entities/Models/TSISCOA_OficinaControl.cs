@@ -18,7 +18,10 @@ namespace Entities.Models
         public int FK_TN_ESTADO_SISCOA_OficinaControl { get; set; }
         [ForeignKey("TSISCOA_Periodo")]
         public int FK_TN_PERIODO_SISCOA_OficinaControl { get; set; }
+        public DateTime TF_FechaInicio { get; set; }
+        public DateTime TF_FechaFin { get; set; }
         public DateTime TF_FechaFin_DiasExtra { get; set; }
+        public int TN_DiasExtra { get; set; }
         public String TC_Comentario { get; set; }
         public IEnumerable<TSISCOA_Archivo> Archivos { get; set; }
         public virtual TSISCOA_Control TSISCOA_Control { get; set; }
